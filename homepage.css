@@ -1,0 +1,19 @@
+.navBar ul li{
+    float: left;
+	display: block;
+	padding: 8px;
+	background-color: #ad3737;
+}
+a { 
+    color: #4337ad;
+    text-decoration: none;
+}
+a:visited { 
+    color: #b3b3b3;
+}
+a:hover {  
+    color: #535353;
+}
+a:active {   
+    color: #000000;
+}
