@@ -307,13 +307,14 @@
   \normalsize
 }
 
-\newcommand{\cvactivity}[5]{%
+\newcommand{\cvactivity}[6]{%
   {\large\color{emphasis}#1}
   \medskip\normalsize
   {\color{accent}\hspace{.1in}#2\hspace{.05in}#3}\par
+  {\color{accent}#4}\par
   \smallskip
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar~#5}}}
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker~#4}}}\par
+  \ifstrequal{#5}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar~#5}}}
+  \ifstrequal{#6}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker~#6}}}\par
   \medskip\normalsize
 }
 
