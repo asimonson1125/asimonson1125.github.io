@@ -1,19 +1,50 @@
+body{
+    background-image: url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')
+}
+h1{
+    background-color: aqua;
+    margin-bottom: 0px;
+}
+.navBar ul{
+    
+}
 .navBar ul li{
     float: left;
 	display: block;
-	padding: 8px;
-	background-color: #ad3737;
+	padding: 0px;
+	background-color: rgb(156,49,45,.5);
+    border-top: 3px black solid;
+    border-bottom: 3px black solid;
+    border-right: 3px black solid;
+}
+.navBar ul li:first-child{
+    border-left: 3px black solid;
+}
+.navBar ul li:hover{
+    background-color: rgb(156,49,45,.8);
+}
+.navBar ul li a{
+    color: white;
+    padding: 40px;
+    line-height: 30px;
+}
+.navBar{
+    margin-bottom: 40px;
+}
+.foreground{
+    position: absolute;
+    margin-left: -10px;
+    padding-left: 10px;
+    width:110%;
+    background-color: rgb(156,49,45,.5);
+}
+img{
+    margin: 10px;
+}
+p{
+    color: #ffffff;
 }
 a { 
-    color: #4337ad;
+    color: #a0a0a0a0;
     text-decoration: none;
-}
-a:visited { 
-    color: #b3b3b3;
-}
-a:hover {  
-    color: #535353;
-}
-a:active {   
-    color: #000000;
 }
