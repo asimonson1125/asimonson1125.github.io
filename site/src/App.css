@@ -8,12 +8,11 @@ h1, h2 {
   font-family: "Roboto Condensed",sans-serif;
   color: #1f1f1f;
 }
-h1{
-  font-size: 3rem;
-}
 .header h1{
   display: inline-block;
   margin-bottom: 0px;
+  margin-top: 2vmin;
+  font-size: 6vmin;
 }
 .header{
   margin-bottom: 0px;
@@ -25,51 +24,55 @@ h1{
   left: 0;
 }
 .socials{
-  display: block;
+  display: inline;
   float: right;
+  margin: 0px;
 }
 .socials img{
-  display:inline;
-  height: 40px;
+  margin: .5vmin;
+  margin-top: 2vmin;
+  height: 6vmin;
 }
 .navBar li{
-  display: inline-block;
-  margin-bottom: 40px;
-  padding: 0px;
+  display: inline;
   background-color: rgb(156,49,45,.5);
-  border-top: 3px black solid;
-  border-bottom: 3px black solid;
-  border-right: 3px black solid;
+  border-top: .5vmin black solid;
+  border-bottom: .5vmin black solid;
+  border-right: .5vmin black solid;
+  font-size: 4vmin;
 }
 .navBar li:hover{
   background-color: rgb(156,49,45,.8);
 }
 .navBar li:first-child{
-  border-left: 3px black solid;
+  border-left: .5vmin black solid;
 }
 .navBar li a{
   color: white;
-  padding: 40px;
-  line-height: 30px;
+  padding: 3vmax;
+  line-height: 1.2vmax;
 }
 .navBar{
   margin-bottom: 0px;
-}
-.spacer{
-  margin-bottom:10em;
+  padding-left: 0px;
 }
 .foreground{
   position:absolute;
+  margin-top: 13vmin;
   margin-left: -10px;
   padding-left: 10px;
   width:100%;
   background-color: rgb(156,49,45,.5);
 }
-img{
-  margin: 10px;
+.foreground p{
+  max-width: 1000px;
+}
+h2{
+  font-size: calc(4vmin + 7px);
 }
 p{
   color: #ffffff;
+  font-size: calc(3vmin + 3px);
 }
 a { 
   color: #a0a0a0a0;

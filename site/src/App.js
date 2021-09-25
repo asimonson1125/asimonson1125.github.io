@@ -16,7 +16,6 @@ function App() {
           <Link onClick='/projects'>Projects</Link>
         </Nav>
       </div>
-      <div className='spacer'></div>
       <div className='foreground'>
         <About />
       </div>
