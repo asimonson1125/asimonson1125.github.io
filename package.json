@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "node": "^16.9.1",
+    "node-dom": "^0.1.0",
+    "yarn": "^1.22.11"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
