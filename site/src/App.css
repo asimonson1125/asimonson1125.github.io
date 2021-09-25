@@ -1,12 +1,22 @@
+html, body{
+  overflow-y: scroll;
+}
 body{
   background-image: url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')
 }
+h1, h2 {
+  font-family: "Roboto Condensed",sans-serif;
+  color: #1f1f1f;
+}
 h1{
+  font-size: 3rem;
+}
+.header h1{
   display: inline-block;
   margin-bottom: 0px;
 }
 .header{
-  margin-bottom: 0;
+  margin-bottom: 0px;
   background-color: white;
   width: 100%;
   z-index: 10;
@@ -22,34 +32,37 @@ h1{
   display:inline;
   height: 40px;
 }
-.navBar ul li{
-  float: left;
-  display: inline;
+.navBar li{
+  display: inline-block;
+  margin-bottom: 40px;
   padding: 0px;
   background-color: rgb(156,49,45,.5);
   border-top: 3px black solid;
   border-bottom: 3px black solid;
   border-right: 3px black solid;
 }
-.navBar ul li:first-child{
-  border-left: 3px black solid;
-}
-.navBar ul li:hover{
+.navBar li:hover{
   background-color: rgb(156,49,45,.8);
 }
-.navBar ul li a{
+.navBar li:first-child{
+  border-left: 3px black solid;
+}
+.navBar li a{
   color: white;
   padding: 40px;
   line-height: 30px;
 }
 .navBar{
-  margin-bottom: 40px;
+  margin-bottom: 0px;
+}
+.spacer{
+  margin-bottom:10em;
 }
 .foreground{
-  position: absolute;
+  position:absolute;
   margin-left: -10px;
   padding-left: 10px;
-  width:110%;
+  width:100%;
   background-color: rgb(156,49,45,.5);
 }
 img{

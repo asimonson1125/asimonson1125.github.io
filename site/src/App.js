@@ -2,6 +2,7 @@ import './App.css';
 import Nav from './componets/Nav.js'
 import Link from './componets/Link.js'
 import Socials from './componets/Socials.js'
+import About from './componets/About.js'
 
 function App() {
   return (
@@ -10,10 +11,14 @@ function App() {
         <h1>Andrew Simonson</h1>
         <Socials />
         <Nav>
-          <Link className='navBar' onClick='/home'>Home</Link>
-          <Link className='navBar' onClick='resume.pdf'>Resume</Link>
-          <Link className='navBar' onClick='/projects'>Projects</Link>
+          <Link onClick='/home'>Home</Link>
+          <Link onClick='resume.pdf'>Resume</Link>
+          <Link onClick='/projects'>Projects</Link>
         </Nav>
+      </div>
+      <div className='spacer'></div>
+      <div className='foreground'>
+        <About />
       </div>
     </div>
   );
