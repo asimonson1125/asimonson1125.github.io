@@ -90,37 +90,51 @@ a {
   max-height: 20rem;
 }
 .projectList{
-  float:left;
-  background-color: rgba(11, 17, 26, 0.5);
-  border: solid rgba(34, 52, 75, 0.5) .3rem;
-  width: calc(95% - .5rem);
+  padding: 0;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  width: 85rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: solid rgba(156,49,45,.2) .3rem;
+  text-align: center;
 }
 .project{
-  background-color: #25282c;
-  display: inline;
-  float: left;
-  padding: .5rem;
-  margin: 2rem;
-  width: 20rem;
+  background-image: radial-gradient(ellipse at top, #ff000036,transparent), radial-gradient(ellipse at bottom,#25282c,transparent), radial-gradient(ellipse at right,#25282c,transparent), radial-gradient(ellipse at left,#25282c,transparent);
+  display: inline-block;
+  text-align: left;
+  margin: 1rem;
+  width: 25rem;
   height: 15rem;
   border: .3rem black solid;
 }
 .project h3{
   border-bottom: black solid .2rem;
 }
+.project p{
+  color:rgb(212, 212, 212);
+}
+.project img{
+  margin-top: auto;
+  height:3rem;
+}
 .topBox{
-  height: 70%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 65%;
 }
 .bottomBox{
   height: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .bottomBox a{
   vertical-align: middle;
 }
-.project a{
+.project a img, .project a p{
   padding: .5rem;
-  border: solid black .2rem;
-  background-color: rgb(80, 80, 80);
+  filter: invert(18%) sepia(6%) saturate(5428%) hue-rotate(314deg) brightness(95%) contrast(97%);
+
 }
 .footer{
   display: block;
@@ -134,9 +148,16 @@ a {
   margin-right: auto;
   table-layout: fixed;
 }
-.socials td{
-  width:15%;
-}
 .socials img{
   height: 2rem;
+  margin-right: 2rem;
+}
+
+@media screen and (max-width: 1500px){
+  .socials{
+    margin-left: auto;
+  }
+  .projectList{
+    width: 95%;
+  }
 }
