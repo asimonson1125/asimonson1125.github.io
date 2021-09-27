@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.6189bd06.chunk.css",
-    "main.js": "/static/js/main.e27787dd.chunk.js",
-    "main.js.map": "/static/js/main.e27787dd.chunk.js.map",
+    "main.css": "/static/css/main.e220b041.chunk.css",
+    "main.js": "/static/js/main.343ce742.chunk.js",
+    "main.js.map": "/static/js/main.343ce742.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c6cf325d.js",
     "runtime-main.js.map": "/static/js/runtime-main.c6cf325d.js.map",
     "static/js/2.51f2f3dd.chunk.js": "/static/js/2.51f2f3dd.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.df161da9.chunk.js": "/static/js/3.df161da9.chunk.js",
     "static/js/3.df161da9.chunk.js.map": "/static/js/3.df161da9.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.6189bd06.chunk.css.map": "/static/css/main.6189bd06.chunk.css.map",
+    "static/css/main.e220b041.chunk.css.map": "/static/css/main.e220b041.chunk.css.map",
     "static/js/2.51f2f3dd.chunk.js.LICENSE.txt": "/static/js/2.51f2f3dd.chunk.js.LICENSE.txt",
     "static/media/email.eabba385.svg": "/static/media/email.eabba385.svg",
     "static/media/github.bfe22a7c.svg": "/static/media/github.bfe22a7c.svg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.c6cf325d.js",
     "static/js/2.51f2f3dd.chunk.js",
-    "static/css/main.6189bd06.chunk.css",
-    "static/js/main.e27787dd.chunk.js"
+    "static/css/main.e220b041.chunk.css",
+    "static/js/main.343ce742.chunk.js"
   ]
 }
