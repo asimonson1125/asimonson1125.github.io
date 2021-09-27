@@ -1,9 +1,11 @@
 import React from 'react';
 import picture from '../assets/itsa_me.JPG'
+import AOS from 'aos'
 
 export default function About(){
     return(
         <>
+        <div data-aos="fade-in">
             <h2>A biography</h2>
             <p>Ahoy, I'm Andrew Simonson</p>
             <p>I'm primarily an <strong>extremely</strong> forgetful person 
@@ -17,6 +19,8 @@ export default function About(){
             <p>I'm a first year student at <strong>Rochester Institute of Technology </strong>
                 in the <b>Computing Exploration</b> program.  I'm from Hagerstown, 
                 Maryland.</p>
+        </div>
+            <img alt='me' src={picture} className='sideimg' data-aos='fade-up' />
         </>
     )
 }

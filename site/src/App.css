@@ -97,21 +97,25 @@ a {
   width: 85rem;
   background-color: rgba(0, 0, 0, 0.5);
   border: solid rgba(156,49,45,.2) .3rem;
-  text-align: center;
 }
 .project{
-  background-image: radial-gradient(ellipse at top, #ff000036,transparent), radial-gradient(ellipse at bottom,#25282c,transparent), radial-gradient(ellipse at right,#25282c,transparent), radial-gradient(ellipse at left,#25282c,transparent);
   display: inline-block;
   text-align: left;
   margin: 1rem;
   width: 25rem;
   height: 15rem;
   border: .3rem black solid;
+  background-color: rgba(22,22,22,.8);
+}
+.tab{
+  display: inline;
+  float: right;
 }
 .project h3{
+  display: inline-block;
   border-bottom: black solid .2rem;
 }
-.project p{
+.body{
   color:rgb(212, 212, 212);
 }
 .project img{
@@ -135,6 +139,15 @@ a {
   padding: .5rem;
   filter: invert(18%) sepia(6%) saturate(5428%) hue-rotate(314deg) brightness(95%) contrast(97%);
 
+}
+.incomplete{
+  color:red;
+}
+.WIP{
+  color:yellow;
+}
+.complete{
+  color:green;
 }
 .footer{
   display: block;

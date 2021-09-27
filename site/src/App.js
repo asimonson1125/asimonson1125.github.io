@@ -5,6 +5,10 @@ import Nav from './componets/Nav.js'
 import Socials from './componets/Socials.js'
 import About from './componets/About.js'
 import Projects from './Projects';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+
+AOS.init();
 
 function App() {
   return (
