@@ -1,9 +1,11 @@
 import React from 'react';
+import picture from '../assets/itsa_me.JPG'
 
 export default function About(){
     return(
         <>
             <h2>A biography</h2>
+            <p>Ahoy, I'm Andrew Simonson</p>
             <p>I'm primarily an <strong>extremely</strong> forgetful person 
                 who, when productive, rewrites fate in favor of my own 
                 short-term interests, or rather, whatever half-assed mistake
