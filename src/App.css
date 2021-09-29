@@ -4,9 +4,11 @@ html, body{
 }
 body{
   margin: 0;
-  background-image: url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')
+  background-image: url('assets/plexus.jpg');/*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
+  background-attachment: fixed;
+  background-size: 100% auto;
 }
-h1, h2, p{
+*{
   font-family: "Roboto Condensed",sans-serif;
 }
 h1, h2{
@@ -30,29 +32,39 @@ a {
 }
 .header h1{
   display: inline-block;
+  transition: .4s;
   margin-bottom: 0px;
   margin-top: .5rem;
   font-size: 2.5rem;
 }
 .header{
   margin-bottom: 0px;
-  margin-left: .3rem;
+  margin-left: 0rem;
   padding-bottom: .2rem;
-  background-color: #0f1216;
+  background-color: #1a1a1a;
+  border-bottom: solid black 1px;
   width: 100%;
-  z-index: 10;
+  z-index: 99;
   position: fixed;
   top: 0;
   left: 0;
+  transition: .4s;
   overflow: hidden;
+}
+.navControl{
+  float:right;
 }
 .navBar li{
   display: inline;
+  text-align: right;
   background-color: rgb(156,49,45,.5);
   border-top: .2rem black solid;
   border-bottom: .2rem black solid;
   border-right: .2rem black solid;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
   font-size: 1.2rem;
+  transition: .4s;
 }
 .navBar li:hover{
   background-color: rgb(156,49,45,.8);
@@ -64,9 +76,9 @@ a {
   color: white;
   padding-left: 2rem;;
   padding-right: 2rem;
-  line-height: 1.2vmax;
 }
 .navBar{
+  display: flex;
   margin-top: 1rem;
   margin-bottom: 0px;
   padding-left: 0px;
@@ -79,15 +91,50 @@ a {
   padding-bottom: 1rem;
   overflow: hidden;
 }
+.foreground *{
+  padding-left: .5rem;
+}
 .foreground p{
+  line-height: 1.5em;
   max-width: 40rem;
 }
 .sideimg{
-  float: right;
+  float:right;
+  top: 0;
+  right: 0;
   display: block;
-  margin-right: 10rem;
-  max-width: 20rem;
-  max-height: 20rem;
+  max-width: min(40rem,80%);
+  max-height: min(30rem,100%);
+}
+.centerContent{
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60rem;
+}
+#aboutMe{
+  float: left;
+  width: 45%;
+}
+#skills{
+  float: right;
+  width: 45%;
+  margin-right: 3rem;
+}
+.skills{
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: solid rgba(156,49,45, .8) .3rem;
+  text-align: center;
+}
+.skill{
+  display: inline-block;
+  border:rgba(156,49,45, .8) solid .15rem;
+  padding:.2rem;
+  margin: .5rem;
+  background-color: rgba(11,11,11,.8);
+  color:rgb(212, 212, 212);
 }
 .projectList{
   padding: 0;
@@ -104,7 +151,7 @@ a {
   text-align: left;
   margin: 1rem;
   width: 20rem;
-  height: 15rem;
+  height: 20rem;
   border: .3rem rgba(156,49,45, .8) solid;
   background-color: rgba(22,22,22,.8);
 }
@@ -124,13 +171,13 @@ a {
   height:3rem;
 }
 .topBox{
-  padding-left: 1rem;
+  padding-left: .5rem;
   padding-right: 1rem;
-  height: 65%;
+  height: 75%;
 }
 .bottomBox{
   height: auto;
-  padding-left: 1rem;
+  padding-left: 0rem;
   padding-right: 1rem;
 }
 .bottomBox a{
@@ -175,5 +222,29 @@ a {
   }
   .projectList{
     width: 95%;
+  }
+  .sideimg{
+    position: relative;
+  }
+  body{
+    background-size: auto 100%;
+  }
+  .navBar li a{
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  .navControl{
+    float: none;
+  }
+  #aboutMe{
+    float: none;
+    display:block;
+    width: 90%;
+  }
+  #skills{
+    float: none;
+    margin-right: auto;
+    display: block;
+    width: 90%;
   }
 }

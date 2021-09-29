@@ -1,19 +1,22 @@
-import ProjectList from './componets/ProjectList'
-import Project from './componets/Project'
-import github from './assets/github.svg'
+import ProjectList from '../componets/ProjectList'
+import Project from '../componets/Project'
+import github from '../assets/github.svg'
 
 export default function Projects(){
     return(
       <>
+        <div data-aos='fade-up'>
         <h2>Projects</h2>
-        <p>Project status is indicated by the color of the project card:<br /><span className='complete'>⬤</span> - Complete<br />
-          <span className='WIP'>⬤</span> - Work In Progress<br /><span className='incomplete'>⬤</span> - incomplete</p>
+          <p>Project status is indicated by the color of the project card:<br /><span className='complete'>⬤</span> - Complete<br />
+            <span className='WIP'>⬤</span> - Work In Progress<br /><span className='incomplete'>⬤</span> - incomplete
+          </p>
+        </div>
         <ProjectList>
           <Project status='complete' title='Digital Portfolio' link='https://github.com/asimonson1125/asimonson1125.github.io' linkText={<img alt='github' src={github} />}>
             A personal portfolio site made with React.js
           </Project>
           <Project status='WIP' title='Slate' link='https://github.com/asimonson1125/Slate' linkText={<img alt='github' src={github} />}>
-            Slate is a thing
+            Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data
           </Project>
           <Project status='WIP' title='Querist' link='https://github.com/asimonson1125/Querist' linkText={<img alt='github' src={github} />}>
             A modular discord bot to manage class discord servers.

@@ -11,8 +11,10 @@ export default function Nav(props){
         )
     }
     return(
-        <ul className='navBar'>
-            {items}
-        </ul>
+        <div className = 'navControl'>
+            <ul className='navBar'>
+                {items}
+            </ul>
+        </div>
     )
 }
