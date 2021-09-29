@@ -6,15 +6,15 @@ export default function Nav(props){
         items = (
             <>
                 {items}
-                <li>{props.children[i]}</li>
+                <td className='navElement'>{props.children[i]}</td>
             </>
         )
     }
     return(
         <div className = 'navControl'>
-            <ul className='navBar'>
+            <table className='navBar'>
                 {items}
-            </ul>
+            </table>
         </div>
     )
 }
