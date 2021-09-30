@@ -1,7 +1,7 @@
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
     document.querySelector('.header').style.backgroundColor = '#1a1a1a';
     document.querySelector('.header > a > h1').style.fontSize = "1.5rem";
     // document.querySelector('.header > h1').style.color = "#a8a8a8";

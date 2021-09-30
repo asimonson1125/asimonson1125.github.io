@@ -101,6 +101,11 @@ a {
   margin-right: auto;
   text-align: center;
 }
+#HomeContent{
+  padding: 3rem;
+  display: inline-block;
+  background-color: rgb(44,44,44, .95);
+}
 #Vertical{
   margin-left: auto;
   margin-right: auto;
@@ -121,15 +126,23 @@ a {
   margin-right: 3rem;
   width: calc(50% - 3rem);
 }
+.boxedImg{
+  border: .5rem solid rgba(22,22,22,.8);
+  max-width: calc(90% - 1rem);
+}
 .carousel-container{
   margin-left: 10%;
   max-width: 80%;
+}
+.elementBlock{
+  margin-top: 3rem;
 }
 .skills{
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
   border: solid rgba(156,49,45, .8) .3rem;
   text-align: center;
+  padding:1rem;
 }
 .skill{
   display: inline-block;
@@ -241,6 +254,7 @@ a {
     background-size: auto 100%;
   }
   .foreground{
+    padding-left: 3rem;
     padding-bottom: 36px;
   }
   .col{
@@ -259,8 +273,9 @@ a {
     width: 90%;
   }
   .footer{
+    position:relative;
     width:100%;
-    display: block;
+    display: inline-block;
     background-color: rgb(156,49,45);
   }
   .socials{

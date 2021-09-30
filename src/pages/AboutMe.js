@@ -38,6 +38,7 @@ export default function AboutMe(){
                 be the one with a collection of distinct interests and a knack for bridging 
                 the gap between them.
             </p>
+            <img src={img1} alt='Me' className='boxedImg'/>
         </div>
     </div>
     <div className='col'>
@@ -47,23 +48,10 @@ export default function AboutMe(){
                 'HTML','CSS','Object-Oriented Programming','Git','Github','Linux','Raspberry Pi',
                 'LaTeX','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
         </div>
-        <div data-aos='fade-up'>
+        <div data-aos='fade-up' className='elementBlock'>
+            <h2>Extracirricular Awards</h2>
         <MyCarousel className='carousel' data-aos='fade-up'>
-                    {[{original: img1, 
-                        description: "Me, chilling"
-                    },
-                    {
-                        original:img2, 
-                        description: "VEX Robotics 2019"
-                    },
-                    {
-                        original:img3, 
-                        description: "Academic Team county championships"
-                    }, 
-                    {
-                        original: img4, 
-                        description:"Competing at a Hagerstown VEX competition"
-                    }, 
+                    {[
                     {
                         original: img5, 
                         description: "We the People Civics Competition District Champions"
@@ -75,7 +63,12 @@ export default function AboutMe(){
                     {
                         original: img7,
                         description: "what it looks like to compete in We the People Nationals, circa 2020"
-                    }]}
+                    },
+                    {
+                        original:img3, 
+                        description: "Academic Team county championships"
+                    }
+                    ]}
                 </MyCarousel>
                 </div>
                 </div>
