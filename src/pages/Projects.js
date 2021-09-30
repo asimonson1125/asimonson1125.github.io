@@ -4,7 +4,7 @@ import github from '../assets/github.svg'
 
 export default function Projects(){
     return(
-      <>
+      <div className='foreground'>
         <div data-aos='fade-up'>
         <h2>Projects</h2>
           <p>Project status is indicated by the color of the project card:<br /><span className='complete'>⬤</span> - Complete<br />
@@ -40,6 +40,6 @@ export default function Projects(){
             A C++ keylogger for windows based off a udemy course with my custom modifications and powershell script.
           </Project>
         </ProjectList>
-      </>
+      </div>
     )
 }

@@ -24,13 +24,9 @@ function App() {
           <Link to='/about'>About</Link>
         </Nav>
       </div>
-      <div className='foreground'>
-        
-          <Route exact path='/'><Home /></Route>
+      <Route exact path='/'><Home /></Route>
           <Route exact path='/projects'><Projects /></Route>
           <Route exact path='/about'><AboutMe /></Route>
-        
-      </div>
       <div className='footer'>
         <Socials />
       </div>

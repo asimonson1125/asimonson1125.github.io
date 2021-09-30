@@ -4,13 +4,15 @@ import MyCarousel from '../componets/Carousel.js';
 import img1 from '../assets/photos/itsa_me.JPG'
 import img2 from '../assets/photos/me_robot.jpeg'
 import img3 from '../assets/photos/AcademicTeam.jpg'
-import img5 from '../assets/photos/hagerstownVex2019.jpg'
+import img4 from '../assets/photos/hagerstownVex2019.jpg'
+import img5 from '../assets/photos/WeThePeople_Districts.jpg'
 import img6 from '../assets/photos/WeThePeople.jpg'
+import img7 from '../assets/photos/WeThePeople_NationalsSetup.jpg'
 
 
 export default function AboutMe(){
     return(
-    <>
+    <div className='foreground'>
     <div className='col'>
         <div id='aboutMe' data-aos='fade-up'>
             <h2>About Me</h2>
@@ -45,6 +47,7 @@ export default function AboutMe(){
                 'HTML','CSS','Object-Oriented Programming','Git','Github','Linux','Raspberry Pi',
                 'LaTeX','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
         </div>
+        <div data-aos='fade-up'>
         <MyCarousel className='carousel' data-aos='fade-up'>
                     {[{original: img1, 
                         description: "Me, chilling"
@@ -59,18 +62,23 @@ export default function AboutMe(){
                     }, 
                     {
                         original: img4, 
-                        description:"at RIT"
+                        description:"Competing at a Hagerstown VEX competition"
                     }, 
                     {
                         original: img5, 
-                        description: "Competing at a Hagerstown VEX competition"
+                        description: "We the People Civics Competition District Champions"
                     }, 
                     {
                         original: img6, 
-                        description: "We The People State Champions"
+                        description: "We The People State Civics Competition Champions"
+                    },
+                    {
+                        original: img7,
+                        description: "what it looks like to compete in We the People Nationals, circa 2020"
                     }]}
                 </MyCarousel>
                 </div>
-    </>
+                </div>
+    </div>
     )
 }
