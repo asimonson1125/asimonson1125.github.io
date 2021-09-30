@@ -12,6 +12,7 @@ import img6 from '../assets/photos/WeThePeople.jpg'
 export default function AboutMe(){
     return(
     <>
+    <div className='col'>
         <div id='aboutMe' data-aos='fade-up'>
             <h2>About Me</h2>
                 <p>I'm a first year student at <strong>Rochester Institute of Technology </strong>
@@ -37,6 +38,8 @@ export default function AboutMe(){
                 the gap between them.
             </p>
         </div>
+    </div>
+    <div className='col'>
         <div id='skills' data-aos='fade-up'>
             <h2>Skills</h2>
             <Skills>{['Python','JavaScript','Java','C++','SQL','SQLite','Sequelize','SQLAlchemy',
@@ -44,9 +47,31 @@ export default function AboutMe(){
                 'LaTeX','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
         </div>
         <MyCarousel className='carousel' data-aos='fade-up'>
-                    {[[img1, "Me, chilling"],[img2, "VEX Robotics 2019"],[img3, "Academic Team county championships"], 
-                    [img4, "at RIT"], [img5, "Competing at a Hagerstown VEX competition"], [img6, "We The People State Champions"]]}
+                    {[{original: img1, 
+                        description: "Me, chilling"
+                    },
+                    {
+                        original:img2, 
+                        description: "VEX Robotics 2019"
+                    },
+                    {
+                        original:img3, 
+                        description: "Academic Team county championships"
+                    }, 
+                    {
+                        original: img4, 
+                        description:"at RIT"
+                    }, 
+                    {
+                        original: img5, 
+                        description: "Competing at a Hagerstown VEX competition"
+                    }, 
+                    {
+                        original: img6, 
+                        description: "We The People State Champions"
+                    }]}
                 </MyCarousel>
+                </div>
     </>
     )
 }

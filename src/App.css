@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 html, body{
   background-color: #1b1f27;
   overflow-x: hidden;
@@ -89,6 +90,19 @@ a {
   line-height: 1.5em;
   max-width: min(95%, 40rem);
 }
+.centerContent{
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#Vertical{
+  margin-left: auto;
+  margin-right: auto;
+  width:0;
+  height: 50rem;
+  border-right: rgb(156,49,45) solid 1px;
+}
 .sideimg{
   float:right;
   top: 0;
@@ -97,10 +111,14 @@ a {
   max-width: min(40rem,80%);
   max-height: min(30rem,100%);
 }
-#skills{
-  float: right;
-  width: 45%;
+.col{
+  float:left;
   margin-right: 3rem;
+  width: calc(50% - 3rem);
+}
+.carousel-container{
+  margin-left: 10%;
+  max-width: 80%;
 }
 .skills{
   display: inline-block;
@@ -193,6 +211,10 @@ a {
   height: 2rem;
   margin-bottom: 1rem;
   filter: invert(29%) sepia(20%) saturate(1786%) hue-rotate(314deg) brightness(101%) contrast(110%);
+  transition: .2s;
+}
+.socials img:hover{
+  opacity: .5;
 }
 #vertLine{
   border-right: 1px solid rgb(156,49,45);
@@ -209,6 +231,10 @@ a {
   }
   body{
     background-size: auto 100%;
+  }
+  .col{
+    width: 90%;
+    margin-bottom: 3rem;
   }
   #aboutMe{
     float: none;
