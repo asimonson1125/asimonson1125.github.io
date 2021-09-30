@@ -12,20 +12,26 @@ export default function Projects(){
           </p>
         </div>
         <ProjectList>
-          <Project status='complete' title='Digital Portfolio' link='https://github.com/asimonson1125/asimonson1125.github.io' linkText={<img alt='github' src={github} />}>
+          <Project status='WIP' title='Digital Portfolio' link='https://github.com/asimonson1125/asimonson1125.github.io' linkText={<img alt='github' src={github} />}>
             A personal portfolio site made with React.js.
           </Project>
           <Project status='WIP' title='Slate' link='https://github.com/asimonson1125/Slate' linkText={<img alt='github' src={github} />}>
             Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data.
           </Project>
-          <Project status='WIP' title='Querist' link='https://github.com/asimonson1125/Querist' linkText={<img alt='github' src={github} />}>
-            A modular discord bot to manage class discord servers.
-          </Project>
-          <Project status='complete' title='NationsGame Rolls Sim' link='https://github.com/asimonson1125/NG-Rolls-Simulator' linkText={<img alt='github' src={github} />}>
-            A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.
+          <Project status='complete' title='Resume' link='https://github.com/asimonson1125/Resume' linkText={<img alt='github' src={github} />}>
+            My Resume, made in LaTeX  with a custom design inspired by the AltaCV template on OverLeaf.
           </Project>
           <Project status='complete' title='Humans vs. Zombies Bot' link='https://github.com/asimonson1125/HvZ-bot' linkText={<img alt='github' src={github} />}>
             A Discord bot to handle role management and statistics for RIT's Humans vs. Zombies games.
+          </Project>
+          <Project status='WIP' title='Querist' link='https://github.com/asimonson1125/Querist' linkText={<img alt='github' src={github} />}>
+            A modular discord bot to manage class discord servers.
+          </Project>
+          <Project status='complete' title='Acumen' link='https://github.com/asimonson1125/Acumen' linkText={<img alt='github' src={github} />}>
+            A personal Discord bot focused on statistical insight and role management for NationsGame, including NG Rolls Sim accessibility.
+          </Project>
+          <Project status='complete' title='NationsGame Rolls Sim' link='https://github.com/asimonson1125/NG-Rolls-Simulator' linkText={<img alt='github' src={github} />}>
+            A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.
           </Project>
           <Project status='incomplete' title='WallCycle' link='https://github.com/asimonson1125/WallCycle' linkText={<img alt='github' src={github} />}>
             A GNOME extension that cycles through a folder of wallpapers.

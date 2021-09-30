@@ -1,23 +1,15 @@
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ImageGallery from 'react-image-gallery';
 
 export default function ResponsiveCarousel(props) {
-  let slides = [];
-  props.children.forEach(x => {
-    slides.push (
-        <div>
-          <img src={x[0]} alt={x[1] } />
-          <p className="legend">{x[1]}</p>
-        </div>
-    )
-  });
+  let items = [{
+    original: 'https://picsum.photos/id/1018/1000/600/',
+    description: "greg"
+  }]
   return (
     <div>
       <div className="carousel-container">
-        <Carousel infiniteLoop autoPlay useKeyboardArrows centerMode dynamicHeight>
-          {slides}
-        </Carousel>
+      <ImageGallery items={props.children}/>
       </div>
     </div>
   );
