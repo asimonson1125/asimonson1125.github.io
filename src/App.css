@@ -254,7 +254,9 @@ a {
     background-size: auto 100%;
   }
   .foreground{
-    padding-left: 3rem;
+    width:100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
     padding-bottom: 36px;
   }
   .col{
