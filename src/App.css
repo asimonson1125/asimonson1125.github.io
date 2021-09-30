@@ -7,6 +7,7 @@ body{
   background-image: url('assets/plexus.jpg');/*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
+  background-clip: border-box;
 }
 *{
   font-family: "Roboto Condensed",sans-serif;
@@ -23,7 +24,7 @@ h3{
   color: #a8a8a8;
 }
 p{
-  color: #ffffff;
+  color: rgb(212, 212, 212);
   font-size: 1rem;
 }
 a { 
@@ -52,6 +53,7 @@ a {
 }
 .navBar{
   display: block;
+  border-collapse: collapse;
   padding-left: 0px;
   margin: 0px;
   width: 100%;
@@ -75,15 +77,13 @@ a {
   display: block;
 }
 .foreground{
-  padding-top:5.5rem;
-  padding-left: .5rem;
-  width:100%;
+  padding-top: 7rem;
+  padding-left: 8rem;
+  width: calc(100%-8rem);
+  height: 100%;
   background-color: rgb(44,44,44,.5);
   padding-bottom: 1rem;
   overflow: hidden;
-}
-.foreground *{
-  padding-left: .5rem;
 }
 .foreground p{
   line-height: 1.5em;
@@ -96,17 +96,6 @@ a {
   display: block;
   max-width: min(40rem,80%);
   max-height: min(30rem,100%);
-}
-.centerContent{
-  margin-top: 10rem;
-  margin-bottom: 10rem;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 60rem;
-}
-#aboutMe{
-  float: left;
-  width: 45%;
 }
 #skills{
   float: right;
@@ -128,13 +117,11 @@ a {
   color:rgb(212, 212, 212);
 }
 .projectList{
-  padding: 0;
+  padding: 0px;
   display: block;
   margin-left:auto;
   margin-right:auto;
-  width: 75rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: solid rgba(156,49,45, .8) .3rem;
+  width: 100%;
   text-align: center;
 }
 .project{
@@ -142,7 +129,7 @@ a {
   text-align: left;
   margin: 1rem;
   width: 20rem;
-  height: 20rem;
+  height: 22rem;
   border: .3rem rgba(156,49,45, .8) solid;
   background-color: rgba(22,22,22,.8);
 }
@@ -153,9 +140,6 @@ a {
 .project h3{
   display: inline-block;
   border-bottom: black solid .2rem;
-}
-.body{
-  color:rgb(212, 212, 212);
 }
 .project img{
   margin-top: auto;
@@ -191,26 +175,32 @@ a {
   color:green;
 }
 .footer{
-  display: block;
-  background-color: rgb(156,49,45);
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 .socials{
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  margin-right: auto;
-  table-layout: fixed;
+  margin-left: 1rem;
+  width:0px;
+}
+.socials td{
+  padding:5px;
+  text-align: left;
+  display: inline;
+  float:left;
 }
 .socials img{
   height: 2rem;
-  margin-right: 2rem;
+  margin-bottom: 1rem;
+  filter: invert(29%) sepia(20%) saturate(1786%) hue-rotate(314deg) brightness(101%) contrast(110%);
+}
+#vertLine{
+  border-right: 1px solid rgb(156,49,45);
+  margin-left: 1rem;
+  height: 10rem;
 }
 
 @media screen and (max-width: 1200px){
-  .socials{
-    margin-left: auto;
-  }
   .projectList{
     width: 95%;
   }
@@ -230,5 +220,38 @@ a {
     margin-right: auto;
     display: block;
     width: 90%;
+  }
+  .footer{
+    width:100%;
+    display: block;
+    background-color: rgb(156,49,45);
+  }
+  .socials{
+    display:block;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-right: auto;
+    margin-left: auto;
+    table-layout: fixed;
+    width: 80vw;
+  }
+  .socials tr{
+    display: block;
+  }
+  .socials td{
+    display: inline;
+    text-align: center;
+    width: 10vw;
+  }
+  .socials img{
+    height: 2rem;
+    margin-bottom: 0px;
+    filter: none;
+  }
+  #vertLine{
+    visibility: collapse;
+    height:0px;
   }
 }

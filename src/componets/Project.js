@@ -7,7 +7,7 @@ export default class Project extends React.Component {
 
     render(){
         return (
-            <li className={'project'} data-aos='fade-up' data-aos-offset={0}>
+            <li className={'project'} data-aos='fade-up'>
                 <div className='topBox'>
                     <h3>{this.props.title}</h3>
                     <p className={this.props.status + " tab"}>⬤</p>

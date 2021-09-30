@@ -1,11 +1,27 @@
 import React from 'react'
 import Skills from '../componets/Skills'
+import MyCarousel from '../componets/Carousel.js';
+import img1 from '../assets/photos/itsa_me.JPG'
+import img2 from '../assets/photos/me_robot.jpeg'
+import img3 from '../assets/photos/AcademicTeam.jpg'
+import img4 from '../assets/photos/atRIT.jpg'
+import img5 from '../assets/photos/hagerstownVex2019.jpg'
+import img6 from '../assets/photos/WeThePeople.jpg'
+
 
 export default function AboutMe(){
     return(
     <>
         <div id='aboutMe' data-aos='fade-up'>
             <h2>About Me</h2>
+                <p>I'm a first year student at <strong>Rochester Institute of Technology </strong>
+                    in the <b>Computing Exploration</b> program and am pursuing a career in data
+                    science with a focus on predictive analytics.
+                </p>
+                <p>When I'm not in class, you can find me working on extra collaborative projects,
+                    building discord bots, playing chess, reading up on some recent geopolitical
+                    development, or in my dorm with a fat pint of ice cream.
+                </p>
             <p>My main goal in life is to always strive to make the biggest positive impact on
                 the world that I can.  Regardless of whether that is done behind the scenes or
                 on the front lines, that is how I'll know I have purpose.
@@ -23,10 +39,14 @@ export default function AboutMe(){
         </div>
         <div id='skills' data-aos='fade-up'>
             <h2>Skills</h2>
-            <Skills>{['Python','JavaScript','Java','C++','SQL','SQLite','Sequelize','SQLAclchemy',
+            <Skills>{['Python','JavaScript','Java','C++','SQL','SQLite','Sequelize','SQLAlchemy',
                 'HTML','CSS','Object-Oriented Programming','Git','Github','Linux','Raspberry Pi',
                 'LaTeX','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
         </div>
+        <MyCarousel className='carousel' data-aos='fade-up'>
+                    {[[img1, "Me, chilling"],[img2, "VEX Robotics 2019"],[img3, "Academic Team county championships"], 
+                    [img4, "at RIT"], [img5, "Competing at a Hagerstown VEX competition"], [img6, "We The People State Champions"]]}
+                </MyCarousel>
     </>
     )
 }
