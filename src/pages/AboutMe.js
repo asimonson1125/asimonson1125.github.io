@@ -4,7 +4,6 @@ import MyCarousel from '../componets/Carousel.js';
 import img1 from '../assets/photos/itsa_me.JPG'
 import img2 from '../assets/photos/me_robot.jpeg'
 import img3 from '../assets/photos/AcademicTeam.jpg'
-import img4 from '../assets/photos/atRIT.jpg'
 import img5 from '../assets/photos/hagerstownVex2019.jpg'
 import img6 from '../assets/photos/WeThePeople.jpg'
 
@@ -33,7 +32,7 @@ export default function AboutMe(){
                 when I can understand the causality to shifts both in history and the present
                 because it presents an inside look into how we can learn from related events.
             </p> 
-            <p>There is one single special interest that makes me unique, so it is my goal to
+            <p>There is no one single special interest that makes me unique, so it is my goal to
                 be the one with a collection of distinct interests and a knack for bridging 
                 the gap between them.
             </p>
