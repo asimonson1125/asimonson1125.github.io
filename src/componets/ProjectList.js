@@ -12,7 +12,7 @@ export default function ProjectList(props){
     });
     return(
         <>
-        <ul className='projectList' data-aos='fade-up'>
+        <ul className='projectList centeredForeground' data-aos='fade-up'>
             {projects}
         </ul>
         </>

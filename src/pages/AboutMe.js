@@ -15,7 +15,7 @@ export default function AboutMe(){
     <div className='foreground'>
     <div className='col'>
         <div id='aboutMe' data-aos='fade-up'>
-            <h2>About Me</h2>
+            <h2 className='concentratedHead'>About Me</h2>
                 <p>I'm a first year student at <strong>Rochester Institute of Technology </strong>
                     in the <b>Computing Exploration</b> program and am pursuing a career in data
                     science with a focus on predictive analytics.

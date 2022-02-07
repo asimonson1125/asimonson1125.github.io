@@ -81,11 +81,17 @@ a {
   height: 100vh;
   overflow-y: hidden;
 }
+.concentratedHead{
+  display: inline-block;
+  padding-right: 4rem;
+  border-bottom: #0f0f0f solid 5px;
+  color:white;
+}
 .foreground{
   padding-top: 7rem;
   padding-left: 8rem;
   width: calc(100%-8rem);
-  height: 100%;
+  min-height: calc(100vh - 8rem);
   background-color: rgb(44,44,44,.5);
   padding-bottom: 1rem;
   overflow: hidden;
@@ -93,7 +99,7 @@ a {
 }
 .foreground p{
   line-height: 1.5em;
-  max-width: min(95%, 40rem);
+  max-width: min(90%, 40rem);
 }
 .centerContent{
   margin-top: 30vh;
@@ -129,6 +135,9 @@ a {
 .boxedImg{
   border: .5rem solid rgba(22,22,22,.8);
   max-width: calc(90% - 1rem);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .carousel-container{
   margin-left: 10%;
@@ -255,9 +264,12 @@ a {
   }
   .foreground{
     width:100%;
-    padding-left: .5rem;
+    padding-left: 2rem; /* centered objects will need to remove 1.5 of this to center */
     padding-right: .5rem;
     padding-bottom: 36px;
+  }
+  .centeredForeground{
+    margin-left: -1.5rem; /* remove .foreground excess margin */
   }
   .col{
     width: 90%;

@@ -6,7 +6,7 @@ export default function Projects(){
     return(
       <div className='foreground'>
         <div data-aos='fade-up'>
-        <h2>Projects</h2>
+        <h2 class='concentratedHead'>Projects</h2>
           <p>Project status is indicated by the color of the project card:<br /><span className='complete'>⬤</span> - Complete<br />
             <span className='WIP'>⬤</span> - Work In Progress<br /><span className='incomplete'>⬤</span> - Incomplete
           </p>
@@ -24,7 +24,10 @@ export default function Projects(){
           <Project status='complete' title='Humans vs. Zombies Bot' link='https://github.com/asimonson1125/HvZ-bot' linkText={<img alt='github' src={github} />}>
             A Discord bot to handle role management and statistics for RIT's Humans vs. Zombies games.
           </Project>
-          <Project status='WIP' title='Querist' link='https://github.com/asimonson1125/Querist' linkText={<img alt='github' src={github} />}>
+          <Project status ='WIP' title='FinTech' link='https://github.com/LukeHorigan/Financial-Management-Assocation-'  linkText={<img alt='github' src={github} />}>
+          A team derived from the RIT Financial Management Association dedicated to learning about financial management of equities using automated solutions developed by students.
+          </Project>
+          <Project status='complete' title='Querist' link='https://github.com/asimonson1125/Querist' linkText={<img alt='github' src={github} />}>
             A modular discord bot to manage class discord servers.
           </Project>
           <Project status='complete' title='Acumen' link='https://github.com/asimonson1125/Acumen' linkText={<img alt='github' src={github} />}>
@@ -35,6 +38,9 @@ export default function Projects(){
           </Project>
           <Project status='incomplete' title='WallCycle' link='https://github.com/asimonson1125/WallCycle' linkText={<img alt='github' src={github} />}>
             A GNOME extension that cycles through a folder of wallpapers.
+          </Project>
+          <Project status='complete' title='VEXcode Button Generator' link='https://github.com/asimonson1125/VEXcode-Button-Generator' linkText={<img alt='github' src={github} />}>
+            VEXcode button library + examples and template for the VEX V5 brain 
           </Project>
           <Project status='complete' title='WinKeylogger' link='https://github.com/asimonson1125/WinKeylogger' linkText={<img alt='github' src={github} />}>
             A C++ keylogger for windows based off a udemy course with my custom modifications and powershell script.
