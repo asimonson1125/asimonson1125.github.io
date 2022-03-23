@@ -6,6 +6,15 @@ export default class Project extends React.Component {
     }
 
     render(){
+        let links;
+        this.props.links.forEach(x => {
+            links = (
+                <>
+                {links}
+                <a href={x[0]}>{x[1]}</a>
+                </>
+            )
+        })
         return (
             <li className={'project'} data-aos='fade-up'>
                 <div className='topBox'>
@@ -14,7 +23,7 @@ export default class Project extends React.Component {
                     <p className='body'>{this.props.children}</p>
                 </div>
                 <div className='bottomBox'>
-                    <a href={this.props.link}>{this.props.linkText}</a>
+                    {links}
                 </div>
             </li>
         )
