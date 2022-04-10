@@ -13,7 +13,15 @@
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <link rel="stylesheet" href="/path/to/flickity.css" media="screen">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2V93W9CNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-E2V93W9CNV');
+  </script>
 
   <title>Simonson - Portfolio</title>
 </head>
@@ -21,7 +29,6 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <script src="/path/to/flickity.pkgd.min.js"></script>
 </body>
 
 </html>
