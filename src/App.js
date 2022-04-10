@@ -11,7 +11,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 AOS.init();
-
+// testing updater
 function App() {
 //   ReactGA.initialize('G-E2V93W9CNV');
 //   ReactGA.pageview('Init page view');
