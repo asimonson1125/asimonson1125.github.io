@@ -13,8 +13,8 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 AOS.init();
 
 function App() {
-  ReactGA.initialize('G-E2V93W9CNV');
-  ReactGA.pageview('Init page view');
+//   ReactGA.initialize('G-E2V93W9CNV');
+//   ReactGA.pageview('Init page view');
 
   return (
     <Router>
