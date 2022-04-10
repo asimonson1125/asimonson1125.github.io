@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.42577030.chunk.css",
-    "main.js": "/static/js/main.91985733.chunk.js",
-    "main.js.map": "/static/js/main.91985733.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.82d30130.js",
-    "runtime-main.js.map": "/static/js/runtime-main.82d30130.js.map",
+    "main.css": "/static/css/main.86e876f3.chunk.css",
+    "main.js": "/static/js/main.592aacd3.chunk.js",
+    "main.js.map": "/static/js/main.592aacd3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.80303d40.js",
+    "runtime-main.js.map": "/static/js/runtime-main.80303d40.js.map",
     "static/css/2.c57e6a67.chunk.css": "/static/css/2.c57e6a67.chunk.css",
-    "static/js/2.f855a4ed.chunk.js": "/static/js/2.f855a4ed.chunk.js",
-    "static/js/2.f855a4ed.chunk.js.map": "/static/js/2.f855a4ed.chunk.js.map",
-    "static/js/3.0da63cf0.chunk.js": "/static/js/3.0da63cf0.chunk.js",
-    "static/js/3.0da63cf0.chunk.js.map": "/static/js/3.0da63cf0.chunk.js.map",
+    "static/js/2.e639804a.chunk.js": "/static/js/2.e639804a.chunk.js",
+    "static/js/2.e639804a.chunk.js.map": "/static/js/2.e639804a.chunk.js.map",
+    "static/js/3.d3f94cfe.chunk.js": "/static/js/3.d3f94cfe.chunk.js",
+    "static/js/3.d3f94cfe.chunk.js.map": "/static/js/3.d3f94cfe.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.c57e6a67.chunk.css.map": "/static/css/2.c57e6a67.chunk.css.map",
-    "static/css/main.42577030.chunk.css.map": "/static/css/main.42577030.chunk.css.map",
-    "static/js/2.f855a4ed.chunk.js.LICENSE.txt": "/static/js/2.f855a4ed.chunk.js.LICENSE.txt",
+    "static/css/main.86e876f3.chunk.css.map": "/static/css/main.86e876f3.chunk.css.map",
+    "static/js/2.e639804a.chunk.js.LICENSE.txt": "/static/js/2.e639804a.chunk.js.LICENSE.txt",
     "static/media/AcademicTeam.6fa0b696.jpg": "/static/media/AcademicTeam.6fa0b696.jpg",
     "static/media/WeThePeople.bc88e604.jpg": "/static/media/WeThePeople.bc88e604.jpg",
     "static/media/WeThePeople_Districts.8a9f5128.jpg": "/static/media/WeThePeople_Districts.8a9f5128.jpg",
     "static/media/WeThePeople_NationalsSetup.022c7bdf.jpg": "/static/media/WeThePeople_NationalsSetup.022c7bdf.jpg",
     "static/media/email.eabba385.svg": "/static/media/email.eabba385.svg",
     "static/media/github.bfe22a7c.svg": "/static/media/github.bfe22a7c.svg",
+    "static/media/globe.74d82ff1.svg": "/static/media/globe.74d82ff1.svg",
     "static/media/hagerstownVex2019.1d98bab1.jpg": "/static/media/hagerstownVex2019.1d98bab1.jpg",
     "static/media/instagram.246d7b69.svg": "/static/media/instagram.246d7b69.svg",
     "static/media/itsa_me.0e81b396.JPG": "/static/media/itsa_me.0e81b396.JPG",
@@ -28,10 +29,10 @@
     "static/media/App.css": "/static/media/plexus.41d9e242.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.82d30130.js",
+    "static/js/runtime-main.80303d40.js",
     "static/css/2.c57e6a67.chunk.css",
-    "static/js/2.f855a4ed.chunk.js",
-    "static/css/main.42577030.chunk.css",
-    "static/js/main.91985733.chunk.js"
+    "static/js/2.e639804a.chunk.js",
+    "static/css/main.86e876f3.chunk.css",
+    "static/js/main.592aacd3.chunk.js"
   ]
 }
