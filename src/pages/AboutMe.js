@@ -44,9 +44,9 @@ export default function AboutMe(){
     <div className='col'>
         <div id='skills' data-aos='fade-up'>
             <h2>Skills</h2>
-            <Skills>{['Python','JavaScript','Java','C++','SQL','SQLite','Sequelize','SQLAlchemy',
+            <Skills>{['Python','JavaScript','Java','C','C++','SQL','SQLite','Sequelize','SQLAlchemy',
                 'HTML','CSS','Object-Oriented Programming','Git','Github','Linux','Raspberry Pi',
-                'LaTeX','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
+                'LaTeX','Angular','Flask','DOM Scraping','Google API','React.js','Node.js']}</Skills>
         </div>
         <div data-aos='fade-up' className='elementBlock'>
             <h2>Extracirricular Awards</h2>
