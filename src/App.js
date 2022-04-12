@@ -1,7 +1,7 @@
-import { Route, Link, HashRouter as Router } from 'react-router-dom'
+import { Route, Link, Routes, HashRouter as Router } from 'react-router-dom'
 
 import './App.css';
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 import Nav from './componets/Nav.js'
 import Socials from './componets/Socials.js'
 import Home from './pages/Home.js'
@@ -12,9 +12,6 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 AOS.init();
 function App() {
-  ReactGA.initialize('G-E2V93W9CNV');
-  ReactGA.pageview('Init page view');
-
   return (
     <Router>
       <div className="App">
@@ -27,9 +24,11 @@ function App() {
             <Link to='/about'>About</Link>
           </Nav>
         </div>
-        <Route exact path='/'><Home /></Route>
-        <Route exact path='/projects'><Projects /></Route>
-        <Route exact path='/about'><AboutMe /></Route>
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route exact path='/projects' element={<Projects />}></Route>
+          <Route exact path='/about' element={<AboutMe />}></Route>
+        </Routes>
         <div className='footer'>
           <Socials />
         </div>
