@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "./static/css/main.a4a3f1c9.css",
-    "main.js": "./static/js/main.6370a47a.js",
-    "static/js/787.1ed0c42c.chunk.js": "./static/js/787.1ed0c42c.chunk.js",
-    "static/media/plexus.jpg": "./static/media/plexus.41d9e2421d904aaa5a4f.jpg",
-    "static/media/WeThePeople_Districts.jpg": "./static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
-    "static/media/hagerstownVex2019.jpg": "./static/media/hagerstownVex2019.1d98bab1a6215f5cf90d.jpg",
-    "static/media/WeThePeople.jpg": "./static/media/WeThePeople.bc88e6043056eb380c2f.jpg",
-    "static/media/itsa_me.JPG": "./static/media/itsa_me.0e81b3963483a149ef1f.JPG",
-    "static/media/WeThePeople_NationalsSetup.jpg": "./static/media/WeThePeople_NationalsSetup.022c7bdff973aab7dc7f.jpg",
-    "static/media/me_robot.jpeg": "./static/media/me_robot.0ed1ba0782b047c238d2.jpeg",
-    "static/media/AcademicTeam.jpg": "./static/media/AcademicTeam.6fa0b6964de0b5e0331f.jpg",
-    "static/media/globe.svg": "./static/media/globe.74d82ff17a3f6b7094e280f108b437dd.svg",
-    "static/media/linkedin.svg": "./static/media/linkedin.9e984989712b2f3b4de55b0e2e09e8bf.svg",
-    "static/media/email.svg": "./static/media/email.eabba385e24d37dd50ec8e2a2bd31270.svg",
-    "index.html": "./index.html",
-    "static/media/github.svg": "./static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
-    "static/media/instagram.svg": "./static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
-    "main.a4a3f1c9.css.map": "./static/css/main.a4a3f1c9.css.map",
-    "main.6370a47a.js.map": "./static/js/main.6370a47a.js.map",
-    "787.1ed0c42c.chunk.js.map": "./static/js/787.1ed0c42c.chunk.js.map"
+    "main.css": "/static/css/main.cceed925.css",
+    "main.js": "/static/js/main.0f600890.js",
+    "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
+    "static/media/plexus.jpg": "/static/media/plexus.41d9e2421d904aaa5a4f.jpg",
+    "static/media/WeThePeople_Districts.jpg": "/static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
+    "static/media/hagerstownVex2019.jpg": "/static/media/hagerstownVex2019.1d98bab1a6215f5cf90d.jpg",
+    "static/media/WeThePeople.jpg": "/static/media/WeThePeople.bc88e6043056eb380c2f.jpg",
+    "static/media/itsa_me.JPG": "/static/media/itsa_me.0e81b3963483a149ef1f.JPG",
+    "static/media/WeThePeople_NationalsSetup.jpg": "/static/media/WeThePeople_NationalsSetup.022c7bdff973aab7dc7f.jpg",
+    "static/media/me_robot.jpeg": "/static/media/me_robot.0ed1ba0782b047c238d2.jpeg",
+    "static/media/AcademicTeam.jpg": "/static/media/AcademicTeam.6fa0b6964de0b5e0331f.jpg",
+    "static/media/globe.svg": "/static/media/globe.74d82ff17a3f6b7094e280f108b437dd.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.9e984989712b2f3b4de55b0e2e09e8bf.svg",
+    "static/media/email.svg": "/static/media/email.eabba385e24d37dd50ec8e2a2bd31270.svg",
+    "index.html": "/index.html",
+    "static/media/github.svg": "/static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
+    "static/media/instagram.svg": "/static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
+    "main.cceed925.css.map": "/static/css/main.cceed925.css.map",
+    "main.0f600890.js.map": "/static/js/main.0f600890.js.map",
+    "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4a3f1c9.css",
-    "static/js/main.6370a47a.js"
+    "static/css/main.cceed925.css",
+    "static/js/main.0f600890.js"
   ]
 }
