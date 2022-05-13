@@ -17,30 +17,36 @@ export default function Projects(){
             A personal portfolio site made with React.js.
           </Project>
           <Project status='complete' title='Slate' links={[['https://github.com/asimonson1125/Slate', <img alt='github' src={github} />], ["https://slate.cs.house", <img alt='site' src={globe} />]]} >
-            Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data.
+            Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data. <br />
+            Ver 2.0 WIP - includes analytics, faster processing, and better UI
           </Project>
           <Project status='complete' title='Resume' links={[['https://github.com/asimonson1125/Resume', <img alt='github' src={github} />]]} >
-            My Resume, made in LaTeX  with a custom design inspired by the AltaCV template on OverLeaf.
+            My Resume, made in LaTeX with a custom design derived by the AltaCV template on OverLeaf.
           </Project>
           <Project status='complete' title='Humans vs. Zombies Bot' links={[['https://github.com/asimonson1125/HvZ-bot', <img alt='github' src={github} />]]} >
             A Discord bot to handle role management and statistics for RIT's Humans vs. Zombies games.
           </Project>
           <Project status ='WIP' title='FinTech' links={[['https://github.com/LukeHorigan/Financial-Management-Assocation-', <img alt='github' src={github} />]]}  >
-          A team derived from the RIT Financial Management Association dedicated to learning about financial management of equities using automated solutions developed by students.
+            A team derived from the RIT Financial Management Association dedicated to learning about financial management of equities using automated solutions developed by students.
+          </Project>
+          <Project status='complete' title='Browser Trivia Bot'>
+            A tampermonkey tool used to automatically answer and submit online trivia forms, which can be tailored to different site layouts.<br /><br />
+            Source is currently private for competition.
           </Project>
           <Project status='complete' title='Querist' links={[['https://github.com/asimonson1125/Querist', <img alt='github' src={github} />]]} >
-            A modular discord bot to manage class discord servers.
+            A modular discord bot to manage class discord servers divided by class sections.  Used in my Web and Mobile 101 class discord server.
           </Project>
           <Project status='complete' title='Acumen' links={[['https://github.com/asimonson1125/Acumen', <img alt='github' src={github} />]]} >
             A personal Discord bot focused on statistical insight and role management for NationsGame, including NG Rolls Sim accessibility.
           </Project>
           <Project status='complete' title='NationsGame Rolls Sim' links={[['https://github.com/asimonson1125/NG-Rolls-Simulator', <img alt='github' src={github} />]]} >
-            A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.
+            A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.<br />
+            Unfortunately, NationsGame is now defunct.  Limited screenshots of functionality.
           </Project>
           <Project status='incomplete' title='WallCycle' links={[['https://github.com/asimonson1125/WallCycle', <img alt='github' src={github} />]]} >
             A GNOME extension that cycles through a folder of wallpapers.
           </Project>
-          <Project status='complete' title='VEXcode Button Generator' links={[['https://github.com/asimonson1125/VEXcode-Button-Generator', <img alt='github' src={github} />]]} >
+          <Project status='complete' title='VEXcode Button Engine' links={[['https://github.com/asimonson1125/VEXcode-Button-Generator', <img alt='github' src={github} />]]} >
             VEXcode button library + examples and template for the VEX V5 brain 
           </Project>
           <Project status='complete' title='WinKeylogger' links={[['https://github.com/asimonson1125/WinKeylogger', <img alt='github' src={github} />]]}>
