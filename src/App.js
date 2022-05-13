@@ -19,9 +19,9 @@ function App() {
           <a href="/"><h1>Andrew Simonson</h1></a>
           <Nav id='navbar'>
             <Link to='/'>Home</Link>
-            <a href='https://github.com/asimonson1125/Resume/raw/main/Resume.pdf' target='_blank'>Resume</a>
+            <a href='https://github.com/asimonson1125/Resume/raw/main/Resume.pdf' rel='noreferrer' target='_blank'>Resume</a>
             <Link to='/projects'>Projects</Link>
-            <Link to='/about'>About</Link>
+            <Link to='/about'>About Me</Link>
           </Nav>
         </div>
         <Routes>
