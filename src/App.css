@@ -25,6 +25,7 @@ body {
   float: right;
   margin-right: 1rem;
   margin-top: .25rem;
+  cursor: pointer;
 }
 
 h1, h2 {
@@ -71,6 +72,11 @@ a {
   left: 0;
   transition: .4s;
   overflow: hidden;
+  border-bottom: solid 3px rgb(156, 49, 45, .4);
+}
+
+.navControl{
+  transition: .4s;
 }
 
 .navBar {
