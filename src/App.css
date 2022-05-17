@@ -1,38 +1,48 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
-html, body{
+
+html, body {
   background-color: #1b1f27;
   overflow-x: hidden;
 }
-body{
+
+body {
   margin: 0;
-  background-image: url('assets/plexus.jpg');/*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
+  background-image: url('assets/plexus.jpg');
+  /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
   background-clip: border-box;
 }
-*{
-  font-family: "Roboto Condensed",sans-serif;
+
+* {
+  font-family: "Roboto Condensed", sans-serif;
 }
-h1, h2{
+
+h1, h2 {
   color: #ecebeb;
 }
-h2{
+
+h2 {
   font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
-h3, h4{
+
+h3, h4 {
   color: #a8a8a8;
 }
-p{
+
+p, li {
   color: rgb(212, 212, 212);
   font-size: 1rem;
 }
-a { 
+
+a {
   color: #a0a0a0a0;
   text-decoration: none;
 }
-.header h1{
+
+.header h1 {
   display: inline-block;
   transition: .4s;
   margin-bottom: 0px;
@@ -40,7 +50,8 @@ a {
   margin-left: 1rem;
   font-size: 2rem;
 }
-.header{
+
+.header {
   margin-bottom: 0px;
   margin-left: 0rem;
   background-color: #1a1a1a;
@@ -52,14 +63,16 @@ a {
   transition: .4s;
   overflow: hidden;
 }
-.navBar{
-  display: block;
-  border-collapse: collapse;
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
   padding-left: 0px;
   margin: 0px;
   width: 100%;
 }
-.navElement{
+
+.navElement {
   border: solid black .2rem;
   width: 25vw;
   text-align: center;
@@ -67,257 +80,305 @@ a {
   transition: .4s;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  background-color: rgb(156,49,45,.4);
+  background-color: rgb(156, 49, 45, .4);
 }
-.navElement:hover{
-  background-color: rgb(156,49,45,.8);
+
+.navElement:hover {
+  background-color: rgb(156, 49, 45, .8);
 }
-.navElement *{
+
+.navElement * {
   color: white;
-  margin:0px;
+  margin: 0px;
   display: block;
 }
-#home{
+
+#home {
   height: 100vh;
   overflow-y: hidden;
 }
-.concentratedHead{
+
+.concentratedHead {
   display: inline-block;
   padding-right: 4rem;
   border-bottom: #0f0f0f solid 5px;
-  color:white;
+  color: white;
 }
-.foreground{
+
+.foreground {
   padding-top: 7rem;
   padding-left: 8rem;
   width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
-  background-color: rgb(44,44,44,.5);
+  background-color: rgb(44, 44, 44, .5);
   padding-bottom: 1rem;
   overflow: hidden;
   transition: .4s;
 }
-.foreground p{
+
+.foreground p {
   line-height: 1.5em;
   max-width: min(90%, 40rem);
 }
-.centerContent{
+
+.centerContent {
   margin-top: 30vh;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
-#HomeContent{
+
+#HomeContent {
   padding: 3rem;
   display: inline-block;
-  background-color: rgb(44,44,44, .95);
+  background-color: rgb(44, 44, 44, .95);
 }
-#Vertical{
+
+#Vertical {
   margin-left: auto;
   margin-right: auto;
-  width:0;
+  width: 0;
   height: 3rem;
-  border-right: rgb(156,49,45) solid 1px;
+  border-right: rgb(156, 49, 45) solid 1px;
 }
-.sideimg{
-  float:right;
+
+.sideimg {
+  float: right;
   top: 0;
   right: 0;
   display: block;
-  max-width: min(40rem,80%);
-  max-height: min(30rem,100%);
+  max-width: min(40rem, 80%);
+  max-height: min(30rem, 100%);
 }
-.col{
-  float:left;
+
+.col {
+  float: left;
   margin-right: 3rem;
   width: calc(50% - 3rem);
 }
-.boxedImg{
-  border: .5rem solid rgba(22,22,22,.8);
+
+.boxedImg {
+  border: .5rem solid rgba(22, 22, 22, .8);
   max-width: calc(90% - 1rem);
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.carousel-container{
+
+.carousel-container {
   margin-left: 10%;
   max-width: 80%;
 }
-.elementBlock{
+
+.elementBlock {
   margin-top: 3rem;
 }
-.skills{
+
+.skills {
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
-  border: solid rgba(156,49,45, .8) .3rem;
+  border: solid rgba(156, 49, 45, .8) .3rem;
   text-align: center;
-  padding:1rem;
+  padding: 1rem;
 }
-.skill{
+
+.skill {
   display: inline-block;
-  border:rgba(156,49,45, .8) solid .15rem;
-  padding:.2rem;
+  border: rgba(156, 49, 45, .8) solid .15rem;
+  padding: .2rem;
   margin: .5rem;
-  background-color: rgba(11,11,11,.8);
-  color:rgb(212, 212, 212);
+  background-color: rgba(11, 11, 11, .8);
+  color: rgb(212, 212, 212);
 }
-.projectList{
+
+.projectList {
   padding: 0px;
   display: block;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   text-align: center;
 }
-.project{
+
+.project {
   display: inline-block;
   text-align: left;
   margin: 1rem;
   width: 20rem;
   height: 22rem;
-  border: .3rem rgba(156,49,45, .8) solid;
-  background-color: rgba(22,22,22,.8);
+  border: .3rem rgba(156, 49, 45, .8) solid;
+  background-color: rgba(22, 22, 22, .8);
 }
-.project .topBox, .project .bottomBox{
+
+.project .topBox, .project .bottomBox {
   padding-left: 1rem;
 }
-.tab{
+
+.tab {
   display: inline;
   float: right;
 }
-.project h3{
+
+.project h3 {
   display: inline-block;
   border-bottom: black solid .2rem;
 }
-.project img{
+
+.project img {
   margin-top: auto;
-  height:3rem;
+  height: 3rem;
 }
-.topBox{
+
+.topBox {
   padding-left: .5rem;
   padding-right: 1rem;
   height: 75%;
 }
-.bottomBox{
+
+.bottomBox {
   height: auto;
   padding-left: 0rem;
   padding-right: 1rem;
 }
-.bottomBox a{
+
+.bottomBox a {
   vertical-align: middle;
 }
-.project a img, .project a p{
+
+.project a img, .project a p {
   padding: .5rem;
   filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(52deg) brightness(106%) contrast(101%);
 }
-.project a img:hover, .project a p:hover{
+
+.project a img:hover, .project a p:hover {
   filter: invert(66%) sepia(0%) saturate(3964%) hue-rotate(99deg) brightness(100%) contrast(105%);
 }
-.incomplete{
-  color:red;
+
+.incomplete {
+  color: red;
 }
-.WIP{
-  color:yellow;
+
+.WIP {
+  color: yellow;
 }
-.complete{
-  color:green;
+
+.complete {
+  color: green;
 }
-.footer{
+
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
 }
-.socials{
+
+.socials {
   margin-left: 1rem;
-  width:0px;
+  width: 0px;
 }
-.socials td{
-  padding:5px;
-  text-align: left;
-  display: inline;
-  float:left;
-}
-.socials img{
+
+.socials img {
   height: 2rem;
   margin-bottom: 1rem;
   filter: invert(29%) sepia(20%) saturate(1786%) hue-rotate(314deg) brightness(101%) contrast(110%);
   transition: .2s;
 }
-.socials img:hover{
+
+.socials img:hover {
   opacity: .5;
 }
-#vertLine{
-  border-right: 1px solid rgb(156,49,45);
+
+#vertLine {
+  border-right: 1px solid rgb(156, 49, 45);
   margin-left: 1rem;
   height: 10rem;
 }
 
-@media screen and (max-width: 1200px){
-  .projectList{
+@media screen and (max-width: 1200px) {
+
+  .navBar {
+    flex-direction: column;
+  }
+
+  .navElement {
+    width: 100vw;
+  }
+
+  .projectList {
     width: 95%;
   }
-  .sideimg{
+
+  .sideimg {
     position: relative;
   }
-  body{
+
+  body {
     background-size: auto 100%;
   }
-  .foreground{
-    width:100%;
-    padding-left: 2rem; /* centered objects will need to remove 1.5 of this to center */
+
+  .foreground {
+    width: 100%;
+    padding-left: 2rem;
+    /* centered objects will need to remove 1.5 of this to center */
     padding-right: .5rem;
     padding-bottom: 36px;
   }
-  .centeredForeground{
-    margin-left: -1.5rem; /* remove .foreground excess margin */
+
+  .centeredForeground {
+    margin-left: -1.5rem;
+    /* remove .foreground excess margin */
   }
-  .col{
+
+  .col {
     width: 90%;
     margin-bottom: 3rem;
   }
-  #aboutMe{
+
+  #aboutMe {
     float: none;
-    display:block;
+    display: block;
     width: 90%;
   }
-  #skills{
+
+  #skills {
     float: none;
     margin-right: auto;
     display: block;
     width: 90%;
   }
-  .footer{
-    position:relative;
-    width:100%;
+
+  .footer {
+    position: relative;
+    width: 100%;
     display: inline-block;
-    background-color: rgb(156,49,45);
+    background-color: rgb(156, 49, 45);
   }
-  .socials{
-    display:block;
+
+  .socials {
+    display: flex;
+    justify-content: space-around;
     padding-top: .5rem;
     padding-bottom: .5rem;
     margin-right: auto;
     margin-left: auto;
-    table-layout: fixed;
-    width: 100%;
+    width: 400px;
   }
-  .socials tr{
-    display: block;
-  }
-  .socials td{
+
+  .socials * {
     display: inline;
     text-align: center;
-    width: calc(100% / 6);
     padding-left: 0px;
     padding-right: 0px;
   }
-  .socials img{
+
+  .socials img {
     height: 2rem;
     margin-bottom: 0px;
     filter: none;
   }
-  #vertLine{
-    visibility: collapse;
-    height:0px;
+
+  #vertLine {
+    display: none;
+    height: 0px;
   }
 }

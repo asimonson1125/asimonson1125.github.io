@@ -1,20 +1,20 @@
 import React from 'react';
 
-export default function Nav(props){
+export default function Nav(props) {
     let items;
-    for(let i = 0; i < props.children.length; i++){
+    for (let i = 0; i < props.children.length; i++) {
         items = (
             <>
                 {items}
-                <td className='navElement'>{props.children[i]}</td>
+                <div className='navElement'>{props.children[i]}</div>
             </>
         )
     }
-    return(
-        <div className = 'navControl'>
-            <table className='navBar'>
+    return (
+        <div className='navControl'>
+            <div className='navBar'>
                 {items}
-            </table>
+            </div>
         </div>
     )
 }

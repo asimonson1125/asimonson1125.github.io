@@ -7,7 +7,7 @@ export default function Projects(){
     return(
       <div className='foreground'>
         <div data-aos='fade-up'>
-        <h2 class='concentratedHead'>Projects</h2>
+        <h2 className='concentratedHead'>Projects</h2>
           <p>Project status is indicated by the color of the project card:<br /><span className='complete'>⬤</span> - Complete<br />
             <span className='WIP'>⬤</span> - Work In Progress<br /><span className='incomplete'>⬤</span> - Incomplete
           </p>
