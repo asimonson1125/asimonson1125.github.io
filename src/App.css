@@ -18,6 +18,15 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+#menu{
+  height: 2rem;
+  display: none;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(0%) saturate(1%) hue-rotate(151deg) brightness(95%) contrast(86%);
+  float: right;
+  margin-right: 1rem;
+  margin-top: .25rem;
+}
+
 h1, h2 {
   color: #ecebeb;
 }
@@ -295,6 +304,10 @@ a {
 }
 
 @media screen and (max-width: 1200px) {
+
+  #menu{
+    display: unset;
+  }
 
   .navBar {
     flex-direction: column;
