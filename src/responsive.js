@@ -1,28 +1,27 @@
-window.onload = function () { onLoaded() };
+window.onpageshow = function () { onLoaded() };
 
 function onLoaded() {
-  scrollFunction();
-  resizer();
   window.onresize = function () { resizer() };
   document.getElementById("menu").onclick = function () { toggleMenu() };
+  resizer();
 }
 
 function resizer() {
   scrollFunction();
   const e = document.querySelector(".navControl");
   if (window.innerWidth > 1200) { // desktop view
+    window.onscroll = function () { scrollFunction() };
     bottomBorderOff();
     e.style.maxHeight = `${e.scrollHeight + 10}px`;
-    window.onscroll = function () { scrollFunction() };
   }
   else { // mobile view
-    e.style.maxHeight = '0px';
-    bottomBorderOn();
     window.onscroll = '';
     document.querySelector('.header').style.backgroundColor = '#1a1a1a';
     document.querySelector('.header > a > h1').style.fontSize = "1.5rem";
     // document.querySelector('.header > h1').style.color = "#a8a8a8";
     document.querySelectorAll('.navElement').forEach(x => { x.style.paddingTop = '.3rem'; x.style.paddingBottom = '.3rem'; x.style.fontSize = '1rem' });
+    e.style.maxHeight = '0px';
+    bottomBorderOn();
   }
 }
 

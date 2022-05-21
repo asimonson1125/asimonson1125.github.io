@@ -10,6 +10,7 @@ import Activities from './pages/Activities';
 import AboutMe from './pages/AboutMe';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import './responsive'
 
 AOS.init();
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <img src={menu} alt="menu" id='menu'/>
           <Nav id='navbar'>
             <Link to='/'>Home</Link>
-            <a href='https://github.com/asimonson1125/Resume/raw/main/Resume.pdf' rel='noreferrer' target='_blank'>Resume</a>
+            <a href='Resume.pdf' target='_blank'>Resume</a>
             <Link to='/projects'>Projects</Link>
            {/* <Link to='/activities'>Activities</Link> */}
             <Link to='/about'>About Me</Link>
