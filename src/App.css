@@ -91,7 +91,6 @@ a {
   width: 25vw;
   text-align: center;
   font-size: 1.2rem;
-  transition: .4s;
   font-size: 1rem;
   background-color: rgb(156, 49, 45, .4);
 }
@@ -106,6 +105,7 @@ a {
   display: block;
   padding-top: .3rem;
   padding-bottom: .3rem;
+  transition: .4s;
 }
 
 #home {
