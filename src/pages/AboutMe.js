@@ -56,7 +56,7 @@ export default function AboutMe() {
                         {[
                             {
                                 original: img4,
-                                description: "High School VEX Robotics President and Team Leader: I'm trying my best"
+                                description: "High School VEX Robotics President and Team Leader"
                             },
                             {
                                 original: img5,

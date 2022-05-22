@@ -10,7 +10,9 @@ import Activities from './pages/Activities';
 import AboutMe from './pages/AboutMe';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import './responsive'
+import { toggleMenu } from './responsive'
+
+
 
 AOS.init();
 function App() {
@@ -19,7 +21,7 @@ function App() {
       <div className="App">
         <div className="header">
           <a href="/"><h1>Andrew Simonson</h1></a>
-          <img src={menu} alt="menu" id='menu'/>
+          <img src={menu} alt="menu" id='menu' onClick={toggleMenu}/>
           <Nav id='navbar'>
             <Link to='/'>Home</Link>
             <a href='Resume.pdf' target='_blank'>Resume</a>

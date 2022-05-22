@@ -72,7 +72,6 @@ a {
   left: 0;
   transition: .4s;
   overflow: hidden;
-  border-bottom: solid 3px rgb(156, 49, 45, .4);
 }
 
 .navControl{
@@ -93,8 +92,7 @@ a {
   text-align: center;
   font-size: 1.2rem;
   transition: .4s;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  font-size: 1rem;
   background-color: rgb(156, 49, 45, .4);
 }
 
@@ -106,6 +104,8 @@ a {
   color: white;
   margin: 0px;
   display: block;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
 }
 
 #home {
@@ -315,12 +315,25 @@ a {
     display: unset;
   }
 
+  .header{
+    background-color: #1a1a1a;
+    border-bottom: solid 3px rgb(156, 49, 45, .4);
+  }
+
+  .header h1{
+    font-size: 1.5rem;
+  }
+
   .navBar {
     flex-direction: column;
   }
 
   .navElement {
     width: 100vw;
+  }
+
+  .navControl{
+    max-height: 0px;
   }
 
   .projectList {
