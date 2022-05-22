@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0cab70a0.css",
-    "main.js": "/static/js/main.32fa7b17.js",
+    "main.js": "/static/js/main.2b7149fc.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/plexus.jpg": "/static/media/plexus.41d9e2421d904aaa5a4f.jpg",
     "static/media/WeThePeople_Districts.jpg": "/static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
@@ -17,11 +17,11 @@
     "static/media/github.svg": "/static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
     "static/media/instagram.svg": "/static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
     "main.0cab70a0.css.map": "/static/css/main.0cab70a0.css.map",
-    "main.32fa7b17.js.map": "/static/js/main.32fa7b17.js.map",
+    "main.2b7149fc.js.map": "/static/js/main.2b7149fc.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0cab70a0.css",
-    "static/js/main.32fa7b17.js"
+    "static/js/main.2b7149fc.js"
   ]
 }
