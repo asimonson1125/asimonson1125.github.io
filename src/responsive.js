@@ -3,10 +3,16 @@ function onLoaded() {
   console.log("loaded trigger");
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  let navs = document.querySelectorAll('.navElement');
+  navs.forEach(function (element) {
+    element.onclick = function () {
+      toggleMenu();
+    }
+  });
 
   window.onresize = function () { resizer() };
   resizer();
-  if(window.innerWidth < 1200){
+  if (window.innerWidth < 1200) {
     const e = document.querySelector(".navControl");
     e.style.maxHeight = '0px';
   }
@@ -27,7 +33,7 @@ function resizer() {
     document.querySelector(".header").style.borderBottomWidth = '3px';
     e.style.maxHeight = '0px';
     document.querySelectorAll('.navElement *').forEach(x => { x.style.paddingTop = '.3rem'; x.style.paddingBottom = '.3rem'; x.style.fontSize = '1rem' });
-  } 
+  }
 }
 
 function scrollFunction() {
@@ -45,13 +51,15 @@ function scrollFunction() {
 }
 
 export function toggleMenu() {
-  const e = document.querySelector(".navControl");
-  const bar = document.querySelector(".header");
-  if (e.style.maxHeight === '0px') {
-    e.style.maxHeight = `${e.scrollHeight + 10}px`;
-    bar.style.borderBottomWidth = '0px';
-  } else {
-    e.style.maxHeight = '0px';
-    bar.style.borderBottomWidth = '3px';
+  if (window.innerWidth < 1200) {
+    const e = document.querySelector(".navControl");
+    const bar = document.querySelector(".header");
+    if (e.style.maxHeight === '0px') {
+      e.style.maxHeight = `${e.scrollHeight + 10}px`;
+      bar.style.borderBottomWidth = '0px';
+    } else {
+      e.style.maxHeight = '0px';
+      bar.style.borderBottomWidth = '3px';
+    }
   }
 }
