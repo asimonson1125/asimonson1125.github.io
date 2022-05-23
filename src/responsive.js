@@ -6,6 +6,7 @@ function onLoaded() {
   let navs = document.querySelectorAll('.navElement');
   navs.forEach(function (element) {
     element.onclick = function () {
+      window.scrollTo(0, 0);
       toggleMenu();
     }
   });
