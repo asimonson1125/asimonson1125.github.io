@@ -14,7 +14,7 @@ export default class Project extends React.Component {
                 )
             })
         } else{
-            links = <p><img alt="no links!" src={placeholder} /></p>
+            links = <a><img alt="no links!" src={placeholder} /></a>
         }
         return (
             <li className={'project'} data-aos='fade-up'>
