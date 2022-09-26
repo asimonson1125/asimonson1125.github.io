@@ -1,8 +1,8 @@
 import { Route, Link, Routes, BrowserRouter as Router } from 'react-router-dom'
 
-import './static/css/App.css';
-import './static/css/head.scss'
-import menu from './assets/menu.svg'
+import './assets/css/App.css';
+import './assets/css/head.scss'
+import menu from './assets/icons/menu.svg'
 import Nav from './componets/Nav.js'
 import Socials from './componets/Socials.js'
 import Name from './componets/Name.js'
@@ -13,7 +13,7 @@ import AboutMe from './pages/AboutMe';
 import ErrorNotFound from './pages/Error'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { toggleMenu } from './responsive'
+import { toggleMenu } from './scripts/responsive'
 
 
 

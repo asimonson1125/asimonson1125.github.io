@@ -27,7 +27,7 @@ html, body {
 
 body {
   margin: 0;
-  background-image: url('../../assets/plexus.jpg');
+  background-image: url('../photos/plexus.jpg');
   /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
@@ -286,8 +286,11 @@ a {
   padding-right: 1rem;
 }
 
-.bottomBox a {
+.bottomBox a, .placeholding {
   vertical-align: middle;
+  display: inline;
+  text-align: left;
+  height:unset;
 }
 
 .project a img, .project a p {

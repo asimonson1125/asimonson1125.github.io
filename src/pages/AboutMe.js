@@ -64,10 +64,12 @@ export default function AboutMe() {
               "Processing",
               "P5.js",
               "SQL",
+              "SQLite",
               "PostgreSQL",
               "SQLAlchemy",
               "HTML",
               "CSS",
+              "Docker",
               "LaTeX",
               "ArcGIS",
               "Git",
@@ -82,6 +84,7 @@ export default function AboutMe() {
               "Google API",
               "React",
               "Node.js",
+              "ArcGIS"
             ]}
           </Skills>
         </div>

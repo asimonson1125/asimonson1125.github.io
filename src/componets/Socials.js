@@ -1,9 +1,9 @@
 import React from 'react';
 
-import github from '../assets/github.svg'
-import instagram from '../assets/instagram.svg'
-import linkedin from '../assets/linkedin.svg'
-import email from '../assets/email.svg'
+import github from '../assets/icons/github.svg'
+import instagram from '../assets/icons/instagram.svg'
+import linkedin from '../assets/icons/linkedin.svg'
+import email from '../assets/icons/email.svg'
 
 export default function Socials(){
     return(

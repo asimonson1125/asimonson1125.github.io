@@ -1,5 +1,5 @@
 import React from 'react'
-import placeholder from '../assets/placeholder.png'
+import placeholder from '../assets/photos/placeholder.png'
 
 export default class Project extends React.Component {
     render() {

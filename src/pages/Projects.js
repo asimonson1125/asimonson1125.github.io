@@ -1,7 +1,7 @@
 import ProjectList from '../componets/ProjectList'
 import Project from '../componets/Project'
-import github from '../assets/github.svg'
-import globe from '../assets/globe.svg'
+import github from '../assets/icons/github.svg'
+import globe from '../assets/icons/globe.svg'
 
 export default function Projects() {
   return (
@@ -19,9 +19,6 @@ export default function Projects() {
         </Project>
         <Project status='WIP' title='OccupyRIT' links={[['https://github.com/asimonson1125/Occupy-RIT', <img alt='github' src={github} />]]}>
           Collects RIT Gym Occupancy data for analysis, determining busiest times.
-        </Project>
-        <Project status='WIP' title='Digital Portfolio' links={[['https://github.com/asimonson1125/asimonson1125.github.io', <img alt='github' src={github} />]]} >
-          A personal portfolio site made with React.js.  Might overhaul.
         </Project>
         <Project status='WIP' title='FinTech' links={[['https://github.com/LukeHorigan/Financial-Management-Assocation-', <img alt='github' src={github} />]]}  >
           A team derived from the RIT Financial Management Association dedicated to learning about financial management of equities using automated solutions developed by students.
