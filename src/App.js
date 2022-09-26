@@ -1,4 +1,4 @@
-import { Route, Link, Routes, HashRouter as Router } from 'react-router-dom'
+import { Route, Link, Routes, BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css';
 import menu from './assets/menu.svg'
@@ -8,6 +8,7 @@ import Home from './pages/Home.js'
 import Projects from './pages/Projects';
 import Activities from './pages/Activities';
 import AboutMe from './pages/AboutMe';
+import ErrorNotFound from './pages/Error'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { toggleMenu } from './responsive'
@@ -35,6 +36,7 @@ function App() {
           <Route exact path='/projects' element={<Projects />}></Route>
           <Route exact path='activities' element={<Activities />}></Route>
           <Route exact path='/about' element={<AboutMe />}></Route>
+          <Route exact path="*" element={<ErrorNotFound />} />
         </Routes>
         <div className='footer'>
           <Socials />

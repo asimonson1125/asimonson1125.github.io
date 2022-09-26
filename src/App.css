@@ -1,5 +1,10 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+@font-face {
+  font-family: "neon-future";
+  src: url("./assets/fonts/Neon\ Future.ttf")
+}
+
 html, body {
   background-color: #1b1f27;
   overflow-x: hidden;
@@ -18,7 +23,7 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-#menu{
+#menu {
   height: 2rem;
   display: none;
   filter: brightness(0) saturate(100%) invert(72%) sepia(0%) saturate(1%) hue-rotate(151deg) brightness(95%) contrast(86%);
@@ -74,7 +79,7 @@ a {
   overflow: hidden;
 }
 
-.navControl{
+.navControl {
   transition: .4s;
 }
 
@@ -309,18 +314,77 @@ a {
   height: 10rem;
 }
 
+.neon {
+  display: inline-block;
+  font-family: "neon-future";
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+      0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+  animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+
+.neonBox h1 {
+  font-size: min(4em, 12vw);
+}
+
+.neonBox h3 {
+  font-size: min(2em, 6vw);
+}
+
+.neonBox {
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 2em;
+  margin: 2em;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #5271ff,
+      0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff;
+  text-align: center;
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
+      0 0 40px #5271ff, 0 0 80px #5271ff, 0 0 90px #5271ff,
+      0 0 100px #5271ff, 0 0 150px #5271ff;
+  }
+
+  0% {
+    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff,
+      0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff,
+      0 0 140px #5271ff;
+  }
+}
+
+.fPage {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thedermacompany.co.uk%2Fwp-content%2Fuploads%2F2020%2F11%2Fblack-brick-scaled.jpg&f=1&nofb=1&ipt=d10be6df79141da1b4ec0c725575cef0f7b67e957e391662226d66cff02d25e6&ipo=images');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heightBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media screen and (max-width: 1200px) {
 
-  #menu{
+  #menu {
     display: unset;
   }
 
-  .header{
+  .header {
     background-color: #1a1a1a;
     border-bottom: solid 3px rgb(156, 49, 45, .4);
   }
 
-  .header h1{
+  .header h1 {
     font-size: 1.5rem;
   }
 
@@ -332,7 +396,7 @@ a {
     width: 100vw;
   }
 
-  .navControl{
+  .navControl {
     max-height: 0px;
   }
 
