@@ -2,7 +2,22 @@
 
 @font-face {
   font-family: "neon-future";
-  src: url("./assets/fonts/Neon\ Future.ttf")
+  src: url("../fonts/Neon\ Future.ttf")
+}
+
+@font-face {
+  font-family: "starixo";
+  src: url("../fonts/Starixo.otf")
+}
+
+@font-face {
+  font-family: "independent";
+  src: url("../fonts/INDEPENDENT.ttf")
+}
+
+@font-face {
+  font-family: "sunset-club";
+  src: url("../fonts/SunsetClub.otf")
 }
 
 html, body {
@@ -12,7 +27,7 @@ html, body {
 
 body {
   margin: 0;
-  background-image: url('assets/plexus.jpg');
+  background-image: url('../../assets/plexus.jpg');
   /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
@@ -77,6 +92,16 @@ a {
   left: 0;
   transition: .4s;
   overflow: hidden;
+}
+
+.name {
+  background: url("../../assets/photos/sun.png") 0/5rem no-repeat;
+  background-size: contain;
+  padding-left: 5.5rem;
+}
+
+.textGrad {
+  font-family: "sunset-club" !important;
 }
 
 .navControl {
@@ -319,7 +344,7 @@ a {
   font-family: "neon-future";
   color: #fff;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
-      0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+    0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
   animation: pulsate 0.11s ease-in-out infinite alternate;
 }
 
@@ -337,7 +362,7 @@ a {
   padding: 2em;
   margin: 2em;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #5271ff,
-      0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff;
+    0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff;
   text-align: center;
 }
 

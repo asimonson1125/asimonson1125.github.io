@@ -1,9 +1,11 @@
 import { Route, Link, Routes, BrowserRouter as Router } from 'react-router-dom'
 
-import './App.css';
+import './static/css/App.css';
+import './static/css/head.scss'
 import menu from './assets/menu.svg'
 import Nav from './componets/Nav.js'
 import Socials from './componets/Socials.js'
+import Name from './componets/Name.js'
 import Home from './pages/Home.js'
 import Projects from './pages/Projects';
 import Activities from './pages/Activities';
@@ -21,7 +23,7 @@ function App() {
     <Router>
       <div className="App">
         <div className="header">
-          <a href="/"><h1>Andrew Simonson</h1></a>
+          <Name />
           <img src={menu} alt="menu" id='menu' onClick={toggleMenu}/>
           <Nav id='navbar'>
             <Link to='/'>Home</Link>
