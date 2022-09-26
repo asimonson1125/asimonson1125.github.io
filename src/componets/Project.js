@@ -14,10 +14,10 @@ export default class Project extends React.Component {
                 )
             })
         } else{
-            links = <a><img alt="no links!" src={placeholder} /></a>
+            links = <div className='placeholder'><img alt="no links!" src={placeholder} /></div>
         }
         return (
-            <li className={'project'} data-aos='fade-up'>
+            <div className={'project'} data-aos='fade-up'>
                 <div className='topBox'>
                     <h3>{this.props.title}</h3>
                     <p className={this.props.status + " tab"}>⬤</p>
@@ -26,7 +26,7 @@ export default class Project extends React.Component {
                 <div className='bottomBox'>
                     {links}
                 </div>
-            </li>
+            </div>
         )
     }
 }

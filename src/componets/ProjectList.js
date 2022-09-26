@@ -11,10 +11,8 @@ export default function ProjectList(props){
         );
     });
     return(
-        <>
-        <ul className='projectList centeredForeground' data-aos='fade-up'>
+        <div className='projectList centeredForeground' data-aos='fade-up'>
             {projects}
-        </ul>
-        </>
+        </div>
     );
 } 

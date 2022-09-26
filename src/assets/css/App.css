@@ -238,7 +238,9 @@ a {
 
 .projectList {
   padding: 0px;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
