@@ -2,11 +2,9 @@ import Sketch from "react-p5";
 import React from "react";
  
 const balls = [];
-const density = 0.00003;
+const density = 0.00005;
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
-
-let rendered = false;
 
 export default class Idler extends React.Component {
   setup = (p5, parentRef) => {
@@ -40,11 +38,15 @@ export default class Idler extends React.Component {
     for (let i = 0; i < balls.length - 1; i++) {
       for (let j = i + 1; j < balls.length; j++) {
         let distance = p5.dist(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
-        if (distance < 150) {
+        if (distance < 100){
           p5.stroke(200);
+          p5.line(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
+        }
+        if (distance < 125) {
+          p5.stroke(75);
           let chance = 0.3 ** (((p5.random(0.2) + 0.8) * distance) / 150);
           if (chance < 0.5) {
-            p5.stroke(100);
+            p5.stroke(50);
           }
           p5.line(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
         }
@@ -52,7 +54,7 @@ export default class Idler extends React.Component {
     }
   };
   render() {
-    return <Sketch setup={this.setup} draw={this.draw} style={{position: 'fixed'}}/>;
+    return <Sketch setup={this.setup} draw={this.draw} style={{position: 'fixed', zIndex:-1}}/>;
   }
 }
 

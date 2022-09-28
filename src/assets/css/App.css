@@ -21,7 +21,6 @@
 }
 
 html, body {
-  background-color: #1b1f27;
   overflow-x: hidden;
 }
 
@@ -164,7 +163,7 @@ a {
   padding-left: 8rem;
   width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
-  background-color: rgb(44, 44, 44, .5);
+  background-color: rgb(44, 44, 44, .75);
   padding-bottom: 1rem;
   overflow: hidden;
   transition: .4s;
@@ -185,7 +184,8 @@ a {
 #HomeContent {
   padding: 3rem;
   display: inline-block;
-  background-color: rgb(44, 44, 44, .95);
+  background-color: rgb(44, 44, 44, .75);
+  border: solid black 4px;
 }
 
 #Vertical {
@@ -377,6 +377,8 @@ a {
   margin: 2em;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #5271ff,
     0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thedermacompany.co.uk%2Fwp-content%2Fuploads%2F2020%2F11%2Fblack-brick-scaled.jpg&f=1&nofb=1&ipt=d10be6df79141da1b4ec0c725575cef0f7b67e957e391662226d66cff02d25e6&ipo=images');
+  /* background-blend-mode: ; */
   text-align: center;
 }
 
@@ -398,8 +400,8 @@ a {
   height: 100vh;
   width: 100%;
   display: flex;
+  position: absolute;
   justify-content: center;
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thedermacompany.co.uk%2Fwp-content%2Fuploads%2F2020%2F11%2Fblack-brick-scaled.jpg&f=1&nofb=1&ipt=d10be6df79141da1b4ec0c725575cef0f7b67e957e391662226d66cff02d25e6&ipo=images');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
