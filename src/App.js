@@ -10,17 +10,18 @@ import Home from './pages/Home.js'
 import Projects from './pages/Projects';
 import Activities from './pages/Activities';
 import AboutMe from './pages/AboutMe';
+import Idler from './componets/Idler'
 import ErrorNotFound from './pages/Error'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { toggleMenu } from './scripts/responsive'
 
 
-
 AOS.init();
 function App() {
   return (
     <Router>
+      <Idler />
       <div className="App">
         <div className="header">
           <Name />

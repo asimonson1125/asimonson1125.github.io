@@ -27,7 +27,7 @@ html, body {
 
 body {
   margin: 0;
-  background-image: url('../photos/plexus.jpg');
+  /* background-image: url('../photos/plexus.jpg'); */
   /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
@@ -94,10 +94,19 @@ a {
   overflow: hidden;
 }
 
+#name-container {
+  display: inline;
+}
+
 .name {
+  display: inline;
   background: url("../../assets/photos/sun.png") 0/5rem no-repeat;
   background-size: contain;
   padding-left: 5.5rem;
+}
+
+.glitch {
+  display: inline;
 }
 
 .textGrad {
