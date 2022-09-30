@@ -245,6 +245,54 @@ a {
   color: rgb(212, 212, 212);
 }
 
+#skillList{
+  color: white;
+}
+
+.hex-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.hex-row {
+  display: flex;
+}
+
+.hex {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0px 5px;
+}
+
+.hex:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.hex>* {
+  position: absolute;
+}
+
+.hex-odd {
+  margin: 0px 55px;
+}
+
+.hex-border {
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  width: 100%;
+  height: 58%;
+}
+
+.hex>.hex-border:nth-child(1) {
+  rotate: 60deg;
+}
+
+.hex>.hex-border:nth-child(2) {
+  rotate: 120deg;
+}
+
 .projectList {
   padding: 0px;
   display: flex;
@@ -301,7 +349,7 @@ a {
   vertical-align: middle;
   display: inline;
   text-align: left;
-  height:unset;
+  height: unset;
 }
 
 .project a img, .project a p {

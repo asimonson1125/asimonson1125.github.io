@@ -1,6 +1,6 @@
 import React from "react";
-import Skills from "../componets/Skills";
 import MyCarousel from "../componets/Carousel.js";
+import HexGrid from "../componets/HexGrid";
 // import img1 from '../assets/photos/itsa_me.JPG'
 // import img2 from '../assets/photos/me_robot.jpeg'
 import img3 from "../assets/photos/AcademicTeam.jpg";
@@ -53,7 +53,11 @@ export default function AboutMe() {
       <div className="col">
         <div id="skills" data-aos="fade-up">
           <h2>Skills</h2>
-          <Skills>
+          <div id="skillList">
+            <HexGrid></HexGrid>
+            <div id="skillDisp"></div>
+          </div>
+          {/* <Skills>
             {[
               "Python",
               "JavaScript",
@@ -86,7 +90,7 @@ export default function AboutMe() {
               "Node.js",
               "ArcGIS"
             ]}
-          </Skills>
+          </Skills> */}
         </div>
         <div data-aos="fade-up" className="elementBlock">
           <h2>Extracirricular Awards</h2>
