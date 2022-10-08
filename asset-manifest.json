@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.50f677f8.css",
-    "main.js": "/static/js/main.fc7d1586.js",
+    "main.css": "/static/css/main.1efc1947.css",
+    "main.js": "/static/js/main.cb4a860b.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/WeThePeople_Districts.jpg": "/static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
     "static/media/hagerstownVex2019.jpg": "/static/media/hagerstownVex2019.1d98bab1a6215f5cf90d.jpg",
@@ -20,12 +20,12 @@
     "static/media/menu.svg": "/static/media/menu.4813f510b1904235dd9ae09ba533e12f.svg",
     "static/media/github.svg": "/static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
     "static/media/instagram.svg": "/static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
-    "main.50f677f8.css.map": "/static/css/main.50f677f8.css.map",
-    "main.fc7d1586.js.map": "/static/js/main.fc7d1586.js.map",
+    "main.1efc1947.css.map": "/static/css/main.1efc1947.css.map",
+    "main.cb4a860b.js.map": "/static/js/main.cb4a860b.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50f677f8.css",
-    "static/js/main.fc7d1586.js"
+    "static/css/main.1efc1947.css",
+    "static/js/main.cb4a860b.js"
   ]
 }
