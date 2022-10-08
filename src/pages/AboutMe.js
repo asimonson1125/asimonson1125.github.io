@@ -53,11 +53,14 @@ export default function AboutMe() {
       <div className="col">
         <div id="skills" data-aos="fade-up">
           <h2>Skills</h2>
-          <div id="skillList">
+          {/* <div id="skillList">
             <HexGrid></HexGrid>
-            <div id="skillDisp"></div>
-          </div>
-          {/* <Skills>
+            <div id="skillDisp">
+              <h2></h2>
+              <p></p>
+            </div>
+          </div> */}
+          <Skills>
             {[
               "Python",
               "JavaScript",
@@ -90,7 +93,7 @@ export default function AboutMe() {
               "Node.js",
               "ArcGIS"
             ]}
-          </Skills> */}
+          </Skills>
         </div>
         <div data-aos="fade-up" className="elementBlock">
           <h2>Extracirricular Awards</h2>

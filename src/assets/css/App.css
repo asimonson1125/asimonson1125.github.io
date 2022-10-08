@@ -245,8 +245,57 @@ a {
   color: rgb(212, 212, 212);
 }
 
-#skillList{
+#skillList {
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#skillDisp {
+  width: 30em;
+  position: relative;
+}
+
+#skillDisp::after {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right top;
+  opacity: .2;
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  content: "";
+  z-index: -1;
+}
+
+#skillDisp.python::after {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png')
+}
+
+#skillDisp.js::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-PTty3CfTGnA%2FTpZOEjTQ_WI%2FAAAAAAAAAeo%2FKeKt_D5X2xo%2Fs1600%2Fjs.jpg&f=1&nofb=1&ipt=c8ae673676226ae40a5cd1408a5c7607e6b9725025888f4994a705309a16d1c3&ipo=images')
+}
+
+#skillDisp.html::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2017%2F07%2FHTML5_badge.png&f=1&nofb=1&ipt=db644f64f96f334aad37d31dc1c9dab28021476f6effaa0cb682297f8fd14240&ipo=images')
+}
+
+#skillDisp.sql::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fbasicolor-computer-tech%2F24%2F091_database_data_sql-512.png&f=1&nofb=1&ipt=cffc17203486b92c9733b992733e6934c03f984bc530c94b75bed278bc73477d&ipo=images')
+}
+
+#skillDisp.cpp::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fen.nokiawroclaw.pl%2Fwp-content%2Fuploads%2Fsites%2F5%2F2018%2F11%2Fcpp_logo.png&f=1&nofb=1&ipt=5fc23951b00bcbdec1977f3bc4591a7b8511ab29f5982963c541526902c0b4fd&ipo=images')
+}
+
+#skillDisp.other::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Fgit-icon-logo-png-transparent.png&f=1&nofb=1&ipt=834c5a11f63e26429713be2b7d9c9d1e45ce53d771862b9ab49bc35571513894&ipo=images')
+}
+
+#skillDisp.tools::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.g2crowd.com%2Fuploads%2Fproduct%2Fimage%2Flarge_detail%2Flarge_detail_64636a5c446c22391d4ed719e0987cd2%2Farcgis-pro.png&f=1&nofb=1&ipt=812a2905dd03e5c68f55a9f095bfe7a54feb801bf7f3f11cc01352f45f8a4f8d&ipo=images')
 }
 
 .hex-wrapper {
@@ -279,8 +328,8 @@ a {
 }
 
 .hex-border {
-  border-left: solid black 1px;
-  border-right: solid black 1px;
+  border-left: solid black 3px;
+  border-right: solid black 3px;
   width: 100%;
   height: 58%;
 }
@@ -442,6 +491,22 @@ a {
       0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff,
       0 0 140px #5271ff;
   }
+}
+
+@keyframes swipeIn {
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.swipeIn {
+  animation: swipeIn 1s 1;
 }
 
 .fPage {
