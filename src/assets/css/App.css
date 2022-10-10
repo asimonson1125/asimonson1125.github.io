@@ -527,6 +527,105 @@ a {
   justify-content: center;
 }
 
+.chess{
+  width: 300px;
+  height: calc(125px + 2em);
+  border: none;
+}
+
+#chessProfile {
+  border-radius: 5px;
+  width: 300px;
+  height: calc(125px + 2em);
+  color: #AAAAAA;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+}
+
+.chessInfo {
+  background-color: rgba(0,0,0,.3);;
+  margin: 1em;
+}
+
+.identity {
+  margin-right: 0px;
+}
+
+.identity h5 {
+  margin: 0px;
+  margin-top: -25px;
+  background: black;
+  z-index: 50;
+  position: relative;
+  width: 90%;
+  margin-left: 10px;
+
+}
+
+.pfpContainer {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.pfpContainer > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pfp {
+  border-radius: 50%;
+  width: 100px;
+  text-align: center;
+}
+
+.vContainer {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.vItem {
+  display: inline-block;
+}
+
+.vItem p {
+  margin: 0px;
+  display: inline;
+}
+
+.chessIcon {
+  display: inline-block;
+  font-family: Chess New;
+  font-size: x-large;
+  width: 25px;
+  text-align: center;
+}
+
+.rapid {
+  color: #6c9d41;
+}
+
+.blitz {
+  color: #f7c045;
+}
+
+.bullet {
+  color: #a58a45;
+}
+
+.puzzles {
+  color: #db7e3b;
+}
+
+@font-face {
+  font-family: Chess New;
+  src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
+}
+
 @media screen and (max-width: 1200px) {
 
   #menu {
