@@ -39,8 +39,8 @@ function App() {
           <Route exact path='/projects' element={<Projects />}></Route>
           <Route exact path='activities' element={<Activities />}></Route>
           <Route exact path='/about' element={<AboutMe />}></Route>
-          <Route exact path='/404' element={<ErrorNotFound />} />
-          <Route exact path="*" element={<ErrorNotFound />} />
+          <Route exact path='/notFound' element={<ErrorNotFound />} />
+          {/* <Route exact path="/*" element={<ErrorNotFound />} /> */}
         </Routes>
         <div className='footer'>
           <Socials />

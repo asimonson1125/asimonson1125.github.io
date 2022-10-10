@@ -3,8 +3,8 @@ import React from "react";
  
 const balls = [];
 const density = 0.00005;
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
+const screenWidth = window.innerWidth + 100;
+const screenHeight = window.innerHeight + 100;
 
 export default class Idler extends React.Component {
   setup = (p5, parentRef) => {
@@ -39,11 +39,11 @@ export default class Idler extends React.Component {
       for (let j = i + 1; j < balls.length; j++) {
         let distance = p5.dist(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
         if (distance < 100){
-          p5.stroke(200);
+          p5.stroke(150);
           p5.line(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
         }
-        if (distance < 125) {
-          p5.stroke(75);
+        else if (distance < 150) {
+          p5.stroke(100);
           let chance = 0.3 ** (((p5.random(0.2) + 0.8) * distance) / 150);
           if (chance < 0.5) {
             p5.stroke(50);
