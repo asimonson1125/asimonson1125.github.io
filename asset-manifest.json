@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.7c8042c4.css",
+    "main.css": "/static/css/main.416cb9ca.css",
     "main.js": "/static/js/main.351061b8.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/WeThePeople_Districts.jpg": "/static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
@@ -21,12 +21,12 @@
     "static/media/menu.svg": "/static/media/menu.4813f510b1904235dd9ae09ba533e12f.svg",
     "static/media/github.svg": "/static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
     "static/media/instagram.svg": "/static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
-    "main.7c8042c4.css.map": "/static/css/main.7c8042c4.css.map",
+    "main.416cb9ca.css.map": "/static/css/main.416cb9ca.css.map",
     "main.351061b8.js.map": "/static/js/main.351061b8.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c8042c4.css",
+    "static/css/main.416cb9ca.css",
     "static/js/main.351061b8.js"
   ]
 }
