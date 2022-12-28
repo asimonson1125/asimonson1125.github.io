@@ -23,7 +23,7 @@
     "sass": "^1.55.0",
     "semver": "^7.3.7",
     "set-value": "^4.1.0",
-    "update": "^0.4.2"
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
