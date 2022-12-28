@@ -178,7 +178,6 @@ a {
 .homeground {
   position: relative;
   padding-top: 7rem;
-  width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
   padding-bottom: 1rem;
   overflow: hidden;

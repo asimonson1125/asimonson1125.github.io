@@ -1,6 +1,8 @@
 import React from "react";
 import MyCarousel from "../componets/Carousel.js";
-import HexGrid from "../componets/HexGrid";
+import ChessBed from "../componets/ChessBed.js";
+// import HexGrid from "../componets/HexGrid";
+import Skills from "../componets/Skills";
 // import img1 from '../assets/photos/itsa_me.JPG'
 // import img2 from '../assets/photos/me_robot.jpeg'
 import img3 from "../assets/photos/AcademicTeam.jpg";
@@ -27,7 +29,7 @@ export default function AboutMe() {
             reading up on some recent geopolitical development, or haphazardly
             expanding my list of unusable, yet bizzarely wise quotes.
           </p>
-          <p>
+          {/* <p>
             My goal is to strive to make the biggest positive impact on the
             world that I can. I'm here to improve and optimize what we have so
             that we can spend more time on the things that matter.
@@ -46,8 +48,11 @@ export default function AboutMe() {
             promotes dedication and enables an in-depth understanding, I can
             take pride in each of my projects, bridging the gap between the the
             multifaceted purpose present in everything around us.
-          </p>
+          </p> */}
           {/*<img src={img1} alt='Me' className='boxedImg' />*/}
+        </div>
+        <div className="chess">
+          <ChessBed username="asimonson1125"></ChessBed>
         </div>
       </div>
       <div className="col">
@@ -91,7 +96,7 @@ export default function AboutMe() {
               "Google API",
               "React",
               "Node.js",
-              "ArcGIS"
+              "ArcGIS",
             ]}
           </Skills>
         </div>
