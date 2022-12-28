@@ -13,7 +13,7 @@ import AboutMe from './pages/AboutMe';
 import Idler from './componets/Idler'
 import ErrorNotFound from './pages/Error'
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+// import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { toggleMenu } from './scripts/responsive'
 
 
@@ -40,7 +40,7 @@ function App() {
           <Route exact path='activities' element={<Activities />}></Route>
           <Route exact path='/about' element={<AboutMe />}></Route>
           <Route exact path='/notFound' element={<ErrorNotFound />} />
-          {/* <Route exact path="/*" element={<ErrorNotFound />} /> */}
+          <Route exact path="/*" element={<ErrorNotFound />} />
         </Routes>
         <div className='footer'>
           <Socials />

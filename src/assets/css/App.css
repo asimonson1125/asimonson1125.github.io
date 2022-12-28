@@ -159,6 +159,7 @@ a {
 }
 
 .foreground {
+  position: relative;
   padding-top: 7rem;
   padding-left: 8rem;
   width: calc(100%-8rem);
@@ -174,7 +175,38 @@ a {
   max-width: min(90%, 40rem);
 }
 
+.homeground {
+  position: relative;
+  padding-top: 7rem;
+  width: calc(100%-8rem);
+  min-height: calc(100vh - 8rem);
+  padding-bottom: 1rem;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.noBackground {
+  background: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.noPad {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 .centerContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.centerContent>div {
   margin-top: 30vh;
   margin-left: auto;
   margin-right: auto;
@@ -186,6 +218,18 @@ a {
   display: inline-block;
   background-color: rgb(44, 44, 44, .75);
   border: solid black 4px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.onRight {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #Vertical {
@@ -527,10 +571,12 @@ a {
   justify-content: center;
 }
 
-.chess{
+.chess {
   width: 300px;
   height: calc(125px + 2em);
   border: none;
+  /* transform: scale(.8);
+  float: right; */
 }
 
 #chessProfile {
@@ -544,8 +590,20 @@ a {
 }
 
 .chessInfo {
-  background-color: rgba(0,0,0,.3);;
+  background-color: rgba(0, 0, 0, .3);
+  ;
   margin: 1em;
+}
+
+.bottomtext {
+  font-size: x-small;
+  margin: 3px;
+  color: white;
+  text-align: right;
+}
+
+.black {
+  background-color: black;
 }
 
 .identity {
@@ -569,7 +627,7 @@ a {
   height: 100%;
 }
 
-.pfpContainer > div {
+.pfpContainer>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -673,9 +731,21 @@ a {
     padding-bottom: 36px;
   }
 
+  .homeground {
+    width: 90%;
+    padding-bottom: 36px;
+    display: flex;
+    margin: auto;
+  }
+
   .centeredForeground {
     margin-left: -1.5rem;
     /* remove .foreground excess margin */
+  }
+
+  .onRight {
+    position: unset;
+    margin-top: 3rem;
   }
 
   .col {
