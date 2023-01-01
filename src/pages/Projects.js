@@ -3,6 +3,15 @@ import Project from '../componets/Project'
 import github from '../assets/icons/github.svg'
 import globe from '../assets/icons/globe.svg'
 
+import geovisF from '../assets/photos/geovisF.png'
+import chessbed from '../assets/photos/chessbed.png'
+import occupyrit from '../assets/photos/occupyRIT.png'
+import slate from '../assets/photos/slate.png'
+import website from '../assets/photos/website.png'
+import resume from '../assets/photos/resume.png'
+import yugoslavia from '../assets/photos/ceoOfYugo.png'
+import vexbutt from '../assets/photos/vexcodeButtons.jpeg'
+
 export default function Projects() {
   return (
     <div className='foreground'>
@@ -14,10 +23,13 @@ export default function Projects() {
       </div>
       <h3 className='concentratedHead'>Pinned:</h3>
       <ProjectList>
-        <Project status='complete' title='Slate' links={[['https://github.com/asimonson1125/Slate', <img alt='github' src={github} />], ["https://slate.csh.rit.edu/", <img alt='site' src={globe} />]]} >
+        <Project status='complete' title='Slate' bgi={slate} links={[['https://github.com/asimonson1125/Slate', <img alt='github' src={github} />], ["https://slate.csh.rit.edu/", <img alt='site' src={globe} />]]} >
           Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data.  Includes Computer Science House account integration.
         </Project>
-        <Project status='WIP' title='OccupyRIT' links={[['https://github.com/asimonson1125/Occupy-RIT', <img alt='github' src={github} />]]}>
+        <Project status='complete' title='Lower 48 Alt. Energy Map' bgi={geovisF} links={[['https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9', <img alt='ArcGIS' src={globe} />]]}>
+          ArcGIS Map of the most effective alternative energy sources in the continental United States
+        </Project>
+        <Project status='WIP' title='OccupyRIT' bgi={occupyrit} links={[['https://github.com/asimonson1125/Occupy-RIT', <img alt='github' src={github} />]]}>
           Collects RIT Gym Occupancy data for analysis, determining busiest times.
         </Project>
         <Project status='WIP' title='FinTech' links={[['https://github.com/LukeHorigan/Financial-Management-Assocation-', <img alt='github' src={github} />]]}  >
@@ -26,22 +38,22 @@ export default function Projects() {
       </ProjectList>
       <h3 className='concentratedHead'>All:</h3>
       <ProjectList>
-        <Project status='WIP' title='CSH ImagineRIT2023'>
-          An ongoing project with the Computer Science House using bluetooth tracking to monitor the ImagineRIT event
+      <Project status='complete' title='Lower 48 Alt. Energy Map' bgi={geovisF} links={[['https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9', <img alt='ArcGIS' src={globe} />]]}>
+          ArcGIS Map of the most effective alternative energy sources in the continental United States
         </Project>
-        <Project status='WIP' title='OccupyRIT' links={[['https://github.com/asimonson1125/Occupy-RIT', <img alt='github' src={github} />]]}>
+        <Project status='WIP' title='OccupyRIT' bgi={occupyrit} links={[['https://github.com/asimonson1125/Occupy-RIT', <img alt='github' src={github} />]]}>
           Collects RIT Gym Occupancy data for analysis, determining busiest times.
         </Project>
-        <Project status='complete' title='Chesscom Embeds' links={[['https://github.com/asimonson1125/chesscom-embed', <img alt='github' src={github} />]]} >
+        <Project status='complete' title='Chesscom Embeds' bgi={chessbed} links={[['https://github.com/asimonson1125/chesscom-embed', <img alt='github' src={github} />]]} >
           A template for creating Chess.com user profile embeds
         </Project>
-        <Project status='complete' title='Resume' links={[['https://github.com/asimonson1125/Resume', <img alt='github' src={github} />]]} >
+        <Project status='complete' title='Resume' bgi={resume} links={[['https://github.com/asimonson1125/Resume', <img alt='github' src={github} />], ["https://asimonson.com/Resume.pdf/", <img alt='site' src={globe} />]]} >
           My Resume, made in LaTeX with a custom design derived by the AltaCV template on OverLeaf.
         </Project>
-        <Project status='WIP' title='Digital Portfolio' links={[['https://github.com/asimonson1125/asimonson1125.github.io', <img alt='github' src={github} />]]} >
-          A personal portfolio site made with React.js.  Might overhaul.
+        <Project status='WIP' title='Digital Portfolio' bgi={website} links={[['https://github.com/asimonson1125/asimonson1125.github.io', <img alt='github' src={github} />], ["https://asimonson.com/", <img alt='site' src={globe} />]]} >
+          A personal portfolio site made with React.js.
         </Project>
-        <Project status='complete' title='Slate' links={[['https://github.com/asimonson1125/Slate', <img alt='github' src={github} />], ["https://slate.csh.rit.edu/", <img alt='site' src={globe} />]]} >
+        <Project status='complete' title='Slate' bgi={slate} links={[['https://github.com/asimonson1125/Slate', <img alt='github' src={github} />], ["https://slate.csh.rit.edu/", <img alt='site' src={globe} />]]} >
           Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data.  Includes Computer Science House account integration.
         </Project>
         <Project status='complete' title='Humans vs. Zombies Bot' links={[['https://github.com/asimonson1125/HvZ-bot', <img alt='github' src={github} />]]} >
@@ -60,14 +72,14 @@ export default function Projects() {
         <Project status='complete' title='Acumen' links={[['https://github.com/asimonson1125/Acumen', <img alt='github' src={github} />]]} >
           A personal Discord bot focused on statistical insight and role management for NationsGame, including NG Rolls Sim accessibility.
         </Project>
-        <Project status='complete' title='NationsGame Rolls Sim' links={[['https://github.com/asimonson1125/NG-Rolls-Simulator', <img alt='github' src={github} />]]} >
+        <Project status='complete' title='NationsGame Rolls Sim' bgi={yugoslavia} links={[['https://github.com/asimonson1125/NG-Rolls-Simulator', <img alt='github' src={github} />]]} >
           A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.<br />
           Unfortunately, NationsGame is now defunct.  Limited screenshots of functionality.
         </Project>
         <Project status='incomplete' title='WallCycle' links={[['https://github.com/asimonson1125/WallCycle', <img alt='github' src={github} />]]} >
           A GNOME extension that cycles through a folder of wallpapers.
         </Project>
-        <Project status='complete' title='VEXcode Button Engine' links={[['https://github.com/asimonson1125/VEXcode-Button-Generator', <img alt='github' src={github} />]]} >
+        <Project status='complete' title='VEXcode Button Engine' bgi={vexbutt} links={[['https://github.com/asimonson1125/VEXcode-Button-Generator', <img alt='github' src={github} />]]} >
           VEXcode button library + examples and template for the VEX V5 brain
         </Project>
         <Project status='complete' title='WinKeylogger' links={[['https://github.com/asimonson1125/WinKeylogger', <img alt='github' src={github} />]]}>

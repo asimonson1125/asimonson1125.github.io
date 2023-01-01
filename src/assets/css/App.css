@@ -225,10 +225,31 @@ a {
   justify-content: space-around;
 }
 
+.vFlex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
 .onRight {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.bgi {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
 }
 
 #Vertical {
@@ -406,8 +427,23 @@ a {
   background-color: rgba(22, 22, 22, .8);
 }
 
-.project .topBox, .project .bottomBox {
-  padding-left: 1rem;
+.projTitle > * {
+  margin-bottom: 0;
+}
+
+.projBody {
+  position: relative;
+  z-index: 3;
+}
+
+.project .topBox, .project .bottomBox, .project .projTitle {
+  padding: 0 1rem;
+  z-index: inherit;
+}
+
+.backedBody {
+  background-color: #1a1a1a;
+  padding: .25em;
 }
 
 .tab {
@@ -423,18 +459,6 @@ a {
 .project img {
   margin-top: auto;
   height: 3rem;
-}
-
-.topBox {
-  padding-left: .5rem;
-  padding-right: 1rem;
-  height: 75%;
-}
-
-.bottomBox {
-  height: auto;
-  padding-left: 0rem;
-  padding-right: 1rem;
 }
 
 .bottomBox a, .placeholding {
