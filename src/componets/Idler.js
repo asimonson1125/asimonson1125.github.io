@@ -1,10 +1,10 @@
 import Sketch from "react-p5";
 import React from "react";
- 
+
 const balls = [];
 const density = 0.00005;
-const screenWidth = window.innerWidth + 100;
-const screenHeight = window.innerHeight + 100;
+let screenWidth = window.innerWidth + 10;
+let screenHeight = window.innerHeight + 10;
 
 export default class Idler extends React.Component {
   setup = (p5, parentRef) => {
@@ -54,7 +54,19 @@ export default class Idler extends React.Component {
     }
   };
   render() {
-    return <Sketch setup={this.setup} draw={this.draw} style={{position: 'fixed', zIndex:-1}}/>;
+    const windowResized = (p5) => {
+      p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+      screenWidth = window.innerWidth + 10;
+      screenHeight = window.innerHeight + 10;
+    };
+    return (
+      <Sketch
+        windowResized={windowResized}
+        setup={this.setup}
+        draw={this.draw}
+        style={{ position: "fixed", zIndex: -69 }}
+      />
+    );
   }
 }
 
