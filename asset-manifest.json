@@ -1,30 +1,38 @@
 {
   "files": {
-    "main.css": "/static/css/main.3ded0ce6.css",
-    "main.js": "/static/js/main.5288617d.js",
+    "main.css": "/static/css/main.e50d2ee1.css",
+    "main.js": "/static/js/main.88e3e5bf.js",
+    "static/media/geovisF.png": "/static/media/geovisF.fe82253a3d83da524ca1.png",
+    "static/media/vexcodeButtons.jpeg": "/static/media/vexcodeButtons.a89de9679425b21e7b7f.jpeg",
     "static/media/WeThePeople_Districts.jpg": "/static/media/WeThePeople_Districts.8a9f512832175f65c054.jpg",
     "static/media/hagerstownVex2019.jpg": "/static/media/hagerstownVex2019.1d98bab1a6215f5cf90d.jpg",
     "static/media/WeThePeople.jpg": "/static/media/WeThePeople.bc88e6043056eb380c2f.jpg",
     "static/media/WeThePeople_NationalsSetup.jpg": "/static/media/WeThePeople_NationalsSetup.022c7bdff973aab7dc7f.jpg",
+    "static/media/website.png": "/static/media/website.47cbcf11ae347242fd52.png",
+    "static/media/resume.png": "/static/media/resume.f4c9bed076ad56d78fdb.png",
     "static/media/Neon Future.ttf": "/static/media/Neon Future.b38cf6acc4405bcdf657.ttf",
+    "static/media/occupyRIT.png": "/static/media/occupyRIT.0304f04934dc16932d22.png",
     "static/media/AcademicTeam.jpg": "/static/media/AcademicTeam.6fa0b6964de0b5e0331f.jpg",
+    "static/media/ceoOfYugo.png": "/static/media/ceoOfYugo.d6ca923100553e7db015.png",
     "static/media/INDEPENDENT.ttf": "/static/media/INDEPENDENT.e8677f7e05e4d5237409.ttf",
     "static/media/SunsetClub.otf": "/static/media/SunsetClub.f65ecf491600e5147536.otf",
+    "static/media/chessbed.png": "/static/media/chessbed.6fcdf744e29d7a0641c5.png",
     "static/media/Starixo.otf": "/static/media/Starixo.b25b1ff5646791fe7551.otf",
     "static/media/sun.png": "/static/media/sun.20cf23895b428469f97c.png",
-    "static/media/globe.svg": "/static/media/globe.333eecc967016bc78aa0cb6995f7d3d5.svg",
-    "static/media/linkedin.svg": "/static/media/linkedin.9e984989712b2f3b4de55b0e2e09e8bf.svg",
+    "static/media/slate.png": "/static/media/slate.dfaaf1b81d2d9e93266c.png",
+    "static/media/globe.svg": "/static/media/globe.74d82ff17a3f6b7094e280f108b437dd.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.aff82dd0fb89a1d98e023a874f3efb74.svg",
     "static/media/default.svg": "/static/media/default.d1ab51850edf688507e69a23eff529d8.svg",
-    "static/media/email.svg": "/static/media/email.eabba385e24d37dd50ec8e2a2bd31270.svg",
+    "static/media/email.svg": "/static/media/email.f67a3787f3c8d0800b8e78101413d61e.svg",
     "index.html": "/index.html",
-    "static/media/menu.svg": "/static/media/menu.4813f510b1904235dd9ae09ba533e12f.svg",
+    "static/media/menu.svg": "/static/media/menu.f52e22ef2a8353cc027299adb03337ca.svg",
     "static/media/github.svg": "/static/media/github.bfe22a7c4c4cc4b7490fd260eb7d60c6.svg",
     "static/media/instagram.svg": "/static/media/instagram.246d7b691353f58bd9dd2dff278721d9.svg",
-    "main.3ded0ce6.css.map": "/static/css/main.3ded0ce6.css.map",
-    "main.5288617d.js.map": "/static/js/main.5288617d.js.map"
+    "main.e50d2ee1.css.map": "/static/css/main.e50d2ee1.css.map",
+    "main.88e3e5bf.js.map": "/static/js/main.88e3e5bf.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ded0ce6.css",
-    "static/js/main.5288617d.js"
+    "static/css/main.e50d2ee1.css",
+    "static/js/main.88e3e5bf.js"
   ]
 }
