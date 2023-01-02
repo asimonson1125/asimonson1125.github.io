@@ -1,15 +1,17 @@
 import React from "react";
-import MyCarousel from "../componets/Carousel.js";
+// import MyCarousel from "../componets/Carousel.js";
 import ChessBed from "../componets/ChessBed.js";
 // import HexGrid from "../componets/HexGrid";
 import Skills from "../componets/Skills";
+import Timeline from '../componets/Timeline';
+import TimeItem from "../componets/TimeItem.js";
 // import img1 from '../assets/photos/itsa_me.JPG'
 // import img2 from '../assets/photos/me_robot.jpeg'
-import img3 from "../assets/photos/AcademicTeam.jpg";
-import img4 from "../assets/photos/hagerstownVex2019.jpg";
-import img5 from "../assets/photos/WeThePeople_Districts.jpg";
-import img6 from "../assets/photos/WeThePeople.jpg";
-import img7 from "../assets/photos/WeThePeople_NationalsSetup.jpg";
+// import img3 from "../assets/photos/AcademicTeam.jpg";
+// import img4 from "../assets/photos/hagerstownVex2019.jpg";
+// import img5 from "../assets/photos/WeThePeople_Districts.jpg";
+// import img6 from "../assets/photos/WeThePeople.jpg";
+// import img7 from "../assets/photos/WeThePeople_NationalsSetup.jpg";
 
 export default function AboutMe() {
   return (
@@ -50,9 +52,6 @@ export default function AboutMe() {
             multifaceted purpose present in everything around us.
           </p> */}
           {/*<img src={img1} alt='Me' className='boxedImg' />*/}
-        </div>
-        <div className="chess">
-          <ChessBed username="asimonson1125"></ChessBed>
         </div>
       </div>
       <div className="col">
@@ -99,8 +98,11 @@ export default function AboutMe() {
               "ArcGIS",
             ]}
           </Skills>
+          <div className="chess">
+            <ChessBed username="asimonson1125"></ChessBed>
+          </div>
         </div>
-        <div data-aos="fade-up" className="elementBlock">
+        {/* <div data-aos="fade-up" className="elementBlock">
           <h2>Extracirricular Awards</h2>
           <MyCarousel className="carousel" data-aos="fade-up">
             {[
@@ -129,7 +131,13 @@ export default function AboutMe() {
               },
             ]}
           </MyCarousel>
-        </div>
+        </div> */}
+      </div>
+      <div className="col">
+        <Timeline>
+          <TimeItem date='01/2023' title="Co-op @ Dow Chemical">Bottomtext</TimeItem>
+          <TimeItem date='08/2021' title='Started Computer Science BS at RIT'></TimeItem>
+        </Timeline>
       </div>
     </div>
   );

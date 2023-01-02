@@ -20,6 +20,11 @@
   src: url("../fonts/SunsetClub.otf")
 }
 
+@font-face {
+  font-family: "robotoreg";
+  src: url("../fonts/RobotoCondensed-Regular.ttf")
+}
+
 html, body {
   overflow-x: hidden;
 }
@@ -596,7 +601,6 @@ a {
 
 .chess {
   width: 300px;
-  height: calc(125px + 2em);
   border: none;
   /* transform: scale(.8);
   float: right; */
@@ -702,6 +706,40 @@ a {
   color: #db7e3b;
 }
 
+.timeline-item{
+  border-left: solid #AAAAAA 3px;
+}
+
+.timeline-item h2{
+  margin-top: 0px;
+  margin-left: .5em;
+  font-family: robotoreg;
+}
+
+.timeline-item p{
+  margin-bottom: 0px;
+  padding-bottom: 2em;
+  padding-left: 3em;
+  font-family: robotoreg;
+}
+
+/* .timeline-item::before{
+  content: "";
+  background-color: red;
+  border: solid black 3px;
+  border-radius: 100%;
+  padding: 5px;
+  position: absolute;
+  margin-left: -8px;
+} */
+
+.datetext {
+  margin: .25em;
+  font-size: small;
+  margin-left: -1.5em;
+  font-family: robotoreg;
+}
+
 @font-face {
   font-family: Chess New;
   src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
@@ -803,7 +841,7 @@ a {
     padding-bottom: .5rem;
     margin-right: auto;
     margin-left: auto;
-    width: 400px;
+    width: min(100vw, 400px);
   }
 
   .socials * {
