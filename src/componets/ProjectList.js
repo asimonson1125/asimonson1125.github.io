@@ -11,7 +11,7 @@ export default function ProjectList(props){
         );
     });
     return(
-        <div className='projectList centeredForeground' data-aos='fade-up'>
+        <div className={'projectList centeredForeground ' + props.classes} data-aos='fade-up'>
             {projects}
         </div>
     );

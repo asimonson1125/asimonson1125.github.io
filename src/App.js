@@ -1,6 +1,7 @@
 import { Route, Link, Routes, BrowserRouter as Router } from "react-router-dom";
 
 import "./assets/css/App.css";
+import "./assets/css/checkbox.css"
 import "./assets/css/head.scss";
 import menu from "./assets/icons/menu.svg";
 import Nav from "./componets/Nav.js";

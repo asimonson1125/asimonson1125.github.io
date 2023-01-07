@@ -24,7 +24,7 @@ export default class Project extends React.Component {
       );
     }
     return (
-      <div className={"project"} data-aos="fade-up">
+      <div className={"project " + this.props.classes} data-aos="fade-up">
         <div className="vFlex">
           <div className="projTitle">
             <h3>{this.props.title}</h3>
