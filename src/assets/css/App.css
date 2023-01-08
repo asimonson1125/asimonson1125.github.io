@@ -156,7 +156,7 @@ a {
 }
 
 #home {
-  height: 100vh;
+  /* height: 100vh; */
   overflow-y: hidden;
 }
 
@@ -252,6 +252,11 @@ a {
   position: absolute;
   right: 0;
   top: 0;
+  max-width: 100vw;
+}
+
+.onRight > * {
+  margin: auto;
 }
 
 .bgi {
@@ -814,6 +819,7 @@ a {
     padding-bottom: 36px;
     display: flex;
     margin: auto;
+    overflow: visible;
   }
 
   .centeredForeground {

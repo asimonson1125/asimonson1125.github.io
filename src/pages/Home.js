@@ -6,6 +6,7 @@ export default function Home() {
     width: "350px",
     height: "165px",
     border: "none",
+    display: "block"
   };
 
   return (
