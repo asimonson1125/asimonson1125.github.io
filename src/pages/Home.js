@@ -2,6 +2,12 @@ import React from "react";
 import ChessBed from "../componets/ChessBed.js";
 
 export default function Home() {
+  const langstyle = {
+    width: "350px",
+    height: "165px",
+    border: "none",
+  };
+
   return (
     <div id="home">
       <div className="homeground">
@@ -15,6 +21,11 @@ export default function Home() {
             </div>
           </div>
           <div className="onRight" data-aos="fade-up">
+            <iframe
+              title="langstats"
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=asimonson1125&layout=compact&show_icons=true&theme=gruvbox"
+              style={langstyle}
+            ></iframe>
             <div className="chess">
               <ChessBed username="asimonson1125"></ChessBed>
             </div>
