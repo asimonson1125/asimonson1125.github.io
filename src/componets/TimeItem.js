@@ -4,6 +4,7 @@ export default class TimeItem extends React.Component {
   constructor(props) {
     super(props);
     this.date = props.date;
+    this.classes = props.classes;
     this.item = (
       <>
         <h2>{props.title}</h2>
@@ -15,6 +16,6 @@ export default class TimeItem extends React.Component {
   }
 
   render() {
-    return <><p className="datetext">{this.date}</p><div className="timeline-item">{this.item}</div></>;
+    return <div className={"timeitem " + this.classes}><p className="datetext">{this.date}</p><div className="timeline-item">{this.item}</div></div>;
   }
 }

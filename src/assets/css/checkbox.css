@@ -2,27 +2,38 @@
     display: none;
 }
 
-/* checkbox by Matt Smith */
+.hiddenup {
+    max-height: 0px !important;
+}
+
+.checkbox-wrapper > div {
+    margin-bottom: .5em;
+}
+
+.checkbox-wrapper > div:last-child {
+    margin-bottom: 0;;
+}
+
 .checkbox-wrapper .switch {
-    display: inline-block;
-    height: 34px;
+    display: flex;
     position: relative;
-    width: 60px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper .switch > * {
+    align-self: center;
 }
 
 .checkbox-wrapper .switch input {
     display: none;
 }
 
+
 .checkbox-wrapper .slider {
     background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
     transition: 0.4s;
+    height: 34px;
+    width: 60px;
 }
 
 .checkbox-wrapper .slider:before {
@@ -50,4 +61,8 @@
 
 .checkbox-wrapper .slider.round:before {
     border-radius: 50%;
+}
+
+.checkbox-wrapper strong {
+    margin-left: .5em;
 }

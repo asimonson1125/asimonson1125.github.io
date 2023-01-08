@@ -15,7 +15,7 @@ import vexbutt from "../assets/photos/vexcodeButtons.jpeg";
 
 export default function Projects() {
   return (
-    <div className="foreground">
+    <div className="foreground" onLoad={() => toggle('')}>
       <div data-aos="fade-up">
         <h2 className="concentratedHead">Projects</h2>
         <p>
@@ -29,28 +29,34 @@ export default function Projects() {
         </p>
       </div>
       <div className="checkbox-wrapper">
+        <div className="flex start">
         <label className="switch" htmlFor="pinned">
-          <input type="checkbox" id="pinned" onClick={toggle} />
+          <input type="checkbox" id="pinned" onClick={() => toggle('')} defaultChecked/>
           <div className="slider round"></div>
+          <strong>Pinned</strong>
         </label>
-        Pinned
+        </div>
+        <div className="flex start">
         <label className="switch" htmlFor="programming">
-          <input type="checkbox" id="programming" onClick={toggle} />
+          <input type="checkbox" id="programming" onClick={() => toggle('')} />
           <div className="slider round"></div>
+          <strong>Programming</strong>
         </label>
-        Programming
-        <label className="switch" htmlFor="geospacial" onClick={toggle}>
+        </div>
+        <div className="flex start">
+        <label className="switch" htmlFor="geospacial" onClick={() => toggle('')}>
           <input type="checkbox" id="geospacial" />
           <div className="slider round"></div>
+          <strong>Geospacial</strong>
         </label>
-        Geospacial
+        </div>
       </div>
       <ProjectList classes="checkbox-client">
         <Project
           status="complete"
           title="Lower 48 Alt. Energy Map"
-          classes="pinned geospacial"
           bgi={geovisF}
+          classes="pinned geospacial"
           links={[
             [
               "https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9",
@@ -73,12 +79,13 @@ export default function Projects() {
             ],
           ]}
         >
-          Collects RIT Gym Occupancy data for analysis, determining busiest
+          Collects RIT Gym Occupancy data, determining busiest workout
           times.
         </Project>
         <Project
           status="complete"
           title="Chesscom Embeds"
+          classes="programming"
           bgi={chessbed}
           links={[
             [
@@ -92,6 +99,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="Resume"
+          classes="programming"
           bgi={resume}
           links={[
             [
@@ -110,6 +118,7 @@ export default function Projects() {
         <Project
           status="WIP"
           title="Digital Portfolio"
+          classes="programming"
           bgi={website}
           links={[
             [
@@ -141,6 +150,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="Humans vs. Zombies Bot"
+          classes="programming"
           links={[
             [
               "https://github.com/asimonson1125/HvZ-bot",
@@ -166,7 +176,7 @@ export default function Projects() {
           to learning about financial management of equities using automated
           solutions developed by students.
         </Project>
-        <Project status="complete" title="Browser Trivia Bot">
+        <Project status="complete" classes="programming" title="Browser Trivia Bot">
           A tampermonkey tool used to automatically answer and submit online
           trivia forms, which can be tailored to different site layouts.
           <br />
@@ -176,6 +186,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="Querist"
+          classes="programming"
           links={[
             [
               "https://github.com/asimonson1125/Querist",
@@ -189,6 +200,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="Acumen"
+          classes="programming"
           links={[
             [
               "https://github.com/asimonson1125/Acumen",
@@ -202,6 +214,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="NationsGame Rolls Sim"
+          classes="programming"
           bgi={yugoslavia}
           links={[
             [
@@ -219,6 +232,7 @@ export default function Projects() {
         <Project
           status="incomplete"
           title="WallCycle"
+          classes="programming"
           links={[
             [
               "https://github.com/asimonson1125/WallCycle",
@@ -231,6 +245,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="VEXcode Button Engine"
+          classes="programming"
           bgi={vexbutt}
           links={[
             [
@@ -244,6 +259,7 @@ export default function Projects() {
         <Project
           status="complete"
           title="WinKeylogger"
+          classes="programming"
           links={[
             [
               "https://github.com/asimonson1125/WinKeylogger",

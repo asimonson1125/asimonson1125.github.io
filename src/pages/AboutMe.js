@@ -5,6 +5,7 @@ import ChessBed from "../componets/ChessBed.js";
 import Skills from "../componets/Skills";
 import Timeline from '../componets/Timeline';
 import TimeItem from "../componets/TimeItem.js";
+import { toggle } from "../scripts/checkbox";
 // import img1 from '../assets/photos/itsa_me.JPG'
 // import img2 from '../assets/photos/me_robot.jpeg'
 // import img3 from "../assets/photos/AcademicTeam.jpg";
@@ -134,9 +135,32 @@ export default function AboutMe() {
         </div> */}
       </div>
       <div className="col">
-        <Timeline>
-          <TimeItem date='01/2023' title="Co-op @ Dow Chemical">Bottomtext</TimeItem>
-          <TimeItem date='08/2021' title='Started Computer Science BS at RIT'></TimeItem>
+      <div className="checkbox-wrapper">
+        <div className="flex start">
+        <label className="switch" htmlFor="pinned">
+          <input type="checkbox" id="pinned" onClick={() => toggle('up')} defaultChecked/>
+          <div className="slider round"></div>
+          <strong>Pinned</strong>
+        </label>
+        </div>
+        <div className="flex start">
+        <label className="switch" htmlFor="education">
+          <input type="checkbox" id="education" onClick={() => toggle('up')} />
+          <div className="slider round"></div>
+          <strong>Education</strong>
+        </label>
+        </div>
+        <div className="flex start">
+        <label className="switch" htmlFor="experience" onClick={() => toggle('up')}>
+          <input type="checkbox" id="experience" />
+          <div className="slider round"></div>
+          <strong>Experience</strong>
+        </label>
+        </div>
+      </div>
+        <Timeline classes="checkbox-client">
+          <TimeItem date='01/2023' title="Co-op @ Dow Chemical" classes="pinned experience">Bottomtext</TimeItem>
+          <TimeItem date='08/2021' title='Started Computer Science BS at RIT' classes="pinned education"></TimeItem>
         </Timeline>
       </div>
     </div>

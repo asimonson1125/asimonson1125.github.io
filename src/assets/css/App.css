@@ -66,6 +66,10 @@ h3, h4 {
   color: #a8a8a8;
 }
 
+strong {
+  color: #ecebeb;
+}
+
 p, li {
   color: rgb(212, 212, 212);
   font-size: 1rem;
@@ -238,6 +242,10 @@ a {
 
 .spaceBetween {
   justify-content: space-between;
+}
+
+.start {
+  justify-content: left;
 }
 
 .onRight {
@@ -430,6 +438,8 @@ a {
   height: 22rem;
   border: .3rem rgba(156, 49, 45, .8) solid;
   background-color: rgba(22, 22, 22, .8);
+  transition: .3s;
+  overflow: hidden;
 }
 
 .projTitle > * {
@@ -704,6 +714,13 @@ a {
 
 .puzzles {
   color: #db7e3b;
+}
+
+.timeitem {
+  transition: .4s;
+  overflow-y: clip;
+  height: auto;
+  max-height: 100px;
 }
 
 .timeline-item{
