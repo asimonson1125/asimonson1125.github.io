@@ -173,7 +173,7 @@ a {
   padding-left: 8rem;
   width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
-  background-color: rgb(44, 44, 44, .75);
+  background-color: rgb(44, 44, 44, .85);
   padding-bottom: 1rem;
   overflow: hidden;
   transition: .4s;
@@ -725,7 +725,14 @@ a {
   transition: .4s;
   overflow-y: clip;
   height: auto;
-  max-height: 100px;
+  max-height: 500px;
+}
+
+.timeitem a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: underline;
 }
 
 .timeline-item{

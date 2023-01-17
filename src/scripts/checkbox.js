@@ -8,18 +8,19 @@ export function toggle(dir) {
       allow.push(x.id);
     }
   });
-  if (allow.length === 0) {
-    toggles.forEach(function (x) {
-      allow.push(x.id);
-    });
-  }
   let list = document.querySelectorAll(".checkbox-client > div");
-  for (let i = 0; i < list.length; i++) {
-    list[i].classList.add("hidden" + dir);
-    for (let x = 0; x < list[i].classList.length; x++) {
-      if (allow.includes(list[i].classList[x])) {
-        list[i].classList.remove("hidden" + dir);
-        break;
+  if (allow.length === 0) {
+    for (let i = 0; i < list.length; i++) {
+      list[i].classList.remove("hidden" + dir);
+    }
+  } else {
+    for (let i = 0; i < list.length; i++) {
+      list[i].classList.remove("hidden" + dir);
+      for (let x = 0; x < allow.length; x++) {
+        if (!list[i].classList.contains(allow[x])) {
+          list[i].classList.add("hidden" + dir);
+          break;
+        }
       }
     }
   }
