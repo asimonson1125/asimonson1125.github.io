@@ -16,7 +16,7 @@ import { toggle } from "../scripts/checkbox";
 
 export default function AboutMe() {
   return (
-    <div className="foreground">
+    <div className="foreground" onLoad={() => toggle('up')}>
       <div className="col">
         <div id="aboutMe" data-aos="fade-up">
           <h2 className="concentratedHead">About Me</h2>
@@ -154,13 +154,25 @@ export default function AboutMe() {
         <label className="switch" htmlFor="experience" onClick={() => toggle('up')}>
           <input type="checkbox" id="experience" />
           <div className="slider round"></div>
-          <strong>Experience</strong>
+          <strong>Work Experience</strong>
+        </label>
+        </div>
+        <div className="flex start">
+        <label className="switch" htmlFor="technical" onClick={() => toggle('up')}>
+          <input type="checkbox" id="technical" />
+          <div className="slider round"></div>
+          <strong>Technical</strong>
         </label>
         </div>
       </div>
         <Timeline classes="checkbox-client">
-          <TimeItem date='01/2023' title="Co-op @ Dow Chemical" classes="pinned experience">Bottomtext</TimeItem>
-          <TimeItem date='08/2021' title='Started Computer Science BS at RIT' classes="pinned education"></TimeItem>
+          <TimeItem date='01/2023 - 05/2023' title="Co-op @ Dow Chemical" classes="pinned experience technical">Spring 2023 Semester Co-op under Dow Chemical's Global Reactive Chemicals team in Analytical Sciences.  Responsibilities included management of chemical compatability data and tool creation for parsing, generating, and submitting reports.</TimeItem>
+          <TimeItem date='08/26/2021' title='Started Portfolio'>I started building this website on this day.  I wish I could say I was farther along than I am.</TimeItem>
+          <TimeItem date='08/2021 - 05/2025' title='Rochester Institute of Technology' classes="pinned education technical">Studying in Rochester Institute of Technology's Computer Science BS program with a minor in International Relations.</TimeItem>
+          <TimeItem date='04/2021 - 08/2021' title="Pretzel & Pizza Creations" classes="experience">Worked part-time as a chef, managing active ingredient supply and fulfilling orders.  I personally recommend the stuffed pretzels.</TimeItem>
+          <TimeItem date='08/2020 - 12/2020' title="Election Official" classes='experience'>Trained in voter registry operations and provisional voting by the Washington County Board of Elections for the 2020 US Presidential Election.</TimeItem>
+          <TimeItem date='09/2016 - 06/2021' title='Boonsboro High School' classes='education'>Graduated high school with highest honors.<br />Member of National Honor Society, Academic Team County Champions.  Participated in Physics Olympics, Robotics Club, and scored at state championships in <a href='https://www.athletic.net/athlete/10265585/track-and-field/high-school'>Cross Country and Track and Field (4x800, 800)</a>. </TimeItem>
+          <TimeItem date='10/2015 - 04/2021' title="Vex Robotics Team Lead/Club President" classes='technical'>Led 5 teams through middle and high school to VEX Robotics Competitions, elevating Boonsboro from county group-stage elimination to its first state championship participation.  Reorganized club and set up its first interface with the community + sponsors</TimeItem>
         </Timeline>
       </div>
     </div>

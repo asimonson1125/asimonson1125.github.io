@@ -7,7 +7,9 @@
 }
 
 .checkbox-wrapper > div {
-    margin-bottom: .5em;
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 .checkbox-wrapper > div:last-child {
