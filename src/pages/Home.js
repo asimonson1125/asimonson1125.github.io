@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ChessBed from "../componets/ChessBed.js";
 
 export default function Home() {
@@ -6,11 +6,21 @@ export default function Home() {
     width: "350px",
     height: "165px",
     border: "none",
-    display: "block"
+    display: "block",
   };
+
+  useEffect(() => {
+    // This will run when the page first loads and whenever the title changes
+    document.title = "Andrew Simonson - Portfolio Home";
+  }, []);
 
   return (
     <div id="home">
+      <meta
+        name="description"
+        content="Andrew Simonson's Portfolio Website - Homepage"
+      />
+
       <div className="homeground">
         <div className="relative">
           <div className="flex">

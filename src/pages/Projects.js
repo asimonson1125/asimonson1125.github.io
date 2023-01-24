@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import ProjectList from "../componets/ProjectList";
 import Project from "../componets/Project";
 import { toggle } from "../scripts/checkbox";
@@ -14,8 +15,17 @@ import yugoslavia from "../assets/photos/ceoOfYugo.png";
 import vexbutt from "../assets/photos/vexcodeButtons.jpeg";
 
 export default function Projects() {
+  useEffect(() => {
+    // This will run when the page first loads and whenever the title changes
+    document.title = "Andrew Simonson - Projects";
+  }, []);
+
   return (
     <div className="foreground" onLoad={() => toggle('')}>
+      <meta
+        name="description"
+        content="Recent projects by Andrew Simonson on his lovely portfolio website :)"
+      />
       <div data-aos="fade-up">
         <h2 className="concentratedHead">Projects</h2>
         <p>
