@@ -16,6 +16,7 @@ export default class ChessBed extends React.Component {
         bullet: "Loading",
         tactics: "Loading",
       },
+      loaded: "hidden"
     };
     this.diamonds = {
       background: "black",
@@ -28,10 +29,24 @@ export default class ChessBed extends React.Component {
   }
 
   async addChessEmbed(username) {
-    let user = await fetch(`https://api.chess.com/pub/player/${username}`);
-    let stats = await fetch(
-      `https://api.chess.com/pub/player/${username}/stats`
-    );
+    let user, stats;
+    try {
+      user = await fetch(`https://api.chess.com/pub/player/${username}`);
+      stats = await fetch(
+        `https://api.chess.com/pub/player/${username}/stats`
+      );
+    } catch (e) {
+      this.setState({
+        name: "Chess.com request failed",
+        ratings: {
+          rapid: "Site may",
+          blitz: "be blocked",
+          bullet: "by client.\n\n",
+          tactics: "not my fault :(",
+        },
+      });
+      return;
+    }
     if (user.status === 200) {
       user = await user.json();
       stats = await stats.json();
@@ -44,10 +59,16 @@ export default class ChessBed extends React.Component {
           bullet: stats.chess_bullet.last.rating,
           tactics: stats.tactics.highest.rating,
         },
+        loaded: ''
+      });
+    } else if (user === null || user.status === 403 || user.status === null) {
+      this.setState({
+        name: "Chess.com request failed"
       });
     } else {
       this.setState({
         name: "User Not Found",
+        loaded: ''
       });
     }
   }
@@ -79,19 +100,19 @@ export default class ChessBed extends React.Component {
             </div>
             <div className="vContainer chessInfo">
               <div className="vItem">
-                <div className="chessIcon rapid">Ἓ</div>
+                <div className={"chessIcon rapid " + this.state.loaded}>Ἓ</div>
                 <p>{this.state.ratings.rapid}</p>
               </div>
               <div className="vItem">
-                <div className="chessIcon blitz">Ἔ</div>
+                <div className={"chessIcon blitz " + this.state.loaded}>Ἔ</div>
                 <p>{this.state.ratings.blitz}</p>
               </div>
               <div className="vItem">
-                <div className="chessIcon bullet">Ἕ</div>
+                <div className={"chessIcon bullet " + this.state.loaded}>Ἕ</div>
                 <p>{this.state.ratings.bullet}</p>
               </div>
               <div className="vItem">
-                <div className="chessIcon puzzles">ἕ</div>
+                <div className={"chessIcon puzzles " + this.state.loaded}>ἕ</div>
                 <p>{this.state.ratings.tactics}</p>
               </div>
             </div>
