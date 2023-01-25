@@ -34,7 +34,7 @@ export default function Home() {
           <div className="onRight" data-aos="fade-up">
             <iframe
               title="langstats"
-              src="https://github-readme-stats.vercel.app/api/top-langs/?username=asimonson1125&layout=compact&show_icons=true&theme=gruvbox"
+              src="./readme-stats-vercel-01-25-2023.svg"
               style={langstyle}
             ></iframe>
             <div className="chess">
