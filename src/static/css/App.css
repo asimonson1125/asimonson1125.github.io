@@ -1,8 +1,6 @@
-@import "~react-image-gallery/styles/css/image-gallery.css";
-
 @font-face {
   font-family: "neon-future";
-  src: url("../fonts/Neon\ Future.ttf")
+  src: url("../fonts/Neon Future.ttf")
 }
 
 @font-face {
@@ -50,6 +48,14 @@ body {
   margin-right: 1rem;
   margin-top: .25rem;
   cursor: pointer;
+}
+
+#defaultCanvas0 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: -69;
 }
 
 h1, h2 {
@@ -108,9 +114,10 @@ a {
 
 .name {
   display: inline;
-  background: url("../../assets/photos/sun.png") 0/5rem no-repeat;
+  background: url("../photos/sun.png") 0/5rem no-repeat;
   background-size: contain;
   padding-left: 5.5rem;
+  font-size: xx-large;
 }
 
 .glitch {
@@ -158,6 +165,18 @@ a {
 #home {
   /* height: 100vh; */
   overflow-y: hidden;
+}
+
+.langstats {
+  width: 350px;
+  height: 165px;
+  border: none;
+  display: block;
+}
+
+.diamonds {
+  background: black;
+  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .75)), url('../chesscom-embed/diamonds.png');
 }
 
 .concentratedHead {
@@ -253,10 +272,12 @@ a {
   right: 0;
   top: 0;
   max-width: 100vw;
+  margin-right: 5px;
 }
 
-.onRight > * {
+.onRight>* {
   margin: auto;
+  margin-bottom: 5px;
 }
 
 .bgi {
@@ -447,7 +468,7 @@ a {
   overflow: hidden;
 }
 
-.projTitle > * {
+.projTitle>* {
   margin-bottom: 0;
 }
 
@@ -637,6 +658,39 @@ a {
   margin: 1em;
 }
 
+.chessRapid::after, .chessBlitz::after, .chessBullet::after, .chessPuzzles::after {
+  font-size: xx-small;
+  float: right;
+  margin-right: 5px;
+  margin-top: 1rem;
+}
+
+.chessStat {
+  display: inline;
+  vertical-align: center;
+}
+
+.chessStat::after {
+  font-size: xx-small;
+  float: right;
+}
+
+.chessPuzzles::after {
+  content: 'Tactics';
+}
+
+.chessBullet::after {
+  content: "Bullet";
+}
+
+.chessBlitz::after {
+  content: "Blitz";
+}
+
+.chessRapid::after {
+  content: "Rapid";
+}
+
 .bottomtext {
   font-size: x-small;
   margin: 3px;
@@ -686,15 +740,7 @@ a {
   flex-direction: column;
   max-height: 100%;
   max-width: 100%;
-}
-
-.vItem {
-  display: inline-block;
-}
-
-.vItem p {
-  margin: 0px;
-  display: inline;
+  justify-content: space-around;
 }
 
 .chessIcon {
@@ -735,17 +781,17 @@ a {
   text-decoration: underline;
 }
 
-.timeline-item{
+.timeline-item {
   border-left: solid #AAAAAA 3px;
 }
 
-.timeline-item h2{
+.timeline-item h2 {
   margin-top: 0px;
   margin-left: .5em;
   font-family: robotoreg;
 }
 
-.timeline-item p{
+.timeline-item p {
   margin-bottom: 0px;
   padding-bottom: 2em;
   padding-left: 3em;
@@ -837,6 +883,7 @@ a {
   .onRight {
     position: unset;
     margin-top: 3rem;
+    margin-right: 0;
   }
 
   .col {

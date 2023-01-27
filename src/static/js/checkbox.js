@@ -1,4 +1,4 @@
-export function toggle(dir) {
+function toggle(dir) {
   let toggles = document.querySelectorAll(
     ".checkbox-wrapper input[type=checkbox]"
   );

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:title" content="Andrew Simonson" />
+    <!-- <meta property="og:type" content="article" /> -->
+    <meta
+      property="og:description"
+      content="Digital Portfolio - Andrew Simonson"
+    />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='photos/sun.png') }}"
+    />
+    <meta property="og:url" content="https://asimonson.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="Andrew Simonson - Portfolio" />
+    <meta name="twitter:image:alt" content="some example picture idk" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E2V93W9CNV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-E2V93W9CNV");
+    </script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/App.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/checkbox.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/head.css') }}"
+    />
+
+    <link rel="canonical" href="https://asimonson.com/{{ canonical }}" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
+    <title>{{ title }}</title>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- https://jinja.palletsprojects.com/en/3.1.x/templates/#include -->
+    <div class="App">
+      <div class="header">
+
+        <a href="/">
+          <div id="name-container">
+            <div class="glitch">
+              {% for i in range(9) %}
+              <div class="line name">
+                <span class="textGrad">Andrew Simonson</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+
+        <img
+          src="{{ url_for('static', filename='icons/menu.svg')}}"
+          alt="menu"
+          id="menu"
+          onClick="toggleMenu()"
+        />
+        <div class="navControl">
+          <div class="navBar">
+            <div class="navElement">
+              <a href="/">Home</a>
+            </div>
+            <div class="navElement">
+              <a href="Resume.pdf" target="_blank"> Resume </a>
+            </div>
+            <div class="navElement">
+              <a href="/projects">Projects</a>
+            </div>
+            <!-- <a href="/activities">Activities</a> -->
+            <div class="navElement">
+              <a href="/about">About Me</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <!-- <Socials /> -->
+        </div>
+      </div>
+    </div>
+    <div id="root">{% block content %}{% endblock %}</div>
+  </body>
+</html>

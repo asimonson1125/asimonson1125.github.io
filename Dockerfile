@@ -1,24 +1,14 @@
-# pull official base image
-FROM node:13.12.0-alpine
+FROM docker.io/python:3.8-buster
+LABEL maintainer="Andrew Simonson <asimonson1125@gmail.com>"
 
-# set working directory
 WORKDIR /app
+ADD ./src /app
+COPY ./requirements.txt requirements.txt
+RUN apt-get -yq update && \
+    pip install --no-cache-dir -r requirements.txt
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+COPY . .
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+WORKDIR /app/src
 
-RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
-
-
-# add app
-COPY . ./
-ENV PORT=8080
-
-# start app
-CMD ["npm", "start"]
+CMD [ "gunicorn", "-k" , "geventwebsocket.gunicorn.workers.GeventWebSocketWorker", "--bind", "0.0.0.0:8080", "application:app"]

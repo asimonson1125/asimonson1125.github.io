@@ -74,7 +74,7 @@ function scrollFunction() {
   }
 }
 
-export function toggleMenu() {
+function toggleMenu() {
   if (window.innerWidth < 1200) {
     const e = document.querySelector(".navControl");
     const bar = document.querySelector(".header");
