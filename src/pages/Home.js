@@ -16,6 +16,7 @@ export default function Home() {
 
   return (
     <div id="home">
+      <link rel="canonical" href="https://asimonson.com/"></link>
       <meta
         name="description"
         content="Andrew Simonson's Portfolio Website - Homepage"

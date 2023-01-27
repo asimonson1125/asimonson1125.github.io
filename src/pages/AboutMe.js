@@ -26,6 +26,7 @@ export default function AboutMe() {
         name="description"
         content="About Andrew Simonson - learn all about me and the stuff I do, it's real great."
       />
+      <link rel="canonical" href="https://asimonson.com/about"></link>
       <div className="col">
         <div id="aboutMe" data-aos="fade-up">
           <h2 className="concentratedHead">About Me</h2>

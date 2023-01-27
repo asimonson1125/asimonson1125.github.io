@@ -1,4 +1,4 @@
-import { Route, Link, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Link, Routes, BrowserRouter as Router, Navigate } from "react-router-dom";
 
 import "./assets/css/App.css";
 import "./assets/css/checkbox.css"
@@ -37,6 +37,7 @@ function App() {
           </Nav>
         </div>
         <Routes>
+          <Route exact path='' element={ <Navigate to='/' />} />
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/projects" element={<Projects />}></Route>
           <Route exact path="activities" element={<Activities />}></Route>

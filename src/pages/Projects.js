@@ -22,6 +22,7 @@ export default function Projects() {
 
   return (
     <div className="foreground" onLoad={() => toggle('')}>
+      <link rel="canonical" href="https://asimonson.com/projects"></link>
       <meta
         name="description"
         content="Recent projects by Andrew Simonson on his lovely portfolio website :)"
