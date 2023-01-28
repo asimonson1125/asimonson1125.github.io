@@ -7,19 +7,23 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="{{ description }}" />
     <meta property="og:title" content="Andrew Simonson" />
+    <meta name="og:description" content="{{ description }}" />
     <!-- <meta property="og:type" content="article" /> -->
-    <meta
-      property="og:description"
-      content="Digital Portfolio - Andrew Simonson"
-    />
     <meta
       property="og:image"
       content="{{ url_for('static', filename='photos/sun.png') }}"
     />
     <meta property="og:url" content="https://asimonson.com" />
+    <meta property="twitter:title" content="Andrew Simonson" />
+    <meta name="twitter:description" content="{{ description }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content="Andrew Simonson - Portfolio" />
+    <meta
+      property="twitter:image"
+      content="{{ url_for('static', filename='photos/sun.png') }}"
+    />
     <meta name="twitter:image:alt" content="some example picture idk" />
+    <meta name="twitter:site" content="@asimonson1125" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -49,7 +53,7 @@
     />
 
     <link rel="canonical" href="https://asimonson.com/{{ canonical }}" />
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
     <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
@@ -59,7 +63,6 @@
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- https://jinja.palletsprojects.com/en/3.1.x/templates/#include -->
     <div class="App">
       <div class="header">
 
@@ -98,11 +101,11 @@
             </div>
           </div>
         </div>
-        <div class="footer">
-          <!-- <Socials /> -->
-        </div>
       </div>
     </div>
     <div id="root">{% block content %}{% endblock %}</div>
+    <div class="footer">
+      {% include 'partials/socials.html' %}
+    </div>
   </body>
 </html>
