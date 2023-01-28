@@ -1,0 +1,894 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+@font-face {
+  font-family: "neon-future";
+  src: url("../fonts/Neon\ Future.ttf")
+}
+
+@font-face {
+  font-family: "starixo";
+  src: url("../fonts/Starixo.otf")
+}
+
+@font-face {
+  font-family: "independent";
+  src: url("../fonts/INDEPENDENT.ttf")
+}
+
+@font-face {
+  font-family: "sunset-club";
+  src: url("../fonts/SunsetClub.otf")
+}
+
+@font-face {
+  font-family: "robotoreg";
+  src: url("../fonts/RobotoCondensed-Regular.ttf")
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  /* background-image: url('../photos/plexus.jpg'); */
+  /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
+  background-attachment: fixed;
+  background-size: 100% auto;
+  background-clip: border-box;
+}
+
+* {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+#menu {
+  height: 2rem;
+  display: none;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(0%) saturate(1%) hue-rotate(151deg) brightness(95%) contrast(86%);
+  float: right;
+  margin-right: 1rem;
+  margin-top: .25rem;
+  cursor: pointer;
+}
+
+h1, h2 {
+  color: #ecebeb;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+h3, h4 {
+  color: #a8a8a8;
+}
+
+strong {
+  color: #ecebeb;
+}
+
+p, li {
+  color: rgb(212, 212, 212);
+  font-size: 1rem;
+}
+
+a {
+  color: #a0a0a0a0;
+  text-decoration: none;
+}
+
+.header h1 {
+  display: inline-block;
+  transition: .4s;
+  margin-bottom: 0px;
+  margin-top: .5rem;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+
+.header {
+  margin-bottom: 0px;
+  margin-left: 0rem;
+  background-color: #1a1a1a;
+  width: 100%;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: .4s;
+  overflow: hidden;
+}
+
+#name-container {
+  display: inline;
+}
+
+.name {
+  display: inline;
+  background: url("../../assets/photos/sun.png") 0/5rem no-repeat;
+  background-size: contain;
+  padding-left: 5.5rem;
+}
+
+.glitch {
+  display: inline;
+}
+
+.textGrad {
+  font-family: "sunset-club" !important;
+}
+
+.navControl {
+  transition: .4s;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+.navElement {
+  border: solid black .2rem;
+  width: 25vw;
+  text-align: center;
+  font-size: 1.2rem;
+  font-size: 1rem;
+  background-color: rgb(156, 49, 45, .4);
+}
+
+.navElement:hover {
+  background-color: rgb(156, 49, 45, .8);
+}
+
+.navElement * {
+  color: white;
+  margin: 0px;
+  display: block;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  transition: .4s;
+}
+
+#home {
+  /* height: 100vh; */
+  overflow-y: hidden;
+}
+
+.concentratedHead {
+  display: inline-block;
+  padding-right: 4rem;
+  border-bottom: #0f0f0f solid 5px;
+  color: white;
+}
+
+.foreground {
+  position: relative;
+  padding-top: 7rem;
+  padding-left: 8rem;
+  width: calc(100%-8rem);
+  min-height: calc(100vh - 8rem);
+  background-color: rgb(44, 44, 44, .85);
+  padding-bottom: 1rem;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.foreground p {
+  line-height: 1.5em;
+  max-width: min(90%, 40rem);
+}
+
+.homeground {
+  position: relative;
+  padding-top: 7rem;
+  min-height: calc(100vh - 8rem);
+  padding-bottom: 1rem;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.noBackground {
+  background: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.noPad {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.centerContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.centerContent>div {
+  margin-top: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#HomeContent {
+  padding: 3rem;
+  display: inline-block;
+  background-color: rgb(44, 44, 44, .75);
+  border: solid black 4px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.vFlex {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.start {
+  justify-content: left;
+}
+
+.onRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 100vw;
+}
+
+.onRight > * {
+  margin: auto;
+}
+
+.bgi {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#Vertical {
+  margin-left: auto;
+  margin-right: auto;
+  width: 0;
+  height: 3rem;
+  border-right: rgb(156, 49, 45) solid 1px;
+}
+
+.sideimg {
+  float: right;
+  top: 0;
+  right: 0;
+  display: block;
+  max-width: min(40rem, 80%);
+  max-height: min(30rem, 100%);
+}
+
+.col {
+  float: left;
+  margin-right: 3rem;
+  width: calc(50% - 3rem);
+}
+
+.boxedImg {
+  border: .5rem solid rgba(22, 22, 22, .8);
+  max-width: calc(90% - 1rem);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-container {
+  margin-left: 10%;
+  max-width: 80%;
+}
+
+.elementBlock {
+  margin-top: 3rem;
+}
+
+.skills {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: solid rgba(156, 49, 45, .8) .3rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.skill {
+  display: inline-block;
+  border: rgba(156, 49, 45, .8) solid .15rem;
+  padding: .2rem;
+  margin: .5rem;
+  background-color: rgba(11, 11, 11, .8);
+  color: rgb(212, 212, 212);
+}
+
+#skillList {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#skillDisp {
+  width: 30em;
+  position: relative;
+}
+
+#skillDisp::after {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right top;
+  opacity: .2;
+  position: absolute;
+  height: 60%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  content: "";
+  z-index: -1;
+}
+
+#skillDisp.python::after {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png')
+}
+
+#skillDisp.js::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-PTty3CfTGnA%2FTpZOEjTQ_WI%2FAAAAAAAAAeo%2FKeKt_D5X2xo%2Fs1600%2Fjs.jpg&f=1&nofb=1&ipt=c8ae673676226ae40a5cd1408a5c7607e6b9725025888f4994a705309a16d1c3&ipo=images')
+}
+
+#skillDisp.html::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2017%2F07%2FHTML5_badge.png&f=1&nofb=1&ipt=db644f64f96f334aad37d31dc1c9dab28021476f6effaa0cb682297f8fd14240&ipo=images')
+}
+
+#skillDisp.sql::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fbasicolor-computer-tech%2F24%2F091_database_data_sql-512.png&f=1&nofb=1&ipt=cffc17203486b92c9733b992733e6934c03f984bc530c94b75bed278bc73477d&ipo=images')
+}
+
+#skillDisp.cpp::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fen.nokiawroclaw.pl%2Fwp-content%2Fuploads%2Fsites%2F5%2F2018%2F11%2Fcpp_logo.png&f=1&nofb=1&ipt=5fc23951b00bcbdec1977f3bc4591a7b8511ab29f5982963c541526902c0b4fd&ipo=images')
+}
+
+#skillDisp.other::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Fgit-icon-logo-png-transparent.png&f=1&nofb=1&ipt=834c5a11f63e26429713be2b7d9c9d1e45ce53d771862b9ab49bc35571513894&ipo=images')
+}
+
+#skillDisp.tools::after {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.g2crowd.com%2Fuploads%2Fproduct%2Fimage%2Flarge_detail%2Flarge_detail_64636a5c446c22391d4ed719e0987cd2%2Farcgis-pro.png&f=1&nofb=1&ipt=812a2905dd03e5c68f55a9f095bfe7a54feb801bf7f3f11cc01352f45f8a4f8d&ipo=images')
+}
+
+.hex-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.hex-row {
+  display: flex;
+}
+
+.hex {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0px 5px;
+}
+
+.hex:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.hex>* {
+  position: absolute;
+}
+
+.hex-odd {
+  margin: 0px 55px;
+}
+
+.hex-border {
+  border-left: solid black 3px;
+  border-right: solid black 3px;
+  width: 100%;
+  height: 58%;
+}
+
+.hex>.hex-border:nth-child(1) {
+  rotate: 60deg;
+}
+
+.hex>.hex-border:nth-child(2) {
+  rotate: 120deg;
+}
+
+.projectList {
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.project {
+  display: inline-block;
+  text-align: left;
+  margin: 1rem;
+  width: 20rem;
+  height: 22rem;
+  border: .3rem rgba(156, 49, 45, .8) solid;
+  background-color: rgba(22, 22, 22, .8);
+  transition: .3s;
+  overflow: hidden;
+}
+
+.projTitle > * {
+  margin-bottom: 0;
+}
+
+.projBody {
+  position: relative;
+  z-index: 3;
+}
+
+.project .topBox, .project .bottomBox, .project .projTitle {
+  padding: 0 1rem;
+  z-index: inherit;
+}
+
+.backedBody {
+  background-color: #1a1a1a;
+  padding: .25em;
+}
+
+.tab {
+  display: inline;
+  float: right;
+}
+
+.project h3 {
+  display: inline-block;
+  border-bottom: black solid .2rem;
+}
+
+.project img {
+  margin-top: auto;
+  height: 3rem;
+}
+
+.bottomBox a, .placeholding {
+  vertical-align: middle;
+  display: inline;
+  text-align: left;
+  height: unset;
+}
+
+.project a img, .project a p {
+  padding: .5rem;
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(52deg) brightness(106%) contrast(101%);
+}
+
+.project a img:hover, .project a p:hover {
+  filter: invert(66%) sepia(0%) saturate(3964%) hue-rotate(99deg) brightness(100%) contrast(105%);
+}
+
+.incomplete {
+  color: red;
+}
+
+.WIP {
+  color: yellow;
+}
+
+.complete {
+  color: green;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.socials {
+  margin-left: 1rem;
+  width: 0px;
+}
+
+.socials img {
+  height: 2rem;
+  margin-bottom: 1rem;
+  filter: invert(29%) sepia(20%) saturate(1786%) hue-rotate(314deg) brightness(101%) contrast(110%);
+  transition: .2s;
+}
+
+.socials img:hover {
+  opacity: .5;
+}
+
+#vertLine {
+  border-right: 1px solid rgb(156, 49, 45);
+  margin-left: 1rem;
+  height: 10rem;
+}
+
+.neon {
+  display: inline-block;
+  font-family: "neon-future";
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+    0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+  animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+
+.neonBox h1 {
+  font-size: min(4em, 12vw);
+}
+
+.neonBox h3 {
+  font-size: min(2em, 6vw);
+}
+
+.neonBox {
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 2em;
+  margin: 2em;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #5271ff,
+    0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thedermacompany.co.uk%2Fwp-content%2Fuploads%2F2020%2F11%2Fblack-brick-scaled.jpg&f=1&nofb=1&ipt=d10be6df79141da1b4ec0c725575cef0f7b67e957e391662226d66cff02d25e6&ipo=images');
+  /* background-blend-mode: ; */
+  text-align: center;
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
+      0 0 40px #5271ff, 0 0 80px #5271ff, 0 0 90px #5271ff,
+      0 0 100px #5271ff, 0 0 150px #5271ff;
+  }
+
+  0% {
+    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff,
+      0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff,
+      0 0 140px #5271ff;
+  }
+}
+
+@keyframes swipeIn {
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.swipeIn {
+  animation: swipeIn 1s 1;
+}
+
+.fPage {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heightBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chess {
+  width: 300px;
+  border: none;
+  /* transform: scale(.8);
+  float: right; */
+}
+
+#chessProfile {
+  border-radius: 5px;
+  width: 300px;
+  height: calc(125px + 2em);
+  color: #AAAAAA;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+}
+
+.chessInfo {
+  background-color: rgba(0, 0, 0, .3);
+  ;
+  margin: 1em;
+}
+
+.bottomtext {
+  font-size: x-small;
+  margin: 3px;
+  color: white;
+  text-align: right;
+}
+
+.black {
+  background-color: black;
+}
+
+.identity {
+  margin-right: 0px;
+}
+
+.identity h5 {
+  margin: 0px;
+  margin-top: -25px;
+  background: black;
+  z-index: 50;
+  position: relative;
+  width: 90%;
+  margin-left: 10px;
+
+}
+
+.pfpContainer {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.pfpContainer>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pfp {
+  border-radius: 50%;
+  width: 100px;
+  text-align: center;
+}
+
+.vContainer {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.vItem {
+  display: inline-block;
+}
+
+.vItem p {
+  margin: 0px;
+  display: inline;
+}
+
+.chessIcon {
+  display: inline-block;
+  font-family: Chess New;
+  font-size: x-large;
+  width: 25px;
+  text-align: center;
+}
+
+.rapid {
+  color: #6c9d41;
+}
+
+.blitz {
+  color: #f7c045;
+}
+
+.bullet {
+  color: #a58a45;
+}
+
+.puzzles {
+  color: #db7e3b;
+}
+
+.timeitem {
+  transition: .4s;
+  overflow-y: clip;
+  height: auto;
+  max-height: 500px;
+}
+
+.timeitem a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+}
+
+.timeline-item{
+  border-left: solid #AAAAAA 3px;
+}
+
+.timeline-item h2{
+  margin-top: 0px;
+  margin-left: .5em;
+  font-family: robotoreg;
+}
+
+.timeline-item p{
+  margin-bottom: 0px;
+  padding-bottom: 2em;
+  padding-left: 3em;
+  font-family: robotoreg;
+}
+
+/* .timeline-item::before{
+  content: "";
+  background-color: red;
+  border: solid black 3px;
+  border-radius: 100%;
+  padding: 5px;
+  position: absolute;
+  margin-left: -8px;
+} */
+
+.datetext {
+  margin: .25em;
+  font-size: small;
+  margin-left: -1.5em;
+  font-family: robotoreg;
+}
+
+@font-face {
+  font-family: Chess New;
+  src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
+}
+
+@media screen and (max-width: 1200px) {
+
+  #menu {
+    display: unset;
+  }
+
+  .header {
+    background-color: #1a1a1a;
+    border-bottom: solid 3px rgb(156, 49, 45, .4);
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .navBar {
+    flex-direction: column;
+  }
+
+  .navElement {
+    width: 100vw;
+  }
+
+  .navControl {
+    max-height: 0px;
+  }
+
+  .projectList {
+    width: 95%;
+  }
+
+  .sideimg {
+    position: relative;
+  }
+
+  body {
+    background-size: auto 100%;
+  }
+
+  .foreground {
+    width: 100%;
+    padding-left: 2rem;
+    /* centered objects will need to remove 1.5 of this to center */
+    padding-right: .5rem;
+    padding-bottom: 36px;
+  }
+
+  .homeground {
+    width: 90%;
+    padding-bottom: 36px;
+    display: flex;
+    margin: auto;
+    overflow: visible;
+  }
+
+  .centeredForeground {
+    margin-left: -1.5rem;
+    /* remove .foreground excess margin */
+  }
+
+  .onRight {
+    position: unset;
+    margin-top: 3rem;
+  }
+
+  .col {
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+
+  #aboutMe {
+    float: none;
+    display: block;
+    width: 90%;
+  }
+
+  #skills {
+    float: none;
+    margin-right: auto;
+    display: block;
+    width: 90%;
+  }
+
+  .footer {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    background-color: rgb(156, 49, 45);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-around;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: min(100vw, 400px);
+  }
+
+  .socials * {
+    display: inline;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .socials img {
+    height: 2rem;
+    margin-bottom: 0px;
+    filter: none;
+  }
+
+  #vertLine {
+    display: none;
+    height: 0px;
+  }
+}
