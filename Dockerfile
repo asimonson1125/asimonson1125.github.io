@@ -10,4 +10,4 @@ RUN apt-get -yq update && \
     pip install --no-cache-dir -r ./src/requirements.txt
 WORKDIR /app/src
 
-CMD [ "gunicorn", "-k" , "geventwebsocket.gunicorn.workers.GeventWebSocketWorker", "--bind", "0.0.0.0:8080", "application:app"]
+CMD [ "gunicorn", "-k" , "--bind", "0.0.0.0:8080", "app:app"]
