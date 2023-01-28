@@ -1,8 +1,6 @@
 import flask
-import sass
 
 app = flask.Flask(__name__)
-sass.compile(dirname=('static/scss', 'static/css'), output_style='compressed')
 
 @app.route('/')
 def home():
@@ -33,4 +31,6 @@ def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
 if __name__ == '__main__':
+    import sass
+    sass.compile(dirname=('static/scss', 'static/css'), output_style='compressed')
     app.run()
