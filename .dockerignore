@@ -1,0 +1,6 @@
+react_OLD
+.venv
+.vscode
+.git
+.git*
+__pycache__

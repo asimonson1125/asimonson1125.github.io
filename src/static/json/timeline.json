@@ -1,0 +1,37 @@
+{
+    "Co-op @ Dow Chemical": {
+        "classes": "pinned experience technical",
+        "date": "01/2023 - 05/2023",
+        "content": "Spring 2023 Semester Co-op under Dow Chemical's Global Reactive Chemicals team in Analytical Sciences. Responsibilities included management of chemical compatability data and tool creation for parsing, generating, and submitting reports."
+    },
+    "Started Portfolio": {
+        "classes": "",
+        "date": "08/26/2021",
+        "content": "I started building this website on this day. I wish I could say I was farther along than I am."
+    },
+    "Rochester Institute of Technology": {
+        "classes": "pinned education technical",
+        "date": "08/2021 - 05/2025",
+        "content": "Studying in Rochester Institute of Technology's Computer Science BS program with a minor in International Relations."
+    },
+    "Pretzel & Pizza Creations": {
+        "classes": "experience",
+        "date": "04/2021 - 08/2021",
+        "content": "Worked part-time as a chef, managing active ingredient supply and fulfilling orders. I personally recommend the stuffed pretzels."
+    },
+    "Election Official": {
+        "classes": "experience",
+        "date": "08/2020 - 12/2020",
+        "content": "Trained in voter registry operations and provisional voting by the Washington County Board of Elections for the 2020 US Presidential Election."
+    },
+    "Boonsboro High School": {
+        "classes": "education",
+        "date": "09/2016 - 06/2021",
+        "content": "Graduated high school with highest honors.\nMember of National Honor Society, Academic Team County Champions. Participated in Physics Olympics, Robotics Club, and scored at state championships in Cross Country and Track and Field (4x800, 800)."
+    },
+    "Vex Robotics Team Lead/Club Preisdent": {
+        "classes": "technical",
+        "date": "10/2015 - 04/2021",
+        "content": "Led 5 teams through middle and high school to VEX Robotics Competitions, elevating Boonsboro from county group-stage elimination to its first state championship participation. Reorganized club and set up its first interface with the community + sponsors"
+    }
+}

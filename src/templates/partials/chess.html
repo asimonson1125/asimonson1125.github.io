@@ -1,0 +1,41 @@
+{% macro chess(username) %}
+<div class="black">
+  <div
+    id="chessProfile"
+    class="diamonds"
+    onClick="window.top.location.href = 'https://chess.com/member/{{ username }}'"
+  >
+    <div class="identity chessInfo">
+      <div class="pfpContainer">
+        <div>
+          <img class="pfp chessImage" src='{{ url_for('static',
+          filename='chesscom-embed/default.svg') }}' alt={{ username }} />
+        </div>
+      </div>
+      <h5 class="chessName">Loading...</h5>
+    </div>
+    <div class="vContainer chessInfo">
+      <div class="vItem chessRapid">
+        <div class="chessIcon rapid">Ἓ</div>
+        <div class="chessStat"></div>
+      </div>
+      <div class="vItem chessBlitz">
+        <div class="chessIcon blitz">Ἔ</div>
+        <div class="chessStat"></div>
+      </div>
+      <div class="vItem chessBullet">
+        <div class="chessIcon bullet">Ἕ</div>
+        <div class="chessStat"></div>
+      </div>
+      <div class="vItem chessPuzzles">
+        <div class="chessIcon puzzles">ἕ</div>
+        <div class="chessStat"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottomtext">Chess.com Stat Embed by Andrew Simonson</div>
+</div>
+<script>
+  addChessEmbed("{{ username }}");
+</script>
+{%- endmacro %}

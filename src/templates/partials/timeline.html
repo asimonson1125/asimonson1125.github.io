@@ -1,0 +1,13 @@
+{% macro timeitem(title, classes, date, deets) %}
+<div class="timeitem {{classes}}">
+  <p class="datetext">{{date}}</p>
+  <div class="timeline-item">
+    <h2>{{title}}</h2>
+    <div class="timeline-deets">
+      <p>
+        {{deets}}
+      </p>
+    </div>
+  </div>
+</div>
+{% endmacro %}

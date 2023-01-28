@@ -1,0 +1,46 @@
+{% extends "header.html" %} {% block content %}
+<div class="foreground">
+    <div data-aos="fade-up">
+      <h2 class="concentratedHead">Projects</h2>
+      <p>
+        Project status is indicated by the color of the project card:
+        <br />
+        <span class="complete">⬤</span> - Complete
+        <br />
+        <span class="WIP">⬤</span> - Work In Progress
+        <br />
+        <span class="incomplete">⬤</span> - Incomplete
+      </p>
+    </div>
+    <div class="checkbox-wrapper">
+      <div class="flex start">
+      <label class="switch" htmlFor="pinned">
+        <input type="checkbox" id="pinned" onClick="toggle('')" checked/>
+        <div class="slider round"></div>
+        <strong>Pinned</strong>
+      </label>
+      </div>
+      <div class="flex start">
+      <label class="switch" htmlFor="programming">
+        <input type="checkbox" id="programming" onClick="toggle('')" />
+        <div class="slider round"></div>
+        <strong>Programming</strong>
+      </label>
+      </div>
+      <div class="flex start">
+      <label class="switch" htmlFor="geospacial" onClick="toggle('')">
+        <input type="checkbox" id="geospacial" />
+        <div class="slider round"></div>
+        <strong>Geospacial</strong>
+      </label>
+      </div>
+    </div>
+    <div class="projectList centeredForeground checkbox-client">
+        {% from 'partials/project.html' import project %} 
+        {% for i in projects %}
+        {{ project(i, projects[i]["classes"], projects[i]["status"], projects[i]["bgi"], projects[i]["content"], projects[i]["links"]) }}
+        {% endfor %}
+    </div>
+  </div>
+  <script>toggle('')</script>
+{% endblock %}
