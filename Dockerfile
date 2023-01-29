@@ -28,10 +28,10 @@ COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 # Permissions
 # RUN adduser --disabled-password --gecos '' supervisor && \
 RUN chmod -R 775 /var/* && \
-    chown -R ubuntu:supervisor /var/*
+    chown -R root /var/*
 
 # Entrypoint
-USER ubuntu:supervisor
+USER root
 
 # Start processes
 CMD ["/usr/bin/supervisord"]
