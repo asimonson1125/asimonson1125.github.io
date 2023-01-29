@@ -27,7 +27,7 @@ COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 # Permissions
 # RUN adduser --disabled-password --gecos '' supervisor && \
-RUN chmod -R 775 /var/* && \
+RUN chmod -R 777 /var/* && \
     chown -R root /var/*
 
 # Entrypoint
