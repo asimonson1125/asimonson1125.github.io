@@ -6,8 +6,7 @@ LABEL maintainer="Andrew Simonson <asimonson1125@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y python3-pip nginx gunicorn 
-# supervisor 
+RUN apt-get install -y python3-pip nginx gunicorn supervisor 
 # do we really need venv? 
 
 # Setup flask application
@@ -23,9 +22,9 @@ RUN ln -s /etc/nginx/sites-available/flask.conf /etc/nginx/sites-enabled/flask.c
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Setup supervisord
-# RUN mkdir -p /var/log/supervisor
-# COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-# COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
+RUN mkdir -p /log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
-# Start processes (Lol idk how this works)
+# Start processes
 CMD ["/usr/sbin/nginx"]
