@@ -34,4 +34,4 @@ RUN chown -R root /var/*
 USER root
 
 # Start processes
-CMD ["/usr/bin/supervisord"]
+CMD ["sudo", "/usr/bin/supervisord"]
