@@ -28,10 +28,10 @@ COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 # Permissions
 RUN chmod -R 775 /var/*
-RUN chown -R supervisor:supervisor /var/*
+RUN chown -R root:supervisor /var/*
 
 # Entrypoint
-USER supervisor:supervisor
+USER root:supervisor
 
 # Start processes
 CMD ["/usr/bin/supervisord"]
