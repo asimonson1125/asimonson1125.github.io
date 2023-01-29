@@ -34,4 +34,4 @@ RUN chown -R root /var/*
 USER root
 
 # Start processes
-CMD ["/usr/sbin/nginx"]
+CMD ["/usr/bin/supervisord"]
