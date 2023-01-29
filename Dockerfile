@@ -27,8 +27,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 # Permissions
-RUN chmod -R 775 . && \
-  chgrp -R node .
+RUN chmod -R 775 /var
 
 # Entrypoint
 USER root:node
