@@ -37,7 +37,7 @@
     "content": "My Resume, made in LaTeX with a custom design derived by the AltaCV template on OverLeaf",
     "links": [
       ["github", "https://github.com/asimonson1125/Resume", "git repo"],
-      ["globe", "https://asimonson.com/Resume.pdf/", "Resume"]
+      ["globe", "https://asimonson.com/Resume.pdf", "Resume"]
     ]
   },
   "Digital Portfolio": {
