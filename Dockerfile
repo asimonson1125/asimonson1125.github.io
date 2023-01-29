@@ -28,9 +28,10 @@ COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 # Permissions
 RUN chmod -R 775 /var/*
+RUN chown -R root /var/*
 
 # Entrypoint
-# USER root:node
+USER root
 
 # Start processes
 CMD ["/usr/sbin/nginx"]
