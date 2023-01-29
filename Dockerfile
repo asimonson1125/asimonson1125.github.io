@@ -31,7 +31,7 @@ RUN chmod -R 775 /var/log/supervisor && \
     chmod -R 775 /var/log/nginx
 
 # Entrypoint
-USER root:node
+# USER root:node
 
 # Start processes
 CMD ["/usr/sbin/nginx"]
