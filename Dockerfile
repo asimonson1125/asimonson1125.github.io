@@ -22,9 +22,16 @@ RUN ln -s /etc/nginx/sites-available/flask.conf /etc/nginx/sites-enabled/flask.c
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Setup supervisord
-RUN mkdir -p /log/supervisor
+RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
+
+# Permissions
+RUN chmod -R 775 . && \
+  chgrp -R node .
+
+# Entrypoint
+USER root:node
 
 # Start processes
 CMD ["/usr/sbin/nginx"]
