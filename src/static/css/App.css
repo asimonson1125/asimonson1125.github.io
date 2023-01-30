@@ -1,6 +1,6 @@
 @font-face {
   font-family: "neon-future";
-  src: url("../fonts/Neon Future.ttf")
+  src: url("../fonts/NeonFuture.ttf")
 }
 
 @font-face {
@@ -114,6 +114,7 @@ a {
 
 .name {
   display: inline;
+  color: #a0a0a0a0;
   background: url("../photos/sun.png") 0/5rem no-repeat;
   background-size: contain;
   padding-left: 5.5rem;

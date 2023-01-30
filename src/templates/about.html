@@ -1,4 +1,4 @@
-{% extends "header.html" %} {% block content %}
+{% block content %}
 <div class="foreground">
   <div class="col">
     <div id="aboutMe" data-aos="fade-up">
@@ -41,10 +41,10 @@
     <div id="skills" data-aos="fade-up">
       <h2>Skills</h2>
       {% from 'partials/skills.html' import skills %}
-        {{ skills([ "Python", "JavaScript", "Java", "C", "C++", "MIPS Assembly",
+        {{ skills([ "Python", "JavaScript", "Java", "C", "C++", "R", "MIPS Assembly",
         "Processing", "P5.js", "SQL", "SQLite", "PostgreSQL", "SQLAlchemy",
         "HTML", "CSS", "Docker", "LaTeX", "ArcGIS", "Git", "Github", "Linux",
-        "OKD4", "Kubernetes", "Angular", "Flask", "Jinja", "DOM Scraping",
+        "OKD4", "Kubernetes", "Openshift", "Angular", "Flask", "Jinja", "DOM Scraping",
         "Google API", "React", "Node.js", "ArcGIS", ]) }}
       </Skills>
       <div class="chess">
@@ -121,8 +121,8 @@
     </div>
     <div class="timeline checkbox-client">
       {% from 'partials/timeline.html' import timeitem %} 
-      {% for i in timeline %}
-      {{ timeitem(i, timeline[i]["classes"], timeline[i]["date"], timeline[i]["content"])}}
+      {% for i in var["timeline"] %}
+      {{ timeitem(i, var["timeline"][i]["classes"], var["timeline"][i]["date"], var["timeline"][i]["content"])}}
       {% endfor %}
     </div>
     <script>toggle('up')</script>
