@@ -40,6 +40,13 @@ def goto(location):
     output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
     socketio.emit("goto", output, to=sid)
 
+@socketio.on("socketio/goto")
+def goto(location):
+    sid = flask.request.sid
+    pagevars = pages[location]
+    output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
+    socketio.emit("goto", f"<h1>AAAAAAAAAAAAAA</h1>{output}", to=sid)
+
 
 @app.route("/")
 def home():
