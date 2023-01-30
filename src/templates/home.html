@@ -1,4 +1,4 @@
-{% extends "header.html" %} {% block content %}
+{% block content %}
 <div class="homeground">
   <div class="relative">
     <div class="flex">
@@ -8,14 +8,13 @@
       </div>
     </div>
     <div class="onRight" data-aos="fade-up">
-      <iframe
-        title="langstats"
+      <img
         src="{{ url_for('static', filename='readme-stats-vercel-01-25-2023.svg') }}"
         class="langstats"
-      ></iframe>
+      />
       <div class="chess">
-        {% from 'partials/chess.html' import chess %}
-        {{ chess('asimonson1125') }}
+        {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
+        }}
       </div>
     </div>
   </div>

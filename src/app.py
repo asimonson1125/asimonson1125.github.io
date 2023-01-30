@@ -1,44 +1,62 @@
 import flask
 from flask_minify import Minify
+from flask_socketio import SocketIO
 import json
 
-proj = json.load(open('./static/json/projects.json', 'r'))
-timeline = json.load(open('./static/json/timeline.json', 'r'))
+proj = json.load(open("./static/json/projects.json", "r"))
+timeline = json.load(open("./static/json/timeline.json", "r"))
+pages = {
+    "home": {
+        "template": "home.html",
+        "title": "Andrew Simonson - Portfolio Home",
+        "description": "Andrew Simonson's Digital Portfolio home",
+        "canonical": "",
+    },
+    "projects": {
+        "template": "projects.html",
+        "projects": proj,
+        "title": "Andrew Simonson - Projects",
+        "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
+        "canonical": "projects",
+    },
+    "about": {
+        "template": "about.html",
+        "timeline": timeline,
+        "title": "Andrew Simonson - About Me",
+        "description": "About Andrew Simonson",
+        "canonical": "about",
+    },
+}
 
 app = flask.Flask(__name__)
 Minify(app=app, html=True, js=True, cssless=True)
+socketio = SocketIO(app)
+
+
+@socketio.on("goto")
+def goto(location):
+    sid = flask.request.sid
+    pagevars = pages[location]
+    output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
+    socketio.emit("goto", output, to=sid)
 
 
 @app.route("/")
 def home():
-    return flask.render_template(
-        "home.html",
-        title="Andrew Simonson - Portfolio Home",
-        description="Andrew Simonson's Digital portfolio home",
-        canonical="",
-    )
-
-
-@app.route("/about")
-def about():
-    return flask.render_template(
-        "about.html",
-        timeline=timeline,
-        title="Andrew Simonson - About Me",
-        description="About Andrew Simonson",
-        canonical="about",
-    )
+    pagevars = pages["home"]
+    return flask.render_template("header.html", var=pagevars)
 
 
 @app.route("/projects")
 def projects():
-    return flask.render_template(
-        "projects.html",
-        projects=proj,
-        title="Andrew Simonson - Projects",
-        description="Recent projects by Andrew Simonson on his lovely portfolio website :)",
-        canonical="projects",
-    )
+    pagevars = pages["projects"]
+    return flask.render_template("header.html", var=pagevars)
+
+
+@app.route("/about")
+def about():
+    pagevars = pages["about"]
+    return flask.render_template("header.html", var=pagevars)
 
 
 @app.route("/resume")
@@ -54,9 +72,16 @@ def page404(e):
     try:
         message = e.length
     finally:
+        pagevars = {
+            "template": "error.html",
+            "title": f"{eCode} - Simonson",
+            "description": "Error on Andrew Simonson's Digital Portfolio",
+            "canonical": "404",
+        }
         return (
             flask.render_template(
-                "error.html",
+                "header.html",
+                var=pagevars,
                 error=eCode,
                 message=message,
                 title=f"{eCode} - Simonson Portfolio",
@@ -75,4 +100,4 @@ if __name__ == "__main__":
     import sass
 
     sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
-    app.run(debug=True)
+    socketio.run(app)

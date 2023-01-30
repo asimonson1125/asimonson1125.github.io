@@ -5,22 +5,22 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="{{ description }}" />
+    <meta name="description" content="{{ var['description'] }}" />
     <meta property="og:title" content="Andrew Simonson" />
-    <meta name="og:description" content="{{ description }}" />
+    <meta name="og:description" content="{{ var['description'] }}" />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="{{ url_for('static', filename='photos/sun.png') }}"
+      content="https://asimonson.com{{ url_for('static', filename='photos/sun.png') }}"
     />
     <meta property="og:url" content="https://asimonson.com" />
     <meta property="twitter:title" content="Andrew Simonson" />
-    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:description" content="{{ var['description'] }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content="Andrew Simonson - Portfolio" />
     <meta
       property="twitter:image"
-      content="{{ url_for('static', filename='photos/sun.png') }}"
+      content="https://asimonson.com{{ url_for('static', filename='photos/sun.png') }}"
     />
     <meta name="twitter:image:alt" content="some example picture idk" />
     <meta name="twitter:site" content="@asimonson1125" />
@@ -52,13 +52,14 @@
       href="{{ url_for('static', filename='css/head.css') }}"
     />
 
-    <link rel="canonical" href="https://asimonson.com/{{ canonical }}" />
+    <link rel="canonical" href="https://asimonson.com/{{ var['canonical'] }}" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
-    <title>{{ title }}</title>
+    <title>{{ var['title'] }}</title>
   </head>
 
   <body>
@@ -87,23 +88,23 @@
         <div class="navControl">
           <div class="navBar">
             <div class="navElement">
-              <a href="/">Home</a>
+              <p onclick="emitData('goto', 'home')">Home</p>
             </div>
             <div class="navElement">
               <a href="Resume.pdf" target="_blank"> Resume </a>
             </div>
             <div class="navElement">
-              <a href="/projects">Projects</a>
+              <p onclick="emitData('goto', 'projects')">Projects</p>
             </div>
             <!-- <a href="/activities">Activities</a> -->
             <div class="navElement">
-              <a href="/about">About Me</a>
+              <p onclick="emitData('goto', 'about')">About Me</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="root">{% block content %}{% endblock %}</div>
+    <div id="root">{% include var['template'] %}</div>
     <div class="footer">
       {% include 'partials/socials.html' %}
     </div>
