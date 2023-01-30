@@ -88,25 +88,22 @@ function toggleMenu() {
   }
 }
 
-let socket = io();
+const loc = "https://asimonson.com"
 
-function emit(event) {
-   socket.emit(event);
-}
-
-function emitData(event, data) {
-   socket.emit(event, data)
-}
-
-socket.on('goto', (page) => {
-  pagename = page[0];
-  content = page[1];
-  let root = document.getElementById('root');
+async function goto(location) {
+  let a = await fetch(loc + "/api/goto/" + location, {
+    credentials: "include",
+    method: "GET",
+    mode: "cors",
+  });
+  const response = await a.json();
+  const metadata = response[0];
+  const content = response[1];
+  let root = document.getElementById("root");
   root.innerHTML = content;
-  root.querySelectorAll("script").forEach(x => {
+  root.querySelectorAll("script").forEach((x) => {
     eval(x.innerHTML);
   });
-  document.querySelector('title').textContent = page[2];
-  if (pagename == 'home') pagename = '/';
-  history.pushState(null, null, pagename);
-});
+  document.querySelector("title").textContent = metadata['title'];
+  history.pushState(null, null, metadata['canonical']);
+}

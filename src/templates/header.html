@@ -52,9 +52,8 @@
       href="{{ url_for('static', filename='css/head.css') }}"
     />
 
-    <link rel="canonical" href="https://asimonson.com/{{ var['canonical'] }}" />
+    <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
@@ -67,7 +66,7 @@
     <div class="App">
       <div class="header">
 
-          <div id="name-container" onclick="emitData('goto', 'home')">
+          <div id="name-container" onclick="goto('home')">
             <div class="glitch">
               {% for i in range(9) %}
               <div class="line name">
@@ -86,17 +85,17 @@
         <div class="navControl">
           <div class="navBar">
             <div class="navElement">
-              <p onclick="emitData('goto', 'home')">Home</p>
+              <p onclick="goto('home')">Home</p>
             </div>
             <div class="navElement">
               <a href="Resume.pdf" target="_blank"> Resume </a>
             </div>
             <div class="navElement">
-              <p onclick="emitData('goto', 'projects')">Projects</p>
+              <p onclick="goto('projects')">Projects</p>
             </div>
             <!-- <a href="/activities">Activities</a> -->
             <div class="navElement">
-              <p onclick="emitData('goto', 'about')">About Me</p>
+              <p onclick="goto('about')">About Me</p>
             </div>
           </div>
         </div>

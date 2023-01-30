@@ -10,21 +10,21 @@ pages = {
         "template": "home.html",
         "title": "Andrew Simonson - Portfolio Home",
         "description": "Andrew Simonson's Digital Portfolio home",
-        "canonical": "",
+        "canonical": "/",
     },
     "projects": {
         "template": "projects.html",
         "projects": proj,
         "title": "Andrew Simonson - Projects",
         "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
-        "canonical": "projects",
+        "canonical": "/projects",
     },
     "about": {
         "template": "about.html",
         "timeline": timeline,
         "title": "Andrew Simonson - About Me",
         "description": "About Andrew Simonson",
-        "canonical": "about",
+        "canonical": "/about",
     },
 }
 
@@ -33,13 +33,10 @@ Minify(app=app, html=True, js=True, cssless=True)
 socketio = SocketIO(app)
 
 
-@socketio.on("goto")
+@app.route('/api/goto/<location>')
 def goto(location):
-    sid = flask.request.sid
     pagevars = pages[location]
-    output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
-    socketio.emit("goto", output, to=sid)
-
+    return [pagevars, flask.render_template(pagevars["template"], var=pagevars)]
 
 @app.route("/")
 def home():
