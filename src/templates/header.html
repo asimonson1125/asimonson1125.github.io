@@ -13,7 +13,7 @@
       property="og:image"
       content="https://asimonson.com{{ url_for('static', filename='photos/sun.png') }}"
     />
-    <meta property="og:url" content="https://asimonson.com" />
+    <meta property="og:url" content="{{ var['description'] }}" />
     <meta property="twitter:title" content="Andrew Simonson" />
     <meta name="twitter:description" content="{{ var['description'] }}" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -67,8 +67,7 @@
     <div class="App">
       <div class="header">
 
-        <a href="/">
-          <div id="name-container">
+          <div id="name-container" onclick="emitData('goto', 'home')">
             <div class="glitch">
               {% for i in range(9) %}
               <div class="line name">
@@ -77,8 +76,7 @@
               {% endfor %}
             </div>
           </div>
-        </a>
-
+        
         <img
           src="{{ url_for('static', filename='icons/menu.svg')}}"
           alt="menu"
