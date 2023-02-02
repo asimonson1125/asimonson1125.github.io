@@ -1,6 +1,5 @@
 import flask
 from flask_minify import Minify
-from flask_socketio import SocketIO
 import json
 
 proj = json.load(open("./static/json/projects.json", "r"))
@@ -29,12 +28,11 @@ pages = {
 }
 
 app = flask.Flask(__name__)
-Minify(app=app, html=True, js=True, cssless=True)
-socketio = SocketIO(app)
 
 
+@app.route('/api/goto/')
 @app.route('/api/goto/<location>')
-def goto(location):
+def goto(location='home'):
     pagevars = pages[location]
     return [pagevars, flask.render_template(pagevars["template"], var=pagevars)]
 
@@ -94,7 +92,9 @@ def static_from_root():
 
 
 if __name__ == "__main__":
-    import sass
+    # import sass
 
-    sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
-    socketio.run(app)
+    # sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
+    app.run()
+else:
+    Minify(app=app, html=True, js=True, cssless=True)

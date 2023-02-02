@@ -89,8 +89,9 @@ function toggleMenu() {
 }
 
 const loc = "https://asimonson.com"
+// const loc = 'http://127.0.0.1:5000'
 
-async function goto(location) {
+async function goto(location, push=true) {
   let a = await fetch(loc + "/api/goto/" + location, {
     credentials: "include",
     method: "GET",
@@ -105,5 +106,12 @@ async function goto(location) {
     eval(x.innerHTML);
   });
   document.querySelector("title").textContent = metadata['title'];
-  history.pushState(null, null, metadata['canonical']);
+  if(push){
+    history.pushState(null, null, metadata['canonical']);
+  }
+}
+
+function backButton() {
+  const location = window.location.pathname;
+  goto(location.substring(1), push=false); // remove slash, goto already does that
 }
