@@ -90,7 +90,7 @@
           <input
             type="checkbox"
             id="pinned"
-            onClick='toggle("up")'
+            onClick='toggleCheckbox("up")'
             checked
           />
           <div class="slider round"></div>
@@ -99,20 +99,20 @@
       </div>
       <div class="flex start">
         <label class="switch" htmlFor="education">
-          <input type="checkbox" id="education" onClick="toggle('up')" />
+          <input type="checkbox" id="education" onClick="toggleCheckbox('up')" />
           <div class="slider round"></div>
           <strong>Education</strong>
         </label>
       </div>
       <div class="flex start">
-        <label class="switch" htmlFor="experience" onClick="toggle('up')">
+        <label class="switch" htmlFor="experience" onClick="toggleCheckbox('up')">
           <input type="checkbox" id="experience" />
           <div class="slider round"></div>
           <strong>Work Experience</strong>
         </label>
       </div>
       <div class="flex start">
-        <label class="switch" htmlFor="technical" onClick="toggle('up')">
+        <label class="switch" htmlFor="technical" onClick="toggleCheckbox('up')">
           <input type="checkbox" id="technical" />
           <div class="slider round"></div>
           <strong>Technical</strong>
@@ -125,7 +125,7 @@
       {{ timeitem(i, var["timeline"][i]["classes"], var["timeline"][i]["date"], var["timeline"][i]["content"])}}
       {% endfor %}
     </div>
-    <script>toggle('up')</script>
+    <script>toggleCheckbox('up')</script>
   </div>
 </div>
 {% endblock %}

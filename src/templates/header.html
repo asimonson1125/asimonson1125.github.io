@@ -65,8 +65,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="App">
       <div class="header">
-
-          <div id="name-container" onclick="goto('home')">
+          <div id="name-container" onclick="goto('home', {toggle:false})">
             <div class="glitch">
               {% for i in range(9) %}
               <div class="line name">
@@ -84,18 +83,18 @@
         />
         <div class="navControl">
           <div class="navBar">
-            <div class="navElement">
-              <p onclick="goto('home')">Home</p>
+            <div onClick="goto('home')" class="navElement">
+              <p>Home</p>
             </div>
-            <div class="navElement">
-              <a href="Resume.pdf" target="_blank"> Resume </a>
-            </div>
-            <div class="navElement">
-              <p onclick="goto('projects')">Projects</p>
+            <a href="Resume.pdf" target="_blank" class="navElement">
+              <span>Resume</span>
+            </a>
+            <div onclick="goto('projects')" class="navElement">
+              <p>Projects</p>
             </div>
             <!-- <a href="/activities">Activities</a> -->
-            <div class="navElement">
-              <p onclick="goto('about')">About Me</p>
+            <div onclick="goto('about')" class="navElement">
+              <p>About Me</p>
             </div>
           </div>
         </div>

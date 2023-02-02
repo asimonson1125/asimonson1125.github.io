@@ -4,13 +4,6 @@ window.onload = function () {
 function onLoaded() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  let navs = document.querySelectorAll(".navElement");
-  navs.forEach(function (element) {
-    element.onclick = function () {
-      window.scrollTo(0, 0);
-      toggleMenu();
-    };
-  });
 
   window.onresize = function () {
     resizer();
@@ -88,11 +81,9 @@ function toggleMenu() {
   }
 }
 
-const loc = "https://asimonson.com"
-// const loc = 'http://127.0.0.1:5000'
-
-async function goto(location, push=true) {
-  let a = await fetch(loc + "/api/goto/" + location, {
+async function goto(location, {push=true, toggle=true}={}) {
+  console.log(toggle)
+  let a = await fetch("/api/goto/" + location, {
     credentials: "include",
     method: "GET",
     mode: "cors",
@@ -106,6 +97,10 @@ async function goto(location, push=true) {
     eval(x.innerHTML);
   });
   document.querySelector("title").textContent = metadata['title'];
+  window.scrollTo(0, 0);
+  if(toggle){
+    toggleMenu();
+  }
   if(push){
     history.pushState(null, null, metadata['canonical']);
   }
@@ -113,5 +108,5 @@ async function goto(location, push=true) {
 
 function backButton() {
   const location = window.location.pathname;
-  goto(location.substring(1), push=false); // remove slash, goto already does that
+  goto(location.substring(1), {push:false}); // remove slash, goto already does that
 }
