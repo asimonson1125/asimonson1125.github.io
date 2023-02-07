@@ -67,7 +67,7 @@ function windowResized() {
 }
 
 function draw() {
-  background(32);
+  background(24);
 
   for (let i = 0; i < balls.length; i++) {
     balls[i].update();

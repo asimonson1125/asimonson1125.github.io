@@ -148,12 +148,12 @@ a {
   text-align: center;
   font-size: 1.2rem;
   font-size: 1rem;
-  background-color: rgb(156, 49, 45, .4);
-  cursor: pointer;
+  background-color: rgba(139, 36, 36, 0.5);
 }
 
 .navElement:hover {
-  background-color: rgb(156, 49, 45, .8);
+  background-color: rgba(139, 36, 36, 0.8);
+  cursor: pointer;
 }
 
 .navElement * {
@@ -195,7 +195,7 @@ a {
   padding-left: 8rem;
   width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
-  background-color: rgb(44, 44, 44, .85);
+  background-color: rgb(24, 24, 24, .85);
   padding-bottom: 1rem;
   overflow: hidden;
   transition: .4s;

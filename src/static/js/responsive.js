@@ -82,7 +82,6 @@ function toggleMenu() {
 }
 
 async function goto(location, {push=true, toggle=true}={}) {
-  console.log(toggle)
   let a = await fetch("/api/goto/" + location, {
     credentials: "include",
     method: "GET",
