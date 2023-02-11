@@ -4,28 +4,9 @@ import json
 
 proj = json.load(open("./static/json/projects.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
-pages = {
-    "home": {
-        "template": "home.html",
-        "title": "Andrew Simonson - Portfolio Home",
-        "description": "Andrew Simonson's Digital Portfolio home",
-        "canonical": "/",
-    },
-    "projects": {
-        "template": "projects.html",
-        "projects": proj,
-        "title": "Andrew Simonson - Projects",
-        "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
-        "canonical": "/projects",
-    },
-    "about": {
-        "template": "about.html",
-        "timeline": timeline,
-        "title": "Andrew Simonson - About Me",
-        "description": "About Andrew Simonson",
-        "canonical": "/about",
-    },
-}
+pages = json.load(open("./static/json/pages.json", "r"))
+pages['about']['timeline'] = timeline
+pages['projects']['projects'] = proj
 
 app = flask.Flask(__name__)
 

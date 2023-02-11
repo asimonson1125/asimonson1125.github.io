@@ -1,0 +1,20 @@
+{
+    "home": {
+        "template": "home.html",
+        "title": "Andrew Simonson - Portfolio Home",
+        "description": "Andrew Simonson's Digital Portfolio home",
+        "canonical": "/"
+    },
+    "projects": {
+        "template": "projects.html",
+        "title": "Andrew Simonson - Projects",
+        "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
+        "canonical": "/projects"
+    },
+    "about": {
+        "template": "about.html",
+        "title": "Andrew Simonson - About Me",
+        "description": "About Andrew Simonson",
+        "canonical": "/about"
+    }
+}
