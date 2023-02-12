@@ -1,52 +1,21 @@
 import flask
 from flask_minify import Minify
-from flask_socketio import SocketIO
 import json
 
 proj = json.load(open("./static/json/projects.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
-pages = {
-    "home": {
-        "template": "home.html",
-        "title": "Andrew Simonson - Portfolio Home",
-        "description": "Andrew Simonson's Digital Portfolio home",
-        "canonical": "",
-    },
-    "projects": {
-        "template": "projects.html",
-        "projects": proj,
-        "title": "Andrew Simonson - Projects",
-        "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
-        "canonical": "projects",
-    },
-    "about": {
-        "template": "about.html",
-        "timeline": timeline,
-        "title": "Andrew Simonson - About Me",
-        "description": "About Andrew Simonson",
-        "canonical": "about",
-    },
-}
+pages = json.load(open("./static/json/pages.json", "r"))
+pages['about']['timeline'] = timeline
+pages['projects']['projects'] = proj
 
 app = flask.Flask(__name__)
-Minify(app=app, html=True, js=True, cssless=True)
-socketio = SocketIO(app)
 
 
-@socketio.on("goto")
-def goto(location):
-    sid = flask.request.sid
+@app.route('/api/goto/')
+@app.route('/api/goto/<location>')
+def goto(location='home'):
     pagevars = pages[location]
-    output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
-    socketio.emit("goto", output, to=sid)
-
-@socketio.on("socketio/goto")
-def goto(location):
-    sid = flask.request.sid
-    pagevars = pages[location]
-    output = [location, flask.render_template(pagevars["template"], var=pagevars), pagevars['title']]
-    socketio.emit("goto", f"<h1>AAAAAAAAAAAAAA</h1>{output}", to=sid)
-
+    return [pagevars, flask.render_template(pagevars["template"], var=pagevars)]
 
 @app.route("/")
 def home():
@@ -104,7 +73,9 @@ def static_from_root():
 
 
 if __name__ == "__main__":
-    import sass
+    # import sass
 
-    sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
-    socketio.run(app)
+    # sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
+    app.run()
+else:
+    Minify(app=app, html=True, js=True, cssless=True)

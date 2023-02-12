@@ -52,22 +52,20 @@
       href="{{ url_for('static', filename='css/head.css') }}"
     />
 
-    <link rel="canonical" href="https://asimonson.com/{{ var['canonical'] }}" />
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
+    <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
+    <script defer src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+    <script defer src="{{ url_for('static', filename='js/idler.js') }}"></script>
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
     <title>{{ var['title'] }}</title>
   </head>
 
-  <body>
+  <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="App">
       <div class="header">
-
-          <div id="name-container" onclick="emitData('goto', 'home')">
+          <div id="name-container" onclick="goto('home', {toggle:false})">
             <div class="glitch">
               {% for i in range(9) %}
               <div class="line name">
@@ -85,18 +83,18 @@
         />
         <div class="navControl">
           <div class="navBar">
-            <div class="navElement">
-              <p onclick="emitData('goto', 'home')">Home</p>
+            <div onClick="goto('home')" class="navElement">
+              <p>Home</p>
             </div>
-            <div class="navElement">
-              <a href="Resume.pdf" target="_blank"> Resume </a>
-            </div>
-            <div class="navElement">
-              <p onclick="emitData('goto', 'projects')">Projects</p>
+            <a href="Resume.pdf" target="_blank" class="navElement">
+              <span>Resume</span>
+            </a>
+            <div onclick="goto('projects')" class="navElement">
+              <p>Projects</p>
             </div>
             <!-- <a href="/activities">Activities</a> -->
-            <div class="navElement">
-              <p onclick="emitData('goto', 'about')">About Me</p>
+            <div onclick="goto('about')" class="navElement">
+              <p>About Me</p>
             </div>
           </div>
         </div>
