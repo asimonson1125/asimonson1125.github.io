@@ -34,6 +34,7 @@ body {
   background-attachment: fixed;
   background-size: 100% auto;
   background-clip: border-box;
+  background-color: #1a1a1a;
 }
 
 * {
@@ -147,11 +148,12 @@ a {
   text-align: center;
   font-size: 1.2rem;
   font-size: 1rem;
-  background-color: rgb(156, 49, 45, .4);
+  background-color: rgba(139, 36, 36, 0.5);
 }
 
 .navElement:hover {
-  background-color: rgb(156, 49, 45, .8);
+  background-color: rgba(139, 36, 36, 0.8);
+  cursor: pointer;
 }
 
 .navElement * {
@@ -189,11 +191,11 @@ a {
 
 .foreground {
   position: relative;
-  padding-top: 7rem;
+  padding-top: 6rem;
   padding-left: 8rem;
   width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
-  background-color: rgb(44, 44, 44, .85);
+  background-color: rgb(24, 24, 24, .85);
   padding-bottom: 1rem;
   overflow: hidden;
   transition: .4s;
@@ -268,6 +270,10 @@ a {
   justify-content: left;
 }
 
+.relative {
+  position: relative;
+}
+
 .onRight {
   position: absolute;
   right: 0;
@@ -309,10 +315,20 @@ a {
   max-height: min(30rem, 100%);
 }
 
+/* #aboutGrid{
+  display: grid;
+} */
+
 .col {
-  float: left;
-  margin-right: 3rem;
   width: calc(50% - 3rem);
+  margin-bottom: 3em;
+}
+
+.rightCol {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 3em;
 }
 
 .boxedImg {
@@ -321,15 +337,6 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.carousel-container {
-  margin-left: 10%;
-  max-width: 80%;
-}
-
-.elementBlock {
-  margin-top: 3rem;
 }
 
 .skills {
@@ -347,103 +354,6 @@ a {
   margin: .5rem;
   background-color: rgba(11, 11, 11, .8);
   color: rgb(212, 212, 212);
-}
-
-#skillList {
-  color: white;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#skillDisp {
-  width: 30em;
-  position: relative;
-}
-
-#skillDisp::after {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right top;
-  opacity: .2;
-  position: absolute;
-  height: 60%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  content: "";
-  z-index: -1;
-}
-
-#skillDisp.python::after {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png')
-}
-
-#skillDisp.js::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-PTty3CfTGnA%2FTpZOEjTQ_WI%2FAAAAAAAAAeo%2FKeKt_D5X2xo%2Fs1600%2Fjs.jpg&f=1&nofb=1&ipt=c8ae673676226ae40a5cd1408a5c7607e6b9725025888f4994a705309a16d1c3&ipo=images')
-}
-
-#skillDisp.html::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2017%2F07%2FHTML5_badge.png&f=1&nofb=1&ipt=db644f64f96f334aad37d31dc1c9dab28021476f6effaa0cb682297f8fd14240&ipo=images')
-}
-
-#skillDisp.sql::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fbasicolor-computer-tech%2F24%2F091_database_data_sql-512.png&f=1&nofb=1&ipt=cffc17203486b92c9733b992733e6934c03f984bc530c94b75bed278bc73477d&ipo=images')
-}
-
-#skillDisp.cpp::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fen.nokiawroclaw.pl%2Fwp-content%2Fuploads%2Fsites%2F5%2F2018%2F11%2Fcpp_logo.png&f=1&nofb=1&ipt=5fc23951b00bcbdec1977f3bc4591a7b8511ab29f5982963c541526902c0b4fd&ipo=images')
-}
-
-#skillDisp.other::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Fgit-icon-logo-png-transparent.png&f=1&nofb=1&ipt=834c5a11f63e26429713be2b7d9c9d1e45ce53d771862b9ab49bc35571513894&ipo=images')
-}
-
-#skillDisp.tools::after {
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.g2crowd.com%2Fuploads%2Fproduct%2Fimage%2Flarge_detail%2Flarge_detail_64636a5c446c22391d4ed719e0987cd2%2Farcgis-pro.png&f=1&nofb=1&ipt=812a2905dd03e5c68f55a9f095bfe7a54feb801bf7f3f11cc01352f45f8a4f8d&ipo=images')
-}
-
-.hex-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-}
-
-.hex-row {
-  display: flex;
-}
-
-.hex {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  margin: 0px 5px;
-}
-
-.hex:hover {
-  transform: scaleX(1.1) scaleY(1.1);
-}
-
-.hex>* {
-  position: absolute;
-}
-
-.hex-odd {
-  margin: 0px 55px;
-}
-
-.hex-border {
-  border-left: solid black 3px;
-  border-right: solid black 3px;
-  width: 100%;
-  height: 58%;
-}
-
-.hex>.hex-border:nth-child(1) {
-  rotate: 60deg;
-}
-
-.hex>.hex-border:nth-child(2) {
-  rotate: 120deg;
 }
 
 .projectList {
@@ -600,22 +510,6 @@ a {
       0 0 38px #5271ff, 0 0 73px #5271ff, 0 0 80px #5271ff, 0 0 94px #5271ff,
       0 0 140px #5271ff;
   }
-}
-
-@keyframes swipeIn {
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  0% {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-}
-
-.swipeIn {
-  animation: swipeIn 1s 1;
 }
 
 .fPage {
@@ -799,16 +693,6 @@ a {
   font-family: robotoreg;
 }
 
-/* .timeline-item::before{
-  content: "";
-  background-color: red;
-  border: solid black 3px;
-  border-radius: 100%;
-  padding: 5px;
-  position: absolute;
-  margin-left: -8px;
-} */
-
 .datetext {
   margin: .25em;
   font-size: small;
@@ -866,6 +750,7 @@ a {
     /* centered objects will need to remove 1.5 of this to center */
     padding-right: .5rem;
     padding-bottom: 36px;
+    padding-top: 3em;
   }
 
   .homeground {
@@ -892,19 +777,11 @@ a {
     margin-bottom: 3rem;
   }
 
-  #aboutMe {
-    float: none;
-    display: block;
-    width: 90%;
+  .rightCol {
+    position: inherit;
+    margin-right: inherit;
   }
-
-  #skills {
-    float: none;
-    margin-right: auto;
-    display: block;
-    width: 90%;
-  }
-
+  
   .footer {
     position: relative;
     width: 100%;

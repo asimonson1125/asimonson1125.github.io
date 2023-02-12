@@ -4,13 +4,6 @@ window.onload = function () {
 function onLoaded() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  let navs = document.querySelectorAll(".navElement");
-  navs.forEach(function (element) {
-    element.onclick = function () {
-      window.scrollTo(0, 0);
-      toggleMenu();
-    };
-  });
 
   window.onresize = function () {
     resizer();
@@ -88,25 +81,31 @@ function toggleMenu() {
   }
 }
 
-let socket = io();
-
-function emit(event) {
-   socket.emit(event);
-}
-
-function emitData(event, data) {
-   socket.emit(event, data)
-}
-
-socket.on('goto', (page) => {
-  pagename = page[0];
-  content = page[1];
-  let root = document.getElementById('root');
+async function goto(location, {push=true, toggle=true}={}) {
+  let a = await fetch("/api/goto/" + location, {
+    credentials: "include",
+    method: "GET",
+    mode: "cors",
+  });
+  const response = await a.json();
+  const metadata = response[0];
+  const content = response[1];
+  let root = document.getElementById("root");
   root.innerHTML = content;
-  root.querySelectorAll("script").forEach(x => {
+  root.querySelectorAll("script").forEach((x) => {
     eval(x.innerHTML);
   });
-  document.querySelector('title').textContent = page[2];
-  if (pagename == 'home') pagename = '/';
-  history.pushState(null, null, pagename);
-});
+  document.querySelector("title").textContent = metadata['title'];
+  window.scrollTo(0, 0);
+  if(toggle){
+    toggleMenu();
+  }
+  if(push){
+    history.pushState(null, null, metadata['canonical']);
+  }
+}
+
+function backButton() {
+  const location = window.location.pathname;
+  goto(location.substring(1), {push:false}); // remove slash, goto already does that
+}

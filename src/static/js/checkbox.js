@@ -1,4 +1,4 @@
-function toggle(dir) {
+function toggleCheckbox(dir) {
   let toggles = document.querySelectorAll(
     ".checkbox-wrapper input[type=checkbox]"
   );

@@ -15,20 +15,20 @@
     <div class="checkbox-wrapper">
       <div class="flex start">
       <label class="switch" htmlFor="pinned">
-        <input type="checkbox" id="pinned" onClick="toggle('')" checked/>
+        <input type="checkbox" id="pinned" onClick="toggleCheckbox('')" checked/>
         <div class="slider round"></div>
         <strong>Pinned</strong>
       </label>
       </div>
       <div class="flex start">
       <label class="switch" htmlFor="programming">
-        <input type="checkbox" id="programming" onClick="toggle('')" />
+        <input type="checkbox" id="programming" onClick="toggleCheckbox('')" />
         <div class="slider round"></div>
         <strong>Programming</strong>
       </label>
       </div>
       <div class="flex start">
-      <label class="switch" htmlFor="geospacial" onClick="toggle('')">
+      <label class="switch" htmlFor="geospacial" onClick="toggleCheckbox('')">
         <input type="checkbox" id="geospacial" />
         <div class="slider round"></div>
         <strong>Geospacial</strong>
@@ -42,5 +42,5 @@
         {% endfor %}
     </div>
   </div>
-  <script>toggle('')</script>
+  <script>toggleCheckbox('')</script>
 {% endblock %}
