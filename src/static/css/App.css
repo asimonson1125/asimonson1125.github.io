@@ -111,6 +111,7 @@ a {
 
 #name-container {
   display: inline;
+  cursor: pointer;
 }
 
 .name {
