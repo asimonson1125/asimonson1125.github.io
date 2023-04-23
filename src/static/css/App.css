@@ -323,12 +323,11 @@ a {
 .col {
   width: calc(50% - 3rem);
   margin-bottom: 3em;
+  float: left; 
 }
 
 .rightCol {
-  position: absolute;
-  right: 0;
-  top: 0;
+  float: left;
   margin-right: 3em;
 }
 
