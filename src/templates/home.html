@@ -19,7 +19,26 @@
         }}
       </div>
       <br />
-      {% from 'partials/bookshelf.html' import bookshelf %} {{ bookshelf(var.books) }}
+      {% from 'partials/bookshelf.html' import bookshelf %} {{
+      bookshelf(var.books) }}
+      <br />
+      <div class="flex">
+        <img
+          alt="duck spinning"
+          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+          class="smallImg"
+        />
+        <img
+          alt="duck spinning"
+          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+          class="smallImg"
+        />
+        <img
+          alt="duck spinning"
+          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+          class="smallImg"
+        />
+      </div>
     </div>
   </div>
 </div>

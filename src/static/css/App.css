@@ -735,6 +735,11 @@ a {
   font-family: robotoreg;
 }
 
+.smallImg {
+  display: inline-block;
+  width: 75px;
+}
+
 @font-face {
   font-family: Chess New;
   src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
