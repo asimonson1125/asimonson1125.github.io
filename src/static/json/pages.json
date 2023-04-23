@@ -16,5 +16,11 @@
         "title": "Andrew Simonson - About Me",
         "description": "About Andrew Simonson",
         "canonical": "/about"
+    },
+    "books": {
+        "template": "books.html",
+        "title": "Andrew Simonson - Bookshelf",
+        "description": "Some of the books I've read",
+        "canonical": "/books"
     }
 }

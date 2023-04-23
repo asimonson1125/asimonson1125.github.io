@@ -13,10 +13,13 @@
         class="langstats"
         alt="Language stats"
       />
+      <br />
       <div class="chess">
         {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
         }}
       </div>
+      <br />
+      {% from 'partials/bookshelf.html' import bookshelf %} {{ bookshelf(var.books) }}
     </div>
   </div>
 </div>

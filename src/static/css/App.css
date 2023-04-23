@@ -25,6 +25,7 @@
 
 html, body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -323,7 +324,7 @@ a {
 .col {
   width: calc(50% - 3rem);
   margin-bottom: 3em;
-  float: left; 
+  float: left;
 }
 
 .rightCol {
@@ -662,6 +663,40 @@ a {
   color: #db7e3b;
 }
 
+.bookshelf {
+  width: 360px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #a58a45;
+}
+
+.book {
+  width: 90px;
+  display: inline-block;
+}
+
+.book img {
+  display: block;
+  margin: auto;
+  width: 75px;
+  height: 112px;
+}
+
+.book h4 {
+  font-size: x-small;
+  color: black;
+}
+
+.bookReview {
+  margin-top: 3em;
+}
+
+.bookcover {
+  width: 10em;
+}
+
 .timeitem {
   transition: .4s;
   overflow-y: clip;
@@ -781,7 +816,7 @@ a {
     position: inherit;
     margin-right: inherit;
   }
-  
+
   .footer {
     position: relative;
     width: 100%;

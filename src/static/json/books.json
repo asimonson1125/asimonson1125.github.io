@@ -1,0 +1,13 @@
+{
+  "selection": ["Freakonomics", "Zero To One", "The Accidental Superpower", "Courage is Calling"],
+  "books": {
+    "Freakonomics": { "filename": "freakonomics.jpeg" },
+    "Disunited Nations": { "filename": "disunitedNations.jpeg" },
+    "The Accidental Superpower": { "filename": "theAccidentalSuperpower.jpeg" },
+    "Give Me a Break": { "filename": "giveMeABreak.jpeg" },
+    "Zero To One": { "filename": "zeroToOne.jpeg" },
+    "Courage is Calling": { "filename": "courageIsCalling.jpeg"},
+    "On Grand Strategy": { "filename": "onGrandStrategy.jpeg"},
+    "The Parasitic Mind": { "filename": "theParasiticMind.jpeg"}
+  }
+}
