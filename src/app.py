@@ -3,10 +3,13 @@ from flask_minify import Minify
 import json
 
 proj = json.load(open("./static/json/projects.json", "r"))
+books = json.load(open("./static/json/books.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
 pages = json.load(open("./static/json/pages.json", "r"))
 pages['about']['timeline'] = timeline
 pages['projects']['projects'] = proj
+pages['home']['books'] = books
+pages['books']['books'] = books
 
 app = flask.Flask(__name__)
 
@@ -17,22 +20,12 @@ def goto(location='home'):
     pagevars = pages[location]
     return [pagevars, flask.render_template(pagevars["template"], var=pagevars)]
 
-@app.route("/")
-def home():
-    pagevars = pages["home"]
-    return flask.render_template("header.html", var=pagevars)
-
-
-@app.route("/projects")
-def projects():
-    pagevars = pages["projects"]
-    return flask.render_template("header.html", var=pagevars)
-
-
-@app.route("/about")
-def about():
-    pagevars = pages["about"]
-    return flask.render_template("header.html", var=pagevars)
+# I am literally insane
+# There was no reason for me to do this
+# it saved some lines of code I guess
+# infinite flaskless flask here we comes
+for i in pages:
+    exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
 
 
 @app.route("/resume")
