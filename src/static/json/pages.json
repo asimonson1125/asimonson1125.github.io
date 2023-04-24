@@ -22,5 +22,11 @@
         "title": "Andrew Simonson - Bookshelf",
         "description": "Some of the books I've read",
         "canonical": "/books"
+    },
+    "duck": {
+        "template": "duck.html",
+        "title":"You've been ducked!",
+        "description": "Face it, you've been ducked",
+        "canonical": "/duck"
     }
 }
