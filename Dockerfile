@@ -9,7 +9,7 @@ RUN apt-get install -y python3-pip nginx gunicorn supervisor
 # Setup flask application
 RUN mkdir -p /deploy/app
 COPY src /deploy/app
-RUN pip install -r /deploy/app/requirements.txt
+RUN pip install -r /deploy/app/requirements.txt --break-system-packages
 
 # Setup nginx
 RUN rm /etc/nginx/sites-enabled/default
