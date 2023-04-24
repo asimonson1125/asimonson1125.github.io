@@ -1,17 +1,20 @@
 {% macro bookshelf(books) %}
 <a href="/books">
   <div class="bookshelf">
-    {% for i in books.selection %} {% set book = books.books[i] %}
-    <a href="/books#'{{i}}'">
-      <div class="book">
-        <img
-          alt="{{ i }} cover"
-          src="{{ url_for('static', filename=('photos/books/' + book.filename))}}"
-        />
-        <h4>{{ i }}</h4>
-      </div>
-    </a>
-    {% endfor %}
+    <h5 class="bookshelfHeader">I read things:</h5>
+    <div class="bookContainer">
+      {% for i in books.selection %} {% set book = books.books[i] %}
+      <a href="/books#'{{i}}'">
+        <div class="book">
+          <img
+            alt="{{ i }} cover"
+            src="{{ url_for('static', filename=('photos/books/' + book.filename))}}"
+          />
+          <h4>{{ i }}</h4>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
   </div>
 </a>
 {% endmacro %}

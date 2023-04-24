@@ -666,10 +666,21 @@ a {
 .bookshelf {
   width: 360px;
   padding: 10px;
+  border: solid 2px #553;
+  background-image: url("https://wallpapercave.com/wp/wp4292426.jpg");
+}
+
+.bookshelfHeader {
+  color: lightgray;
+  margin: .5em;
+  border-bottom: solid black 3px;
+  margin-right: 5em;
+}
+
+.bookContainer {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #a58a45;
 }
 
 .book {
@@ -686,7 +697,9 @@ a {
 
 .book h4 {
   font-size: x-small;
-  color: black;
+  color: lightgray;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .bookReview {
