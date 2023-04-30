@@ -1,22 +1,23 @@
 {% block content %}
 <div class="foreground">
-  <h2>These are my books lol</h2>
-  <h3>
-    This page is under construction but I felt like at least publishing a list
-    of books even if they didn't have reviews on them yet
-  </h3>
-  {% for i in var.books.books %}
+  <h2>These are some of my books lol</h2>
+  <h3>hover to reveal review</h3>
+  <div class="booklist flex wrap mobileV">
+    {% for i in var.books.books %}
     <div id="'{{i}}'" class="bookReview">
-      <h4>{{i}}</h4>
-      <div>
+      <div class="hover-container">
         <img
           class="bookcover"
           alt="{{i}} cover"
           src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
         />
-        <p>{{ var.books.books[i].review }}</p>
+        <div class="hover-element">
+          <p>{{ var.books.books[i].review }}</p>
+          <a href="{{ var.books.books[i].link }}">Book Source</a>
+        </div>
       </div>
     </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

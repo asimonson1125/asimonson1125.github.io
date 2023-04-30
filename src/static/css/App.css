@@ -195,7 +195,7 @@ a {
   position: relative;
   padding-top: 6rem;
   padding-left: 8rem;
-  width: calc(100%-8rem);
+  max-width: calc(100%-8rem);
   min-height: calc(100vh - 8rem);
   background-color: rgb(24, 24, 24, .85);
   padding-bottom: 1rem;
@@ -262,6 +262,11 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .spaceBetween {
@@ -703,11 +708,17 @@ a {
 }
 
 .bookReview {
-  margin-top: 3em;
+  width: 6em;
+  padding: 1em;
 }
 
 .bookcover {
-  width: 10em;
+  width: 6em;
+}
+
+.booklist {
+  margin: min(10em, 10%);
+  margin-bottom: 20em;
 }
 
 .timeitem {
@@ -753,12 +764,37 @@ a {
   width: 75px;
 }
 
+.hover-container {
+  position: relative;
+}
+
+.hover-container .hover-element {
+  position: absolute;
+  top: 3em;
+  left: -50%;
+  z-index: 10;
+  padding: 1em;
+  border-radius: 1em;
+  width: 20em;
+  background-color: #1a1a1a;
+  opacity: 0;
+  transition: 1s;
+}
+
+.hover-container:hover .hover-element {
+  opacity: 1;
+}
+
 @font-face {
   font-family: Chess New;
   src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
 }
 
 @media screen and (max-width: 1200px) {
+
+  .mobileV {
+    flex-direction: column;
+  }
 
   #menu {
     display: unset;
@@ -798,7 +834,7 @@ a {
   }
 
   .foreground {
-    width: 100%;
+    max-width: 100%;
     padding-left: 2rem;
     /* centered objects will need to remove 1.5 of this to center */
     padding-right: .5rem;

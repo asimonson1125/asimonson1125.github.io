@@ -1,13 +1,80 @@
 {
-  "selection": ["Freakonomics", "Zero To One", "The Accidental Superpower", "Courage is Calling"],
+  "selection": [
+    "Freakonomics",
+    "Zero To One",
+    "The Accidental Superpower",
+    "David and Goliath"
+  ],
   "books": {
-    "Freakonomics": { "filename": "freakonomics.jpeg" },
-    "Disunited Nations": { "filename": "disunitedNations.jpeg" },
-    "The Accidental Superpower": { "filename": "theAccidentalSuperpower.jpeg" },
-    "Give Me a Break": { "filename": "giveMeABreak.jpeg" },
-    "Zero To One": { "filename": "zeroToOne.jpeg" },
-    "Courage is Calling": { "filename": "courageIsCalling.jpeg"},
-    "On Grand Strategy": { "filename": "onGrandStrategy.jpeg"},
-    "The Parasitic Mind": { "filename": "theParasiticMind.jpeg"}
+    "Freakonomics": {
+      "filename": "freakonomics.jpeg",
+      "link": "https://freakonomics.com/books/",
+      "review": "The original on cracked economics.  Dozens of case studies heavy on the unexpected results of incentives.  Mind Expanding. Very nice."
+    },
+    "Superfreakonomics": {
+      "filename": "superfreakonomics.jpeg",
+      "link": "https://freakonomics.com/books/",
+      "review": "More of the goods?  Excellent.  A number of case studies on finding simple solutions to wicked problems through changing the attack vector in brainstorming.  Another fun read."
+    },
+    "When to Rob a Bank": {
+      "filename": "whenToRobABank.jpeg",
+      "link": "https://freakonomics.com/books/",
+      "review": "Collection of blog posts.  Good for short reading sessions.  I read this one first, I thought the Freakonomics mode of thinking was hilarious.  Classic."
+    },
+    "Think like a Freak": {
+      "filename": "thinkLikeAFreak.jpg",
+      "link": "https://freakonomics.com/books/",
+      "review": "I'm reading this right now! haahahahahahahaa\nIt's classic freakonomics content"
+    },
+    "The Accidental Superpower": {
+      "filename": "theAccidentalSuperpower.jpeg",
+      "link": "https://zeihan.com/",
+      "review": "My intro to geopolitics, brilliant hook that made possibly my fastest read ever.  The straightforward the lines of reasoning and grounding in concrete realities that few would consider controversial is incredible, even when the conclusions seem hyper-dramatic."
+    },
+    "The Absent Superpower": {
+      "filename": "theAbsentSuperpower.jpeg",
+      "link": "https://zeihan.com/",
+      "review": "Hadn't realized the author was the same as Accidental when I bought it.  It covered a lot of the same stuff but with a heavvy emphasis on fracking technology which was a bit slow but it solidified the veracity of Zeihan's worldview."
+    },
+    "Disunited Nations": {
+      "filename": "disunitedNations.jpeg",
+      "link": "https://zeihan.com/disunited-nations/",
+      "review": "Chapter profiles of key countries in the world provides lots of interesting supporting details, but being the third book of its kind made the rehashing a bit of a drag."
+    },
+    "The End of the World is Just the Beginning": {
+      "filename": "theEndOfTheWorldIsJustTheBeginning.jpeg",
+      "link": "https://zeihan.com/end-of-the-world/",
+      "review": "Separates itself from the others by Zeihan in its breakdown of specific resources of every category, from nickel to corn.  Being generalized, specific, and an enjoyable read all at the same time.  Galaxy Brain stuff."
+    },
+    "Give Me a Break": {
+      "filename": "giveMeABreak.jpeg",
+      "link": "https://www.amazon.com/Give-Me-Break-Exposed-Hucksters-ebook/dp/B000FC2NF8/",
+      "review": "I expected a boring autobiography-type book, but instead is a glimpse inside Stossel's work that transformed itself as it transformed his view.  Was very happy to see a figure of similar personal ideology.  Probably made it a little too easy to swallow that pill."
+    },
+    "Zero To One": {
+      "filename": "zeroToOne.jpeg",
+      "link": "https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296",
+      "review": "Initially very frustrating read.  Took a bit of internal review to realize that this is an entrepreneurial perspective, not a consumer one.  After that, it's quite eye-opening in ways that would've been obvious without the lens of life experience.  The optimistic takes are very much appreciated and their justifications are solid."
+    },
+    "Courage is Calling": {
+      "filename": "courageIsCalling.jpeg",
+      "link": "https://www.amazon.com/Courage-Calling-Fortune-Favors-Brave/dp/B094PMPCBT/",
+      "review": "Average on the readability scale, but inspiring all the same.  As a primer in stoicism it gets a 8/10 for not enough gigachad energy to match the gigachad content."
+    },
+    "On Grand Strategy": {
+      "filename": "onGrandStrategy.jpeg",
+      "link": "https://www.amazon.com/Grand-Strategy-John-Lewis-Gaddis/dp/1594203512",
+      "review": "Book for the academically-inclined.  Not fun to read.  Big words scary.  It's insightful to be sure but I wouldn't read it again.  The message on conceptual contradictions has stuck with me.  Quite the brain food."
+    },
+    "The Parasitic Mind": {
+      "filename": "theParasiticMind.jpeg",
+      "link": "https://www.amazon.com/Parasitic-Mind-Infectious-Killing-Common/dp/1684512298/",
+      "review": "The humor is the most memorable part but the concepts are no slouches.  The contemporary culture war basis makes it tricky to talk about, but it absolutely should be discussed."
+    },
+    "David and Goliath": {
+      "filename": "davidAndGoliath.png",
+      "link": "https://www.amazon.com/David-Goliath-Underdogs-Misfits-Battling/dp/0316239852/",
+      "review": "Book contains takes that may not be hot, but *are* incredibly based.  In a sentence: Goliath is only the giant from the wrong perspectives.  The only reason it's not one of my favorites is that it's tamer than the aggressively standoffish and hilarious."
+    }
   }
 }
