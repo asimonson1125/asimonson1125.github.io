@@ -54,7 +54,7 @@
     "Zero To One": {
       "filename": "zeroToOne.jpeg",
       "link": "https://www.amazon.com/Zero-One-Notes-Startups-Future/dp/0804139296",
-      "review": "Initially very frustrating read.  Took a bit of internal review to realize that this is an entrepreneurial perspective, not a consumer one.  After that, it's quite eye-opening in ways that would've been obvious without the lens of life experience.  The optimistic takes are very much appreciated and their justifications are solid."
+      "review": "Initially very frustrating read.  Took a bit of internal review to realize that this has to be read with an entrepreneurial perspective, not a consumer one.  After that, it's quite eye-opening in ways that would've been obvious without the lens of life experience.  The optimistic takes are very much appreciated and their justifications are solid."
     },
     "Courage is Calling": {
       "filename": "courageIsCalling.jpeg",
@@ -85,6 +85,11 @@
       "filename": "youCanReadAnyone.jpg",
       "link": "https://www.amazon.com/YOU-READ-ANYONE-David-Lieberman-ebook/dp/B001J6OV0Y",
       "review": "Not as page-turning as many of the others and clearly not as memorable.  The techniques pique curiosity but are difficult to use without practice."
+    },
+    "Profiles in Courage": {
+      "filename": "profilesInCourage.jpeg",
+      "link": "https://www.amazon.com/Profiles-Courage-John-F-Kennedy/dp/0060854936",
+      "review": "Another book that was hard to really get into but still provided fascinating commentary on some very important figures that have faded from public memory."
     }
   }
 }
