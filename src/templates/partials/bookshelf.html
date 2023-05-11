@@ -1,7 +1,7 @@
 {% macro bookshelf(books) %}
 <a href="/books">
   <div class="bookshelf">
-    <h5 class="bookshelfHeader">I read things:</h5>
+    <h5 class="bookshelfHeader">Check out the things I read:</h5>
     <div class="bookContainer">
       {% for i in books.selection %} {% set book = books.books[i] %}
       <a href="/books#'{{i}}'">

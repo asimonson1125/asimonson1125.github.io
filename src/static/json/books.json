@@ -46,6 +46,11 @@
       "link": "https://zeihan.com/end-of-the-world/",
       "review": "Separates itself from the others by Zeihan in its breakdown of specific resources of every category, from nickel to corn.  Being generalized, specific, and an enjoyable read all at the same time.  Galaxy Brain stuff."
     },
+    "The Storm Before the Calm": {
+      "filename": "theStormBeforeTheCalm.jpeg",
+      "link": "https://www.amazon.com/Storm-Before-Calm-Americas-Discord/dp/1101911786/",
+      "review": "Repetitive and almost faith-based.  The cycles and cultural inclinations used as the backbone for predictions may be accurate, but the evidence for this was slim.  Nonetheless, the cultural archetypes laid out here have stuck with me, albeit not for political fortune-telling purposes."
+    },
     "Give Me a Break": {
       "filename": "giveMeABreak.jpeg",
       "link": "https://www.amazon.com/Give-Me-Break-Exposed-Hucksters-ebook/dp/B000FC2NF8/",
@@ -60,6 +65,11 @@
       "filename": "courageIsCalling.jpeg",
       "link": "https://www.amazon.com/Courage-Calling-Fortune-Favors-Brave/dp/B094PMPCBT/",
       "review": "Average on the readability scale, but inspiring all the same.  As a primer in stoicism it gets a 8/10 for not enough gigachad energy to match the gigachad content."
+    },
+    "Discipline Is Destiny": {
+      "filename": "disciplineIsDestiny.jpg",
+      "link": "https://www.amazon.com/Discipline-Destiny-Power-Self-Control-Virtues/dp/0593191692",
+      "review": "Much like the first in its series - small chapters (very helpful) each with inspiring insider stories of figures of history.  Anyone capable of learning from these figures would benefit greatly from implementing the virtues in this series."
     },
     "On Grand Strategy": {
       "filename": "onGrandStrategy.jpeg",
@@ -79,7 +89,7 @@
     "Verbal Judo": {
       "filename": "verbalJudo.png",
       "link": "https://www.amazon.com/Verbal-Judo-Second-Gentle-Persuasion-ebook/dp/B00FJ3CMI6/",
-      "review": "Book tries to hook you into reading it even when you're already halfway through reading it.  And it works!  Definitely a good book to review occasionally"
+      "review": "Book tries to hook you into reading it even when you're already halfway through reading it.  And it works!  Definitely a good book to review occasionally to keep yourself grounded during tense moments."
     },
     "You Can Read Anyone": {
       "filename": "youCanReadAnyone.jpg",
@@ -90,6 +100,31 @@
       "filename": "profilesInCourage.jpeg",
       "link": "https://www.amazon.com/Profiles-Courage-John-F-Kennedy/dp/0060854936",
       "review": "Another book that was hard to really get into but still provided fascinating commentary on some very important figures that have faded from public memory."
+    },
+    "Autobiography of Thomas Jefferson": {
+      "filename": "autobioOfJefferson.jpeg",
+      "link": "https://www.amazon.com/Autobiography-Thomas-Jefferson/dp/1604597739",
+      "review": "Standard autobiography stuff.  Event-based accounts.  Made if pretty forgettable."
+    },
+    "Make Your Bed": {
+      "filename": "makeYourBed.jpg",
+      "link": "https://www.amazon.com/Make-Your-Bed-Little-Things/dp/1455570249",
+      "review": "Something small to read on a rainy day or flight.  Valuable advice condensed into personal stories that stretch beyond anecdotes."
+    },
+    "12 Rules for Life": {
+      "filename": "12RulesForLife.jpg",
+      "link": "https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021/",
+      "review": "Another challenging academic-type read.  I had a agreeable-hate relationship with the biblical storytelling that made me somewhat dread reading yet also question the nature of religion.  Another example of books with good advice being not fun to get into."
+    },
+    "Beyond Order: 12 More Rules for Life": {
+      "filename": "BeyondOrder.jpg",
+      "link": "https://www.amazon.com/Beyond-Order-More-Rules-Life/dp/0593084640",
+      "review": "It bothers how much these books make me stop and think because it throws me out of the focus of actually reading.  More solid advice with less religion than the predecessor but retaining the 'difficult to want to read' badge."
+    },
+    "The Hitchhiker's Guide to the Galaxy": {
+      "filename": "HitchhikersGuideToTheGalaxy.jpeg",
+      "link": "https://www.amazon.com/Hitchhikers-Guide-Galaxy-Douglas-Adams/dp/0345418913",
+      "review": "It's alright.  It felt like an aimless journey without defined boundaries that reveled in that fact for irony and wit points."
     }
   }
 }
