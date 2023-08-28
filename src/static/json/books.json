@@ -24,7 +24,7 @@
     "Think like a Freak": {
       "filename": "thinkLikeAFreak.jpg",
       "link": "https://freakonomics.com/books/",
-      "review": "I'm reading this right now! haahahahahahahaa\nIt's classic freakonomics content"
+      "review": "More like the other Freakonomics books than I expected (cracked storytelling), which is still excellent, but I wished there was greater insights into seeing past conventional wisdom, which is what thinking like a freak means.  Still a great book."
     },
     "The Accidental Superpower": {
       "filename": "theAccidentalSuperpower.jpeg",
@@ -34,7 +34,7 @@
     "The Absent Superpower": {
       "filename": "theAbsentSuperpower.jpeg",
       "link": "https://zeihan.com/",
-      "review": "Hadn't realized the author was the same as Accidental when I bought it.  It covered a lot of the same stuff but with a heavvy emphasis on fracking technology which was a bit slow but it solidified the veracity of Zeihan's worldview."
+      "review": "Hadn't realized the author was the same as Accidental when I bought it.  It covered a lot of the same stuff but with a heavy emphasis on fracking technology which was a bit slow but it solidified the veracity of Zeihan's worldview."
     },
     "Disunited Nations": {
       "filename": "disunitedNations.jpeg",
@@ -50,6 +50,11 @@
       "filename": "theStormBeforeTheCalm.jpeg",
       "link": "https://www.amazon.com/Storm-Before-Calm-Americas-Discord/dp/1101911786/",
       "review": "Repetitive and almost faith-based.  The cycles and cultural inclinations used as the backbone for predictions may be accurate, but the evidence for this was slim.  Nonetheless, the cultural archetypes laid out here have stuck with me, albeit not for political fortune-telling purposes."
+    },
+    "No, They Can't": {
+      "filename": "no-they-cant.jpeg",
+      "link": "https://www.goodreads.com/book/show/13260131-no-they-can-t",
+      "review": "I much preferred Give Me A Break (which I read first).  Sossel's writing style in this book is less developed - it feels aimless and with an intent to lecture."
     },
     "Give Me a Break": {
       "filename": "giveMeABreak.jpeg",
@@ -101,10 +106,10 @@
       "link": "https://www.amazon.com/Profiles-Courage-John-F-Kennedy/dp/0060854936",
       "review": "Another book that was hard to really get into but still provided fascinating commentary on some very important figures that have faded from public memory."
     },
-    "Autobiography of Thomas Jefferson": {
-      "filename": "autobioOfJefferson.jpeg",
-      "link": "https://www.amazon.com/Autobiography-Thomas-Jefferson/dp/1604597739",
-      "review": "Standard autobiography stuff.  Event-based accounts.  Made if pretty forgettable."
+    "Where Good Ideas Come From": {
+      "filename": "where-good-ideas-come-from.png",
+      "link": "https://www.goodreads.com/book/show/8034188-where-good-ideas-come-from",
+      "review": "I got this book at a recycling center.  I didn't want to read it or like it.  Unfortnuately, it's pretty good.  200 pages of considerate review of how innovation comes to be + suggestions to expand the utility of your ideas (I've adopted several!)"
     },
     "Make Your Bed": {
       "filename": "makeYourBed.jpg",
@@ -114,7 +119,7 @@
     "12 Rules for Life": {
       "filename": "12RulesForLife.jpg",
       "link": "https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021/",
-      "review": "Another challenging academic-type read.  I had a agreeable-hate relationship with the biblical storytelling that made me somewhat dread reading yet also question the nature of religion.  Another example of books with good advice being not fun to get into."
+      "review": "Another read with challenging academic vernacular.  I had a agreeable-hate relationship with the biblical storytelling that made me somewhat dread reading yet also question the nature of religion.  Another example of books with good advice being not fun to get into."
     },
     "Beyond Order: 12 More Rules for Life": {
       "filename": "BeyondOrder.jpg",
