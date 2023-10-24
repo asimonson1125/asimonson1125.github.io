@@ -1,5 +1,6 @@
 {% block content %}
-<div class="foreground">
+<div class="foreground"></div>
+<div class="foregroundContent">
     <div data-aos="fade-up">
       <h2 class="concentratedHead">Projects</h2>
       <p>
@@ -35,7 +36,7 @@
       </label>
       </div>
     </div>
-    <div class="projectList centeredForeground checkbox-client">
+    <div class="projectList checkbox-client">
         {% from 'partials/project.html' import project %} 
         {% for i in var["projects"] %}
         {{ project(i, var["projects"][i]["classes"], var["projects"][i]["status"], var["projects"][i]["bgi"], var["projects"][i]["content"], var["projects"][i]["links"]) }}

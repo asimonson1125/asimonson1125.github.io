@@ -41,6 +41,10 @@
     </script>
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/hotspots.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/App.css') }}"
     />
     <link
@@ -53,8 +57,19 @@
     />
 
     <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
-    <script defer src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
-    <script defer src="{{ url_for('static', filename='js/idler.js') }}"></script>
+    <link defer
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script defer
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script defer src="{{ url_for('static', filename='js/lib/leaflet-providers.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/lib/CUSTOM.leaflet.curve.js') }}"></script>
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
@@ -63,18 +78,20 @@
 
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="map"></div>
+    <script defer src="{{ url_for('static', filename='js/hotspots.js') }}"></script>
     <div class="App">
       <div class="header">
-          <div id="name-container" onclick="goto('home', {toggle:false})">
-            <div class="glitch">
-              {% for i in range(9) %}
-              <div class="line name">
-                <span class="textGrad">Andrew Simonson</span>
-              </div>
-              {% endfor %}
+        <div id="name-container" onclick="goto('home', {toggle:false})">
+          <div class="glitch">
+            {% for i in range(9) %}
+            <div class="line name">
+              <span class="textGrad">Andrew Simonson</span>
             </div>
+            {% endfor %}
           </div>
-        
+        </div>
+
         <img
           src="{{ url_for('static', filename='icons/menu.svg')}}"
           alt="menu"
@@ -101,8 +118,6 @@
       </div>
     </div>
     <div id="root">{% include var['template'] %}</div>
-    <div class="footer">
-      {% include 'partials/socials.html' %}
-    </div>
+    <div class="footer">{% include 'partials/socials.html' %}</div>
   </body>
 </html>
