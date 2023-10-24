@@ -1,6 +1,7 @@
 import flask
 from flask_minify import Minify
 import json
+from tasks import TaskHandler
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
@@ -12,6 +13,7 @@ pages['home']['books'] = books
 pages['books']['books'] = books
 
 app = flask.Flask(__name__)
+tasks = TaskHandler()
 
 
 @app.route('/api/goto/')
@@ -32,6 +34,18 @@ for i in pages:
 @app.route("/Resume.pdf")
 def resume():
     return flask.send_file("./static/Resume.pdf")
+
+@app.route("/hotspots")
+def hotspotsRIT():
+    return flask.render_template("hotspots.html")
+
+@app.route("/hotspotsrit/cached")
+def getCached():
+    return json.dumps(tasks.getCache())
+
+@app.route("/hotspotsrit/current")
+def getLive():
+    return json.dumps(tasks.getCurrent())
 
 
 @app.errorhandler(Exception)
