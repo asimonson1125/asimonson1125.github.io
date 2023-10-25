@@ -24,7 +24,6 @@
 }
 
 html, body {
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -275,8 +274,16 @@ a {
   padding: 3rem;
   display: inline-block;
   background-color: rgb(44, 44, 44, .75);
+  border-radius: 1em;
   border: solid black 4px;
   text-align: center;
+  text-shadow: .15em .15em rgba(255, 255, 255, 0.2);
+}
+
+#HomeContent p {
+  text-shadow: none;
+  color: #a8a8a8;
+  margin: 0;
 }
 
 .flex {
