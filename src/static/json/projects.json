@@ -1,5 +1,33 @@
 {
-  "Lower 48 Alt. Energy Map": {
+  "RIT Hotspots": {
+    "status": "WIP",
+    "classes": "pinned geospacial programming",
+    "bgi": "hotspotsrit.png",
+    "content": "Live crowd migration map using RIT occupancy data",
+    "links": [
+      [
+        "github", "https://github.com/asimonson1125/hotspotsrit", "git repo"
+      ],
+      [
+        "globe", "https://asimonson.com/hotspots", "demo"
+      ]
+    ]
+  },
+  "LogicFlow": {
+    "status": "incomplete",
+    "classes": "programming",
+    "bgi": "logicflow.jpg",
+    "content": "Translate paragraphs to logical flowcharts, powered by ChatGPT         Winner of CSHacks' Best Use of AI by Paychex",
+    "links": [
+      [
+        "github", "https://github.com/asimonson1125/LogicFlow", "git repo"
+      ],
+      [
+        "globe", "https://devpost.com/software/logicflow", "Hackathon listing"
+      ]
+    ]
+  },
+  "Alternative Energy Map": {
     "status": "complete",
     "classes": "pinned geospacial",
     "bgi": "geovisF.png",
@@ -14,7 +42,7 @@
   },
   "OccupyRIT": {
     "status": "WIP",
-    "classes": "pinned programming",
+    "classes": "programming",
     "bgi": "occupyRIT.png",
     "content": "Collects RIT Gym Occupancy data, determining busiest workout times",
     "links": [
