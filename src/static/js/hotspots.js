@@ -239,9 +239,12 @@ function makeLegend() {
 }
 
 function updateLegend(shotcount = undefined) {
-  document.getElementById(
-    "shotCounter"
-  ).textContent = `Previous update created ${shotcount} migrations`;
+  if (!useLegend) return;
+  try {
+    document.getElementById(
+      "shotCounter"
+    ).textContent = `Previous update created ${shotcount} migrations`;
+  } catch {}
 }
 
 const space_coords = [43.09224, -77.674799];
@@ -395,9 +398,11 @@ function updateCountdown() {
     countdownTo = now + 5 * 60 * 1000;
     getUpdate();
   }
-  document.getElementById("countdownClock").textContent = Math.floor(
-    countdown / 1000
-  );
+  try {
+    document.getElementById("countdownClock").textContent = Math.floor(
+      countdown / 1000
+    );
+  } catch {}
 }
 
 async function getUpdate() {
@@ -531,7 +536,7 @@ function getShots(nodes) {
   return shots;
 }
 
-const useLegend = window.location.pathname.replaceAll("/", "") == "hotspots"
+const useLegend = window.location.pathname.replaceAll("/", "") == "hotspots";
 init(useLegend).then(() => {
   // map.on("click", () => {
   //   shootVector(pts[2], pts[8]);
