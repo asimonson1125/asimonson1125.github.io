@@ -165,11 +165,9 @@ a {
 
 .navElement {
   border: solid black .2rem;
-  width: 25vw;
   text-align: center;
-  font-size: 1.2rem;
-  font-size: 1rem;
   background-color: rgba(139, 36, 36, 0.5);
+  flex-grow: 1;
 }
 
 .navElement:hover {
