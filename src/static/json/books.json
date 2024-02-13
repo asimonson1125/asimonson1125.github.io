@@ -1,11 +1,16 @@
 {
   "selection": [
-    "Freakonomics",
-    "Zero To One",
+    "The Rational Optimist",
     "The Accidental Superpower",
-    "David and Goliath"
+    "Freakonomics",
+    "Zero To One"
   ],
   "books": {
+    "The Rational Optimist": {
+      "filename": "ratOpt.jpg",
+      "link": "https://www.amazon.com/Rational-Optimist-Prosperity-Evolves-P-s/dp/0061452068",
+      "review": "The story of humanity's growth with a refined variation of a lens I very much believe deserves greater publicity.  Long, yes, but ultimately one of the most important books for me to have read."
+    },
     "Freakonomics": {
       "filename": "freakonomics.jpeg",
       "link": "https://freakonomics.com/books/",

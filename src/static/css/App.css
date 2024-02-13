@@ -284,6 +284,10 @@ a {
   margin: 0;
 }
 
+.nomargin {
+  margin: 0;
+}
+
 .flex {
   display: flex;
   justify-content: space-around;
@@ -710,7 +714,7 @@ a {
   color: lightgray;
   margin: .5em;
   border-bottom: solid black 3px;
-  margin-right: 5em;
+  flex-grow: 1;
 }
 
 .bookContainer {
