@@ -268,6 +268,11 @@ a {
   text-align: center;
 }
 
+#HomeContentContainer {
+  display: inline-block;
+  flex-grow: 1;
+}
+
 #HomeContent {
   padding: 3rem;
   display: inline-block;
@@ -317,15 +322,12 @@ a {
 }
 
 .onRight {
-  position: absolute;
-  right: 0;
-  top: 0;
-  max-width: 100vw;
-  margin-right: 5px;
+  margin: auto;
 }
 
 .onRight>* {
-  margin: auto;
+  margin-left: auto;
+  margin-right: 1em;
   margin-bottom: 5px;
 }
 
@@ -829,6 +831,10 @@ a {
 
 @media screen and (max-width: 1200px) {
 
+  #homepage {
+    flex-direction: column;
+  }
+
   .mobileV {
     flex-direction: column;
   }
@@ -883,9 +889,12 @@ a {
   }
 
   .onRight {
-    position: unset;
+    margin: unset;
     margin-top: 3rem;
-    margin-right: 0;
+  }
+
+  .onRight > * {
+    margin: auto;
   }
 
   .timeline {
