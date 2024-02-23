@@ -89,8 +89,12 @@ h2 {
   margin-bottom: 2rem;
 }
 
-h3, h4 {
+h3, h4, h5 {
   color: #a8a8a8;
+}
+
+h5 {
+  margin: 0;
 }
 
 strong {
@@ -105,6 +109,14 @@ p, li {
 a {
   color: #a0a0a0a0;
   text-decoration: none;
+}
+
+.transparent {
+  opacity: 0 !important;
+}
+
+.unsetPos {
+  position: unset !important;
 }
 
 .header h1 {
@@ -268,12 +280,13 @@ a {
   text-align: center;
 }
 
-#HomeContentContainer {
+#HomeContent {
   display: inline-block;
   flex-grow: 1;
+  min-width: 65em;
 }
 
-#HomeContent {
+#nametag {
   padding: 3rem;
   display: inline-block;
   background-color: rgb(44, 44, 44, .75);
@@ -281,12 +294,21 @@ a {
   border: solid black 4px;
   text-align: center;
   text-shadow: .15em .15em rgba(255, 255, 255, 0.2);
+  max-width: 30em;
 }
 
-#HomeContent p {
+#nametag p {
   text-shadow: none;
   color: #a8a8a8;
   margin: 0;
+}
+
+#nametagContainer {
+  display: flex;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  justify-content: center;
 }
 
 .nomargin {
@@ -326,8 +348,7 @@ a {
 }
 
 .onRight>* {
-  margin-left: auto;
-  margin-right: 1em;
+  margin: auto;
   margin-bottom: 5px;
 }
 
@@ -829,10 +850,20 @@ a {
   src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 600) {
+  #nametagContainer {
+    width: unset;
+  }
+}
+
+@media screen and (max-width: 1400px) {
 
   #homepage {
     flex-direction: column;
+  }
+
+  #HomeContent {
+    min-width: 0;
   }
 
   .mobileV {
@@ -893,7 +924,7 @@ a {
     margin-top: 3rem;
   }
 
-  .onRight > * {
+  .onRight>* {
     margin: auto;
   }
 

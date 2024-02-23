@@ -9,7 +9,7 @@ function onLoaded() {
     resizer();
   };
   resizer();
-  if (window.innerWidth < 1200) {
+  if (window.innerWidth < 1400) {
     const e = document.querySelector(".navControl");
     e.style.maxHeight = "0px";
   }
@@ -17,7 +17,7 @@ function onLoaded() {
 
 function resizer() {
   const e = document.querySelector(".navControl");
-  if (window.innerWidth > 1200) {
+  if (window.innerWidth > 1400) {
     // desktop view
     scrollFunction();
     window.onscroll = function () {
@@ -68,7 +68,7 @@ function scrollFunction() {
 }
 
 function toggleMenu() {
-  if (window.innerWidth < 1200) {
+  if (window.innerWidth < 1400) {
     const e = document.querySelector(".navControl");
     const bar = document.querySelector(".header");
     if (e.style.maxHeight === "0px") {

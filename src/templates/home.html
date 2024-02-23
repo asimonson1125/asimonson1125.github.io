@@ -3,50 +3,61 @@
 <div class="foregroundContent homegroundContent">
   <div class="relative">
     <div id="homepage" class="flex">
-    <div id="HomeContentContainer">
-      <div class="flex">
-      <div id="HomeContent" data-aos="fade-up">
-        <h1>Andrew Simonson</h1>
-        <h3>Computer Science student at Rochester Institute of Technology</h3>
-      </div>
-    </div>
-    </div>
-    <div class="onRight" data-aos="fade-up">
-      <img
-        src="{{ url_for('static', filename='readme-stats-vercel-01-25-2023.svg') }}"
-        class="langstats"
-        alt="Language stats"
-      />
-      <br />
-      <div class="chess">
-        {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
-        }}
-      </div>
-      <br />
-      {% from 'partials/bookshelf.html' import bookshelf %} {{
-      bookshelf(var.books) }}
-      <br />
-      <a href="/duck">
+      <div id="HomeContent">
         <div class="flex">
-          <img
-            alt="duck spinning"
-            src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-            class="smallImg"
-          />
-          <img
-            alt="duck spinning"
-            src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-            class="smallImg"
-          />
-          <img
-            alt="duck spinning"
-            src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-            class="smallImg"
-          />
+          <div id="nametagContainer">
+            <div id="nametag" data-aos="fade-up">
+              <h1>Andrew Simonson</h1>
+              <h3>
+                Computer Science student at Rochester Institute of Technology
+              </h3>
+              <h5>🦅 🦅 🦅 Raahhh wtf is homepage content, we don't do that here 🦅 🦅 🦅</h5>
+            </div>
+          </div>
+          <div id="nametag" class="transparent unsetPos" data-aos="fade-up">
+            <h1>Andrew Simonson</h1>
+            <h3>
+              Computer Science student at Rochester Institute of Technology
+            </h3>
+          </div>
         </div>
-      </a>
+      </div>
+      <div class="onRight" data-aos="fade-up">
+        <img
+          src="{{ url_for('static', filename='readme-stats-vercel-01-25-2023.svg') }}"
+          class="langstats"
+          alt="Language stats"
+        />
+        <br />
+        <div class="chess">
+          {% from 'partials/chess.html' import chess %} {{
+          chess('asimonson1125') }}
+        </div>
+        <br />
+        {% from 'partials/bookshelf.html' import bookshelf %} {{
+        bookshelf(var.books) }}
+        <br />
+        <a href="/duck">
+          <div class="flex">
+            <img
+              alt="duck spinning"
+              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+              class="smallImg"
+            />
+            <img
+              alt="duck spinning"
+              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+              class="smallImg"
+            />
+            <img
+              alt="duck spinning"
+              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+              class="smallImg"
+            />
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
   </div>
 </div>
 {% endblock %}
