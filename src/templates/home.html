@@ -1,10 +1,10 @@
 {% block content %} {% macro nameplate() %}
 <img
-  src="{{ url_for('static', filename='icons/neonfinal2.svg') }}"
+  src="{{ url_for('static', filename='icons/neonfinal3.svg') }}"
   id="homeIcon"
   alt="logo"
 />
-<h1 id="homeName">Andrew Simonson</h1>
+<h1 id="homeName" class='textGrad'>Andrew Simonson</h1>
 <h3>Computer Science student at Rochester Institute of Technology</h3>
 <h5>🦅 🦅 🦅 Raahhh wtf is homepage content, we don't do that here 🦅 🦅 🦅</h5>
 {% endmacro %}
@@ -15,11 +15,11 @@
     <div id="homepage" class="flex">
       <div id="HomeContent">
         <div class="flex">
-          <div id="nametagContainer">
-            <div id="nametag" data-aos="fade-up">{{ nameplate() }}</div>
-          </div>
           <div id="nametag" class="transparent unsetPos" data-aos="fade-up">
             {{ nameplate() }}
+          </div>
+          <div id="nametagContainer">
+            <div id="nametag" data-aos="fade-up">{{ nameplate() }}</div>
           </div>
         </div>
       </div>
@@ -38,8 +38,7 @@
         {% from 'partials/bookshelf.html' import bookshelf %} {{
         bookshelf(var.books) }}
         <br />
-        <a href="/duck">
-          <div class="flex">
+          <div class="flex pointer" onclick="goto('duck')">
             <img
               alt="duck spinning"
               src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
@@ -56,7 +55,6 @@
               class="smallImg"
             />
           </div>
-        </a>
       </div>
     </div>
   </div>

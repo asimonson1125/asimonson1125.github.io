@@ -135,13 +135,14 @@ a {
   top: 0;
   left: 0;
   transition: .4s;
+  border-bottom: solid .2em rgba(139, 36, 36, 0.5);
   overflow: hidden;
 }
 
 #homeIcon {
   margin: auto;
   display: block;
-  width: 5em;
+  width: 3em;
 }
 
 #homeName {
@@ -153,10 +154,14 @@ a {
   cursor: pointer;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .name {
   display: inline;
-  color: #a0a0a0a0;
-  background: url("../icons/neonfinal2.svg") 0/5rem no-repeat;
+  color: #bbbaba;
+  background: url("../icons/neonfinal3.svg") 0/5rem no-repeat;
   background-size: contain;
   padding-left: 3.5rem;
   margin-left: .5em;
@@ -172,6 +177,9 @@ a {
 }
 
 .navControl {
+  max-height: 57px;
+  float: right;
+  margin-right: 1em;
   transition: .4s;
 }
 
@@ -184,10 +192,15 @@ a {
 }
 
 .navElement {
+  display: inline-block;
   border: solid black .2rem;
   text-align: center;
   background-color: rgba(139, 36, 36, 0.5);
-  flex-grow: 1;
+  padding: 0 1em;
+  margin-left: .5em;
+  padding-top: 1.2em;
+  margin-top: -1.3em;
+  border-radius: .5em;
 }
 
 .navElement:hover {
@@ -240,7 +253,7 @@ a {
 }
 
 .foregroundContent {
-  padding-top: 6rem;
+  padding-top: 4rem;
   padding-left: 8rem;
   max-width: calc(100%-8rem);
   padding-bottom: 1rem;
@@ -256,7 +269,7 @@ a {
 }
 
 .homegroundContent {
-  padding-top: 7em;
+  padding-top: 5em;
   padding-left: 0em;
 }
 
@@ -295,7 +308,7 @@ a {
 }
 
 #nametag {
-  padding: 3rem;
+  padding: 2em 3em;
   display: inline-block;
   background-color: rgb(44, 44, 44, .75);
   border-radius: 1em;
@@ -899,10 +912,16 @@ a {
 
   .navElement {
     width: 100vw;
+    padding: 0;
+    margin-left: 0;
+    padding-top: unset;
+    margin-top: unset;
+    border-radius: 0;
   }
 
   .navControl {
     max-height: 0px;
+    margin: 0;
   }
 
   .projectList {
