@@ -150,8 +150,9 @@ a {
 }
 
 #name-container {
-  display: inline;
+  display: inline-block;
   cursor: pointer;
+  max-width: calc(100% - 3em);
 }
 
 .pointer {
@@ -314,8 +315,11 @@ a {
   border-radius: 1em;
   border: solid black 4px;
   text-align: center;
-  text-shadow: .15em .15em rgba(255, 255, 255, 0.2);
   max-width: 30em;
+}
+
+#nametag *:not(h6) {
+  text-shadow: .1em .1em rgba(255, 255, 255, 0.2);
 }
 
 #nametag p {
@@ -769,8 +773,11 @@ a {
   flex-wrap: wrap;
 }
 
+.bookContainer > a {
+  max-width: min(90px, 24%);
+  }
+
 .book {
-  width: 90px;
   display: inline-block;
 }
 
@@ -887,6 +894,10 @@ a {
 
   #HomeContent {
     min-width: 0;
+  }
+
+  .name {
+    font-size: min(6vw, 2em);
   }
 
   .mobileV {
