@@ -1,4 +1,14 @@
-{% block content %}
+{% block content %} {% macro nameplate() %}
+<img
+  src="{{ url_for('static', filename='icons/neonfinal2.svg') }}"
+  id="homeIcon"
+  alt="logo"
+/>
+<h1 id="homeName">Andrew Simonson</h1>
+<h3>Computer Science student at Rochester Institute of Technology</h3>
+<h5>🦅 🦅 🦅 Raahhh wtf is homepage content, we don't do that here 🦅 🦅 🦅</h5>
+{% endmacro %}
+
 <div class="foreground homeground"></div>
 <div class="foregroundContent homegroundContent">
   <div class="relative">
@@ -6,19 +16,10 @@
       <div id="HomeContent">
         <div class="flex">
           <div id="nametagContainer">
-            <div id="nametag" data-aos="fade-up">
-              <h1>Andrew Simonson</h1>
-              <h3>
-                Computer Science student at Rochester Institute of Technology
-              </h3>
-              <h5>🦅 🦅 🦅 Raahhh wtf is homepage content, we don't do that here 🦅 🦅 🦅</h5>
-            </div>
+            <div id="nametag" data-aos="fade-up">{{ nameplate() }}</div>
           </div>
           <div id="nametag" class="transparent unsetPos" data-aos="fade-up">
-            <h1>Andrew Simonson</h1>
-            <h3>
-              Computer Science student at Rochester Institute of Technology
-            </h3>
+            {{ nameplate() }}
           </div>
         </div>
       </div>

@@ -3,20 +3,17 @@
   src: url("../fonts/NeonFuture.ttf")
 }
 
-@font-face {
-  font-family: "starixo";
-  src: url("../fonts/Starixo.otf")
-}
 
 @font-face {
-  font-family: "independent";
-  src: url("../fonts/INDEPENDENT.ttf")
+  font-family: "shuttlex";
+  src: url("../fonts/SHUTTLE-X.ttf");
 }
 
 @font-face {
   font-family: "sunset-club";
   src: url("../fonts/SunsetClub.otf")
 }
+
 
 @font-face {
   font-family: "robotoreg";
@@ -132,13 +129,23 @@ a {
   margin-bottom: 0px;
   margin-left: 0rem;
   background-color: #1a1a1a;
-  width: 100%;
+  width: 100vw;
   z-index: 99;
   position: fixed;
   top: 0;
   left: 0;
   transition: .4s;
   overflow: hidden;
+}
+
+#homeIcon {
+  margin: auto;
+  display: block;
+  width: 5em;
+}
+
+#homeName {
+  margin-top: .25em;
 }
 
 #name-container {
@@ -149,9 +156,10 @@ a {
 .name {
   display: inline;
   color: #a0a0a0a0;
-  background: url("../photos/sun.png") 0/5rem no-repeat;
+  background: url("../icons/neonfinal2.svg") 0/5rem no-repeat;
   background-size: contain;
-  padding-left: 5.5rem;
+  padding-left: 3.5rem;
+  margin-left: .5em;
   font-size: xx-large;
 }
 
@@ -160,7 +168,7 @@ a {
 }
 
 .textGrad {
-  font-family: "sunset-club" !important;
+  font-family: "shuttlex" !important;
 }
 
 .navControl {
@@ -202,8 +210,8 @@ a {
 }
 
 .langstats {
-  width: 350px;
-  height: 165px;
+  width: min(100%, 350px);
+  /* height: 165px; */
   border: none;
   display: block;
 }
@@ -305,7 +313,7 @@ a {
 
 #nametagContainer {
   display: flex;
-  width: 100vw;
+  width: 100%;
   position: absolute;
   left: 0;
   justify-content: center;
@@ -344,6 +352,7 @@ a {
 }
 
 .onRight {
+  overflow: scroll;
   margin: auto;
 }
 
@@ -595,8 +604,9 @@ a {
 }
 
 .chess {
-  width: 300px;
+  max-width: 300px;
   border: none;
+  overflow: scroll;
   /* transform: scale(.8);
   float: right; */
 }
@@ -727,7 +737,7 @@ a {
 }
 
 .bookshelf {
-  width: 360px;
+  max-width: 360px;
   padding: 10px;
   border: solid 2px #553;
   background-image: url("/static/photos/wood.jpg");
