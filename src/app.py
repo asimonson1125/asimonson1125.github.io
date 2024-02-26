@@ -2,11 +2,14 @@ import flask
 from flask_minify import Minify
 import json
 from tasks import TaskHandler
+import werkzeug.exceptions as HTTPerror
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
+skillList = json.load(open("./static/json/skills.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
 pages = json.load(open("./static/json/pages.json", "r"))
+pages['about']['skillList'] = skillList
 pages['about']['timeline'] = timeline
 pages['projects']['projects'] = proj
 pages['home']['books'] = books
@@ -20,14 +23,35 @@ tasks = TaskHandler()
 @app.route('/api/goto/<location>')
 def goto(location='home'):
     pagevars = pages[location]
-    return [pagevars, flask.render_template(pagevars["template"], var=pagevars)]
+    page = None
+    try:
+        page = flask.render_template(pagevars["template"], var=pagevars)
+    except Exception as e:
+        e = HTTPerror.InternalServerError(None, e)
+        page = page404(e)
+    return [pagevars, page]
 
 # I am literally insane
 # There was no reason for me to do this
 # it saved some lines of code I guess
 # infinite flaskless flask here we comes
+
+def funcGen(pagename, pages):
+    def dynamicRule():
+        try:
+            return flask.render_template('header.html', var=pages[pagename])
+        except Exception:
+            e = HTTPerror.InternalServerError()
+            return page404(e)
+    return dynamicRule  
+
 for i in pages:
-    exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
+    func = funcGen(i, pages)
+    app.add_url_rule(pages[i]['canonical'], i, func)
+    
+
+# for i in pages:
+#     exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
 
 
 @app.route("/resume")
