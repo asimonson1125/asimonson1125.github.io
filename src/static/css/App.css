@@ -142,7 +142,7 @@ a {
 #homeIcon {
   margin: auto;
   display: block;
-  width: 3em;
+  width: 5em;
 }
 
 #homeName {
@@ -334,6 +334,7 @@ a {
   position: absolute;
   left: 0;
   justify-content: center;
+  z-index: -1;
 }
 
 .nomargin {
