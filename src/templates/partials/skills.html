@@ -1,5 +1,16 @@
+{% macro expandSkill(dict, name, classes="") %} 
+<div class='skill {{ classes }}' data-length='{{ dict[name]|length }}'>
+    <div onclick='activeSkill(this)' class='skillname'>{{ name }}</div>
+{% for child in dict[name] %}
+{{ expandSkill(dict[name], child) }}
+{% endfor %} 
+</div>
+{% endmacro %}
+
 {% macro skills(skills) %}
-<ul class='skills'>
-    {% for i in skills %}<li class='skill'>{{i}}</li>{% endfor %}
-</ul>
+<div id="skillTree">
+    {% for skill in skills %}
+    {{ expandSkill(skills, skill, 'activeSkill') }}
+    {% endfor %}
+</div>
 {% endmacro %}

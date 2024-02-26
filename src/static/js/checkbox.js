@@ -25,3 +25,17 @@ function toggleCheckbox(dir) {
     }
   }
 }
+
+function activeSkill(obj) {
+  if (obj.parentElement.classList.contains("activeSkill")) {
+    obj.parentElement.classList.remove("activeSkill");
+    return;
+  }
+  // document.querySelectorAll(".skill").forEach((x) => {
+  //   x.classList.remove("activeSkill");
+  // });
+  while (obj.parentElement.classList.contains("skill")) {
+    obj = obj.parentElement;
+    obj.classList.add("activeSkill");
+  }
+}

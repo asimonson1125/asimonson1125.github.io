@@ -318,7 +318,7 @@ a {
   max-width: 30em;
 }
 
-#nametag *:not(h6) {
+#nametag *:not(h1) {
   text-shadow: .1em .1em rgba(255, 255, 255, 0.2);
 }
 
@@ -406,10 +406,6 @@ a {
   max-height: min(30rem, 100%);
 }
 
-/* #aboutGrid{
-  display: grid;
-} */
-
 .col {
   width: calc(50% - 3rem);
   margin-bottom: 3em;
@@ -429,22 +425,71 @@ a {
   margin-right: auto;
 }
 
-.skills {
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: solid rgba(156, 49, 45, .8) .3rem;
-  text-align: center;
-  padding: 1rem;
+#skillstag::after {
+  content: "Click for details...";
+  display: block;
+  font-size: small;
+  color: #a8a8a8;
+}
+
+#skillTree {
+  border-left: rgb(139, 36, 36) solid 3px;
+  background: rgba(22,22,22,.8);
+  font-size: x-large;
+  margin-bottom: 10px;
 }
 
 .skill {
-  display: inline-block;
-  border: rgba(156, 49, 45, .8) solid .15rem;
-  padding: .2rem;
-  margin: .5rem;
-  background-color: rgba(11, 11, 11, .8);
-  color: rgb(212, 212, 212);
+  display: none;
+  padding: .2em;
+  color: rgb(235, 235, 235);
 }
+
+.skill.activeSkill > .skillname {
+  color: rgb(170, 170, 170);
+}
+
+.skill > .skillname:hover {
+  color: rgb(170, 170, 170);
+}
+
+#skillTree > .skill {
+  display: block;
+}
+
+.skill > .skill {
+  font-size: large !important;
+  padding-left: .5em;
+}
+
+.skill.activeSkill > .skill {
+  display: block !important;
+}
+
+.skill > .skillname {
+  text-decoration: underline;
+}
+
+.skill > .skillname::after {
+  content: " >";
+}
+
+.skill.activeSkill > .skillname::after {
+  content: " <";
+}
+
+.skill[data-length="0"].activeSkill > .skillname, .skill[data-length="0"] > .skillname:hover, .skill.activeSkill > .skillname:hover {
+  color: rgb(235, 235, 235);
+}
+
+.skill[data-length="0"] > .skillname::after {
+  content: ""
+}
+
+.skill[data-length="0"] > .skillname {
+  text-decoration: none;
+}
+
 
 .projectList {
   padding: 0px;
@@ -974,7 +1019,7 @@ a {
 
   .col {
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 0;
   }
 
   .rightCol {

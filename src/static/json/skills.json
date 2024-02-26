@@ -1,0 +1,27 @@
+{
+    "Data and AI": {
+        "Python": {
+            "PyTorch/TensorFlow": {},
+            "TensorFlow": {},
+            "Numpy/Pandas": {},
+            "Selenium/BS4": {}
+        },
+        "R": {},
+        "SQL": {}
+    },
+    "Frontend": {
+        "Flask (Python)": {},
+        "React (Javascript)": {},
+        "Angular (Typescript)": {}
+    },
+    "Backend & DevOps": {
+        "DevOps": {
+            "Docker": {},
+            "Microsoft Azure": {},
+            "Kubernetes/Openshift": {},
+            "Bash": {}
+        },
+        "C#": {},
+        "C++": {}
+    }
+}

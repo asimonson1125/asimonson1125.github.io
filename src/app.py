@@ -27,6 +27,7 @@ def goto(location='home'):
     try:
         page = flask.render_template(pagevars["template"], var=pagevars)
     except Exception as e:
+        # raise e
         e = HTTPerror.InternalServerError(None, e)
         page = page404(e)
     return [pagevars, page]
