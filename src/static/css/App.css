@@ -153,6 +153,7 @@ a {
   display: inline-block;
   cursor: pointer;
   max-width: calc(100% - 3em);
+  margin: 0.2em;
 }
 
 .pointer {
@@ -164,8 +165,7 @@ a {
   color: #bbbaba;
   background: url("../icons/neonfinal3.svg") 0/5rem no-repeat;
   background-size: contain;
-  padding-left: 3.5rem;
-  margin-left: .5em;
+  padding-left: min(10vw, 3.5rem);
   font-size: xx-large;
 }
 

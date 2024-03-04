@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="193.32394mm"
-   height="193.32397mm"
-   viewBox="0 0 193.32394 193.32397"
+   width="216.75919mm"
+   height="216.7592mm"
+   viewBox="0 0 216.75919 216.7592"
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="neon2.svg.2024_02_25_10_57_42.0.svg"
+   sodipodi:docname="workingModel.svg"
    inkscape:export-filename="neonfinal.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -19,7 +19,7 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      id="namedview1"
-     pagecolor="#333333"
+     pagecolor="#1a1a1a"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:showpageshadow="2"
@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.40896244"
-     inkscape:cx="204.17523"
-     inkscape:cy="272.64118"
+     inkscape:zoom="0.61646116"
+     inkscape:cx="438.79488"
+     inkscape:cy="524.76947"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
@@ -38,6 +38,18 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffc919;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#d2ae2d;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
     <inkscape:path-effect
        effect="fillet_chamfer"
        id="path-effect17"
@@ -196,23 +208,23 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter6"
-       x="-0.10226285"
-       y="-0.10226277"
-       width="1.2045257"
-       height="1.2045255">
+       x="-0.23389403"
+       y="-0.23389395"
+       width="1.467788"
+       height="1.4677879">
       <feGaussianBlur
          inkscape:collect="always"
-         stdDeviation="2.9222677"
+         stdDeviation="9.2941268"
          id="feGaussianBlur6" />
     </filter>
     <filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter8"
-       x="-0.30969021"
-       y="-0.30969013"
-       width="1.6193804"
-       height="1.6193802">
+       x="-0.44132139"
+       y="-0.4413213"
+       width="1.8826427"
+       height="1.8826426">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="10.040917"
@@ -265,65 +277,92 @@
        apply_with_radius="true"
        only_selected="false"
        hide_knots="false" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="radialGradient2"
+       cx="68.084846"
+       cy="82.277237"
+       fx="68.084846"
+       fy="82.277237"
+       r="51.629848"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-1.6164577,-37.953551)">
+     transform="translate(-6.8045576,-27.991731)">
+    <circle
+       style="display:none;opacity:1;fill:#1a1a1a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.09141;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;paint-order:markers stroke fill"
+       id="background"
+       cx="115.18415"
+       cy="136.37132"
+       r="108.37959"
+       inkscape:export-filename="withBackground.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <use
        x="0"
        y="0"
        xlink:href="#use6"
        id="use7"
-       style="opacity:1;filter:url(#filter8)" />
+       style="display:inline;opacity:1;filter:url(#filter8)"
+       inkscape:export-filename="orangOutline.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <use
        x="0"
        y="0"
        xlink:href="#star"
        id="use6"
-       style="mix-blend-mode:normal;filter:url(#filter6)"
+       style="display:inline;opacity:0.7;mix-blend-mode:normal;filter:url(#filter6)"
        inkscape:export-filename="../../Documents/GitHub/asimonson1125.github.io/src/static/icons/neonfinal3.svg"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <g
        id="star"
        style="display:inline;opacity:1;filter:url(#filter5)"
-       transform="matrix(1.1617659,0,0,1.1617659,19.179777,39.028635)"
+       transform="matrix(1.1617659,0,0,1.1617659,37.635304,39.028635)"
        inkscape:export-filename="../../Documents/GitHub/asimonson1125.github.io/src/static/icons/neonfinal2.svg"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <path
-         style="opacity:1;mix-blend-mode:normal;fill:#b3962d;fill-opacity:1;fill-rule:evenodd;stroke:#ff9c00;stroke-width:0.860759;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter10)"
+         style="opacity:1;mix-blend-mode:normal;fill:url(#radialGradient2);fill-opacity:1;fill-rule:evenodd;stroke:#ff9c00;stroke-width:0.860759;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter10)"
          d="m 65.084856,67.277241 c -1.287779,9.10845 -5.183319,11.28276 -12.694774,12 -7.511459,0.71725 -34.305226,3 -34.305226,3 0,0 25.891549,1.71223 35,3 9.108454,1.28778 11.282748,4.48855 12,12 0.717252,7.511459 3,34.999999 3,34.999999 0,0 1.712221,-25.89154 3,-34.999999 1.28778,-9.10844 4.488549,-11.28275 11.999999,-12 7.51146,-0.71724 34.999995,-3 34.999995,-3 0,0 -25.891545,-1.71222 -34.999995,-3 -9.10845,-1.28777 -11.282748,-4.48854 -11.999999,-12 -0.717252,-7.51145 -3,-34.999998 -3,-34.999998 0,0 -1.71222,25.891548 -3,34.999998 z"
          id="path3-6-8"
          sodipodi:nodetypes="sscsscsscsscs" />
     </g>
     <g
        id="neonHighlights"
-       style="display:inline;opacity:0.75">
+       style="display:inline;opacity:0.75"
+       transform="translate(18.455527)">
       <use
          x="0"
          y="0"
          xlink:href="#neonTubing"
          id="use30"
-         style="display:inline;mix-blend-mode:normal;filter:url(#filter30)" />
+         style="display:inline;mix-blend-mode:normal;filter:url(#filter30)"
+         transform="translate(-18.455527)" />
       <use
          x="0"
          y="0"
          xlink:href="#neonTubing"
          id="use29"
-         style="display:inline;mix-blend-mode:normal;filter:url(#filter29)" />
+         style="display:inline;mix-blend-mode:normal;filter:url(#filter29)"
+         transform="translate(-18.455527)" />
       <use
          x="0"
          y="0"
          xlink:href="#neonTubing"
          id="use9"
-         style="opacity:1;filter:url(#filter9)" />
+         style="opacity:1;filter:url(#filter9)"
+         transform="translate(-18.455527)" />
     </g>
     <g
        id="neonTubing"
-       style="fill:none;fill-opacity:1;stroke:#f8e0c3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1">
+       style="fill:none;fill-opacity:1;stroke:#f8e0c3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       transform="translate(18.455527)">
       <g
          id="g1"
          style="display:none;stroke:#f8e0c3;stroke-width:3;stroke-dasharray:none;stroke-opacity:1">

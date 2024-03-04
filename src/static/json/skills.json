@@ -2,7 +2,6 @@
     "Data and AI": {
         "Python": {
             "PyTorch/TensorFlow": {},
-            "TensorFlow": {},
             "Numpy/Pandas": {},
             "Selenium/BS4": {}
         },
