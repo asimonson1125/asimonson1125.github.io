@@ -9,7 +9,7 @@
         "github", "https://github.com/asimonson1125/hotspotsrit", "git repo"
       ],
       [
-        "globe", "https://asimonson.com/hotspots", "demo"
+        "globe", "https://asimonson.com/hotspots?legend=true", "demo"
       ]
     ]
   },

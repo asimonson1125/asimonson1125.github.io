@@ -56,13 +56,16 @@ def resume():
 
 @app.route("/hotspots")
 def hotspotsRIT():
+    url = HotspotsURL
+    if flask.request.args.get("legend") == "true":
+        url += "?legend=true"
     pagevars = {
             "template": "iframe.html",
             "title": f"Hotspots @ RIT",
             "description": "Hotspots @ RIT by Andrew Simonson",
             "canonical": "/hotspots",
         }
-    return flask.render_template("iframe.html", url=HotspotsURL, var=pagevars)
+    return flask.render_template("iframe.html", url=url, var=pagevars)
 
 @app.route("/hotspots/<path>")
 def hotspotsProxy(path):
