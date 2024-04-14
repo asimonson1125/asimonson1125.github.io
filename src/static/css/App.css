@@ -38,6 +38,11 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+#fullIframe {
+  width:100vw;
+  height: 100vh;
+}
+
 #menu {
   height: 2rem;
   display: none;

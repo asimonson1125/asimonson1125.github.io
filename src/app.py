@@ -1,8 +1,9 @@
 import flask
 from flask_minify import Minify
 import json
-from tasks import TaskHandler
 import werkzeug.exceptions as HTTPerror
+import requests
+from config import *
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
@@ -16,8 +17,6 @@ pages['home']['books'] = books
 pages['books']['books'] = books
 
 app = flask.Flask(__name__)
-tasks = TaskHandler()
-
 
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')
@@ -31,11 +30,6 @@ def goto(location='home'):
         e = HTTPerror.InternalServerError(None, e)
         page = page404(e)
     return [pagevars, page]
-
-# I am literally insane
-# There was no reason for me to do this
-# it saved some lines of code I guess
-# infinite flaskless flask here we comes
 
 def funcGen(pagename, pages):
     def dynamicRule():
@@ -62,16 +56,17 @@ def resume():
 
 @app.route("/hotspots")
 def hotspotsRIT():
-    return flask.render_template("hotspots.html")
+    pagevars = {
+            "template": "iframe.html",
+            "title": f"Hotspots @ RIT",
+            "description": "Hotspots @ RIT by Andrew Simonson",
+            "canonical": "/hotspots",
+        }
+    return flask.render_template("iframe.html", url=HotspotsURL, var=pagevars)
 
-@app.route("/hotspotsrit/cached")
-def getCached():
-    return json.dumps(tasks.getCache())
-
-@app.route("/hotspotsrit/current")
-def getLive():
-    return json.dumps(tasks.getCurrent())
-
+@app.route("/hotspots/<path>")
+def hotspotsProxy(path):
+    return requests.get(f"{HotspotsURL}/{path}").content
 
 @app.errorhandler(Exception)
 def page404(e):
