@@ -61,7 +61,7 @@
   {% block header %}
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <iframe src="/hotspots" title="HotspotsRIT" id="map"></iframe>
+    <iframe src="/hotspots?legend=false" title="HotspotsRIT" id="map"></iframe>
     <div class="App">
       <div class="header">
         <div id="name-container" onclick="goto('home', {toggle:false})">

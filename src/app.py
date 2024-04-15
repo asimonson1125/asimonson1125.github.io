@@ -57,8 +57,8 @@ def resume():
 @app.route("/hotspots")
 def hotspotsRIT():
     url = HotspotsURL
-    if flask.request.args.get("legend") == "true":
-        url += "?legend=true"
+    if flask.request.args.get("legend") == "false":
+        url += "?legend=false"
     pagevars = {
             "template": "iframe.html",
             "title": f"Hotspots @ RIT",
