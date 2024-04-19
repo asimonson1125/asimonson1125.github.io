@@ -13,64 +13,18 @@
       ]
     ]
   },
-  "LogicFlow": {
-    "status": "incomplete",
-    "classes": "programming",
-    "bgi": "logicflow.jpg",
-    "content": "Translate paragraphs to logical flowcharts, powered by ChatGPT         Winner of CSHacks' Best Use of AI by Paychex",
-    "links": [
-      [
-        "github", "https://github.com/asimonson1125/LogicFlow", "git repo"
-      ],
-      [
-        "globe", "https://devpost.com/software/logicflow", "Hackathon listing"
-      ]
-    ]
-  },
-  "Alternative Energy Map": {
-    "status": "complete",
-    "classes": "pinned geospacial",
-    "bgi": "geovisF.png",
-    "content": "ArcGIS Map of the most effective alternative energy sources in the continental United States",
-    "links": [
-      [
-        "globe",
-        "https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9",
-        "ArcGIS"
-      ]
-    ]
-  },
   "OccupyRIT": {
     "status": "WIP",
-    "classes": "programming",
+    "classes": "pinned programming",
     "bgi": "occupyRIT.png",
     "content": "Collects RIT Gym Occupancy data, determining busiest workout times",
     "links": [
       ["github", "https://github.com/asimonson1125/Occupy-RIT", "git repo"]
     ]
   },
-  "Chesscom Embeds": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "chessbed.png",
-    "content": "A template for creating Chess.com user profile embeds",
-    "links": [
-      ["github", "https://github.com/asimonson1125/chesscom-embed", "git repo"]
-    ]
-  },
-  "Resume": {
-    "status": "WIP",
-    "classes": "programming",
-    "bgi": "resume.png",
-    "content": "My Resume, made in LaTeX with a custom design derived by the AltaCV template on OverLeaf",
-    "links": [
-      ["github", "https://github.com/asimonson1125/Resume", "git repo"],
-      ["globe", "https://asimonson.com/Resume.pdf", "Resume"]
-    ]
-  },
   "Digital Portfolio": {
     "status": "WIP",
-    "classes": "programming",
+    "classes": "pinned programming",
     "bgi": "website.png",
     "content": "My personal portfolio website (you're on it now!)",
     "links": [
@@ -88,32 +42,6 @@
       ["globe", "https://slate.csh.rit.edu", "site link"]
     ]
   },
-  "HvZ Bot": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "",
-    "content": "A Discord bot to handle role management and statistics for RIT's Humans vs. Zombies games",
-    "links": [
-      ["github", "https://github.com/asimonson1125/HvZ-bot", "git repo"]
-    ]
-  },
-  "FinTech": {
-    "status": "WIP",
-    "classes": "pinned programming",
-    "bgi": "",
-    "content": "A team derived from the RIT Financial Management Association dedicated to learning about financial management of equities using automated solutions developed by students",
-    "links": [
-      ["github", "https://github.com/LukeHorigan/Financial-Management-Assocation-", "git repo"]
-    ]
-  },
-  "Browser Trivia Bot": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "",
-    "content": "A tampermonkey tool used to automatically answer and submit online trivia forms, which can be tailored to different site layouts.  Source currently private.",
-    "links": [
-    ]
-  },
   "NationsGame Rolls Sim": {
     "status": "complete",
     "classes": "programming",
@@ -121,25 +49,6 @@
     "content": "A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.  Unfortunately, NationsGame is now defunct. Limited screenshots of functionality.",
     "links": [
       ["github", "https://github.com/asimonson1125/NG-Rolls-Simulator", "git repo"]
-    ]
-  },
-  "VEXcode Button Engine": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "vexcodeButtons.jpeg",
-    "content": "VEXcode button library + examples and template for the VEX V5 brain",
-    "links": [
-      ["github", "https://github.com/asimonson1125/VEXcode-Button-Generator", "git repo"],
-      ["globe", "https://www.vexforum.com/t/vexcode-button-generator/72450", "Forum post"]
-    ]
-  },
-  "WinKeylogger": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "",
-    "content": "A C++ keylogger for windows based off a Udemy course with my custom modifications and powershell script",
-    "links": [
-      ["github", "https://github.com/asimonson1125/WinKeylogger", "git repo"]
     ]
   }
 }
