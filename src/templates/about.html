@@ -2,7 +2,7 @@
 <div class="foreground"></div>
 <div class="foregroundContent">
   <div class="relative">
-      <div id="aboutMe" class="col" data-aos="fade-up">
+      <div id="aboutMe" data-aos="fade-up">
         <h2 class="concentratedHead">About Me</h2>
         <p>
           I'm Andrew Simonson, a senior undergrad at
@@ -15,8 +15,23 @@
           Ominous positivity is kinda my thing.
         </p>
         <br />
-      </div>
-      <div class="col rightCol" data-aos="fade-up">
+          <div class="chess">
+            {% from 'partials/chess.html' import chess %} {{
+            chess('asimonson1125') }}
+          </div>
+          <br />
+          {% from 'partials/bookshelf.html' import bookshelf %} {{
+          bookshelf(var.books) }}
+          <br />
+          <div class="pointer" onClick="goto('duck')">
+            <img
+                alt="duck spinning"
+                src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+                class="smallImg"
+              />
+            </div>
+          </div>
+      <div data-aos="fade-up">
         <div id="skills">
           <h2 id="skillstag">Skills</h2>
           {% from 'partials/skills.html' import skills %} {{ skills(var['skillList']) }}

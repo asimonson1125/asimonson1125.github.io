@@ -79,17 +79,15 @@ body {
   filter: brightness(50%);
 }
 
-h1, h2 {
+h1 {
   color: #ecebeb;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  font-size:  medium;
 }
 
-h3, h4, h5 {
+h2, h3, h4, h5 {
   color: #a8a8a8;
 }
 
@@ -134,7 +132,7 @@ a {
   background-color: #1a1a1a;
   width: 100vw;
   z-index: 99;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   transition: .4s;
@@ -150,6 +148,7 @@ a {
 
 #homeName {
   margin-top: .25em;
+  margin-bottom: 0;
 }
 
 #name-container {
@@ -257,7 +256,6 @@ a {
 }
 
 .foregroundContent {
-  padding-top: 4rem;
   padding-left: 8rem;
   max-width: calc(100%-8rem);
   padding-bottom: 1rem;
@@ -273,7 +271,7 @@ a {
 }
 
 .homegroundContent {
-  padding-top: 5em;
+  padding-top: 1em;
   padding-left: 0em;
 }
 
@@ -313,12 +311,8 @@ a {
 
 #nametag {
   padding: 2em 3em;
-  display: inline-block;
   background-color: rgb(44, 44, 44, .75);
-  border-radius: 1em;
-  border: solid black 4px;
   text-align: center;
-  max-width: 30em;
 }
 
 #nametag *:not(h1) {

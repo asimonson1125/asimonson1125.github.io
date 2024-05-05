@@ -1,56 +1,18 @@
 {% block content %} {% macro nameplate() %}
-<img
-  src="{{ url_for('static', filename='icons/neonfinal3.svg') }}"
-  id="homeIcon"
-  alt="logo"
-/>
-<h1 id="homeName" class='textGrad'>Andrew Simonson</h1>
-<h3>Computer Science student at Rochester Institute of Technology</h3>
-<h5>End-to-End Services in Data Science and AI</h5>
+<div>
+  <img
+    src="{{ url_for('static', filename='icons/neonfinal3.svg') }}"
+    id="homeIcon"
+    alt="logo"
+  />
+  <h1 id="homeName" class="textGrad">Andrew Simonson</h1>
+  <h2 class="textGrad">Digital Analysis Beyond Controlled Environments</h2>
+</div>
 {% endmacro %}
 
 <div class="foreground homeground"></div>
-<div class="foregroundContent homegroundContent">
-  <div class="relative">
-    <div id="homepage" class="flex">
-      <div id="HomeContent">
-        <div class="flex">
-          <div id="nametag" class="transparent unsetPos" data-aos="fade-up">
-            {{ nameplate() }}
-          </div>
-          <div id="nametagContainer">
-            <div id="nametag" data-aos="fade-up">{{ nameplate() }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="onRight" data-aos="fade-up">
-        <div class="chess">
-          {% from 'partials/chess.html' import chess %} {{
-          chess('asimonson1125') }}
-        </div>
-        <br />
-        {% from 'partials/bookshelf.html' import bookshelf %} {{
-        bookshelf(var.books) }}
-        <br />
-          <div class="flex pointer" onclick="goto('duck')">
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-          </div>
-      </div>
-    </div>
-  </div>
+<div class="relative">
+  <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
 </div>
+<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>
 {% endblock %}

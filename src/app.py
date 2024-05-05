@@ -13,7 +13,7 @@ pages = json.load(open("./static/json/pages.json", "r"))
 pages['about']['skillList'] = skillList
 pages['about']['timeline'] = timeline
 pages['projects']['projects'] = proj
-pages['home']['books'] = books
+pages['about']['books'] = books
 pages['books']['books'] = books
 
 app = flask.Flask(__name__)
