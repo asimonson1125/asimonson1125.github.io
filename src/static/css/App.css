@@ -354,6 +354,14 @@ a {
   max-width: 100%;
 }
 
+#aboutCards {
+  justify-content: left;
+}
+
+#aboutCards > * {
+  margin: .25em;
+}
+
 .spaceBetween {
   justify-content: space-between;
 }
@@ -580,6 +588,12 @@ a {
   left: 0;
 }
 
+#contentStuffer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .socials {
   margin-left: 1rem;
   width: 0px;
@@ -656,6 +670,25 @@ a {
   background-size: cover;
 }
 
+#desktopSpacer {
+  height: min(20em, 30vh);
+}
+
+.homeSubContent {
+  background-color: rgb(24, 24, 24, .85);
+  padding: 0 8em;
+}
+
+#homeProjects {
+  padding: 1em;
+}
+
+.homeProject {
+  width: 20em;
+  height:5em;
+
+}
+
 .heightBox {
   height: 100%;
   display: flex;
@@ -666,9 +699,6 @@ a {
 .chess {
   max-width: 300px;
   border: none;
-  overflow: scroll;
-  /* transform: scale(.8);
-  float: right; */
 }
 
 #chessProfile {
@@ -963,6 +993,22 @@ a {
     border-bottom: solid 3px rgb(156, 49, 45, .4);
   }
 
+  .footer {
+    position: unset;
+  }
+
+  #footerSpacer {
+    flex-grow: 1;
+  }
+
+  #aboutCards {
+    flex-direction: column;
+  }
+  
+  #aboutCards > * {
+    margin: .25em auto;
+  }  
+
   .header h1 {
     font-size: 1.5rem;
   }
@@ -1007,6 +1053,10 @@ a {
 
   .homegroundContent {
     padding-top: 5em;
+  }
+
+  .homeSubContent {
+    padding: 0;
   }
 
   .onRight {

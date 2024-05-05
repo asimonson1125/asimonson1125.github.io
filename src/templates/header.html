@@ -50,10 +50,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/checkbox.css') }}"
     />
+    <!--
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/head.css') }}"
-    />
+    /></!-->
 
     <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
@@ -65,43 +66,44 @@
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <iframe src="/hotspots?legend=false" title="HotspotsRIT" id="map"></iframe>
-    <div class="header">
-      <div id="name-container" onclick="goto('home', {toggle:false})">
-        <div class="glitch">
+    <div id="contentStuffer">
+      <div class="header">
+        <div id="name-container" onclick="goto('home')">
           <div class="line name">
             <span class="textGrad">Andrew Simonson</span>
           </div>
         </div>
-      </div>
 
-      <img
-        src="{{ url_for('static', filename='icons/menu.svg')}}"
-        alt="menu"
-        id="menu"
-        onClick="toggleMenu()"
-      />
-      <div class="navControl">
-        <div class="navBar">
-          <div onClick="goto('home')" class="navElement">
-            <p>Home</p>
-          </div>
-          <a href="Resume.pdf" target="_blank" class="navElement">
-            <span>Resume</span>
-          </a>
-          <div onclick="goto('projects')" class="navElement">
-            <p>Projects</p>
-          </div>
-          <!-- <a href="/activities">Activities</a> -->
-          <div onclick="goto('about')" class="navElement">
-            <p>About Me</p>
+        <img
+          src="{{ url_for('static', filename='icons/menu.svg')}}"
+          alt="menu"
+          id="menu"
+          onClick="toggleMenu()"
+        />
+        <div class="navControl">
+          <div class="navBar">
+            <div onClick="goto('home')" class="navElement">
+              <p>Home</p>
+            </div>
+            <a href="Resume.pdf" target="_blank" class="navElement">
+              <span>Resume</span>
+            </a>
+            <div onclick="goto('projects')" class="navElement">
+              <p>Projects</p>
+            </div>
+            <!-- <a href="/activities">Activities</a> -->
+            <div onclick="goto('about')" class="navElement">
+              <p>About Me</p>
+            </div>
           </div>
         </div>
       </div>
+      {% endblock %} {% block content%}
+      <div id="root">{% include var['template'] %}</div>
+      {% endblock %} {% block footer %}
+      <div id="footerSpacer"></div>
+      <div class="footer">{% include 'partials/socials.html' %}</div>
+      {% endblock %}
     </div>
-    {% endblock %} {% block content%}
-    <div id="root">{% include var['template'] %}</div>
-    {% endblock %} {% block footer %}
-    <div class="footer">{% include 'partials/socials.html' %}</div>
-    {% endblock %}
   </body>
 </html>

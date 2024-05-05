@@ -2,99 +2,112 @@
 <div class="foreground"></div>
 <div class="foregroundContent">
   <div class="relative">
-      <div id="aboutMe" data-aos="fade-up">
-        <h2 class="concentratedHead">About Me</h2>
-        <p>
-          I'm Andrew Simonson, a senior undergrad at
-          <strong>Rochester Institute of Technology </strong>
-          in the <b>Computer Science BS</b> program (international relations minor), pursuing a career in data
-          science with a focus on predictive analytics.
-        </p>
-        <p>
-          <br />
-          Ominous positivity is kinda my thing.
-        </p>
+    <div id="aboutMe" data-aos="fade-up">
+      <h2 class="concentratedHead">About Me</h2>
+      <p>
+        I'm Andrew Simonson<!--, CEO of the anti-thermodynamics syndicate.-->, a
+        senior undergrad at
+        <strong>Rochester Institute of Technology </strong>
+        in the <b>Computer Science BS</b> program (international relations
+        minor), pursuing a career in data science.
         <br />
-          <div class="chess">
-            {% from 'partials/chess.html' import chess %} {{
-            chess('asimonson1125') }}
-          </div>
-          <br />
-          {% from 'partials/bookshelf.html' import bookshelf %} {{
-          bookshelf(var.books) }}
-          <br />
-          <div class="pointer" onClick="goto('duck')">
-            <img
-                alt="duck spinning"
-                src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-                class="smallImg"
+        <br />
+        Data without sound methodology is at best meaningless and at worst
+        counterproductive and costly.
+        <br />
+        My mission is to bring logical transparency and literal deductions back
+        into digital analysis so we can learn about the world through computing,
+        rather than letting computers make decisions for the world we think we
+        know.
+        <br />
+        <br />
+        We as data scientists shouldn't just be building heuristics. We should
+        be making discoveries and building new knowledge.
+        <br />
+        Bring the scientific method to AI.
+      </p>
+    </div>
+    <div data-aos="fade-up">
+      <div id="skills">
+        <h2 id="skillstag">Skills</h2>
+        {% from 'partials/skills.html' import skills %} {{
+        skills(var['skillList']) }}
+      </div>
+      <div id="timeline">
+        <h2>Timeline</h2>
+        <div class="checkbox-wrapper">
+          <div class="flex start">
+            <label class="switch" htmlFor="pinned">
+              <input
+                type="checkbox"
+                id="pinned"
+                onClick='toggleCheckbox("up")'
+                checked
               />
-            </div>
+              <div class="slider round"></div>
+              <strong>Pinned</strong>
+            </label>
           </div>
-      <div data-aos="fade-up">
-        <div id="skills">
-          <h2 id="skillstag">Skills</h2>
-          {% from 'partials/skills.html' import skills %} {{ skills(var['skillList']) }}
-        </div>
-        <div id="timeline">
-          <h2>Timeline</h2>
-          <div class="checkbox-wrapper">
-            <div class="flex start">
-              <label class="switch" htmlFor="pinned">
-                <input
-                  type="checkbox"
-                  id="pinned"
-                  onClick='toggleCheckbox("up")'
-                  checked
-                />
-                <div class="slider round"></div>
-                <strong>Pinned</strong>
-              </label>
-            </div>
-            <div class="flex start">
-              <label class="switch" htmlFor="education">
-                <input
-                  type="checkbox"
-                  id="education"
-                  onClick="toggleCheckbox('up')"
-                />
-                <div class="slider round"></div>
-                <strong>Education</strong>
-              </label>
-            </div>
-            <div class="flex start">
-              <label
-                class="switch"
-                htmlFor="experience"
+          <div class="flex start">
+            <label class="switch" htmlFor="education">
+              <input
+                type="checkbox"
+                id="education"
                 onClick="toggleCheckbox('up')"
-              >
-                <input type="checkbox" id="experience" />
-                <div class="slider round"></div>
-                <strong>Work Experience</strong>
-              </label>
-            </div>
-            <div class="flex start">
-              <label
-                class="switch"
-                htmlFor="technical"
-                onClick="toggleCheckbox('up')"
-              >
-                <input type="checkbox" id="technical" />
-                <div class="slider round"></div>
-                <strong>Technical</strong>
-              </label>
-            </div>
+              />
+              <div class="slider round"></div>
+              <strong>Education</strong>
+            </label>
           </div>
-          <div class="timeline checkbox-client">
-            {% from 'partials/timeline.html' import timeitem %} {% for i in
-            var["timeline"] %} {{ timeitem(i, var["timeline"][i]["classes"],
-            var["timeline"][i]["date"], var["timeline"][i]["content"])}} {%
-            endfor %}
+          <div class="flex start">
+            <label
+              class="switch"
+              htmlFor="experience"
+              onClick="toggleCheckbox('up')"
+            >
+              <input type="checkbox" id="experience" />
+              <div class="slider round"></div>
+              <strong>Work Experience</strong>
+            </label>
           </div>
-          <script>
-            toggleCheckbox("up");
-          </script>
+          <div class="flex start">
+            <label
+              class="switch"
+              htmlFor="technical"
+              onClick="toggleCheckbox('up')"
+            >
+              <input type="checkbox" id="technical" />
+              <div class="slider round"></div>
+              <strong>Technical</strong>
+            </label>
+          </div>
         </div>
+        <div class="timeline checkbox-client">
+          {% from 'partials/timeline.html' import timeitem %} {% for i in
+          var["timeline"] %} {{ timeitem(i, var["timeline"][i]["classes"],
+          var["timeline"][i]["date"], var["timeline"][i]["content"])}} {% endfor
+          %}
+        </div>
+        <script>
+          toggleCheckbox("up");
+        </script>
+      </div>
+    </div>
+  </div>
+  <div id="aboutCards" class="flex">
+    <div class="chess">
+      {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125') }}
+    </div>
+    <br />
+    {% from 'partials/bookshelf.html' import bookshelf %} {{
+    bookshelf(var.books) }}
+    <br />
+    <div class="pointer" onClick="goto('duck')">
+      <img
+        alt="duck spinning"
+        src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+        class="smallImg"
+      />
     </div>
   </div>
 </div>
