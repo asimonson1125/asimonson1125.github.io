@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<title>incredibly important</title>
+<body>
+  <button type="button" style="height:4em; width:10em;" onclick="playme()" id="trigger">
+    doot button
+  </button>
+  <video id="myVideo" style="display: none" muted>
+    <source src="{{ url_for('static',
+    filename="photos/moving-pictures/doot.mp4")}}" type="video/mp4"> Your
+    browser does not support the video tag.
+  </video>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    const trigger = document.getElementById("trigger");
+    async function playme() {
+      trigger.style.display = "none";
+      video.style.display = "";
+      await video.play();
+      setTimeout(function () {
+        video.style.display = "none";
+        trigger.style.display = "";
+      }, 1300);
+      video.muted = false;
+    }
+    // playme();
+  </script>
+</body>

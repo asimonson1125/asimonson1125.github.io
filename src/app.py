@@ -48,6 +48,9 @@ for i in pages:
 # for i in pages:
 #     exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
 
+@app.route("/huge")
+def huge():
+    return flask.render_template('huge.html')
 
 @app.route("/resume")
 @app.route("/Resume.pdf")
