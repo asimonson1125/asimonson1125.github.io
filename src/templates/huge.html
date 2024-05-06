@@ -4,7 +4,7 @@
   <button type="button" style="height:4em; width:10em;" onclick="playme()" id="trigger">
     doot button
   </button>
-  <video id="myVideo" style="display: none" muted>
+  <video id="myVideo" style="display: none">
     <source src="{{ url_for('static',
     filename="photos/moving-pictures/doot.mp4")}}" type="video/mp4"> Your
     browser does not support the video tag.
@@ -23,6 +23,5 @@
       }, 1300);
       video.muted = false;
     }
-    // playme();
   </script>
 </body>
