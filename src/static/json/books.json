@@ -1,9 +1,9 @@
 {
   "selection": [
-    "The Rational Optimist",
-    "The Accidental Superpower",
-    "Freakonomics",
-    "Zero To One"
+    "The Tyranny of Metrics",
+    "When to Rob a Bank",
+    "The End of the World is Just the Beginning",
+    "The Rational Optimist"
   ],
   "books": {
     "The Rational Optimist": {
@@ -30,6 +30,11 @@
       "filename": "thinkLikeAFreak.jpg",
       "link": "https://freakonomics.com/books/",
       "review": "More like the other Freakonomics books than I expected (cracked storytelling), which is still excellent, but I wished there was greater insights into seeing past conventional wisdom, which is what thinking like a freak means.  Still a great book."
+    },
+    "The Tyranny of Metrics": {
+      "filename": "TyrannyOfMetrics.jpg",
+      "link": "https://www.amazon.com/Tyranny-Metrics-Jerry-Z-Muller/dp/0691174954",
+      "review": "Library find.  Very appreciated read given my field of study.  Adds a new lens on the cost of information and how it impacts us from the cube office to the oval office"
     },
     "The Accidental Superpower": {
       "filename": "theAccidentalSuperpower.jpeg",

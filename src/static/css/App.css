@@ -26,8 +26,6 @@ html, body {
 
 body {
   margin: 0;
-  /* background-image: url('../photos/plexus.jpg'); */
-  /*url('https://i.pinimg.com/originals/d6/c3/ac/d6c3ac09021dbc0cda8ee27837d2c795.png')*/
   background-attachment: fixed;
   background-size: 100% auto;
   background-clip: border-box;
@@ -81,17 +79,11 @@ body {
   filter: brightness(50%);
 }
 
-h1, h2 {
+h1 {
   color: #ecebeb;
 }
 
-h2 {
-  font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
-
-h3, h4, h5 {
+h2, h3, h4, h5 {
   color: #a8a8a8;
 }
 
@@ -136,7 +128,7 @@ a {
   background-color: #1a1a1a;
   width: 100vw;
   z-index: 99;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   transition: .4s;
@@ -152,6 +144,7 @@ a {
 
 #homeName {
   margin-top: .25em;
+  margin-bottom: 0;
 }
 
 #name-container {
@@ -259,7 +252,6 @@ a {
 }
 
 .foregroundContent {
-  padding-top: 4rem;
   padding-left: 8rem;
   max-width: calc(100%-8rem);
   padding-bottom: 1rem;
@@ -275,7 +267,7 @@ a {
 }
 
 .homegroundContent {
-  padding-top: 5em;
+  padding-top: 1em;
   padding-left: 0em;
 }
 
@@ -315,16 +307,16 @@ a {
 
 #nametag {
   padding: 2em 3em;
-  display: inline-block;
   background-color: rgb(44, 44, 44, .75);
-  border-radius: 1em;
-  border: solid black 4px;
   text-align: center;
-  max-width: 30em;
 }
 
 #nametag *:not(h1) {
   text-shadow: .1em .1em rgba(255, 255, 255, 0.2);
+}
+
+#nametag h2{
+  font-size: medium;
 }
 
 #nametag p {
@@ -351,6 +343,14 @@ a {
   justify-content: space-around;
 }
 
+.equalitems {
+  column-gap: 1em;
+}
+
+.equalitems > * {
+  flex: 1 1 0;
+}
+
 .vFlex {
   display: flex;
   flex-direction: column;
@@ -362,12 +362,21 @@ a {
   max-width: 100%;
 }
 
+#aboutCards > * {
+  margin: .25em;
+}
+
 .spaceBetween {
   justify-content: space-between;
 }
 
 .start {
   justify-content: left;
+}
+
+.hSpacer {
+  width: 2em;
+  height: 0;
 }
 
 .relative {
@@ -588,6 +597,12 @@ a {
   left: 0;
 }
 
+#contentStuffer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .socials {
   margin-left: 1rem;
   width: 0px;
@@ -664,6 +679,26 @@ a {
   background-size: cover;
 }
 
+#desktopSpacer {
+  height: min(20em, 30vh);
+}
+
+.homeSubContent {
+  background-color: rgb(24, 24, 24, .85);
+  padding: 0 8em;
+  padding-top: 1em;
+}
+
+#homeProjects {
+  padding: 1em;
+}
+
+.homeProject {
+  width: 20em;
+  height:5em;
+
+}
+
 .heightBox {
   height: 100%;
   display: flex;
@@ -674,9 +709,6 @@ a {
 .chess {
   max-width: 300px;
   border: none;
-  overflow: scroll;
-  /* transform: scale(.8);
-  float: right; */
 }
 
 #chessProfile {
@@ -971,6 +1003,22 @@ a {
     border-bottom: solid 3px rgb(156, 49, 45, .4);
   }
 
+  .footer {
+    position: unset;
+  }
+
+  #footerSpacer {
+    flex-grow: 1;
+  }
+
+  #aboutCards {
+    flex-direction: column;
+  }
+  
+  #aboutCards > * {
+    margin: .25em auto;
+  }  
+
   .header h1 {
     font-size: 1.5rem;
   }
@@ -991,6 +1039,10 @@ a {
   .navControl {
     max-height: 0px;
     margin: 0;
+  }
+
+  .vertOnMobile {
+    flex-direction: column;
   }
 
   .projectList {
@@ -1015,6 +1067,10 @@ a {
 
   .homegroundContent {
     padding-top: 5em;
+  }
+
+  .homeSubContent {
+    padding: 1em;
   }
 
   .onRight {

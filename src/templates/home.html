@@ -1,54 +1,76 @@
 {% block content %} {% macro nameplate() %}
-<img
-  src="{{ url_for('static', filename='icons/neonfinal3.svg') }}"
-  id="homeIcon"
-  alt="logo"
-/>
-<h1 id="homeName" class='textGrad'>Andrew Simonson</h1>
-<h3>Computer Science student at Rochester Institute of Technology</h3>
-<h5>End-to-End Services in Data Science and AI</h5>
+<div>
+  <img
+    src="{{ url_for('static', filename='icons/neonfinal3.svg') }}"
+    id="homeIcon"
+    alt="logo"
+  />
+  <h1 id="homeName" class="textGrad">Andrew Simonson</h1>
+  <h2 class="textGrad">Data Science Beyond Theoretical Environments</h2>
+</div>
 {% endmacro %}
 
 <div class="foreground homeground"></div>
-<div class="foregroundContent homegroundContent">
-  <div class="relative">
-    <div id="homepage" class="flex">
-      <div id="HomeContent">
-        <div class="flex">
-          <div id="nametag" class="transparent unsetPos" data-aos="fade-up">
-            {{ nameplate() }}
-          </div>
-          <div id="nametagContainer">
-            <div id="nametag" data-aos="fade-up">{{ nameplate() }}</div>
-          </div>
-        </div>
+<div class="relative">
+  <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
+  <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
+  <div id="desktopSpacer"></div>
+  <div class="homeSubContent">
+    <div class="flex equalitems vertOnMobile">
+      <div>
+        <h2>About Me</h2>
+        <p>
+          I'm Andrew Simonson<!--, CEO of the anti-thermodynamics syndicate.-->,
+          a senior undergrad at
+          <strong>Rochester Institute of Technology </strong>
+          in the <b>Computer Science BS</b> program (international relations
+          minor), pursuing a career in data science. I have study clusters in
+          Data Science and AI and run independent studies in probability theory.
+          <br />
+          <br />
+          I've worked on a variety of projects, from building analytical tools
+          performing reactive chemical safety to live feed processing for
+          frantic work environments looking to improve service. I also do
+          personal experimentation leveraging open source info streams ranging
+          from human traffic around campus to watershed temperature monitoring.
+          <br />
+          <br />
+          My philosophy is that if it isn't explainable then you didn't learn
+          anything. Data without sound methodology is at best meaningless and at
+          worst counterproductive and costly. Bringing logical transparency and
+          literal deductions back into digital analysis enables us to learn
+          about the world through computing, rather than letting computers make
+          decisions for the world we think we know. We as data scientists
+          shouldn't just be building heuristics. We should be making discoveries
+          and building new knowledge.
+          <br />
+          <br />
+          <strong>Bring the scientific method to AI.</strong>
+          <br />
+          <br />
+        </p>
       </div>
-      <div class="onRight" data-aos="fade-up">
-        <div class="chess">
-          {% from 'partials/chess.html' import chess %} {{
-          chess('asimonson1125') }}
-        </div>
-        <br />
-        {% from 'partials/bookshelf.html' import bookshelf %} {{
-        bookshelf(var.books) }}
-        <br />
-          <div class="flex pointer" onclick="goto('duck')">
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-            <img
-              alt="duck spinning"
-              src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-              class="smallImg"
-            />
-          </div>
+      <div id="skills">
+        <h2 id="skillstag">Skills</h2>
+        {% from 'partials/skills.html' import skills %} {{
+        skills(var['skillList']) }}
+      </div>
+    </div>
+    <div id="aboutCards" class="flex">
+      <div class="chess">
+        {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
+        }}
+      </div>
+      <br />
+      {% from 'partials/bookshelf.html' import bookshelf %} {{
+      bookshelf(var.books) }}
+      <br />
+      <div class="pointer" onClick="goto('duck')">
+        <img
+          alt="duck spinning"
+          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+          class="smallImg"
+        />
       </div>
     </div>
   </div>

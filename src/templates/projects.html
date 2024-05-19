@@ -3,7 +3,6 @@
 <div class="foregroundContent">
     <div data-aos="fade-up">
       <h2 class="concentratedHead">Projects</h2>
-      <h3>Shhh shh shh sh sh I know I know I'm gonna revamp this page later </h3>
       <p>
         Project status is indicated by the color of the project card:
         <br />
@@ -14,6 +13,8 @@
         <span class="incomplete">⬤</span> - Incomplete
       </p>
     </div>
+
+    <!-- >
     <div class="checkbox-wrapper">
       <div class="flex start">
       <label class="switch" htmlFor="pinned">
@@ -37,6 +38,7 @@
       </label>
       </div>
     </div>
+    </!-->
     <div class="projectList checkbox-client">
         {% from 'partials/project.html' import project %} 
         {% for i in var["projects"] %}
@@ -44,5 +46,7 @@
         {% endfor %}
     </div>
   </div>
-  <script>toggleCheckbox('')</script>
+
+
+  <!--><script>toggleCheckbox('')</script></!-->
 {% endblock %}

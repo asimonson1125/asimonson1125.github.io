@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="{{ url_for('static', filename='icons/withBackground.svg') }}" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='icons/withBackground.svg') }}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="{{ var['description'] }}" />
@@ -47,10 +50,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/checkbox.css') }}"
     />
+    <!--
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/head.css') }}"
-    />
+    /></!-->
 
     <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
@@ -62,13 +66,11 @@
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <iframe src="/hotspots?legend=false" title="HotspotsRIT" id="map"></iframe>
-    <div class="App">
+    <div id="contentStuffer">
       <div class="header">
-        <div id="name-container" onclick="goto('home', {toggle:false})">
-          <div class="glitch">
-            <div class="line name">
-              <span class="textGrad">Andrew Simonson</span>
-            </div>
+        <div id="name-container" onclick="goto('home')">
+          <div class="line name">
+            <span class="textGrad">Andrew Simonson</span>
           </div>
         </div>
 
@@ -89,20 +91,15 @@
             <div onclick="goto('projects')" class="navElement">
               <p>Projects</p>
             </div>
-            <!-- <a href="/activities">Activities</a> -->
-            <div onclick="goto('about')" class="navElement">
-              <p>About Me</p>
-            </div>
           </div>
         </div>
       </div>
+      {% endblock %} {% block content%}
+      <div id="root">{% include var['template'] %}</div>
+      {% endblock %} {% block footer %}
+      <div id="footerSpacer"></div>
+      <div class="footer">{% include 'partials/socials.html' %}</div>
+      {% endblock %}
     </div>
-    {% endblock %}
-    {% block content%}
-    <div id="root">{% include var['template'] %}</div>
-    {% endblock %}
-    {% block footer %}
-    <div class="footer">{% include 'partials/socials.html' %}</div>
-    {% endblock %}
   </body>
 </html>

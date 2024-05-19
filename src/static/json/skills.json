@@ -1,5 +1,14 @@
 {
     "Data and AI": {
+        "Tools": {
+            "Microsoft Azure": {
+                "Databricks": {},
+                "Data Factory": {},
+                "Stream Analytics": {}
+            },
+            "Apache Spark": {},
+            "Visual Basic for Applications (Excel)": {}
+        },
         "Python": {
             "PyTorch/TensorFlow": {},
             "Numpy/Pandas": {},
@@ -11,16 +20,19 @@
     "Frontend": {
         "Flask (Python)": {},
         "React (Javascript)": {},
-        "Angular (Typescript)": {}
+        "SASS/SCSS": {}
     },
     "Backend & DevOps": {
+        "Backend": {
+            "Rust": {},
+            "C#": {},
+            "C++": {}
+        },
         "DevOps": {
             "Docker": {},
             "Microsoft Azure": {},
             "Kubernetes/Openshift": {},
             "Bash": {}
-        },
-        "C#": {},
-        "C++": {}
+        }
     }
 }
