@@ -10,10 +10,10 @@ books = json.load(open("./static/json/books.json", "r"))
 skillList = json.load(open("./static/json/skills.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
 pages = json.load(open("./static/json/pages.json", "r"))
-pages['about']['skillList'] = skillList
-pages['about']['timeline'] = timeline
+pages['home']['skillList'] = skillList
+# pages['about']['timeline'] = timeline
 pages['projects']['projects'] = proj
-pages['about']['books'] = books
+pages['home']['books'] = books
 pages['books']['books'] = books
 
 app = flask.Flask(__name__)

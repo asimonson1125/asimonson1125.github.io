@@ -11,12 +11,6 @@
         "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
         "canonical": "/projects"
     },
-    "about": {
-        "template": "about.html",
-        "title": "Andrew Simonson - About Me",
-        "description": "About Andrew Simonson",
-        "canonical": "/about"
-    },
     "books": {
         "template": "books.html",
         "title": "Andrew Simonson - Bookshelf",

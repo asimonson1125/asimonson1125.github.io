@@ -343,6 +343,14 @@ a {
   justify-content: space-around;
 }
 
+.equalitems {
+  column-gap: 1em;
+}
+
+.equalitems > * {
+  flex: 1 1 0;
+}
+
 .vFlex {
   display: flex;
   flex-direction: column;
@@ -352,10 +360,6 @@ a {
 .wrap {
   flex-wrap: wrap;
   max-width: 100%;
-}
-
-#aboutCards {
-  justify-content: left;
 }
 
 #aboutCards > * {
@@ -368,6 +372,11 @@ a {
 
 .start {
   justify-content: left;
+}
+
+.hSpacer {
+  width: 2em;
+  height: 0;
 }
 
 .relative {
@@ -677,6 +686,7 @@ a {
 .homeSubContent {
   background-color: rgb(24, 24, 24, .85);
   padding: 0 8em;
+  padding-top: 1em;
 }
 
 #homeProjects {
@@ -1031,6 +1041,10 @@ a {
     margin: 0;
   }
 
+  .vertOnMobile {
+    flex-direction: column;
+  }
+
   .projectList {
     width: 95%;
   }
@@ -1056,7 +1070,7 @@ a {
   }
 
   .homeSubContent {
-    padding: 0;
+    padding: 1em;
   }
 
   .onRight {
