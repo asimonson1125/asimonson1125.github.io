@@ -1,35 +1,8 @@
-window.onload = function () {
-  onLoaded();
-};
-function onLoaded() {
-  window.onresize = function () {
-    resizer();
-  };
-  resizer();
-}
-
-function resizer() {
-  const e = document.querySelector(".navControl");
-  if (window.innerWidth > 1400) {
-    // desktop view
-    e.style.maxHeight = `${e.scrollHeight + 10}px`;
-  } else {
-    // mobile view
-    document.querySelector(".header").style.borderBottomWidth = "3px";
-    e.style.maxHeight = "0px";
-    document.querySelectorAll(".navElement *").forEach((x) => {
-      x.style.paddingTop = ".3rem";
-      x.style.paddingBottom = ".3rem";
-      x.style.fontSize = "1rem";
-    });
-  }
-}
-
-function toggleMenu() {
+function toggleMenu(collapse=false) {
   if (window.innerWidth < 1400) {
     const e = document.querySelector(".navControl");
     const bar = document.querySelector(".header");
-    if (e.style.maxHeight === "0px") {
+    if (e.style.maxHeight === "0px" && !collapse) {
       e.style.maxHeight = `${e.scrollHeight + 10}px`;
       bar.style.borderBottomWidth = "0px";
     } else {
@@ -39,7 +12,7 @@ function toggleMenu() {
   }
 }
 
-async function goto(location, { push = true, toggle = true } = {}) {
+async function goto(location, { push = true } = {}) {
   let a = await fetch("/api/goto/" + location, {
     credentials: "include",
     method: "GET",
@@ -56,9 +29,7 @@ async function goto(location, { push = true, toggle = true } = {}) {
   root.querySelectorAll("script").forEach((x) => {
     eval(x.innerHTML);
   });
-  if (toggle) {
-    toggleMenu();
-  }
+  toggleMenu(collapse=true);
   document.querySelector("title").textContent = metadata["title"];
   if (push) {
     history.pushState(null, null, metadata["canonical"]);
