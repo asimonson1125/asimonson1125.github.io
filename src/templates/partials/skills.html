@@ -10,7 +10,11 @@
 {% macro skills(skills) %}
 <div id="skillTree">
     {% for skill in skills %}
-    {{ expandSkill(skills, skill, 'activeSkill') }}
+    {% set classes = "" %}
+    {% if skill == skills|first %}
+        {% set classes = "activeSkill" %}
+    {% endif %}
+    {{ expandSkill(skills, skill, classes) }}
     {% endfor %}
 </div>
 {% endmacro %}
