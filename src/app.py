@@ -71,29 +71,29 @@ def hotspotsRIT():
 def hotspotsProxy(path):
     return requests.get(f"{HotspotsURL}/{path}").content
 
-@app.errorhandler(Exception)
-def page404(e):
-    eCode = e.code
-    message = e.description
-    try:
-        message = e.length
-    finally:
-        pagevars = {
-            "template": "error.html",
-            "title": f"{eCode} - Simonson",
-            "description": "Error on Andrew Simonson's Digital Portfolio",
-            "canonical": "404",
-        }
-        return (
-            flask.render_template(
-                "header.html",
-                var=pagevars,
-                error=eCode,
-                message=message,
-                title=f"{eCode} - Simonson Portfolio",
-            ),
-            eCode,
-        )
+# @app.errorhandler(Exception)
+# def page404(e):
+#     eCode = e.code
+#     message = e.description
+#     try:
+#         message = e.length
+#     finally:
+#         pagevars = {
+#             "template": "error.html",
+#             "title": f"{eCode} - Simonson",
+#             "description": "Error on Andrew Simonson's Digital Portfolio",
+#             "canonical": "404",
+#         }
+#         return (
+#             flask.render_template(
+#                 "header.html",
+#                 var=pagevars,
+#                 error=eCode,
+#                 message=message,
+#                 title=f"{eCode} - Simonson Portfolio",
+#             ),
+#             eCode,
+#         )
 
 
 @app.route("/sitemap.xml")

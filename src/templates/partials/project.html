@@ -1,32 +1,42 @@
 {% macro project(title, classes, status, bgi, content, links) %}
 <div class="project {{ classes }}" data-aos="fade-up">
-  <div class="vFlex">
-    <div class="projTitle">
-      <h3>{{ title }}</h3>
-      <p class="{{ status }} tab">⬤</p>
+  <div class="projTitle">
+    <h3>{{ title }}</h3>
+    <p class=""><span class="{{ status }}">⬤</span> {{ status }}</p>
+  </div>
+  <div class="projBody mobileV">
+    {% if bgi|length > 0 %} {% set path = url_for('static',
+    filename='photos/projects/' + bgi) %}
+    <div class="projImage">
+      <img
+        class="projImage"
+        src="{{ path }}"
+        alt="Ref image for {{ title }} project"
+      />
     </div>
-    <div class="projBody vFlex spaceBetween">
-      {% if bgi|length > 0 %}
-      {% set path = url_for('static', filename='photos/' + bgi) %}
-      <div style="background-image: url('{{path}}');" class="bgi"></div>
+    {% endif %}
+
+    <div class="grow">
+      <p class="backedBody">{{ content }}</p>
+    </div>
+    <div class="projLinks">
+      {% for i in links %} {% set src = 'icons/' + i[0] + '.svg' %}
+      <a href="{{i[1]}}">
+        <img
+          class="projectLink"
+          src="{{ url_for('static', filename=src) }}"
+          alt="{{i[0]}}"
+        />
+      </a>
+      {% endfor %} {% if links|length == 0 %}
+      <div class="placeholder">
+        <img
+          alt="no links!"
+          src="{{ url_for('static', filename='photos/placeholder.png') }}"
+          class="projectLink"
+        />
+      </div>
       {% endif %}
-      <div class="topBox">
-        <p class="backedBody">{{ content }}</p>
-      </div>
-      <div class="bottomBox">
-        {% for i in links %} {% set src = 'icons/' + i[0] + '.svg' %}
-        <a href="{{i[1]}}">
-          <img src="{{ url_for('static', filename=src) }}" alt="{{i[0]}}" />
-        </a>
-        {% endfor %} {% if links|length == 0 %}
-        <div class="placeholder">
-          <img
-            alt="no links!"
-            src="{{ url_for('static', filename='photos/placeholder.png') }}"
-          />
-        </div>
-        {% endif %}
-      </div>
     </div>
   </div>
 </div>
