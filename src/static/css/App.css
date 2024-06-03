@@ -259,7 +259,6 @@ a {
 
 .foregroundContent p {
   line-height: 1.5em;
-  max-width: min(90%, 40rem);
 }
 
 .homeground {
@@ -309,10 +308,6 @@ a {
   padding: 2em 3em;
   background-color: rgb(44, 44, 44, .75);
   text-align: center;
-}
-
-#nametag *:not(h1) {
-  text-shadow: .1em .1em rgba(255, 255, 255, 0.2);
 }
 
 #nametag h2{
@@ -397,7 +392,6 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
-  opacity: 0.4;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -510,23 +504,13 @@ a {
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  text-align: center;
 }
 
 .project {
-  display: inline-block;
-  text-align: left;
-  margin: 1rem;
-  width: 20rem;
-  height: 22rem;
-  border: .3rem rgba(156, 49, 45, .8) solid;
-  background-color: rgba(22, 22, 22, .8);
-  transition: .3s;
-  overflow: hidden;
+  border-top: .3rem rgba(156, 49, 45, .8) solid;
 }
 
 .projTitle>* {
@@ -536,9 +520,18 @@ a {
 .projBody {
   position: relative;
   z-index: 3;
+  display: flex;
 }
 
-.project .topBox, .project .bottomBox, .project .projTitle {
+.grow {
+  flex-grow: 1;
+}
+
+.projImage{
+  width: min(100%, 35em);
+}
+
+.project .projTitle {
   padding: 0 1rem;
   z-index: inherit;
 }
@@ -558,7 +551,7 @@ a {
   border-bottom: black solid .2rem;
 }
 
-.project img {
+.projectLink {
   margin-top: auto;
   height: 3rem;
 }
@@ -687,6 +680,7 @@ a {
   background-color: rgb(24, 24, 24, .85);
   padding: 0 8em;
   padding-top: 1em;
+  border-top: solid 4px rgba(139,36,36,0.5);
 }
 
 #homeProjects {
