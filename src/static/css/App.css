@@ -835,6 +835,7 @@ a {
   padding: 10px;
   border: solid 2px #553;
   background-image: url("/static/photos/wood.jpg");
+  cursor: pointer;
 }
 
 .bookshelfHeader {

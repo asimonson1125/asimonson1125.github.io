@@ -1,6 +1,5 @@
 {% macro bookshelf(books) %}
-<a href="/books">
-  <div class="bookshelf">
+  <div class="bookshelf" onclick="goto('books')">
     <div class="flex">
       <h4 class="bookshelfHeader">Check out the things I read:</h4>
       <p class='nomargin'>See More >></p>
@@ -19,5 +18,4 @@
       {% endfor %}
     </div>
   </div>
-</a>
 {% endmacro %}
