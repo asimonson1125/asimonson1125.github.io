@@ -62,9 +62,21 @@
         }}
       </div>
       <br />
-      {% from 'partials/bookshelf.html' import bookshelf %} {{
-      bookshelf(var.books) }}
+      <div>
+        {% from 'partials/bookshelf.html' import bookshelf %} {{
+        bookshelf(var.books) }}
+      </div>
       <br />
+      <div>
+        <iframe
+          height="200"
+          max-width="360"
+          frameborder="0"
+          allowtransparency="true"
+          scrolling="yes"
+          src="https://www.strava.com/athletes/139855203/latest-rides/95b8e0be96e32b8de82254d1c6627723a35eea6f"
+        ></iframe>
+      </div>
       <div class="pointer" onClick="goto('duck')">
         <img
           alt="duck spinning"
