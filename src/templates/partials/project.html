@@ -2,41 +2,31 @@
 <div class="project {{ classes }}" data-aos="fade-up">
   <div class="projTitle">
     <h3>{{ title }}</h3>
-    <p class=""><span class="{{ status }}">⬤</span> {{ status }}</p>
+    <p><span class="{{ status }}">⬤</span> {{ status }}</p>
   </div>
   <div class="projBody mobileV">
-    {% if bgi|length > 0 %} {% set path = url_for('static',
-    filename='photos/projects/' + bgi) %}
     <div class="projImage">
-      <img
-        class="projImage"
-        src="{{ path }}"
-        alt="Ref image for {{ title }} project"
-      />
-    </div>
-    {% endif %}
-
-    <div class="grow">
-      <p class="backedBody">{{ content }}</p>
-    </div>
-    <div class="projLinks">
-      {% for i in links %} {% set src = 'icons/' + i[0] + '.svg' %}
-      <a href="{{i[1]}}">
-        <img
-          class="projectLink"
-          src="{{ url_for('static', filename=src) }}"
-          alt="{{i[0]}}"
-        />
-      </a>
-      {% endfor %} {% if links|length == 0 %}
-      <div class="placeholder">
-        <img
-          alt="no links!"
-          src="{{ url_for('static', filename='photos/placeholder.png') }}"
-          class="projectLink"
-        />
-      </div>
+      {% if bgi|length > 0 %} {% set path = url_for('static',
+      filename='photos/projects/' + bgi) %}
+      <img class="" src="{{ path }}" alt="Ref image for {{ title }} project" />
       {% endif %}
+    </div>
+
+    <div class="grow backedBody">
+      <div class="projDesc vFlex spaceBetween">
+        <p>{{ content }}</p>
+        <div class="projLinks">
+          {% for i in links %} {% set src = 'icons/' + i[0] + '.svg' %}
+          <a href="{{i[1]}}">
+            <img
+              class="projectLink"
+              src="{{ url_for('static', filename=src) }}"
+              alt="{{i[0]}}"
+            />
+          </a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </div>

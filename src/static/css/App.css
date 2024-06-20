@@ -511,34 +511,52 @@ a {
 
 .project {
   border-top: .3rem rgba(156, 49, 45, .8) solid;
+  background-color: rgb(24, 24, 24, .85);
 }
 
 .projTitle>* {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .projBody {
   position: relative;
   z-index: 3;
   display: flex;
+  min-height: 15em;
+}
+
+.projBody p {
+  margin: 0;
 }
 
 .grow {
   flex-grow: 1;
 }
 
-.projImage{
-  width: min(100%, 35em);
+.projImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.projImage {
+  flex: 0 0 min(100%, 25em);
+  margin: 1em 0;
 }
 
 .project .projTitle {
-  padding: 0 1rem;
+  padding-top: 1rem;
   z-index: inherit;
 }
 
 .backedBody {
-  background-color: #1a1a1a;
   padding: .25em;
+  height: unset !important;
+}
+
+.projDesc {
+  max-width: 50em;
+  margin: 0 2em;
 }
 
 .tab {
@@ -1040,10 +1058,6 @@ a {
     flex-direction: column;
   }
 
-  .projectList {
-    width: 95%;
-  }
-
   .sideimg {
     position: relative;
   }
@@ -1075,6 +1089,10 @@ a {
 
   .onRight>* {
     margin: auto;
+  }
+
+  .projDesc {
+    margin: 0;
   }
 
   .timeline {

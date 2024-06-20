@@ -6,6 +6,11 @@
     "The Rational Optimist"
   ],
   "books": {
+    "Fooled By Randomness": {
+      "filename": "fooledbyrandomness.jpg",
+      "link": "https://www.amazon.com/Fooled-Randomness-Hidden-Chance-Markets-dp-B006Q7VYC4/dp/B006Q7VYC4/ref=dp_ob_title_bk",
+      "review": "A lengthy compendium on probabilistic reasoning that helped kick off a curiosity of indefinite computation.  There's more ancient philosophy than a book like this really needs but the occasional brazen punchline from the contemporary anecdotes make it bearable."
+    },
     "The Rational Optimist": {
       "filename": "ratOpt.jpg",
       "link": "https://www.amazon.com/Rational-Optimist-Prosperity-Evolves-P-s/dp/0061452068",
@@ -91,11 +96,6 @@
       "link": "https://www.amazon.com/Grand-Strategy-John-Lewis-Gaddis/dp/1594203512",
       "review": "Book for the academically-inclined.  Not fun to read.  Big words scary.  It's insightful to be sure but I wouldn't read it again.  The message on conceptual contradictions has stuck with me.  Quite the brain food."
     },
-    "The Parasitic Mind": {
-      "filename": "theParasiticMind.jpeg",
-      "link": "https://www.amazon.com/Parasitic-Mind-Infectious-Killing-Common/dp/1684512298/",
-      "review": "The humor is the most memorable part but the concepts are no slouches.  The contemporary culture war basis makes it tricky to talk about, but it absolutely should be discussed."
-    },
     "David and Goliath": {
       "filename": "davidAndGoliath.png",
       "link": "https://www.amazon.com/David-Goliath-Underdogs-Misfits-Battling/dp/0316239852/",
@@ -110,6 +110,11 @@
       "filename": "youCanReadAnyone.jpg",
       "link": "https://www.amazon.com/YOU-READ-ANYONE-David-Lieberman-ebook/dp/B001J6OV0Y",
       "review": "Not as page-turning as many of the others and clearly not as memorable.  The techniques pique curiosity but are difficult to use without practice."
+    },
+    "The Parasitic Mind": {
+      "filename": "theParasiticMind.jpeg",
+      "link": "https://www.amazon.com/Parasitic-Mind-Infectious-Killing-Common/dp/1684512298/",
+      "review": "The humor is the most memorable part but the concepts are no slouches.  The contemporary culture war basis makes it tricky to talk about, but it absolutely should be discussed."
     },
     "Profiles in Courage": {
       "filename": "profilesInCourage.jpeg",
