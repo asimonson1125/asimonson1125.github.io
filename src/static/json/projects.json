@@ -60,7 +60,17 @@
     "bgi": "ceoOfYugo.png",
     "content": "A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.  Unfortunately, NationsGame is now defunct. Limited screenshots of functionality.",
     "links": [
-      ["github", "https://github.com/asimonson1125/NG-Rolls-Simulator", "git repo"]
+      ["github", "https://github.com/asimonson1125/NG-Rolls-Simulator", "git repo"
+    ]
+    ]
+  },
+  "Portfolio Website": {
+    "status": "WIP",
+    "classes": "programming",
+    "content": "The website you are on now, while not strictly related to my work in data, is a work that I'd like to note here.  This could have been another portfolio built upon some html template or, even better, designed for markdown.  Not here.  No 3rd party templates or styles, just a Flask webserver and all the effort I care to put into it.",
+    "links": [
+      ["globe", "https://asimonson.com", "Homepage"],
+      ["github", "https://github.com/asimonson1125/asimonson1125.github.io", "git repo"]
     ]
   }
 }
