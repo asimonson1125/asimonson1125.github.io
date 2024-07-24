@@ -2,7 +2,6 @@
 <div class="foreground"></div>
 <div class="foregroundContent">
   <h2>"You can't judge a book by its cover but you can judge a person by their bookshelf" - Me, today.</h2>
-  <p>Hover to reveal review<br />Read to reveal KNOWLEDGE</p>
   <h3>My Favorites</h3>
   <div class='flex wrap boxed'>
     {% for i in var.books.selection %}
@@ -17,6 +16,7 @@
     </div>
     {% endfor %}
   </div>
+  <p>Hover to reveal review<br />Read to reveal KNOWLEDGE</p>
   <div class="booklist flex wrap mobileV">
     {% for i in var.books.books %}
     <div id="'{{i}}'" class="bookReview">
