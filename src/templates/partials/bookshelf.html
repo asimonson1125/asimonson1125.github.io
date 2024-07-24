@@ -5,7 +5,7 @@
       <p class='nomargin'>See More >></p>
     </div>
     <div class="bookContainer">
-      {% for i in books.selection %} {% set book = books.books[i] %}
+      {% for i in books.selection[:4] %} {% set book = books.books[i] %}
       <a href="/books#'{{i}}'">
         <div class="book">
           <img

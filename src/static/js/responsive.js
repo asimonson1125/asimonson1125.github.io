@@ -37,6 +37,6 @@ async function goto(location, { push = true } = {}) {
 }
 
 function backButton() {
-  const location = window.location.pathname;
+  const location = window.location.href;
   goto(location.substring(1), { push: false }); // remove slash, goto already does that
 }
