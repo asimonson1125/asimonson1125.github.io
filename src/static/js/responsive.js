@@ -19,8 +19,11 @@ async function goto(location, { push = true } = {}) {
     mode: "cors",
   });
   const response = await a.json();
-  if (!location.includes("#")) {
+  if (!window.location.href.includes("#")) {
     window.scrollTo({top: 0, left: 0, behavior:"instant"});
+  } else {
+    eid = decodeURIComponent(window.location.hash.substring(1))
+    document.getElementById(eid).scrollIntoView()
   }
   const metadata = response[0];
   const content = response[1];
@@ -37,6 +40,6 @@ async function goto(location, { push = true } = {}) {
 }
 
 function backButton() {
-  const location = window.location.href;
+  const location = window.location.pathname;
   goto(location.substring(1), { push: false }); // remove slash, goto already does that
 }
