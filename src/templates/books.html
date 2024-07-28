@@ -16,19 +16,27 @@
     </div>
     {% endfor %}
   </div>
+  <h3>All Reviews</h3>
   <p>Hover to reveal review<br />Read to reveal KNOWLEDGE</p>
-  <div class="booklist flex wrap mobileV">
+  <div class="booklist flex wrap">
     {% for i in var.books.books %}
     <div id="'{{i}}'" class="bookReview">
-      <div class="hover-container">
-        <img
-          class="bookcover"
-          alt="{{i}} cover"
-          src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
-        />
-        <div class="hover-element">
-          <p>{{ var.books.books[i].review }}</p>
-          <a href="{{ var.books.books[i].link }}">Book Source</a>
+      <div class='fullHeight flex'>
+        <div>
+          <div class='heightBox'>
+            <img
+              class="bookcover"
+              alt="{{i}} cover"
+              src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
+            />
+          </div>
+        </div>
+        <div class='vFlex emPad spaceBetween'>
+          <div>
+            <h4 class='nomargin'>{{ i }}</h4>
+            <p class='nomargin'>{{ var.books.books[i].review }}</p>
+          </div>
+          <a href="{{ var.books.books[i].link }}"><p>Book Source</p></a>
         </div>
       </div>
     </div>

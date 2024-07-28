@@ -100,7 +100,7 @@ p, li {
   font-size: 1rem;
 }
 
-a {
+a, a p {
   color: #a0a0a0a0;
   text-decoration: none;
 }
@@ -718,6 +718,10 @@ a {
   justify-content: center;
 }
 
+.fullHeight {
+  height: 100%;
+}
+
 .chess {
   max-width: 300px;
   border: none;
@@ -892,8 +896,10 @@ a {
 }
 
 .bookReview {
-  width: 6em;
+  width: min(100%, 30em);
   padding: 1em;
+  border: solid 3px rgba(139, 36, 36, 0.5);
+  flex-grow: 1;
 }
 
 .bookcover {
@@ -901,15 +907,20 @@ a {
 }
 
 .booklist {
-  margin: min(10em, 10%);
+  /* margin: min(10em, 10%);
   margin-bottom: 2em;
-  margin-top: 2em;
+  margin-top: 2em; */
+  justify-content: left;
 }
 
 .boxed {
   background-color: rgba(24, 24, 24, 0.85);
   border: solid 0.5em rgba(139, 36, 36, 0.5);
   border-radius: 0.5em;
+  padding: 1em;
+}
+
+.emPad {
   padding: 1em;
 }
 
