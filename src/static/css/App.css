@@ -1011,9 +1011,11 @@ a, a p {
   }
 
   /* fuckin iOS gotta render gaussian blurs differently so better fuckin uhh make rasters for mobile users */
-  #homeIcon {
+
+  /* Be sure to uncomment this if we ever stop using jebwin memes */
+  /* #homeIcon {
     content: url("../icons/rasterLogo.png");
-  }
+  } */
 
   .name {
     font-size: min(6vw, 2em);
