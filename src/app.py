@@ -18,12 +18,6 @@ pages['books']['books'] = books
 
 app = flask.Flask(__name__)
 
-### TMP
-@app.route('/certs')
-def certs():
-    return flask.render_template("certs.html")
-###
-
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')
 def goto(location='home'):
@@ -106,6 +100,11 @@ def page404(e):
 @app.route("/robots.txt")
 def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
+
+@app.route('/files/<fname>')
+def filesystem_send(fname):
+    print(app.static_folder + "files/")
+    return flask.send_from_directory(app.static_folder + '/files/', fname)
 
 
 if __name__ == "__main__":

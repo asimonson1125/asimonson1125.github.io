@@ -22,5 +22,11 @@
         "title":"You've been ducked!",
         "description": "Face it, you've been ducked",
         "canonical": "/duck"
+    },
+    "certificates": {
+        "template": "certs.html",
+        "title": "Certificates and Awards",
+        "description": "Certificates and Awards Listing",
+        "canonical": "/certs"
     }
 }

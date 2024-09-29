@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>lol hi</title>
-  </head>
-  <body>
+{% block content %}
+<div class="foreground"></div>
+<div class="foregroundContent">
     <h1>Andrew's Secret Certification Page</h1>
 
     <strong
@@ -46,10 +43,9 @@
     </ul>
     <h2>RIT Entrepreneurial Certifications</h2>
     <ul>
-      <li>Design Thinking Certification</li>
-      <li>Ideation Certification</li>
-      <li>Tools for Innovators Certification</li>
+      <li><a href="/files/designThinkingCert.pdf">Design Thinking Certification</a></li>
+      <li><a href="/files/ideationCert.pdf">Ideation Certification</a></li>
+      <li><a href="/files/toolsForInnovatorsCert.pdf">Tools for Innovators Certification</a></li>
     </ul>
-    <p>I have the pdfs for these somewhere that is not easily accessible to me as I try to push this out in a hurry.  I have contacts if you want proof, I guess.</p>
-  </body>
-</html>
+  </div>
+{% endblock %}
