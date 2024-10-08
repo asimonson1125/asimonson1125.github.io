@@ -1,34 +1,14 @@
-FROM ubuntu:lunar
+FROM docker.io/python:3.8-buster
 LABEL maintainer="Andrew Simonson <asimonson1125@gmail.com>"
 
-ENV DEBIAN_FRONTEND noninteractive
+WORKDIR /app
+ADD ./src /app
 
-RUN apt-get update
-RUN apt-get install -y python3-pip nginx gunicorn supervisor 
+COPY . .
 
-# Setup flask application
-RUN mkdir -p /deploy/app
-COPY src /deploy/app
-RUN pip install -r /deploy/app/requirements.txt --break-system-packages
+WORKDIR /app/src
 
-# Setup nginx
-RUN rm /etc/nginx/sites-enabled/default
-COPY flask.conf /etc/nginx/sites-available/
-RUN ln -s /etc/nginx/sites-available/flask.conf /etc/nginx/sites-enabled/flask.conf && \
-    echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN apt-get -yq update && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Setup supervisord
-RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
-
-# Permissions
-# RUN adduser --disabled-password --gecos '' supervisor && \
-RUN chmod -R 777 /var/* && \
-    chown -R root /var/*
-
-# Entrypoint
-USER root
-
-# Start processes
-CMD ["/usr/bin/supervisord"]
+CMD [ "gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
