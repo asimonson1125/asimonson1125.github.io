@@ -4,6 +4,7 @@ import json
 import werkzeug.exceptions as HTTPerror
 import requests
 from config import *
+import os
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
@@ -69,7 +70,9 @@ def hotspotsRIT():
 
 @app.route("/hotspots/<path>")
 def hotspotsProxy(path):
-    return requests.get(f"{HotspotsURL}/{path}").content
+    resp = flask.make_response(requests.get(f"{HotspotsURL}/{path}").content)
+    resp.headers['Access-Control-Allow-Origin'] = '*'  # or restrict to your site's domain
+    return resp
 
 @app.errorhandler(Exception)
 def page404(e):
@@ -101,10 +104,12 @@ def page404(e):
 def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
-@app.route('/files/<fname>')
+@app.route('/files/<path:fname>')
 def filesystem_send(fname):
-    print(app.static_folder + "files/")
-    return flask.send_from_directory(app.static_folder + '/files/', fname)
+    safe_path = os.path.abspath(os.path.join("/mnt/readonly/", fname))
+    if not safe_path.startswith("/mnt/readonly/"):
+        return "Invalid path", 400
+    return flask.send_from_directory("/mnt/readonly/", fname)
 
 
 if __name__ == "__main__":
