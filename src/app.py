@@ -44,35 +44,11 @@ def funcGen(pagename, pages):
 for i in pages:
     func = funcGen(i, pages)
     app.add_url_rule(pages[i]['canonical'], i, func)
-    
-
-# for i in pages:
-#     exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
-
 
 @app.route("/resume")
 @app.route("/Resume.pdf")
 def resume():
     return flask.send_file("./static/Resume.pdf")
-
-@app.route("/hotspots")
-def hotspotsRIT():
-    url = HotspotsURL
-    if flask.request.args.get("legend") == "false":
-        url += "?legend=false"
-    pagevars = {
-            "template": "iframe.html",
-            "title": f"Hotspots @ RIT",
-            "description": "Hotspots @ RIT by Andrew Simonson",
-            "canonical": "/hotspots",
-        }
-    return flask.render_template("iframe.html", url=url, var=pagevars)
-
-@app.route("/hotspots/<path>")
-def hotspotsProxy(path):
-    resp = flask.make_response(requests.get(f"{HotspotsURL}/{path}").content)
-    resp.headers['Access-Control-Allow-Origin'] = '*'  # or restrict to your site's domain
-    return resp
 
 @app.errorhandler(Exception)
 def page404(e):
