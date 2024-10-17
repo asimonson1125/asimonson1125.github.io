@@ -8,9 +8,3 @@ services:
     restart: 'no'
     volumes:
       - ${READ_VOLUME:-/dev/null}:/mnt/readonly:ro # Read-only mount for sharing from host to public
-    # ports:
-    #   - 8080
-networks:
-  default:
-    external: true
-    name: proxy
