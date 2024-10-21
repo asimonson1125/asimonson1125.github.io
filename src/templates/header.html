@@ -14,7 +14,7 @@
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://asimonson.com{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
+      content="{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
     />
     <meta property="og:url" content="{{ var['description'] }}" />
     <meta property="twitter:title" content="Andrew Simonson" />
@@ -23,7 +23,7 @@
     <meta property="og:site_name" content="Andrew Simonson - Portfolio" />
     <meta
       property="twitter:image"
-      content="https://asimonson.com{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
+      content="{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
     />
     <meta name="twitter:image:alt" content="some example picture idk" />
     <meta name="twitter:site" content="@asimonson1125" />
@@ -56,7 +56,7 @@
       href="{{ url_for('static', filename='css/head.css') }}"
     /></!-->
 
-    <link rel="canonical" href="https://asimonson.com{{ var['canonical'] }}" />
+    <link rel="canonical" href="{{ var['canonical'] }}" />
     <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
@@ -65,7 +65,8 @@
   {% block header %}
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <iframe src="/hotspots?legend=false" title="HotspotsRIT" id="map"></iframe>
+    <!-- TO REPLACE WITH hotspots.asimonson.com -->
+    <iframe src="https://asimonson.com/hotspots?legend=false" title="HotspotsRIT" id="map"></iframe>
     <div id="contentStuffer">
       <div class="header">
         <div id="name-container" onclick="goto('home')">

@@ -4,5 +4,3 @@ try:
     __import__('envs.py')
 except ImportError:
     pass
-
-HotspotsURL = env.get('HotspotsURL', 'https://asimonson.com/hotspots')

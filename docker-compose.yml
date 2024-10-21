@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  portfolio:
+    image: 'asimonson1125/portfolio'
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: 'no'
+    volumes:
+      - ${READ_VOLUME:-/dev/null}:/mnt/readonly:ro # Read-only mount for sharing from host to public

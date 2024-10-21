@@ -4,6 +4,7 @@ import json
 import werkzeug.exceptions as HTTPerror
 import requests
 from config import *
+import os
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
@@ -43,33 +44,11 @@ def funcGen(pagename, pages):
 for i in pages:
     func = funcGen(i, pages)
     app.add_url_rule(pages[i]['canonical'], i, func)
-    
-
-# for i in pages:
-#     exec(f"@app.route(pages['{i}']['canonical'])\ndef {i}(): return flask.render_template('header.html', var=pages['{i}'])")
-
 
 @app.route("/resume")
 @app.route("/Resume.pdf")
 def resume():
     return flask.send_file("./static/Resume.pdf")
-
-@app.route("/hotspots")
-def hotspotsRIT():
-    url = HotspotsURL
-    if flask.request.args.get("legend") == "false":
-        url += "?legend=false"
-    pagevars = {
-            "template": "iframe.html",
-            "title": f"Hotspots @ RIT",
-            "description": "Hotspots @ RIT by Andrew Simonson",
-            "canonical": "/hotspots",
-        }
-    return flask.render_template("iframe.html", url=url, var=pagevars)
-
-@app.route("/hotspots/<path>")
-def hotspotsProxy(path):
-    return requests.get(f"{HotspotsURL}/{path}").content
 
 @app.errorhandler(Exception)
 def page404(e):
@@ -101,10 +80,33 @@ def page404(e):
 def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
-@app.route('/files/<fname>')
+@app.route('/files')
+@app.route('/files/')
+def no_hacking():
+    return "lol nice try"
+
+@app.route('/files/<path:fname>')
 def filesystem_send(fname):
-    print(app.static_folder + "files/")
-    return flask.send_from_directory(app.static_folder + '/files/', fname)
+    fname = fname.strip('/')
+    safe_path = os.path.abspath(os.path.join("/mnt/readonly/", fname))
+    if not safe_path.startswith("/mnt/readonly/"):
+        return "Invalid path", 400
+    if os.path.isfile(safe_path):
+        return flask.send_from_directory("/mnt/readonly/", fname)
+    elif os.path.isdir(safe_path):
+        dirContent = ""
+        if not os.path.abspath("/mnt/readonly/") == os.path.abspath(os.path.join(safe_path, os.path.pardir)):
+            pardir = "/files/" + os.path.abspath(os.path.join(safe_path, os.path.pardir))[len("/mnt/readonly/"):]
+            dirContent += f"<a href='{pardir}'>Parent Directory</a>"
+        dirContent += "<ul>"
+        for i in os.listdir(safe_path):
+            if os.path.isdir(os.path.join(safe_path, i)):
+                dirContent += f"<li>DIR: <a href='/files/{fname}/{i}'>{i}</a></li>"
+            else:
+                dirContent += f"<li><a href='/files/{fname}/{i}'>{i}</a></li>"
+        dirContent += "</ul>"
+        return dirContent
+    raise HTTPerror.NotFound("File or Directory Not Found")
 
 
 if __name__ == "__main__":
