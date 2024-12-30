@@ -1,12 +1,16 @@
 {% block content %} {% macro nameplate() %}
 <div>
-  <img
-    src="{{ url_for('static', filename='photos/jebwin.png') }}"
-    id="homeIcon"
-    alt="logo"
-  />
   <h1 id="homeName" class="textGrad">Andrew Simonson</h1>
-  <h2 class="textGrad">Data Science Beyond Theoreticals</h2>
+  <h2 class="textGrad">I don't know what to do with this site anymore</h2>
+  <div class="flex vertOnMobile">
+    <div>
+      <img
+        src="{{ url_for('static', filename='photos/moonWizard.jpeg') }}"
+        id="homeIcon"
+        alt="logo"
+      />
+    </div>
+  </div>
 </div>
 {% endmacro %}
 
@@ -21,11 +25,10 @@
         <h2>About Me</h2>
         <p>
           I'm Andrew Simonson<!--, CEO of the anti-thermodynamics syndicate.-->,
-          a senior undergrad at
-          <strong>Rochester Institute of Technology </strong>
-          in the <b>Computer Science BS</b> program (international relations
-          minor), pursuing a career in data science. I have study clusters in
-          Data Science and AI and run independent studies in probability theory.
+          a graduate Data Science student at
+          <strong>Rochester Institute of Technology</strong>, having recently
+          completed the <b>Computer Science BS</b> program (international
+          relations minor) with a focus on probability theory.
           <br />
           <br />
           I've worked on a variety of projects, from building analytical tools
@@ -56,6 +59,23 @@
       </div>
     </div>
     <br />
+    <div class='flex'>
+      <div class="pointer selfcenter" onClick="goto('duck')">
+        <img
+          alt="duck spinning"
+          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+          class="smallImg"
+        />
+      </div>
+      <div class='selfcenter'>
+        <img
+          src="{{ url_for('static', filename='photos/electricityStabby.png') }}"
+          alt="memes, idk."
+          class="smallImg"
+        />
+      </div>
+    </div>
+    <br />
     <div id="aboutCards" class="flex">
       <div class="chess">
         {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
@@ -77,15 +97,8 @@
           src="https://www.strava.com/athletes/139855203/latest-rides/95b8e0be96e32b8de82254d1c6627723a35eea6f"
         ></iframe>
       </div>
-      <div class="pointer" onClick="goto('duck')">
-        <img
-          alt="duck spinning"
-          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-          class="smallImg"
-        />
-      </div>
+      <br />
     </div>
-    <br />
   </div>
+  {% endblock %}
 </div>
-{% endblock %}

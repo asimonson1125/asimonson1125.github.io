@@ -139,7 +139,11 @@ a, a p {
 #homeIcon {
   margin: auto;
   display: block;
-  width: 5em;
+  /* width: 5em; */
+  width: 15em;
+  /* height: 30em; */
+  /* max-height: 70vh; */
+  max-width: 90vw;
 }
 
 #homeName {
@@ -219,6 +223,10 @@ a, a p {
 #home {
   /* height: 100vh; */
   overflow-y: hidden;
+}
+
+.selfcenter {
+  align-self: center;
 }
 
 .langstats {
