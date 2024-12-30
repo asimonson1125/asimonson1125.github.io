@@ -47,8 +47,9 @@ for i in pages:
 
 @app.route("/resume")
 @app.route("/Resume.pdf")
+@app.route("/Resume_Simonson_Andrew.pdf")
 def resume():
-    return flask.send_file("./static/Resume.pdf")
+    return flask.send_file("./static/Resume_Simonson_Andrew.pdf")
 
 @app.errorhandler(Exception)
 def page404(e):
