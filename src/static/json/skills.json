@@ -12,7 +12,8 @@
         "Python": {
             "PyTorch/TensorFlow": {},
             "Numpy/Pandas": {},
-            "Selenium/BS4": {}
+            "Selenium/BS4": {},
+            "Pyspark": {}
         },
         "R": {},
         "SQL": {}
@@ -32,6 +33,7 @@
             "Docker": {},
             "Microsoft Azure": {},
             "Kubernetes/Openshift": {},
+            "Cloudflare": {},
             "Bash": {}
         }
     }

@@ -1,16 +1,25 @@
 {
+  "Portfolio Website": {
+    "status": "WIP",
+    "classes": "programming",
+    "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and zero-trust secure while remaining dynamic and free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
+    "links": [
+      ["globe", "https://asimonson.com", "Homepage"],
+      [
+        "github",
+        "https://github.com/asimonson1125/asimonson1125.github.io",
+        "git repo"
+      ]
+    ]
+  },
   "RIT Hotspots": {
     "status": "WIP",
     "classes": "pinned geospacial programming",
     "bgi": "hotspotsrit.png",
     "content": "Live crowd migration map using RIT occupancy data",
     "links": [
-      [
-        "github", "https://github.com/asimonson1125/hotspotsrit", "git repo"
-      ],
-      [
-        "globe", "https://asimonson.com/hotspots", "demo"
-      ]
+      ["globe", "https://hotspots.asimonson.com", "demo"],
+      ["github", "https://github.com/asimonson1125/hotspotsrit", "git repo"]
     ]
   },
   "Antietam-Conococheague Watershed Monitoring": {
@@ -28,15 +37,19 @@
   },
   "Geography of Alternative Energy": {
     "status": "complete",
-    "classes":"pinned geospacial",
+    "classes": "pinned geospacial",
     "bgi": "energyGeography.png",
     "content": "An ArcGIS geospacial analysis comparing the difference in effectiveness of wind, solar, and geothermal energy across the continental 48 United States.",
     "links": [
-      ["globe", "https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9", "Dashboard"]
+      [
+        "globe",
+        "https://ritarcgis.maps.arcgis.com/apps/dashboards/17d5bda01edc4a2eb6205a4922d889c9",
+        "Dashboard"
+      ]
     ]
   },
   "OccupyRIT": {
-    "status": "WIP",
+    "status": "complete",
     "classes": "pinned programming",
     "bgi": "occupyRIT.png",
     "content": "Collects RIT Gym Occupancy data, determining busiest workout times",
@@ -50,8 +63,8 @@
     "bgi": "slate.png",
     "content": "Slate is a web app designed to help event coordinators schedule events by congregating participant calendar data. Includes Computer Science House account integration",
     "links": [
-      ["github", "https://github.com/asimonson1125/Slate", "git repo"],
-      ["globe", "https://slate.csh.rit.edu", "site link"]
+      ["globe", "https://slate.csh.rit.edu", "site link"],
+      ["github", "https://github.com/asimonson1125/Slate", "git repo"]
     ]
   },
   "Monte Carlo Engine for NationsGame": {
@@ -60,17 +73,11 @@
     "bgi": "ceoOfYugo.png",
     "content": "A simulator for the browser game, NationsGame, to analyze unit composition and predict in-game victors and unit statistics.  Unfortunately, NationsGame is now defunct. Limited screenshots of functionality.",
     "links": [
-      ["github", "https://github.com/asimonson1125/NG-Rolls-Simulator", "git repo"
-    ]
-    ]
-  },
-  "Portfolio Website": {
-    "status": "WIP",
-    "classes": "programming",
-    "content": "The website you are on now, while not strictly related to my work in data, is a work that I'd like to note here.  This could have been another portfolio built upon some html template or, even better, designed for markdown.  Not here.  No 3rd party templates or styles, just a Flask webserver and all the effort I care to put into it.",
-    "links": [
-      ["globe", "https://asimonson.com", "Homepage"],
-      ["github", "https://github.com/asimonson1125/asimonson1125.github.io", "git repo"]
+      [
+        "github",
+        "https://github.com/asimonson1125/NG-Rolls-Simulator",
+        "git repo"
+      ]
     ]
   }
 }
