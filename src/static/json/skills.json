@@ -12,6 +12,7 @@
         "Python": {
             "PyTorch/TensorFlow": {},
             "Numpy/Pandas": {},
+            "Scikit/Sklearn": {},
             "Selenium/BS4": {},
             "Pyspark": {}
         },
@@ -26,8 +27,7 @@
     "Backend & DevOps": {
         "Backend": {
             "Rust": {},
-            "C#": {},
-            "C++": {}
+            "C#": {}
         },
         "DevOps": {
             "Docker": {},
