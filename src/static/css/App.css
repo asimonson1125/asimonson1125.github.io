@@ -1000,7 +1000,7 @@ a, a p {
 
 @font-face {
   font-family: Chess New;
-  src: url('https://www.chess.com/bundles/web/fonts/chessglyph-new.0cc8115c.woff2');
+  src: url('../fonts/chessglyph-new.0cc8115c.woff2');
 }
 
 @media screen and (max-width: 600) {
