@@ -38,6 +38,7 @@ def funcGen(pagename, pages):
             return flask.render_template('header.html', var=pages[pagename])
         except Exception:
             e = HTTPerror.InternalServerError()
+            print(e)
             return page404(e)
     return dynamicRule  
 
