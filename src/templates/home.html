@@ -1,96 +1,93 @@
 {% block content %} {% macro nameplate() %}
 <div>
-  <h1 id="homeName" class="textGrad">Andrew's Definitely Active Website</h1>
-  <h2 class="textGrad">Here's a wizard on the moon:</h2>
-  <div class="flex vertOnMobile">
-    <div>
-      <img
-        src="{{ url_for('static', filename='photos/moonWizard.jpeg') }}"
-        id="homeIcon"
-        alt="logo"
-      />
+    <h1 id="homeName" class="textGrad">Andrew's Definitely Active Website</h1>
+    <h2 class="textGrad">Here's a wizard on the moon:</h2>
+    <div class="flex vertOnMobile">
+        <div>
+            <img
+                src="{{ url_for('static', filename='photos/moonWizard.jpeg') }}"
+                id="homeIcon"
+                alt="logo"
+            />
+        </div>
     </div>
-  </div>
 </div>
 {% endmacro %}
 
 <div class="foreground homeground"></div>
 <div class="relative">
-  <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
-  <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
-  <div id="desktopSpacer"></div>
-  <div class="homeSubContent">
-    <div class="flex equalitems vertOnMobile">
-      <div>
-        <h2>About Me</h2>
-        <p>
-          I'm Andrew Simonson<!--, CEO of the anti-thermodynamics syndicate.-->,
-          a <strong>Data Scientist at Ecolab</strong> and a graduate Data
-          Science student at <strong>Rochester Institute of Technology</strong>,
-          having recently completed the <b>Computer Science BS</b> program
-          (international relations minor) with a focus on probability theory.
-          <br />
-          <br />
-          I got my start ~2017 reverse engineering probablistic logic models in
-          games and developing interfaces to recreate my findings for friends.
-          Now I develop tracable AI built on deductive reasoning, maintaning
-          scientific methodology in an industry obsessed with implicit rules and
-          exclusive empiricism. As the analysis grew more sophisticated, so too
-          did the tech stack - to the point that I now manage most services,
-          like this website, end to end, container image to insight visual.
-          <br />
-          <br />
-          I get bored and throw random stuff on this website. It's a form of
-          unprofessional development and I swear by this form of learning.
-        </p>
-      </div>
-      <div id="skills">
-        <h2 id="skillstag">Skills</h2>
-        {% from 'partials/skills.html' import skills %} {{
-        skills(var['skillList']) }}
-      </div>
+    <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
+    <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
+    <div id="desktopSpacer"></div>
+    <div class="homeSubContent">
+      <img alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" />
+      <img alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" />
+      <img alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" />
+      <img alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" />
+      <img alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" />
+      <img alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" />
+        <div>
+            <h3>Now What?</h3>
+            <p>
+                As far as linking my online presence together goes...... mission
+                accomplished.<br />I guess I can grant myself some titles while
+                I'm at it:
+            </p>
+            <ul>
+              <li>Wicked Wizard of the Well</li>
+              <li>Brown Belt Fucker Arounder, Black Belt Finder Outer</li>
+              <li>Hater of Bloat, Enemy of Node.js</li>
+              <li>Creator and Harnesser of Energy</li>
+            </ul>
+        </div>
+        <br />
+        <div class="flex">
+            <div class="pointer selfcenter" onClick="goto('duck')">
+                <img
+                    alt="duck spinning"
+                    src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
+                    class="smallImg"
+                />
+            </div>
+            <div class="selfcenter">
+                <img
+                    src="{{ url_for('static', filename='photos/electricityStabby.png') }}"
+                    alt="memes, idk."
+                    class="smallImg"
+                />
+            </div>
+            <div class="selfcenter">
+                <img
+                    src="{{ url_for('static', filename='photos/gifs/tflame.gif') }}"
+                    alt="memes, idk."
+                    class="smallImg"
+                />
+            </div>
+        </div>
+        <br />
+        <div id="aboutCards" class="flex">
+            <div class="chess">
+                {% from 'partials/chess.html' import chess %} {{
+                chess('asimonson1125') }}
+            </div>
+            <br />
+            <div>
+                {# {% from 'partials/bookshelf.html' import bookshelf %} {{
+                bookshelf(var.books) }} #}
+            </div>
+            <br />
+            <div>
+                <iframe
+                    height="200"
+                    max-width="360"
+                    frameborder="0"
+                    allowtransparency="true"
+                    scrolling="yes"
+                    src="https://www.strava.com/athletes/139855203/latest-rides/95b8e0be96e32b8de82254d1c6627723a35eea6f"
+                ></iframe>
+            </div>
+            <br />
+        </div>
     </div>
-    {# <br />
-    <div class="flex">
-      <div class="pointer selfcenter" onClick="goto('duck')">
-        <img
-          alt="duck spinning"
-          src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-          class="smallImg"
-        />
-      </div>
-      <div class="selfcenter">
-        <img
-          src="{{ url_for('static', filename='photos/electricityStabby.png') }}"
-          alt="memes, idk."
-          class="smallImg"
-        />
-      </div>
-    </div> #}
-    <br />
-    <div id="aboutCards" class="flex">
-      <div class="chess">
-        {% from 'partials/chess.html' import chess %} {{ chess('asimonson1125')
-        }}
-      </div>
-      <br />
-      <div>
-        {# {% from 'partials/bookshelf.html' import bookshelf %} {{
-        bookshelf(var.books) }} #}
-      </div>
-      <br />
-      <div>
-        <iframe
-          height="200"
-          max-width="360"
-          frameborder="0"
-          allowtransparency="true"
-          scrolling="yes"
-          src="https://www.strava.com/athletes/139855203/latest-rides/95b8e0be96e32b8de82254d1c6627723a35eea6f"
-        ></iframe>
-      </div>
-      <br />
-    </div>
-  </div>
-  {% endblock %}
+    {% endblock %}
 </div>

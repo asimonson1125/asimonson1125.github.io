@@ -1,17 +1,4 @@
 {
-  "Portfolio Website": {
-    "status": "WIP",
-    "classes": "programming",
-    "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and zero-trust secure while remaining dynamic and free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
-    "links": [
-      ["globe", "https://asimonson.com", "Homepage"],
-      [
-        "github",
-        "https://github.com/asimonson1125/asimonson1125.github.io",
-        "git repo"
-      ]
-    ]
-  },
   "RIT Hotspots": {
     "status": "WIP",
     "classes": "pinned geospacial programming",
@@ -27,6 +14,12 @@
     "classes": "geospacial",
     "bgi": "watershedTemps.png",
     "content": "Geospacial analysis of Maryland's Antietam and Conococheague sub-watersheds, monitoring water quality and temperatures through the summer months for reporting to governmental review boards for environmental protection"
+  },
+  "Automotive Brand Valuation Analysis": {
+    "status": "complete",
+    "classes": "programming",
+    "bgi": "automotiveBrandAnalysis.png",
+    "content": "Brand valuation analysis of the used car market, measuring value decay by mileage to extrapolate qualities such as percieved reliability and persistent value of luxury features."
   },
   "Calorimetry Analysis Engineering": {
     "status": "complete",
@@ -55,6 +48,19 @@
     "content": "Collects RIT Gym Occupancy data, determining busiest workout times",
     "links": [
       ["github", "https://github.com/asimonson1125/Occupy-RIT", "git repo"]
+    ]
+  },
+  "Portfolio Website": {
+    "status": "WIP",
+    "classes": "programming",
+    "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and zero-trust secure while remaining dynamic and free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
+    "links": [
+      ["globe", "https://asimonson.com", "Homepage"],
+      [
+        "github",
+        "https://github.com/asimonson1125/asimonson1125.github.io",
+        "git repo"
+      ]
     ]
   },
   "Slate": {

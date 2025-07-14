@@ -1,14 +1,15 @@
 {
-    "Data and AI": {
-        "Tools": {
-            "Microsoft Azure": {
-                "Databricks": {},
-                "Data Factory": {},
-                "Stream Analytics": {}
-            },
-            "Apache Spark": {},
-            "Visual Basic for Applications (Excel)": {}
+    "Tools": {
+        "Microsoft Azure": {
+            "Databricks": {},
+            "Data Factory": {},
+            "Stream Analytics": {}
         },
+        "Databricks": {},
+        "Apache Spark": {},
+        "Visual Basic for Applications (Excel)": {}
+    },
+    "Data and AI": {
         "Python": {
             "PyTorch/TensorFlow": {},
             "Numpy/Pandas": {},
