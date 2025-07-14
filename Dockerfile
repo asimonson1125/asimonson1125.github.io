@@ -1,4 +1,4 @@
-FROM docker.io/python:3.8-buster
+FROM python:3.10-bullseye
 LABEL maintainer="Andrew Simonson <asimonson1125@gmail.com>"
 
 WORKDIR /app
