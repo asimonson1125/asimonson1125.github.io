@@ -105,6 +105,20 @@ a, a p {
   text-decoration: none;
 }
 
+table {
+  color: lightgray;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-right: dotted 1px lightgray;
+  padding: 0 1em;
+}
+
+tr {
+  border: solid 1px lightgray;
+}
+
 .transparent {
   opacity: 0 !important;
 }

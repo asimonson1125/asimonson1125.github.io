@@ -5,6 +5,12 @@
         "description": "Andrew Simonson's Digital Portfolio home",
         "canonical": "/"
     },
+    "status": {
+        "template": "status.html",
+        "title":"Andrew Simonson - Status Page",
+        "description": "Status page for my services",
+        "canonical": "/status"
+    },
     "projects": {
         "template": "projects.html",
         "title": "Andrew Simonson - Projects",
