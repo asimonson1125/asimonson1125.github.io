@@ -19,7 +19,7 @@
     <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
     <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
     <div id="desktopSpacer"></div>
-    <div class="homeSubContent">
+    <div class="homeSubContent blinkies">
       <img alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" />
       <img alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" />
       <img alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" />
@@ -41,7 +41,7 @@
             </ul>
         </div>
         <br />
-        <div class="flex">
+        {# <div class="flex">
             <div class="pointer selfcenter" onClick="goto('duck')">
                 <img
                     alt="duck spinning"
@@ -63,7 +63,7 @@
                     class="smallImg"
                 />
             </div>
-        </div>
+        </div> #}
         <br />
         <div id="aboutCards" class="flex">
             <div class="chess">
