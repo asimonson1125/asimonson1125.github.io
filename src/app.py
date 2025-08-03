@@ -82,34 +82,6 @@ def page404(e):
 def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
-@app.route('/files')
-@app.route('/files/')
-def no_hacking():
-    return "lol nice try"
-
-@app.route('/files/<path:fname>')
-def filesystem_send(fname):
-    fname = fname.strip('/')
-    safe_path = os.path.abspath(os.path.join("/mnt/readonly/", fname))
-    if not safe_path.startswith("/mnt/readonly/"):
-        return "Invalid path", 400
-    if os.path.isfile(safe_path):
-        return flask.send_from_directory("/mnt/readonly/", fname)
-    elif os.path.isdir(safe_path):
-        dirContent = ""
-        if not os.path.abspath("/mnt/readonly/") == os.path.abspath(os.path.join(safe_path, os.path.pardir)):
-            pardir = "/files/" + os.path.abspath(os.path.join(safe_path, os.path.pardir))[len("/mnt/readonly/"):]
-            dirContent += f"<a href='{pardir}'>Parent Directory</a>"
-        dirContent += "<ul>"
-        for i in os.listdir(safe_path):
-            if os.path.isdir(os.path.join(safe_path, i)):
-                dirContent += f"<li>DIR: <a href='/files/{fname}/{i}'>{i}</a></li>"
-            else:
-                dirContent += f"<li><a href='/files/{fname}/{i}'>{i}</a></li>"
-        dirContent += "</ul>"
-        return dirContent
-    raise HTTPerror.NotFound("File or Directory Not Found")
-
 
 if __name__ == "__main__":
     # import sass
