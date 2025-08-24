@@ -5,8 +5,9 @@
     <div class="flex vertOnMobile">
         <div>
             <img
-                src="{{ url_for('static', filename='photos/moonWizard.jpeg') }}"
+                src="{{ url_for('static', filename='photos/min.moonWizard.avif') }}"
                 id="homeIcon"
+                fetchpriority=high
                 alt="logo"
             />
         </div>
@@ -19,13 +20,13 @@
     <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
     <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
     <div id="desktopSpacer"></div>
-    <div class="homeSubContent blinkies">
-      <img alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" />
-      <img alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" />
-      <img alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" />
-      <img alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" />
-      <img alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" />
-      <img alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" />
+    <div class="homeSubContent">
+      <img class='blinkies' alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" />
+      <img class='blinkies' alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" />
+      <img class='blinkies' alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" />
+      <img class='blinkies' alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" />
+      <img class='blinkies' alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" />
+      <img class='blinkies' alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" />
         <div>
             <h3>Now What?</h3>
             <p>

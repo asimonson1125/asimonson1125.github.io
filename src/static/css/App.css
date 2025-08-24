@@ -456,6 +456,11 @@ tr {
   margin-right: auto;
 }
 
+.blinkies {
+  width: 150px;
+  height: 20px;
+}
+
 #skillstag::after {
   content: "Click for details...";
   display: block;
@@ -1037,12 +1042,12 @@ tr {
 
   /* Be sure to uncomment this if we ever stop using jebwin memes */
   /* #homeIcon {
-    content: url("../icons/rasterLogo.png");
+    content: url("../icons/rasterlogo.png");
   } */
 
   .name {
     font-size: min(6vw, 2em);
-    background: url("../icons/rasterLogo.png") 0/5rem no-repeat;
+    background: url("../icons/min.rasterLogo.avif") 0/5rem no-repeat;
     background-size: contain;
   }
 
