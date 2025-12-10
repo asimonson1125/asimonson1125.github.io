@@ -61,12 +61,14 @@
     <!-- <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script> !-->
     <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
     <title>{{ var['title'] }}</title>
   </head>
   {% block header %}
   <body onpopstate="backButton()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <iframe src="http://hotspots.asimonson.com/?legend=false" title="HotspotsRIT" id="map"></iframe>
+    <main id='map'></main>
     <div id="contentStuffer">
       <div class="header">
         <div id="name-container" onclick="goto('home')">

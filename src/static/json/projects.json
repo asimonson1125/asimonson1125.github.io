@@ -1,14 +1,4 @@
 {
-  "RIT Hotspots": {
-    "status": "WIP",
-    "classes": "pinned geospacial programming",
-    "bgi": "hotspotsrit.png",
-    "content": "Live crowd migration map using RIT occupancy data",
-    "links": [
-      ["globe", "https://hotspots.asimonson.com", "demo"],
-      ["github", "https://github.com/asimonson1125/hotspotsrit", "git repo"]
-    ]
-  },
   "Antietam-Conococheague Watershed Monitoring": {
     "status": "complete",
     "classes": "geospacial",
@@ -20,6 +10,15 @@
     "classes": "programming",
     "bgi": "automotiveBrandAnalysis.png",
     "content": "Brand valuation analysis of the used car market, measuring value decay by mileage to extrapolate qualities such as percieved reliability and persistent value of luxury features."
+  },
+  "RIT Hotspots": {
+    "status": "incomplete",
+    "classes": "pinned geospacial programming",
+    "bgi": "hotspotsrit.png",
+    "content": "Live crowd migration map using RIT occupancy data.  It seems RIT didn't like me exposing their surveilance state but since they didn't want to talk to me about it they instead changed the service response schema a few times.  When that didn't stop me they just shut down the whole service.  Nerds.",
+    "links": [
+      ["github", "https://github.com/asimonson1125/hotspotsrit", "git repo"]
+    ]
   },
   "Calorimetry Analysis Engineering": {
     "status": "complete",
