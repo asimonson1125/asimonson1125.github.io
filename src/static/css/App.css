@@ -154,7 +154,7 @@ tr {
   margin: auto;
   display: block;
   /* width: 5em; */
-  width: 15em;
+  width: 10em;
   /* height: 30em; */
   /* max-height: 70vh; */
   max-width: 90vw;
@@ -162,7 +162,6 @@ tr {
 
 #homeName {
   margin-top: .25em;
-  margin-bottom: 0;
 }
 
 #name-container {
