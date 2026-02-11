@@ -43,7 +43,7 @@ SERVICES = [
     }
 ]
 
-# Check interval: 2 hours = 7200 seconds
+# Check interval: 30 mins
 CHECK_INTERVAL = 1800
 
 # File to store status history
@@ -158,10 +158,10 @@ class ServiceMonitor:
                 if result['status'] == 'online':
                     service_data['last_online'] = result['timestamp']
 
-                # Add to check history (keep last 720 checks = 60 days at 2hr intervals)
+                # Add to check history (keep last 2880 checks = 60 days at 2hr intervals)
                 service_data['checks'].append(result)
-                if len(service_data['checks']) > 720:
-                    service_data['checks'] = service_data['checks'][-720:]
+                if len(service_data['checks']) > 2880:
+                    service_data['checks'] = service_data['checks'][-2880:]
 
             self.status_data['last_check'] = datetime.now().isoformat()
             self.save_history()

@@ -24,6 +24,15 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Enhanced link styling throughout site */
+a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
 body {
   margin: 0;
   background-attachment: fixed;
@@ -275,11 +284,28 @@ tr {
 .foregroundContent {
   padding-left: 8rem;
   padding-right: 2em;
-  padding-bottom: 1rem;
+  padding-bottom: 2em;
+  padding-top: 2em;
 }
 
 .foregroundContent p {
   line-height: 1.5em;
+}
+
+.concentratedHead {
+  position: relative;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+
+.concentratedHead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(156, 49, 45, 0.8) 0%, transparent 100%);
 }
 
 .homeground {
@@ -469,9 +495,12 @@ tr {
 
 #skillTree {
   border-left: rgb(139, 36, 36) solid 3px;
-  background: rgba(22,22,22,.8);
+  border-radius: 0.5em;
+  background: rgba(24, 24, 24, 0.85);
   font-size: x-large;
   margin-bottom: 10px;
+  padding: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .skill {
@@ -503,6 +532,13 @@ tr {
 
 .skill > .skillname {
   text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  padding: 0.2em 0;
+}
+
+.skill > .skillname:hover {
+  padding-left: 0.3em;
 }
 
 .skill > .skillname::after {
@@ -523,6 +559,7 @@ tr {
 
 .skill[data-length="0"] > .skillname {
   text-decoration: none;
+  cursor: default;
 }
 
 
@@ -530,6 +567,7 @@ tr {
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
+  gap: 1.5em;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -538,10 +576,28 @@ tr {
 .project {
   border-top: .3rem rgba(156, 49, 45, .8) solid;
   background-color: rgb(24, 24, 24, .85);
+  border-radius: 0.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.projTitle {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(168, 168, 168, 0.2);
 }
 
 .projTitle>* {
   margin: 0;
+}
+
+.projTitle h3 {
+  font-size: 1.2rem;
+  color: #ecebeb;
 }
 
 .projBody {
@@ -612,10 +668,12 @@ tr {
 .project a img, .project a p {
   padding: .5rem;
   filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(52deg) brightness(106%) contrast(101%);
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .project a img:hover, .project a p:hover {
   filter: invert(66%) sepia(0%) saturate(3964%) hue-rotate(99deg) brightness(100%) contrast(105%);
+  transform: scale(1.1);
 }
 
 .incomplete {
@@ -723,9 +781,10 @@ tr {
 
 .homeSubContent {
   background-color: rgb(24, 24, 24, .85);
-  padding: 0 8em;
-  padding-top: 1em;
+  padding: 2em 8em;
   border-top: solid 4px rgba(139,36,36,0.5);
+  border-radius: 0.5em 0.5em 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
 }
 
 #homeProjects {
@@ -755,13 +814,15 @@ tr {
 }
 
 #chessProfile {
-  border-radius: 5px;
+  border-radius: 0.5em;
+  border-top: solid 3px rgba(139, 36, 36, 0.5);
   width: 300px;
   height: calc(125px + 2em);
   color: #AAAAAA;
   display: grid;
   grid-template-columns: 1fr 1fr;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .chessInfo {
@@ -883,8 +944,16 @@ tr {
   max-width: 360px;
   padding: 10px;
   border: solid 2px #553;
+  border-radius: 0.5em;
   background-image: url("/static/photos/wood.jpg");
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bookshelf:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 .bookshelfHeader {
@@ -898,6 +967,7 @@ tr {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: 1em;
 }
 
 .bookContainer > a {
@@ -913,6 +983,14 @@ tr {
   margin: auto;
   width: 75px;
   height: 112px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.book img:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 .book h4 {
@@ -924,9 +1002,18 @@ tr {
 
 .bookReview {
   width: min(100%, 30em);
-  padding: 1em;
-  border: solid 3px rgba(139, 36, 36, 0.5);
+  padding: 1.5em;
+  border-top: solid 4px rgba(139, 36, 36, 0.5);
+  border-radius: 0.5em;
+  background: rgba(24, 24, 24, 0.85);
   flex-grow: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bookReview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .bookcover {
@@ -938,13 +1025,15 @@ tr {
   margin-bottom: 2em;
   margin-top: 2em; */
   justify-content: left;
+  gap: 1.5em;
 }
 
 .boxed {
   background-color: rgba(24, 24, 24, 0.85);
-  border: solid 0.5em rgba(139, 36, 36, 0.5);
+  border-top: solid 4px rgba(139, 36, 36, 0.5);
   border-radius: 0.5em;
-  padding: 1em;
+  padding: 1.5em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .emPad {
@@ -966,7 +1055,14 @@ tr {
 }
 
 .timeline-item {
-  border-left: solid #AAAAAA 3px;
+  border-left: solid rgba(156, 49, 45, 0.6) 3px;
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+  transition: border-color 0.3s ease;
+}
+
+.timeline-item:hover {
+  border-left-color: rgba(156, 49, 45, 1);
 }
 
 .timeline-item h2 {
