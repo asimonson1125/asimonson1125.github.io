@@ -32,16 +32,16 @@
   </div>
 
   <!-- Overall Status Bar -->
-  <div class="overall-status-bar" id="overallStatus">
+  <div class="status-card overall-status-card" id="overallStatus">
     <div class="overall-status-content">
       <div class="overall-status-indicator">
         <span class="overall-status-icon loading">◐</span>
         <div>
           <h3 class="overall-status-title">Checking Systems...</h3>
-          <p class="overall-status-subtitle">Loading service status</p>
+          <h5 id="overall-status-subtitle">Loading service status</h5>
         </div>
       </div>
-      <div class="overall-status-metrics">
+      <div class="flex spaceBetween">
         <div class="metric-box">
           <span class="metric-number" id="onlineCount">--</span>
           <span class="metric-label">Online</span>

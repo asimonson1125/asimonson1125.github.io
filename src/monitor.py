@@ -28,12 +28,6 @@ SERVICES = [
         'name': 'git.asimonson.com',
         'url': 'https://git.asimonson.com',
         'timeout': 10
-    },
-    {
-        'id': 'balls',
-        'name': 'balls.asimonson.com',
-        'url': 'https://balls.asimonson.com',
-        'timeout': 10
     }
 ]
 

@@ -150,7 +150,7 @@ function updateOverallStatus(services) {
   const overallBar = document.getElementById('overallStatus');
   const icon = overallBar.querySelector('.overall-status-icon');
   const title = overallBar.querySelector('.overall-status-title');
-  const subtitle = overallBar.querySelector('.overall-status-subtitle');
+  const subtitle = document.getElementById('overall-status-subtitle');
   const onlineCount = document.getElementById('onlineCount');
   const totalCount = document.getElementById('totalCount');
 
@@ -164,28 +164,28 @@ function updateOverallStatus(services) {
   onlineCount.textContent = online;
   totalCount.textContent = total;
 
-  // Remove all status classes
-  overallBar.classList.remove('all-operational', 'partial-outage', 'major-outage');
+  // Remove all status classes (reuse status-card classes)
+  overallBar.classList.remove('online', 'degraded', 'offline');
   icon.classList.remove('operational', 'partial', 'major', 'loading');
 
   // Determine overall status
   if (online === total) {
     // All systems operational
-    overallBar.classList.add('all-operational');
+    overallBar.classList.add('online');
     icon.classList.add('operational');
     icon.textContent = '✓';
     title.textContent = 'All Systems Operational';
     subtitle.textContent = `All ${total} services are running normally`;
   } else if (offline >= Math.ceil(total / 2)) {
     // Major outage (50% or more offline)
-    overallBar.classList.add('major-outage');
+    overallBar.classList.add('offline');
     icon.classList.add('major');
     icon.textContent = '✕';
     title.textContent = 'Major Outage';
     subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline, ${degraded} degraded`;
   } else if (offline > 0 || degraded > 0) {
     // Partial outage
-    overallBar.classList.add('partial-outage');
+    overallBar.classList.add('degraded');
     icon.classList.add('partial');
     icon.textContent = '⚠';
     title.textContent = 'Partial Outage';

@@ -97,7 +97,9 @@ h2, h3, h4, h5 {
 }
 
 h5 {
-  margin: 0;
+  margin: 0.3em 0 0 0;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 strong {
@@ -906,7 +908,8 @@ tr {
   position: relative;
   width: 90%;
   margin-left: 10px;
-
+  font-weight: bold;
+  font-size: small;
 }
 
 .pfpContainer {
@@ -1317,27 +1320,10 @@ tr {
 }
 
 /* Overall Status Bar */
-/* Overall Status Bar */
-.overall-status-bar {
-  background: rgba(24, 24, 24, 0.95);
-  border-radius: 0.5em;
+/* Overall Status Card - extends status-card */
+.overall-status-card {
   padding: 2em;
   margin-bottom: 2em;
-  border-top: solid 4px rgba(139, 36, 36, 0.5);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: border-color 0.5s ease;
-}
-
-.overall-status-bar.all-operational {
-  border-top-color: rgba(76, 175, 80, 0.8);
-}
-
-.overall-status-bar.partial-outage {
-  border-top-color: rgba(255, 193, 7, 0.8);
-}
-
-.overall-status-bar.major-outage {
-  border-top-color: rgba(244, 67, 54, 0.8);
 }
 
 .overall-status-content {
@@ -1362,7 +1348,7 @@ tr {
 
 .overall-status-icon.operational {
   color: #4caf50;
-  animation: none;
+  animation: pulse-icon 1.5s ease-in-out infinite;
 }
 
 .overall-status-icon.partial {
@@ -1372,7 +1358,7 @@ tr {
 
 .overall-status-icon.major {
   color: #f44336;
-  animation: none;
+  animation: pulse-icon 1.5s ease-in-out infinite;
 }
 
 @keyframes spin {
@@ -1392,23 +1378,11 @@ tr {
   font-weight: 600;
 }
 
-.overall-status-subtitle {
-  margin: 0.3em 0 0 0;
-  font-size: 1rem;
-  color: #a8a8a8;
-}
-
-.overall-status-metrics {
-  display: flex;
-  gap: 2em;
-}
-
 .metric-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1em 1.5em;
-  background: rgba(0, 0, 0, 0.3);
   border-radius: 0.5em;
   min-width: 80px;
 }
@@ -1461,11 +1435,6 @@ tr {
   padding: 1.5em;
   border-top: solid 4px rgba(139, 36, 36, 0.5);
   transition: 0.3s;
-}
-
-.status-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .status-card.online {
@@ -1668,8 +1637,4 @@ tr {
     text-align: center;
   }
 
-  .overall-status-metrics {
-    width: 100%;
-    justify-content: center;
-  }
 }
