@@ -69,23 +69,39 @@ function windowResized() {
 function draw() {
   background(24);
 
+  // Update all balls
   for (let i = 0; i < balls.length; i++) {
     balls[i].update();
   }
+
+  // Optimize line drawing with early distance checks
+  const maxDist = 150;
+  const maxDistSquared = maxDist * maxDist; // Avoid sqrt in distance calculation
+
   for (let i = 0; i < balls.length - 1; i++) {
+    const ball1 = balls[i];
     for (let j = i + 1; j < balls.length; j++) {
-      let distance = dist(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
-      if (distance < 100){
-        stroke(150);
-        line(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
-      }
-      else if (distance < 150) {
-        stroke(100);
-        let chance = 0.3 ** (((random(0.2) + 0.8) * distance) / 150);
-        if (chance < 0.5) {
-          stroke(50);
+      const ball2 = balls[j];
+
+      // Quick rejection test using squared distance (faster than sqrt)
+      const dx = ball2.x - ball1.x;
+      const dy = ball2.y - ball1.y;
+      const distSquared = dx * dx + dy * dy;
+
+      if (distSquared < maxDistSquared) {
+        const distance = Math.sqrt(distSquared); // Only calculate sqrt if needed
+
+        if (distance < 100) {
+          stroke(150);
+          line(ball1.x, ball1.y, ball2.x, ball2.y);
+        } else {
+          stroke(100);
+          const chance = 0.3 ** (((random(0.2) + 0.8) * distance) / 150);
+          if (chance < 0.5) {
+            stroke(50);
+          }
+          line(ball1.x, ball1.y, ball2.x, ball2.y);
         }
-        line(balls[i].x, balls[i].y, balls[j].x, balls[j].y);
       }
     }
   }

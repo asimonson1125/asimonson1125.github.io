@@ -29,9 +29,14 @@ async function goto(location, { push = true } = {}) {
   const content = response[1];
   let root = document.getElementById("root");
   root.innerHTML = content;
-  root.querySelectorAll("script").forEach((x) => {
-    eval(x.innerHTML);
-  });
+  root.querySelectorAll("script").forEach((oldScript) => {               
+        const newScript = document.createElement("script");                  
+        Array.from(oldScript.attributes).forEach(attr => {                   
+          newScript.setAttribute(attr.name, attr.value);                            
+        });                                                                  
+        newScript.textContent = oldScript.textContent;                              
+        oldScript.parentNode.replaceChild(newScript, oldScript);                  
+      });
   toggleMenu(collapse=true);
   document.querySelector("title").textContent = metadata["title"];
   if (push) {

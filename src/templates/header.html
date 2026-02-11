@@ -8,6 +8,10 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+
+    <!-- Resource hints for performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <meta name="description" content="{{ var['description'] }}" />
     <meta property="og:title" content="Andrew Simonson" />
     <meta name="og:description" content="{{ var['description'] }}" />
@@ -28,9 +32,10 @@
     <meta name="twitter:image:alt" content="some example picture idk" />
     <meta name="twitter:site" content="@asimonson1125" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics (deferred for performance) -->
     <script
       async
+      defer
       src="https://www.googletagmanager.com/gtag/js?id=G-E2V93W9CNV"
     ></script>
     <script>
@@ -39,30 +44,18 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-E2V93W9CNV");
     </script>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/App.css') }}"
     />
-    <!--
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/checkbox.css') }}"
-    />
-    
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/head.css') }}"
-    /></!-->
-
     <link rel="canonical" href="{{ var['canonical'] }}" />
-    <!-- <script src="{{ url_for('static', filename='js/checkbox.js') }}"></script> !-->
-    <script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/checkbox.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/responsive.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/idler.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script defer src="{{ url_for('static', filename='js/idler.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
     <title>{{ var['title'] }}</title>
   </head>
   {% block header %}

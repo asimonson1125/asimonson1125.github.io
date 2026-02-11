@@ -20,12 +20,12 @@
     <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
     <div id="desktopSpacer"></div>
     <div class="homeSubContent">
-      <img class='blinkies' alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" />
-      <img class='blinkies' alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" />
-      <img class='blinkies' alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" />
-      <img class='blinkies' alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" />
-      <img class='blinkies' alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" />
-      <img class='blinkies' alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" />
+      <img class='blinkies' alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" loading="lazy" />
+      <img class='blinkies' alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" loading="lazy" />
+      <img class='blinkies' alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" loading="lazy" />
+      <img class='blinkies' alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" loading="lazy" />
+      <img class='blinkies' alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" loading="lazy" />
+      <img class='blinkies' alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" loading="lazy" />
         <div>
             <br />
             <strong> You've reached the website for Andrew Simonson's personal online shenanigans.</strong>
@@ -42,30 +42,6 @@
             </ul>
         </div>
         <br />
-        {# <div class="flex">
-            <div class="pointer selfcenter" onClick="goto('duck')">
-                <img
-                    alt="duck spinning"
-                    src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-                    class="smallImg"
-                />
-            </div>
-            <div class="selfcenter">
-                <img
-                    src="{{ url_for('static', filename='photos/electricityStabby.png') }}"
-                    alt="memes, idk."
-                    class="smallImg"
-                />
-            </div>
-            <div class="selfcenter">
-                <img
-                    src="{{ url_for('static', filename='photos/gifs/tflame.gif') }}"
-                    alt="memes, idk."
-                    class="smallImg"
-                />
-            </div>
-        </div> #}
-        <br />
         <div id="aboutCards" class="flex">
             <div class="chess">
                 {% from 'partials/chess.html' import chess %} {{
@@ -73,19 +49,7 @@
             </div>
             <br />
             <div>
-                {# {% from 'partials/bookshelf.html' import bookshelf %} {{
-                bookshelf(var.books) }} #}
-            </div>
-            <br />
-            <div>
-                <iframe
-                    height="200"
-                    max-width="360"
-                    frameborder="0"
-                    allowtransparency="true"
-                    scrolling="yes"
-                    src="https://www.strava.com/athletes/139855203/latest-rides/95b8e0be96e32b8de82254d1c6627723a35eea6f"
-                ></iframe>
+                <img height='150px' alt='stabby' src="{{ url_for('static', filename='photos/electricityStabby.png') }}" loading="lazy" />
             </div>
             <br />
         </div>

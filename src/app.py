@@ -2,22 +2,43 @@ import flask
 from flask_minify import Minify
 import json
 import werkzeug.exceptions as HTTPerror
-import requests
 from config import *
-import os
+
+app = flask.Flask(__name__)
+
+# Add security and caching headers
+@app.after_request
+def add_security_headers(response):
+    """Add security and performance headers to all responses"""
+    # Security headers
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+
+    # Cache control for static assets
+    if flask.request.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+    elif flask.request.path in ['/sitemap.xml', '/robots.txt']:
+        response.headers['Cache-Control'] = 'public, max-age=86400'
+    else:
+        response.headers['Cache-Control'] = 'no-cache, must-revalidate'
+
+    return response
+
+
 
 proj = json.load(open("./static/json/projects.json", "r"))
 books = json.load(open("./static/json/books.json", "r"))
 skillList = json.load(open("./static/json/skills.json", "r"))
 timeline = json.load(open("./static/json/timeline.json", "r"))
 pages = json.load(open("./static/json/pages.json", "r"))
+
 pages['projects']['skillList'] = skillList
 # pages['about']['timeline'] = timeline
 pages['projects']['projects'] = proj
 pages['home']['books'] = books
 pages['books']['books'] = books
-
-app = flask.Flask(__name__)
 
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')
@@ -87,6 +108,6 @@ if __name__ == "__main__":
     # import sass
 
     # sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
-    app.run()
+    app.run(debug=False)
 else:
     Minify(app=app, html=True, js=True, cssless=True)
