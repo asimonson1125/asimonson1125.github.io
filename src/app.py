@@ -3,8 +3,12 @@ from flask_minify import Minify
 import json
 import werkzeug.exceptions as HTTPerror
 from config import *
+from monitor import monitor
 
 app = flask.Flask(__name__)
+
+# Start service monitoring
+monitor.start_monitoring()
 
 # Add security and caching headers
 @app.after_request
@@ -39,6 +43,11 @@ pages['projects']['skillList'] = skillList
 pages['projects']['projects'] = proj
 pages['home']['books'] = books
 pages['books']['books'] = books
+
+@app.route('/api/status')
+def api_status():
+    """API endpoint for service status"""
+    return flask.jsonify(monitor.get_status_summary())
 
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')

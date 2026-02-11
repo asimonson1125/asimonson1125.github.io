@@ -1,0 +1,145 @@
+{
+  "last_check": "2026-02-11T14:53:09.045018",
+  "services": {
+    "main": {
+      "name": "asimonson.com",
+      "url": "https://asimonson.com",
+      "status": "online",
+      "response_time": 170,
+      "status_code": 200,
+      "last_online": "2026-02-11T14:53:08.089141",
+      "checks": [
+        {
+          "timestamp": "2026-02-11T14:45:35.008804",
+          "status": "online",
+          "response_time": 171,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:51:02.673733",
+          "status": "online",
+          "response_time": 138,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:53:08.089141",
+          "status": "online",
+          "response_time": 170,
+          "status_code": 200
+        }
+      ]
+    },
+    "files": {
+      "name": "files.asimonson.com",
+      "url": "https://files.asimonson.com",
+      "status": "online",
+      "response_time": 215,
+      "status_code": 200,
+      "last_online": "2026-02-11T14:53:08.259522",
+      "checks": [
+        {
+          "timestamp": "2026-02-11T14:45:35.180195",
+          "status": "online",
+          "response_time": 285,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:51:02.812769",
+          "status": "online",
+          "response_time": 259,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:53:08.259522",
+          "status": "online",
+          "response_time": 215,
+          "status_code": 200
+        }
+      ]
+    },
+    "git": {
+      "name": "git.asimonson.com",
+      "url": "https://git.asimonson.com",
+      "status": "online",
+      "response_time": 145,
+      "status_code": 200,
+      "last_online": "2026-02-11T14:53:08.475376",
+      "checks": [
+        {
+          "timestamp": "2026-02-11T14:45:35.465748",
+          "status": "online",
+          "response_time": 297,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:51:03.072293",
+          "status": "online",
+          "response_time": 293,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:53:08.475376",
+          "status": "online",
+          "response_time": 145,
+          "status_code": 200
+        }
+      ]
+    },
+    "pass": {
+      "name": "pass.asimonson.com",
+      "url": "https://pass.asimonson.com",
+      "status": "online",
+      "response_time": 160,
+      "status_code": 200,
+      "last_online": "2026-02-11T14:53:08.621016",
+      "checks": [
+        {
+          "timestamp": "2026-02-11T14:45:35.763775",
+          "status": "online",
+          "response_time": 253,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:51:03.365544",
+          "status": "online",
+          "response_time": 228,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:53:08.621016",
+          "status": "online",
+          "response_time": 160,
+          "status_code": 200
+        }
+      ]
+    },
+    "ssh": {
+      "name": "ssh.asimonson.com",
+      "url": "https://ssh.asimonson.com",
+      "status": "online",
+      "response_time": 263,
+      "status_code": 200,
+      "last_online": "2026-02-11T14:53:08.781704",
+      "checks": [
+        {
+          "timestamp": "2026-02-11T14:45:36.017180",
+          "status": "online",
+          "response_time": 378,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:51:03.594307",
+          "status": "online",
+          "response_time": 411,
+          "status_code": 200
+        },
+        {
+          "timestamp": "2026-02-11T14:53:08.781704",
+          "status": "online",
+          "response_time": 263,
+          "status_code": 200
+        }
+      ]
+    }
+  }
+}
