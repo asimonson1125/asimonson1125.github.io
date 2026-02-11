@@ -30,15 +30,9 @@ SERVICES = [
         'timeout': 10
     },
     {
-        'id': 'pass',
-        'name': 'pass.asimonson.com',
-        'url': 'https://pass.asimonson.com',
-        'timeout': 10
-    },
-    {
-        'id': 'ssh',
-        'name': 'ssh.asimonson.com',
-        'url': 'https://ssh.asimonson.com',
+        'id': 'balls',
+        'name': 'balls.asimonson.com',
+        'url': 'https://balls.asimonson.com',
         'timeout': 10
     }
 ]
@@ -182,8 +176,22 @@ class ServiceMonitor:
                 if datetime.fromisoformat(c['timestamp']) > cutoff
             ]
 
-        if not checks:
-            return None
+            if not checks:
+                return None
+
+            # Require minimum data coverage for the time period
+            # Calculate expected number of checks for this period
+            expected_checks = (hours * 3600) / CHECK_INTERVAL
+
+            # Require at least 50% of expected checks to show this metric
+            minimum_checks = max(3, expected_checks * 0.5)
+
+            if len(checks) < minimum_checks:
+                return None
+        else:
+            # For all-time, require at least 3 checks
+            if len(checks) < 3:
+                return None
 
         online_count = sum(1 for c in checks if c['status'] == 'online')
         uptime = (online_count / len(checks)) * 100

@@ -3,7 +3,7 @@ from flask_minify import Minify
 import json
 import werkzeug.exceptions as HTTPerror
 from config import *
-from monitor import monitor
+from monitor import monitor, SERVICES
 
 app = flask.Flask(__name__)
 
@@ -43,6 +43,7 @@ pages['projects']['skillList'] = skillList
 pages['projects']['projects'] = proj
 pages['home']['books'] = books
 pages['books']['books'] = books
+pages['status']['services'] = SERVICES
 
 @app.route('/api/status')
 def api_status():

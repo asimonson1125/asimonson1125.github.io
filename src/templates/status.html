@@ -2,160 +2,18 @@
 <div class="foreground"></div>
 <div class="foregroundContent">
   <h2 class='concentratedHead'>Service Status Monitor</h2>
-  <p class="status-subtitle">Automated monitoring of asimonson.com services</p>
-
-  <div class="status-info">
-    <div>
-      <span id="lastUpdate">Last checked: Loading...</span>
-      <br>
-      <span id="nextUpdate" style="font-size: 0.85em; color: #888;">Next check: --</span>
-    </div>
-    <button id="refreshBtn" onclick="refreshStatus()">Refresh Now</button>
-  </div>
-
-  <div class="status-container">
-    <div class="status-card" id="status-main">
-      <div class="status-header">
-        <h3>asimonson.com</h3>
-        <div class="status-indicator">
-          <span class="status-dot loading"></span>
-          <span class="status-text">Loading...</span>
-        </div>
-      </div>
-      <div class="status-details">
-        <div class="status-metric">
-          <span class="metric-label">Response Time:</span>
-          <span class="metric-value" id="time-main">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Status Code:</span>
-          <span class="metric-value" id="code-main">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Total Checks:</span>
-          <span class="metric-value" id="checks-main">--</span>
-        </div>
-      </div>
-      <div class="status-uptime">
-        <div class="uptime-label">Uptime:</div>
-        <div class="uptime-values" id="uptime-main">Loading...</div>
-      </div>
-    </div>
-
-    <div class="status-card" id="status-files">
-      <div class="status-header">
-        <h3>files.asimonson.com</h3>
-        <div class="status-indicator">
-          <span class="status-dot loading"></span>
-          <span class="status-text">Loading...</span>
-        </div>
-      </div>
-      <div class="status-details">
-        <div class="status-metric">
-          <span class="metric-label">Response Time:</span>
-          <span class="metric-value" id="time-files">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Status Code:</span>
-          <span class="metric-value" id="code-files">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Total Checks:</span>
-          <span class="metric-value" id="checks-files">--</span>
-        </div>
-      </div>
-      <div class="status-uptime">
-        <div class="uptime-label">Uptime:</div>
-        <div class="uptime-values" id="uptime-files">Loading...</div>
-      </div>
-    </div>
-
-    <div class="status-card" id="status-git">
-      <div class="status-header">
-        <h3>git.asimonson.com</h3>
-        <div class="status-indicator">
-          <span class="status-dot loading"></span>
-          <span class="status-text">Loading...</span>
-        </div>
-      </div>
-      <div class="status-details">
-        <div class="status-metric">
-          <span class="metric-label">Response Time:</span>
-          <span class="metric-value" id="time-git">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Status Code:</span>
-          <span class="metric-value" id="code-git">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Total Checks:</span>
-          <span class="metric-value" id="checks-git">--</span>
-        </div>
-      </div>
-      <div class="status-uptime">
-        <div class="uptime-label">Uptime:</div>
-        <div class="uptime-values" id="uptime-git">Loading...</div>
-      </div>
-    </div>
-
-    <div class="status-card" id="status-pass">
-      <div class="status-header">
-        <h3>pass.asimonson.com</h3>
-        <div class="status-indicator">
-          <span class="status-dot loading"></span>
-          <span class="status-text">Loading...</span>
-        </div>
-      </div>
-      <div class="status-details">
-        <div class="status-metric">
-          <span class="metric-label">Response Time:</span>
-          <span class="metric-value" id="time-pass">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Status Code:</span>
-          <span class="metric-value" id="code-pass">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Total Checks:</span>
-          <span class="metric-value" id="checks-pass">--</span>
-        </div>
-      </div>
-      <div class="status-uptime">
-        <div class="uptime-label">Uptime:</div>
-        <div class="uptime-values" id="uptime-pass">Loading...</div>
-      </div>
-    </div>
-
-    <div class="status-card" id="status-ssh">
-      <div class="status-header">
-        <h3>ssh.asimonson.com</h3>
-        <div class="status-indicator">
-          <span class="status-dot loading"></span>
-          <span class="status-text">Loading...</span>
-        </div>
-      </div>
-      <div class="status-details">
-        <div class="status-metric">
-          <span class="metric-label">Response Time:</span>
-          <span class="metric-value" id="time-ssh">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Status Code:</span>
-          <span class="metric-value" id="code-ssh">--</span>
-        </div>
-        <div class="status-metric">
-          <span class="metric-label">Total Checks:</span>
-          <span class="metric-value" id="checks-ssh">--</span>
-        </div>
-      </div>
-      <div class="status-uptime">
-        <div class="uptime-label">Uptime:</div>
-        <div class="uptime-values" id="uptime-ssh">Loading...</div>
-      </div>
-    </div>
-  </div>
 
   <div class="status-legend">
+    <div class='flex spaceBetween'>
+      <div>
+        <span id="lastUpdate">Last checked: Loading...</span>
+        <br />
+        <span id="nextUpdate">Next check: --</span>
+      </div>
+      <button id="refreshBtn" onclick="refreshStatus()">Refresh Now</button>
+    </div>
+    <br/> 
+
     <h4>Status Legend</h4>
     <div class="legend-items">
       <div class="legend-item">
@@ -173,13 +31,67 @@
     </div>
   </div>
 
-  <div class="status-info-box">
+  <!-- Overall Status Bar -->
+  <div class="overall-status-bar" id="overallStatus">
+    <div class="overall-status-content">
+      <div class="overall-status-indicator">
+        <span class="overall-status-icon loading">◐</span>
+        <div>
+          <h3 class="overall-status-title">Checking Systems...</h3>
+          <p class="overall-status-subtitle">Loading service status</p>
+        </div>
+      </div>
+      <div class="overall-status-metrics">
+        <div class="metric-box">
+          <span class="metric-number" id="onlineCount">--</span>
+          <span class="metric-label">Online</span>
+        </div>
+        <div class="metric-box">
+          <span class="metric-number" id="totalCount">--</span>
+          <span class="metric-label">Total</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-container">
+    {% for service in var.services %}
+    <a href="https://{{ service.url }}">
+      <div class="status-card" id="status-{{ service.id }}">
+        <div class="status-header">
+          <h3>{{ service.name }}</h3>
+          <div class="status-indicator">
+            <span class="status-dot loading"></span>
+            <span class="status-text">Loading...</span>
+          </div>
+        </div>
+        <div class="status-details">
+          <div class="status-metric">
+            <span class="metric-label">Response Time:</span>
+            <span class="metric-value" id="time-{{ service.id }}">--</span>
+          </div>
+          <div class="status-metric">
+            <span class="metric-label">Status Code:</span>
+            <span class="metric-value" id="code-{{ service.id }}">--</span>
+          </div>
+          <div class="status-metric">
+            <span class="metric-label">Total Checks:</span>
+            <span class="metric-value" id="checks-{{ service.id }}">--</span>
+          </div>
+        </div>
+        <div class="status-uptime">
+          <div class="uptime-label">Uptime:</div>
+          <div class="uptime-values" id="uptime-{{ service.id }}">Loading...</div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="status-legend">
     <h4>About This Monitor</h4>
     <ul>
-      <li><strong>Check Frequency:</strong> Services are checked automatically every 2 hours from the server</li>
-      <li><strong>Uptime Calculation:</strong> Based on historical check data (24h, 7d, 30d, and all-time)</li>
-      <li><strong>Response Time:</strong> Time taken to receive a response from the service</li>
-      <li><strong>Status Code:</strong> HTTP response code from the service</li>
+      <li><strong>Check Frequency:</strong> Services are checked automatically every 30 minutes from the server</li>
       <li><strong>Page Refresh:</strong> This page auto-refreshes every 5 minutes to show latest data</li>
     </ul>
   </div>

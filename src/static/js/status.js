@@ -43,6 +43,9 @@ function updateStatusDisplay(data) {
     updateServiceCard(service);
   });
 
+  // Update overall status
+  updateOverallStatus(data.services);
+
   // Re-enable refresh button
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
@@ -109,29 +112,96 @@ function updateServiceCard(service) {
   if (uptimeDisplay && service.uptime) {
     const uptimeHTML = [];
 
-    if (service.uptime['24h'] !== null) {
-      uptimeHTML.push(`24h: <strong>${service.uptime['24h']}%</strong>`);
-    }
-    if (service.uptime['7d'] !== null) {
-      uptimeHTML.push(`7d: <strong>${service.uptime['7d']}%</strong>`);
-    }
-    if (service.uptime['30d'] !== null) {
-      uptimeHTML.push(`30d: <strong>${service.uptime['30d']}%</strong>`);
-    }
-    if (service.uptime.all_time !== null) {
-      uptimeHTML.push(`All: <strong>${service.uptime.all_time}%</strong>`);
-    }
+    // Helper function to get color class based on uptime percentage
+    const getUptimeClass = (value) => {
+      if (value === null) return 'uptime-none';
+      if (value >= 99) return 'uptime-excellent';
+      if (value >= 95) return 'uptime-good';
+      if (value >= 90) return 'uptime-fair';
+      return 'uptime-poor';
+    };
 
-    if (uptimeHTML.length > 0) {
-      uptimeDisplay.innerHTML = uptimeHTML.join(' | ');
-    } else {
-      uptimeDisplay.textContent = 'No data yet';
-    }
+    // Helper function to format uptime value
+    const formatUptime = (value, label) => {
+      const display = value !== null ? `${value}%` : '--';
+      const colorClass = getUptimeClass(value);
+      return `${label}: <strong class="${colorClass}">${display}</strong>`;
+    };
+
+    // Add all uptime metrics
+    uptimeHTML.push(formatUptime(service.uptime['24h'], '24h'));
+    uptimeHTML.push(formatUptime(service.uptime['7d'], '7d'));
+    uptimeHTML.push(formatUptime(service.uptime['30d'], '30d'));
+    uptimeHTML.push(formatUptime(service.uptime.all_time, 'All'));
+
+    uptimeDisplay.innerHTML = uptimeHTML.join(' | ');
   }
 
   // Update total checks
   if (checksDisplay && service.total_checks !== undefined) {
     checksDisplay.textContent = service.total_checks;
+  }
+}
+
+/**
+ * Update overall status bar
+ */
+function updateOverallStatus(services) {
+  const overallBar = document.getElementById('overallStatus');
+  const icon = overallBar.querySelector('.overall-status-icon');
+  const title = overallBar.querySelector('.overall-status-title');
+  const subtitle = overallBar.querySelector('.overall-status-subtitle');
+  const onlineCount = document.getElementById('onlineCount');
+  const totalCount = document.getElementById('totalCount');
+
+  // Count service statuses
+  const total = services.length;
+  const online = services.filter(s => s.status === 'online').length;
+  const degraded = services.filter(s => s.status === 'degraded' || s.status === 'timeout').length;
+  const offline = services.filter(s => s.status === 'offline').length;
+
+  // Update counts
+  onlineCount.textContent = online;
+  totalCount.textContent = total;
+
+  // Remove all status classes
+  overallBar.classList.remove('all-operational', 'partial-outage', 'major-outage');
+  icon.classList.remove('operational', 'partial', 'major', 'loading');
+
+  // Determine overall status
+  if (online === total) {
+    // All systems operational
+    overallBar.classList.add('all-operational');
+    icon.classList.add('operational');
+    icon.textContent = '✓';
+    title.textContent = 'All Systems Operational';
+    subtitle.textContent = `All ${total} services are running normally`;
+  } else if (offline >= Math.ceil(total / 2)) {
+    // Major outage (50% or more offline)
+    overallBar.classList.add('major-outage');
+    icon.classList.add('major');
+    icon.textContent = '✕';
+    title.textContent = 'Major Outage';
+    subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline, ${degraded} degraded`;
+  } else if (offline > 0 || degraded > 0) {
+    // Partial outage
+    overallBar.classList.add('partial-outage');
+    icon.classList.add('partial');
+    icon.textContent = '⚠';
+    title.textContent = 'Partial Outage';
+    if (offline > 0 && degraded > 0) {
+      subtitle.textContent = `${offline} offline, ${degraded} degraded`;
+    } else if (offline > 0) {
+      subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline`;
+    } else {
+      subtitle.textContent = `${degraded} service${degraded !== 1 ? 's' : ''} degraded`;
+    }
+  } else {
+    // Unknown state
+    icon.classList.add('loading');
+    icon.textContent = '◐';
+    title.textContent = 'Status Unknown';
+    subtitle.textContent = 'Waiting for service data';
   }
 }
 

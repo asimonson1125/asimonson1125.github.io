@@ -104,9 +104,28 @@ strong {
   color: #ecebeb;
 }
 
-p, li {
+ul {
+  margin: 0;
+  padding-left: 1.5em;
+  color: #a8a8a8;
+}
+
+li {
+  margin-bottom: 0.5em;
+  color: #a8a8a8;
+}
+
+strong {
+  color: #ecebeb;
+}
+
+p, li, span {
   color: rgb(212, 212, 212);
   font-size: 1rem;
+}
+
+span {
+  font-size: .8rem;
 }
 
 a, a p {
@@ -1297,20 +1316,116 @@ tr {
   font-size: 1rem;
 }
 
-.status-info {
+/* Overall Status Bar */
+/* Overall Status Bar */
+.overall-status-bar {
+  background: rgba(24, 24, 24, 0.95);
+  border-radius: 0.5em;
+  padding: 2em;
+  margin-bottom: 2em;
+  border-top: solid 4px rgba(139, 36, 36, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.5s ease;
+}
+
+.overall-status-bar.all-operational {
+  border-top-color: rgba(76, 175, 80, 0.8);
+}
+
+.overall-status-bar.partial-outage {
+  border-top-color: rgba(255, 193, 7, 0.8);
+}
+
+.overall-status-bar.major-outage {
+  border-top-color: rgba(244, 67, 54, 0.8);
+}
+
+.overall-status-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2em;
-  padding: 1em;
-  background: rgba(24, 24, 24, 0.85);
-  border-radius: 0.5em;
-  border: solid 2px rgba(139, 36, 36, 0.5);
+  flex-wrap: wrap;
+  gap: 2em;
 }
 
-.status-info span {
+.overall-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.overall-status-icon {
+  font-size: 3rem;
+  line-height: 1;
+  animation: spin 2s linear infinite;
+}
+
+.overall-status-icon.operational {
+  color: #4caf50;
+  animation: none;
+}
+
+.overall-status-icon.partial {
+  color: #ffc107;
+  animation: pulse-icon 1.5s ease-in-out infinite;
+}
+
+.overall-status-icon.major {
+  color: #f44336;
+  animation: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-icon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.overall-status-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ecebeb;
+  font-weight: 600;
+}
+
+.overall-status-subtitle {
+  margin: 0.3em 0 0 0;
+  font-size: 1rem;
   color: #a8a8a8;
-  font-size: 0.9rem;
+}
+
+.overall-status-metrics {
+  display: flex;
+  gap: 2em;
+}
+
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 1.5em;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5em;
+  min-width: 80px;
+}
+
+.metric-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ecebeb;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: #a8a8a8;
+  margin-top: 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 #refreshBtn {
@@ -1504,35 +1619,28 @@ tr {
 }
 
 .uptime-values strong {
-  color: #4caf50;
+  font-weight: 600;
 }
 
-.status-info-box {
-  background: rgba(24, 24, 24, 0.85);
-  border-radius: 0.5em;
-  padding: 1.5em;
-  border: solid 2px rgba(139, 36, 36, 0.5);
-  margin-top: 2em;
+/* Uptime color coding based on percentage */
+.uptime-excellent {
+  color: #4caf50 !important;  /* 99%+ - Green */
 }
 
-.status-info-box h4 {
-  margin-top: 0;
-  color: #ecebeb;
+.uptime-good {
+  color: #8bc34a !important;  /* 95-99% - Light green */
 }
 
-.status-info-box ul {
-  margin: 0;
-  padding-left: 1.5em;
-  color: #a8a8a8;
+.uptime-fair {
+  color: #ffc107 !important;  /* 90-95% - Yellow */
 }
 
-.status-info-box li {
-  margin-bottom: 0.5em;
-  color: #a8a8a8;
+.uptime-poor {
+  color: #f44336 !important;  /* <90% - Red */
 }
 
-.status-info-box strong {
-  color: #ecebeb;
+.uptime-none {
+  color: #888 !important;  /* No data - Gray */
 }
 
 @media screen and (max-width: 1400px) {
@@ -1548,5 +1656,20 @@ tr {
   .legend-items {
     flex-direction: column;
     gap: 0.5em;
+  }
+
+  .overall-status-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .overall-status-indicator {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .overall-status-metrics {
+    width: 100%;
+    justify-content: center;
   }
 }
