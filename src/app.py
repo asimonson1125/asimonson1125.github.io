@@ -7,9 +7,6 @@ from monitor import monitor, SERVICES
 
 app = flask.Flask(__name__)
 
-# Start service monitoring
-monitor.start_monitoring()
-
 # Add security and caching headers
 @app.after_request
 def add_security_headers(response):
@@ -32,11 +29,15 @@ def add_security_headers(response):
 
 
 
-proj = json.load(open("./static/json/projects.json", "r"))
-books = json.load(open("./static/json/books.json", "r"))
-skillList = json.load(open("./static/json/skills.json", "r"))
-timeline = json.load(open("./static/json/timeline.json", "r"))
-pages = json.load(open("./static/json/pages.json", "r"))
+def load_json(path):
+    with open(path, "r") as f:
+        return json.load(f)
+
+proj = load_json("./static/json/projects.json")
+books = load_json("./static/json/books.json")
+skillList = load_json("./static/json/skills.json")
+timeline = load_json("./static/json/timeline.json")
+pages = load_json("./static/json/pages.json")
 
 pages['projects']['skillList'] = skillList
 # pages['about']['timeline'] = timeline
@@ -53,12 +54,13 @@ def api_status():
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')
 def goto(location='home'):
+    if location not in pages:
+        flask.abort(404)
     pagevars = pages[location]
     page = None
     try:
         page = flask.render_template(pagevars["template"], var=pagevars)
     except Exception as e:
-        # raise e
         e = HTTPerror.InternalServerError(None, e)
         page = page404(e)
     return [pagevars, page]
@@ -83,29 +85,45 @@ for i in pages:
 def resume():
     return flask.send_file("./static/Resume_Simonson_Andrew.pdf")
 
-@app.errorhandler(Exception)
+@app.errorhandler(HTTPerror.HTTPException)
 def page404(e):
     eCode = e.code
     message = e.description
-    try:
-        message = e.length
-    finally:
-        pagevars = {
-            "template": "error.html",
-            "title": f"{eCode} - Simonson",
-            "description": "Error on Andrew Simonson's Digital Portfolio",
-            "canonical": "404",
-        }
-        return (
-            flask.render_template(
-                "header.html",
-                var=pagevars,
-                error=eCode,
-                message=message,
-                title=f"{eCode} - Simonson Portfolio",
-            ),
-            eCode,
-        )
+    pagevars = {
+        "template": "error.html",
+        "title": f"{eCode} - Simonson",
+        "description": "Error on Andrew Simonson's Digital Portfolio",
+        "canonical": "404",
+    }
+    return (
+        flask.render_template(
+            "header.html",
+            var=pagevars,
+            error=eCode,
+            message=message,
+            title=f"{eCode} - Simonson Portfolio",
+        ),
+        eCode,
+    )
+
+@app.errorhandler(Exception)
+def page500(e):
+    pagevars = {
+        "template": "error.html",
+        "title": "500 - Simonson",
+        "description": "Error on Andrew Simonson's Digital Portfolio",
+        "canonical": "404",
+    }
+    return (
+        flask.render_template(
+            "header.html",
+            var=pagevars,
+            error=500,
+            message="Internal Server Error",
+            title="500 - Simonson Portfolio",
+        ),
+        500,
+    )
 
 
 @app.route("/sitemap.xml")
@@ -121,3 +139,4 @@ if __name__ == "__main__":
     app.run(debug=False)
 else:
     Minify(app=app, html=True, js=True, cssless=True)
+    monitor.start_monitoring()

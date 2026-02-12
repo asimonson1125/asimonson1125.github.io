@@ -236,10 +236,16 @@ function refreshStatus() {
 /**
  * Initialize on page load
  */
+let statusIntervalId = null;
+
 function initStatusPage() {
+  // Clear any existing interval from a previous SPA navigation
+  if (statusIntervalId !== null) {
+    clearInterval(statusIntervalId);
+  }
   fetchStatus();
   // Auto-refresh every 5 minutes to get latest data
-  setInterval(fetchStatus, 300000);
+  statusIntervalId = setInterval(fetchStatus, 300000);
 }
 
 // Start when page loads

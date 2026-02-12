@@ -7,3 +7,5 @@ So people can see how excellent my coding standards are.
 * Viruses: not included
 
 You gotta uhh `pip3 install -r requirements.txt` and `python3 app.py` that thing
+
+Docker compose configured to expose at `localhost:8080`
