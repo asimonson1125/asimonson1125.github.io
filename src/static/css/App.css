@@ -126,6 +126,10 @@ p, li, span {
   font-size: 1rem;
 }
 
+strong {
+  color: #ecebeb;
+}
+
 span {
   font-size: .8rem;
 }
@@ -448,6 +452,11 @@ tr {
   margin: auto;
   margin-bottom: 5px;
 }
+
+.relative {
+  position: relative;
+}
+
 
 .bgi {
   background-size: contain;
