@@ -3,7 +3,7 @@
 <div class="foregroundContent">
   <h2 class='concentratedHead'>Service Status Monitor</h2>
 
-  <div class="status-legend">
+  <div class="info-box">
     <div class='flex spaceBetween'>
       <div>
         <span id="lastUpdate">Last checked: Loading...</span>
@@ -12,33 +12,33 @@
       </div>
       <button id="refreshBtn" onclick="refreshStatus()">Refresh Now</button>
     </div>
-    <br/> 
+    <br/>
 
     <h4>Status Legend</h4>
     <div class="legend-items">
       <div class="legend-item">
-        <span class="status-dot online"></span>
+        <span class="state-dot online"></span>
         <span>Operational (response successful)</span>
       </div>
       <div class="legend-item">
-        <span class="status-dot degraded"></span>
+        <span class="state-dot degraded"></span>
         <span>Degraded (timeout or errors)</span>
       </div>
       <div class="legend-item">
-        <span class="status-dot offline"></span>
+        <span class="state-dot offline"></span>
         <span>Offline (unreachable)</span>
       </div>
     </div>
   </div>
 
   <!-- Overall Status Bar -->
-  <div class="status-card overall-status-card" id="overallStatus">
-    <div class="overall-status-content">
-      <div class="overall-status-indicator">
-        <span class="overall-status-icon loading">◐</span>
+  <div class="info-card summary-card" id="overallStatus">
+    <div class="summary-content">
+      <div class="summary-indicator">
+        <span class="summary-icon loading">&#x25D0;</span>
         <div>
-          <h3 class="overall-status-title">Checking Systems...</h3>
-          <h5 id="overall-status-subtitle">Loading service status</h5>
+          <h3 class="summary-title">Checking Systems...</h3>
+          <h5 id="summary-subtitle">Loading service status</h5>
         </div>
       </div>
       <div class="flex spaceBetween">
@@ -54,41 +54,41 @@
     </div>
   </div>
 
-  <div class="status-container">
+  <div class="card-grid">
     {% for service in var.services %}
     <a href="{{ service.url }}">
-      <div class="status-card" id="status-{{ service.id }}">
-        <div class="status-header">
+      <div class="info-card" id="status-{{ service.id }}">
+        <div class="card-header">
           <h3>{{ service.name }}</h3>
-          <div class="status-indicator">
-            <span class="status-dot loading"></span>
-            <span class="status-text">Loading...</span>
+          <div class="state-indicator">
+            <span class="state-dot loading"></span>
+            <span class="state-text">Loading...</span>
           </div>
         </div>
-        <div class="status-details">
-          <div class="status-metric">
+        <div class="card-body">
+          <div class="metric-row">
             <span class="metric-label">Response Time:</span>
             <span class="metric-value" id="time-{{ service.id }}">--</span>
           </div>
-          <div class="status-metric">
+          <div class="metric-row">
             <span class="metric-label">Status Code:</span>
             <span class="metric-value" id="code-{{ service.id }}">--</span>
           </div>
-          <div class="status-metric">
+          <div class="metric-row">
             <span class="metric-label">Total Checks:</span>
             <span class="metric-value" id="checks-{{ service.id }}">--</span>
           </div>
         </div>
-        <div class="status-uptime">
-          <div class="uptime-label">Uptime:</div>
-          <div class="uptime-values" id="uptime-{{ service.id }}">Loading...</div>
+        <div class="card-footer">
+          <div class="detail-label">Uptime:</div>
+          <div class="detail-values" id="uptime-{{ service.id }}">Loading...</div>
         </div>
       </div>
     </a>
     {% endfor %}
   </div>
 
-  <div class="status-legend">
+  <div class="info-box">
     <h4>About This Monitor</h4>
     <ul>
       <li><strong>Check Frequency:</strong> Services are checked automatically every 30 minutes from the server</li>

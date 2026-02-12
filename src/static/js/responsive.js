@@ -2,7 +2,8 @@ function toggleMenu(collapse=false) {
   if (window.innerWidth < 1400) {
     const e = document.querySelector(".navControl");
     const bar = document.querySelector(".header");
-    if (e.style.maxHeight === "0px" && !collapse) {
+    const isCollapsed = !e.style.maxHeight || e.style.maxHeight === "0px";
+    if (isCollapsed && !collapse) {
       e.style.maxHeight = `${e.scrollHeight + 10}px`;
       bar.style.borderBottomWidth = "0px";
     } else {
