@@ -236,7 +236,7 @@ function refreshStatus() {
 /**
  * Initialize on page load
  */
-let statusIntervalId = null;
+var statusIntervalId = null;
 
 function initStatusPage() {
   // Clear any existing interval from a previous SPA navigation
