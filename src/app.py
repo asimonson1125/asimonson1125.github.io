@@ -1,11 +1,32 @@
 import flask
 from flask_minify import Minify
 import json
+import os
+import hashlib
 import werkzeug.exceptions as HTTPerror
 from config import *
 from monitor import monitor, SERVICES
 
 app = flask.Flask(__name__)
+
+# Compute content hashes for static file fingerprinting
+static_file_hashes = {}
+for dirpath, _, filenames in os.walk(app.static_folder):
+    for filename in filenames:
+        filepath = os.path.join(dirpath, filename)
+        relative = os.path.relpath(filepath, app.static_folder)
+        with open(filepath, 'rb') as f:
+            static_file_hashes[relative] = hashlib.md5(f.read()).hexdigest()[:8]
+
+@app.context_processor
+def override_url_for():
+    def versioned_url_for(endpoint, **values):
+        if endpoint == 'static':
+            filename = values.get('filename')
+            if filename and filename in static_file_hashes:
+                values['v'] = static_file_hashes[filename]
+        return flask.url_for(endpoint, **values)
+    return dict(url_for=versioned_url_for)
 
 # Add security and caching headers
 @app.after_request
