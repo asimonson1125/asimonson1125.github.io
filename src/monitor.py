@@ -5,6 +5,7 @@ Checks service availability and tracks uptime statistics
 import requests
 import time
 import json
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from threading import Thread, Lock
 from pathlib import Path
@@ -125,12 +126,15 @@ class ServiceMonitor:
         """Check all services and update status data"""
         print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Checking all services...")
 
-        # Perform all network checks OUTSIDE the lock to avoid blocking API calls
+        # Perform all network checks concurrently and OUTSIDE the lock
         results = {}
-        for service in SERVICES:
-            result = self.check_service(service)
-            results[service['id']] = result
-            print(f"  {service['name']}: {result['status']} ({result['response_time']}ms)")
+        with ThreadPoolExecutor(max_workers=len(SERVICES)) as executor:
+            futures = {executor.submit(self.check_service, s): s for s in SERVICES}
+            for future in futures:
+                service = futures[future]
+                result = future.result()
+                results[service['id']] = result
+                print(f"  {service['name']}: {result['status']} ({result['response_time']}ms)")
 
         # Only acquire lock when updating the shared data structure
         with self.lock:

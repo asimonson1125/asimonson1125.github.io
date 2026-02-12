@@ -10,7 +10,7 @@ async function addChessEmbed(username) {
   if (user.status === 200) {
     user = await user.json();
     stats = await stats.json();
-    ratings = {
+    const ratings = {
       rapid: stats.chess_rapid.last.rating,
       blitz: stats.chess_blitz.last.rating,
       bullet: stats.chess_bullet.last.rating,

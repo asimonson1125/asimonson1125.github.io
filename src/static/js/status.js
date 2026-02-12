@@ -236,7 +236,7 @@ function refreshStatus() {
 /**
  * Initialize on page load
  */
-let statusIntervalId = null;
+var statusIntervalId = null;
 
 function initStatusPage() {
   // Clear any existing interval from a previous SPA navigation
@@ -247,6 +247,14 @@ function initStatusPage() {
   // Auto-refresh every 5 minutes to get latest data
   statusIntervalId = setInterval(fetchStatus, 300000);
 }
+
+// Clean up interval when navigating away via SPA
+document.addEventListener('beforenavigate', () => {
+  if (statusIntervalId !== null) {
+    clearInterval(statusIntervalId);
+    statusIntervalId = null;
+  }
+});
 
 // Start when page loads
 if (document.readyState === 'loading') {
