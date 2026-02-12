@@ -13,30 +13,46 @@ function toggleMenu(collapse=false) {
 }
 
 async function goto(location, { push = true } = {}) {
-  let a = await fetch("/api/goto/" + location, {
-    credentials: "include",
-    method: "GET",
-    mode: "cors",
-  });
+  let a;
+  try {
+    a = await fetch("/api/goto/" + location, {
+      credentials: "include",
+      method: "GET",
+      mode: "cors",
+    });
+    if (!a.ok) {
+      console.error(`Navigation failed: HTTP ${a.status}`);
+      return;
+    }
+  } catch (err) {
+    console.error("Navigation fetch failed:", err);
+    return;
+  }
+
+  document.dispatchEvent(new Event('beforenavigate'));
+
   const response = await a.json();
+  const metadata = response[0];
+  const content = response[1];
+  const root = document.getElementById("root");
+  root.innerHTML = content;
+  root.querySelectorAll("script").forEach((oldScript) => {
+    const newScript = document.createElement("script");
+    Array.from(oldScript.attributes).forEach(attr => {
+      newScript.setAttribute(attr.name, attr.value);
+    });
+    newScript.textContent = oldScript.textContent;
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+
   if (!window.location.href.includes("#")) {
     window.scrollTo({top: 0, left: 0, behavior:"instant"});
   } else {
-    eid = decodeURIComponent(window.location.hash.substring(1))
-    document.getElementById(eid).scrollIntoView()
+    const eid = decodeURIComponent(window.location.hash.substring(1));
+    const el = document.getElementById(eid);
+    if (el) el.scrollIntoView();
   }
-  const metadata = response[0];
-  const content = response[1];
-  let root = document.getElementById("root");
-  root.innerHTML = content;
-  root.querySelectorAll("script").forEach((oldScript) => {               
-        const newScript = document.createElement("script");                  
-        Array.from(oldScript.attributes).forEach(attr => {                   
-          newScript.setAttribute(attr.name, attr.value);                            
-        });                                                                  
-        newScript.textContent = oldScript.textContent;                              
-        oldScript.parentNode.replaceChild(newScript, oldScript);                  
-      });
+
   toggleMenu(collapse=true);
   document.querySelector("title").textContent = metadata["title"];
   if (push) {

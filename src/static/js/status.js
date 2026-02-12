@@ -248,6 +248,14 @@ function initStatusPage() {
   statusIntervalId = setInterval(fetchStatus, 300000);
 }
 
+// Clean up interval when navigating away via SPA
+document.addEventListener('beforenavigate', () => {
+  if (statusIntervalId !== null) {
+    clearInterval(statusIntervalId);
+    statusIntervalId = null;
+  }
+});
+
 // Start when page loads
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initStatusPage);

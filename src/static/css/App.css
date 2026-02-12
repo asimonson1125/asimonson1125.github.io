@@ -1,23 +1,27 @@
 @font-face {
   font-family: "neon-future";
-  src: url("../fonts/NeonFuture.ttf")
+  src: url("../fonts/NeonFuture.ttf");
+  font-display: swap;
 }
 
 
 @font-face {
   font-family: "shuttlex";
   src: url("../fonts/SHUTTLE-X.ttf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "sunset-club";
-  src: url("../fonts/SunsetClub.otf")
+  src: url("../fonts/SunsetClub.otf");
+  font-display: swap;
 }
 
 
 @font-face {
   font-family: "robotoreg";
-  src: url("../fonts/RobotoCondensed-Regular.ttf")
+  src: url("../fonts/RobotoCondensed-Regular.ttf");
+  font-display: swap;
 }
 
 html, body {
@@ -115,10 +119,6 @@ ul {
 li {
   margin-bottom: 0.5em;
   color: #a8a8a8;
-}
-
-strong {
-  color: #ecebeb;
 }
 
 p, li, span {
@@ -289,6 +289,9 @@ tr {
   padding-right: 4rem;
   border-bottom: #0f0f0f solid 5px;
   color: white;
+  position: relative;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .foreground {
@@ -311,12 +314,6 @@ tr {
 
 .foregroundContent p {
   line-height: 1.5em;
-}
-
-.concentratedHead {
-  position: relative;
-  padding-bottom: 0.5em;
-  margin-bottom: 1em;
 }
 
 .concentratedHead::after {
@@ -440,10 +437,6 @@ tr {
 .hSpacer {
   width: 2em;
   height: 0;
-}
-
-.relative {
-  position: relative;
 }
 
 .onRight {
@@ -955,7 +948,7 @@ tr {
   padding: 10px;
   border: solid 2px #553;
   border-radius: 0.5em;
-  background-image: url("/static/photos/wood.jpg");
+  background-image: url("../photos/wood.jpg");
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -1125,9 +1118,10 @@ tr {
 @font-face {
   font-family: Chess New;
   src: url('../fonts/chessglyph-new.0cc8115c.woff2');
+  font-display: swap;
 }
 
-@media screen and (max-width: 600) {
+@media screen and (max-width: 600px) {
   #nametagContainer {
     width: unset;
   }

@@ -60,9 +60,9 @@ def goto(location='home'):
     page = None
     try:
         page = flask.render_template(pagevars["template"], var=pagevars)
-    except Exception as e:
-        e = HTTPerror.InternalServerError(None, e)
-        page = page404(e)
+    except Exception:
+        e = HTTPerror.InternalServerError()
+        page = handle_http_error(e)
     return [pagevars, page]
 
 def funcGen(pagename, pages):
@@ -72,7 +72,7 @@ def funcGen(pagename, pages):
         except Exception:
             e = HTTPerror.InternalServerError()
             print(e)
-            return page404(e)
+            return handle_http_error(e)
     return dynamicRule  
 
 for i in pages:
@@ -86,14 +86,14 @@ def resume():
     return flask.send_file("./static/Resume_Simonson_Andrew.pdf")
 
 @app.errorhandler(HTTPerror.HTTPException)
-def page404(e):
+def handle_http_error(e):
     eCode = e.code
     message = e.description
     pagevars = {
         "template": "error.html",
         "title": f"{eCode} - Simonson",
         "description": "Error on Andrew Simonson's Digital Portfolio",
-        "canonical": "404",
+        "canonical": f"/{eCode}",
     }
     return (
         flask.render_template(
@@ -107,12 +107,12 @@ def page404(e):
     )
 
 @app.errorhandler(Exception)
-def page500(e):
+def handle_generic_error(e):
     pagevars = {
         "template": "error.html",
         "title": "500 - Simonson",
         "description": "Error on Andrew Simonson's Digital Portfolio",
-        "canonical": "404",
+        "canonical": "/500",
     }
     return (
         flask.render_template(
