@@ -56,7 +56,7 @@
 
   <div class="status-container">
     {% for service in var.services %}
-    <a href="https://{{ service.url }}">
+    <a href="{{ service.url }}">
       <div class="status-card" id="status-{{ service.id }}">
         <div class="status-header">
           <h3>{{ service.name }}</h3>

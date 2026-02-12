@@ -4,3 +4,7 @@ notes.txt
 react_OLD
 envs.py
 .env
+status_history.json
+
+.claude
+CLAUDE.md

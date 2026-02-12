@@ -697,18 +697,6 @@ tr {
   transform: scale(1.1);
 }
 
-.incomplete {
-  color: red;
-}
-
-.WIP {
-  color: yellow;
-}
-
-.complete {
-  color: green;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -1482,17 +1470,17 @@ tr {
   display: inline-block;
 }
 
-.status-dot.online {
+.status-dot.online, .status-dot.complete {
   background: #4caf50;
   box-shadow: 0 0 10px #4caf50;
 }
 
-.status-dot.degraded {
+.status-dot.degraded, .status-dot.WIP {
   background: #ffc107;
   box-shadow: 0 0 10px #ffc107;
 }
 
-.status-dot.offline {
+.status-dot.offline, .status-dot.incomplete {
   background: #f44336;
   box-shadow: 0 0 10px #f44336;
 }
