@@ -1,41 +1,35 @@
 {
-    "Tools": {
-        "Microsoft Azure": {
-            "Databricks": {},
-            "Data Factory": {},
-            "Stream Analytics": {}
-        },
-        "Databricks": {},
-        "Apache Spark": {},
-        "Visual Basic for Applications (Excel)": {}
-    },
     "Data and AI": {
-        "Python": {
-            "PyTorch/TensorFlow": {},
-            "Numpy/Pandas": {},
-            "Scikit/Sklearn": {},
-            "Selenium/BS4": {},
-            "Pyspark": {}
+        "ML": {
+            "PySpark ML": {},
+            "Numpy/Pandas/Polars": {},
+            "TensorFlow": {},
+            "Scikit": {}
         },
-        "R": {},
-        "SQL": {}
+        "PySpark": {},
+        "Selenium/BS4 Web Hacking": {},
+        "SQL": {},
+        "Declarative Pipelines": {},
+        "ArcGIS": {}
+    },
+    "DevOps": {
+        "Docker": {},
+        "Microsoft Azure": {},
+        "Databricks": {},
+        "Kubernetes/Openshift": {},
+        "Cloudflare": {},
+        "Bash": {}
     },
     "Frontend": {
         "Flask (Python)": {},
-        "React (Javascript)": {},
-        "SASS/SCSS": {}
+        "REST APIs": {},
+        "Web Scraping": {}
     },
-    "Backend & DevOps": {
-        "Backend": {
-            "Rust": {},
-            "C#": {}
-        },
-        "DevOps": {
-            "Docker": {},
-            "Microsoft Azure": {},
-            "Kubernetes/Openshift": {},
-            "Cloudflare": {},
-            "Bash": {}
-        }
+    "Offline Skills": {
+        "Circuitry": {},
+        "Skiing": {},
+        "Chess": {},
+        "Plinking": {},
+        "Building something with trash that solves my problems": {}
     }
 }

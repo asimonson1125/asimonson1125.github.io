@@ -1,9 +1,15 @@
-{% macro expandSkill(dict, name, classes="") %} 
+{% macro expandSkill(dict, name, classes="") %}
 <div class='skill {{ classes }}' data-length='{{ dict[name]|length }}'>
     <div onclick='activeSkill(this)' class='skillname'>{{ name }}</div>
+{% if dict[name]|length > 0 %}
+    <div class='skill-children'>
+        <div class='skill-children-inner'>
 {% for child in dict[name] %}
 {{ expandSkill(dict[name], child) }}
-{% endfor %} 
+{% endfor %}
+        </div>
+    </div>
+{% endif %}
 </div>
 {% endmacro %}
 

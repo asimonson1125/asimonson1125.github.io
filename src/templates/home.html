@@ -20,28 +20,27 @@
     <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
     <div id="desktopSpacer"></div>
     <div class="homeSubContent">
-      <img class='blinkies' alt='My Brain is Glowing' src="{{ url_for('static', filename='photos/blinkies/brainglow.gif') }}" loading="lazy" />
       <img class='blinkies' alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" loading="lazy" />
-      <img class='blinkies' alt='I Fear No Beer' src="{{ url_for('static', filename='photos/blinkies/fearnobeer.gif') }}" loading="lazy" />
       <img class='blinkies' alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" loading="lazy" />
       <img class='blinkies' alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" loading="lazy" />
       <img class='blinkies' alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" loading="lazy" />
         <div>
             <br />
-            <strong> You've reached the website for Andrew Simonson's personal online shenanigans.</strong>
+            <strong> You've reached the website for Andrew Simonson's digital shenanigans.</strong>
             <h3>Now What?</h3>
             <p>
                 Go back and find the link that I originally shared.  Or poke around.  Be your own person.</br>
-                I guess I'll grant myself some titles while I'm at it:
+                I'll grant myself some titles while I'm at it:
             </p>
             <ul>
-              <li>Load-Bearing Coconut</li>
               <li>Wicked Wizard of the West</li>
               <li>Enemy of Node.js, Hater of Bloat</li>
+              <li>Load-Bearing Coconut</li>
               <li>Creator and Harnesser of Energy</li>
             </ul>
         </div>
         <br />
+        {# 
         <div id="aboutCards" class="flex">
             <div class="chess">
                 {% from 'partials/chess.html' import chess %} {{
@@ -53,6 +52,7 @@
             </div>
             <br />
         </div>
+        #}
     </div>
     {% endblock %}
 </div>

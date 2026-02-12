@@ -174,7 +174,6 @@ tr {
   margin-bottom: 0px;
   margin-left: 0rem;
   background-color: #1a1a1a;
-  width: 100vw;
   z-index: 99;
   position: sticky;
   top: 0;
@@ -522,7 +521,6 @@ tr {
 }
 
 .skill {
-  display: none;
   padding: .2em;
   color: rgb(235, 235, 235);
 }
@@ -535,17 +533,23 @@ tr {
   color: rgb(170, 170, 170);
 }
 
-#skillTree > .skill {
-  display: block;
+.skill-children {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
 }
 
-.skill > .skill {
+.skill.activeSkill > .skill-children {
+  grid-template-rows: 1fr;
+}
+
+.skill-children-inner {
+  overflow: hidden;
+}
+
+.skill-children-inner > .skill {
   font-size: large !important;
   padding-left: .5em;
-}
-
-.skill.activeSkill > .skill {
-  display: block !important;
 }
 
 .skill > .skillname {

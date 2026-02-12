@@ -1,5 +1,5 @@
 const balls = [];
-const density = 0.00003;
+const density = 0.00005;
 let screenWidth = window.innerWidth + 10;
 let screenHeight = window.innerHeight + 10;
 
