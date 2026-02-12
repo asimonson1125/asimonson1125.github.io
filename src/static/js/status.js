@@ -61,8 +61,8 @@ function updateServiceCard(service) {
   const card = document.getElementById(`status-${service.id}`);
   if (!card) return;
 
-  const statusDot = card.querySelector('.status-dot');
-  const statusText = card.querySelector('.status-text');
+  const stateDot = card.querySelector('.state-dot');
+  const stateText = card.querySelector('.state-text');
   const timeDisplay = document.getElementById(`time-${service.id}`);
   const codeDisplay = document.getElementById(`code-${service.id}`);
   const uptimeDisplay = document.getElementById(`uptime-${service.id}`);
@@ -87,24 +87,24 @@ function updateServiceCard(service) {
 
   switch (service.status) {
     case 'online':
-      statusDot.className = 'status-dot online';
-      statusText.textContent = 'Operational';
+      stateDot.className = 'state-dot online';
+      stateText.textContent = 'Operational';
       card.classList.add('online');
       break;
     case 'degraded':
     case 'timeout':
-      statusDot.className = 'status-dot degraded';
-      statusText.textContent = service.status === 'timeout' ? 'Timeout' : 'Degraded';
+      stateDot.className = 'state-dot degraded';
+      stateText.textContent = service.status === 'timeout' ? 'Timeout' : 'Degraded';
       card.classList.add('degraded');
       break;
     case 'offline':
-      statusDot.className = 'status-dot offline';
-      statusText.textContent = 'Offline';
+      stateDot.className = 'state-dot offline';
+      stateText.textContent = 'Offline';
       card.classList.add('offline');
       break;
     default:
-      statusDot.className = 'status-dot loading';
-      statusText.textContent = 'Unknown';
+      stateDot.className = 'state-dot loading';
+      stateText.textContent = 'Unknown';
       card.classList.add('unknown');
   }
 
@@ -114,11 +114,11 @@ function updateServiceCard(service) {
 
     // Helper function to get color class based on uptime percentage
     const getUptimeClass = (value) => {
-      if (value === null) return 'uptime-none';
-      if (value >= 99) return 'uptime-excellent';
-      if (value >= 95) return 'uptime-good';
-      if (value >= 90) return 'uptime-fair';
-      return 'uptime-poor';
+      if (value === null) return 'text-muted';
+      if (value >= 99) return 'text-excellent';
+      if (value >= 95) return 'text-good';
+      if (value >= 90) return 'text-fair';
+      return 'text-poor';
     };
 
     // Helper function to format uptime value
@@ -148,9 +148,9 @@ function updateServiceCard(service) {
  */
 function updateOverallStatus(services) {
   const overallBar = document.getElementById('overallStatus');
-  const icon = overallBar.querySelector('.overall-status-icon');
-  const title = overallBar.querySelector('.overall-status-title');
-  const subtitle = document.getElementById('overall-status-subtitle');
+  const icon = overallBar.querySelector('.summary-icon');
+  const title = overallBar.querySelector('.summary-title');
+  const subtitle = document.getElementById('summary-subtitle');
   const onlineCount = document.getElementById('onlineCount');
   const totalCount = document.getElementById('totalCount');
 
@@ -164,7 +164,7 @@ function updateOverallStatus(services) {
   onlineCount.textContent = online;
   totalCount.textContent = total;
 
-  // Remove all status classes (reuse status-card classes)
+  // Remove all status classes
   overallBar.classList.remove('online', 'degraded', 'offline');
   icon.classList.remove('operational', 'partial', 'major', 'loading');
 
@@ -173,21 +173,21 @@ function updateOverallStatus(services) {
     // All systems operational
     overallBar.classList.add('online');
     icon.classList.add('operational');
-    icon.textContent = '✓';
+    icon.textContent = '\u2713';
     title.textContent = 'All Systems Operational';
     subtitle.textContent = `All ${total} services are running normally`;
   } else if (offline >= Math.ceil(total / 2)) {
     // Major outage (50% or more offline)
     overallBar.classList.add('offline');
     icon.classList.add('major');
-    icon.textContent = '✕';
+    icon.textContent = '\u2715';
     title.textContent = 'Major Outage';
     subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline, ${degraded} degraded`;
   } else if (offline > 0 || degraded > 0) {
     // Partial outage
     overallBar.classList.add('degraded');
     icon.classList.add('partial');
-    icon.textContent = '⚠';
+    icon.textContent = '\u26A0';
     title.textContent = 'Partial Outage';
     if (offline > 0 && degraded > 0) {
       subtitle.textContent = `${offline} offline, ${degraded} degraded`;
@@ -199,7 +199,7 @@ function updateOverallStatus(services) {
   } else {
     // Unknown state
     icon.classList.add('loading');
-    icon.textContent = '◐';
+    icon.textContent = '\u25D0';
     title.textContent = 'Status Unknown';
     subtitle.textContent = 'Waiting for service data';
   }

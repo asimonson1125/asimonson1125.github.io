@@ -453,11 +453,6 @@ tr {
   margin-bottom: 5px;
 }
 
-.relative {
-  position: relative;
-}
-
-
 .bgi {
   background-size: contain;
   background-repeat: no-repeat;
@@ -1299,10 +1294,29 @@ tr {
     display: none;
     height: 0px;
   }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-items {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .summary-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .summary-indicator {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
-/* Status Page Styles */
-.status-subtitle {
+/* Reusable Card & State Components */
+.page-subtitle {
   text-align: center;
   color: #a8a8a8;
   margin-top: -10px;
@@ -1310,14 +1324,13 @@ tr {
   font-size: 1rem;
 }
 
-/* Overall Status Bar */
-/* Overall Status Card - extends status-card */
-.overall-status-card {
+/* Summary Card */
+.summary-card {
   padding: 2em;
   margin-bottom: 2em;
 }
 
-.overall-status-content {
+.summary-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1325,29 +1338,29 @@ tr {
   gap: 2em;
 }
 
-.overall-status-indicator {
+.summary-indicator {
   display: flex;
   align-items: center;
   gap: 1.5em;
 }
 
-.overall-status-icon {
+.summary-icon {
   font-size: 3rem;
   line-height: 1;
   animation: spin 2s linear infinite;
 }
 
-.overall-status-icon.operational {
+.summary-icon.operational {
   color: #4caf50;
   animation: pulse-icon 1.5s ease-in-out infinite;
 }
 
-.overall-status-icon.partial {
+.summary-icon.partial {
   color: #ffc107;
   animation: pulse-icon 1.5s ease-in-out infinite;
 }
 
-.overall-status-icon.major {
+.summary-icon.major {
   color: #f44336;
   animation: pulse-icon 1.5s ease-in-out infinite;
 }
@@ -1362,7 +1375,7 @@ tr {
   50% { opacity: 0.5; }
 }
 
-.overall-status-title {
+.summary-title {
   margin: 0;
   font-size: 1.5rem;
   color: #ecebeb;
@@ -1386,8 +1399,12 @@ tr {
 }
 
 .metric-label {
-  font-size: 0.85rem;
   color: #a8a8a8;
+  font-size: 0.9rem;
+}
+
+.metric-box .metric-label {
+  font-size: 0.85rem;
   margin-top: 0.3em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1413,14 +1430,16 @@ tr {
   cursor: not-allowed;
 }
 
-.status-container {
+/* Card Grid */
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5em;
   margin-bottom: 2em;
 }
 
-.status-card {
+/* Info Card */
+.info-card {
   background: rgba(24, 24, 24, 0.85);
   border-radius: 0.5em;
   padding: 1.5em;
@@ -1428,19 +1447,19 @@ tr {
   transition: 0.3s;
 }
 
-.status-card.online {
+.info-card.online {
   border-top-color: rgba(76, 175, 80, 0.8);
 }
 
-.status-card.degraded {
+.info-card.degraded {
   border-top-color: rgba(255, 193, 7, 0.8);
 }
 
-.status-card.offline {
+.info-card.offline {
   border-top-color: rgba(244, 67, 54, 0.8);
 }
 
-.status-header {
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1449,46 +1468,47 @@ tr {
   border-bottom: 1px solid rgba(168, 168, 168, 0.2);
 }
 
-.status-header h3 {
+.card-header h3 {
   margin: 0;
   font-size: 1.1rem;
   color: #ecebeb;
 }
 
-.status-indicator {
+/* State Indicators */
+.state-indicator {
   display: flex;
   align-items: center;
   gap: 0.5em;
 }
 
-.status-text {
+.state-text {
   font-size: 0.85rem;
   color: #a8a8a8;
 }
 
-.status-dot {
+.state-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   display: inline-block;
 }
 
-.status-dot.online, .status-dot.complete {
+.state-dot.online, .state-dot.complete {
   background: #4caf50;
   box-shadow: 0 0 10px #4caf50;
 }
 
-.status-dot.degraded, .status-dot.WIP {
+.state-dot.degraded, .state-dot.WIP {
   background: #ffc107;
   box-shadow: 0 0 10px #ffc107;
 }
 
-.status-dot.offline, .status-dot.incomplete {
+.state-dot.offline, .state-dot.incomplete {
   background: #f44336;
   box-shadow: 0 0 10px #f44336;
 }
 
-.status-dot.loading {
+.state-dot.loading {
   background: #a8a8a8;
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -1502,21 +1522,16 @@ tr {
   }
 }
 
-.status-details {
+.card-body {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
 }
 
-.status-metric {
+.metric-row {
   display: flex;
   justify-content: space-between;
   padding: 0.3em 0;
-}
-
-.metric-label {
-  color: #a8a8a8;
-  font-size: 0.9rem;
 }
 
 .metric-value {
@@ -1525,7 +1540,7 @@ tr {
   font-weight: bold;
 }
 
-.status-legend {
+.info-box {
   background: rgba(24, 24, 24, 0.85);
   border-radius: 0.5em;
   padding: 1.5em;
@@ -1533,7 +1548,7 @@ tr {
   margin-bottom: 2em;
 }
 
-.status-legend h4 {
+.info-box h4 {
   margin-top: 0;
   color: #ecebeb;
 }
@@ -1552,80 +1567,53 @@ tr {
   font-size: 0.9rem;
 }
 
-.status-note {
+.note-text {
   text-align: center;
   font-size: 0.85rem;
   color: #a8a8a8;
   font-style: italic;
 }
 
-.status-uptime {
+.card-footer {
   margin-top: 1em;
   padding-top: 0.8em;
   border-top: 1px solid rgba(168, 168, 168, 0.2);
 }
 
-.uptime-label {
+.detail-label {
   color: #a8a8a8;
   font-size: 0.85rem;
   margin-bottom: 0.3em;
   font-weight: bold;
 }
 
-.uptime-values {
+.detail-values {
   color: #ecebeb;
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
-.uptime-values strong {
+.detail-values strong {
   font-weight: 600;
 }
 
-/* Uptime color coding based on percentage */
-.uptime-excellent {
-  color: #4caf50 !important;  /* 99%+ - Green */
+/* State color utilities */
+.text-excellent {
+  color: #4caf50 !important;
 }
 
-.uptime-good {
-  color: #8bc34a !important;  /* 95-99% - Light green */
+.text-good {
+  color: #8bc34a !important;
 }
 
-.uptime-fair {
-  color: #ffc107 !important;  /* 90-95% - Yellow */
+.text-fair {
+  color: #ffc107 !important;
 }
 
-.uptime-poor {
-  color: #f44336 !important;  /* <90% - Red */
+.text-poor {
+  color: #f44336 !important;
 }
 
-.uptime-none {
-  color: #888 !important;  /* No data - Gray */
-}
-
-@media screen and (max-width: 1400px) {
-  .status-container {
-    grid-template-columns: 1fr;
-  }
-
-  .status-info {
-    flex-direction: column;
-    gap: 1em;
-  }
-
-  .legend-items {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-
-  .overall-status-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .overall-status-indicator {
-    flex-direction: column;
-    text-align: center;
-  }
-
+.text-muted {
+  color: #888 !important;
 }
