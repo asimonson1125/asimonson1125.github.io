@@ -74,35 +74,40 @@ function draw() {
     balls[i].update();
   }
 
-  // Optimize line drawing with early distance checks
+  // Draw lines with additive blending so overlaps increase brightness
+  blendMode(ADD);
+  strokeWeight(2);
+
   const maxDist = 150;
-  const maxDistSquared = maxDist * maxDist; // Avoid sqrt in distance calculation
+  const maxDistSquared = maxDist * maxDist;
 
   for (let i = 0; i < balls.length - 1; i++) {
     const ball1 = balls[i];
     for (let j = i + 1; j < balls.length; j++) {
       const ball2 = balls[j];
 
-      // Quick rejection test using squared distance (faster than sqrt)
       const dx = ball2.x - ball1.x;
       const dy = ball2.y - ball1.y;
       const distSquared = dx * dx + dy * dy;
 
       if (distSquared < maxDistSquared) {
-        const distance = Math.sqrt(distSquared); // Only calculate sqrt if needed
+        const distance = Math.sqrt(distSquared);
 
-        if (distance < 100) {
-          stroke(150);
+        if (distance < 75) {
+          stroke(255, 85);
           line(ball1.x, ball1.y, ball2.x, ball2.y);
         } else {
-          stroke(100);
           const chance = 0.3 ** (((random(0.2) + 0.8) * distance) / 150);
           if (chance < 0.5) {
-            stroke(50);
+            stroke(255, 40);
+          } else {
+            stroke(255, 75);
           }
           line(ball1.x, ball1.y, ball2.x, ball2.y);
         }
       }
     }
   }
+
+  blendMode(BLEND);
 }
