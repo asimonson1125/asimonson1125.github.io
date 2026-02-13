@@ -277,8 +277,14 @@ class ServiceMonitor:
                 if total_count == 0:
                     return None
 
-                if total_count < 3:
-                    return None
+                # Only show uptime for a window if we have data older than it
+                if hours:
+                    cur.execute(
+                        'SELECT EXISTS(SELECT 1 FROM service_checks WHERE service_id = %s AND timestamp <= %s)',
+                        (service_id, cutoff),
+                    )
+                    if not cur.fetchone()[0]:
+                        return None
 
                 return round((online_count / total_count) * 100, 2)
         finally:
