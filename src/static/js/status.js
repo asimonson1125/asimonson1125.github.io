@@ -244,8 +244,8 @@ function initStatusPage() {
     clearInterval(statusIntervalId);
   }
   fetchStatus();
-  // Auto-refresh every 5 minutes to get latest data
-  statusIntervalId = setInterval(fetchStatus, 300000);
+  // Auto-refresh every 1 minute to get latest data
+  statusIntervalId = setInterval(fetchStatus, 60000);
 }
 
 // Clean up interval when navigating away via SPA

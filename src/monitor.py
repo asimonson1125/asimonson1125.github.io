@@ -33,8 +33,12 @@ SERVICES = [
     }
 ]
 
-# Check interval: 30 mins
-CHECK_INTERVAL = 1800
+# Check interval: 1 min
+CHECK_INTERVAL = 60
+
+# Retention: 90 days (quarter year)
+RETENTION_DAYS = 90
+CLEANUP_INTERVAL = 86400  # 24 hours
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
@@ -341,20 +345,44 @@ class ServiceMonitor:
         finally:
             conn.close()
 
+    def _purge_old_records(self):
+        """Delete check records older than RETENTION_DAYS."""
+        conn = self._get_conn()
+        if conn is None:
+            return
+        try:
+            cutoff = datetime.now() - timedelta(days=RETENTION_DAYS)
+            with conn, conn.cursor() as cur:
+                cur.execute(
+                    'DELETE FROM service_checks WHERE timestamp < %s',
+                    (cutoff,),
+                )
+                deleted = cur.rowcount
+            if deleted:
+                print(f"Purged {deleted} records older than {RETENTION_DAYS} days")
+        finally:
+            conn.close()
+
     def start_monitoring(self):
         """Start background monitoring thread"""
         def monitor_loop():
-            # Initial check
             self.check_all_services()
+            self._purge_old_records()
 
-            # Periodic checks
+            checks_since_cleanup = 0
+            checks_per_cleanup = CLEANUP_INTERVAL // CHECK_INTERVAL
+
             while True:
                 time.sleep(CHECK_INTERVAL)
                 self.check_all_services()
+                checks_since_cleanup += 1
+                if checks_since_cleanup >= checks_per_cleanup:
+                    self._purge_old_records()
+                    checks_since_cleanup = 0
 
         thread = Thread(target=monitor_loop, daemon=True)
         thread.start()
-        print(f"Service monitoring started (checks every {CHECK_INTERVAL/3600} hours)")
+        print(f"Service monitoring started (checks every {CHECK_INTERVAL} seconds)")
 
 # Global monitor instance
 monitor = ServiceMonitor()
