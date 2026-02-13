@@ -277,15 +277,8 @@ class ServiceMonitor:
                 if total_count == 0:
                     return None
 
-                # Minimum-data thresholds
-                if hours:
-                    expected_checks = (hours * 3600) / CHECK_INTERVAL
-                    minimum_checks = max(3, expected_checks * 0.5)
-                    if total_count < minimum_checks:
-                        return None
-                else:
-                    if total_count < 3:
-                        return None
+                if total_count < 3:
+                    return None
 
                 return round((online_count / total_count) * 100, 2)
         finally:
