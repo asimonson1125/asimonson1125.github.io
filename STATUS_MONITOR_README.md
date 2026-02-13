@@ -19,9 +19,9 @@ Server-side monitoring system that checks the availability of asimonson.com serv
 
 **Features**:
 - Tracks response times and HTTP status codes
-- Stores check history (up to 720 checks = 60 days of data)
 - Calculates uptime percentages for multiple time periods (24h, 7d, 30d, all-time)
-- Persists data to `static/json/status_history.json`
+- Persists data to PostgreSQL (`service_checks` table) via `DATABASE_URL` env var
+- Gracefully degrades when no database is configured (local dev)
 - Runs in a background thread
 
 #### 2. `app.py` - Flask Integration
@@ -57,31 +57,21 @@ Server-side monitoring system that checks the availability of asimonson.com serv
 
 ## Data Storage
 
-Status history is stored in `src/static/json/status_history.json`:
+Check history is stored in a PostgreSQL `service_checks` table. The connection is configured via the `DATABASE_URL` environment variable (e.g. `postgresql://user:pass@host:5432/dbname`).
 
-```json
-{
-  "last_check": "2026-02-11T14:30:00",
-  "services": {
-    "main": {
-      "name": "asimonson.com",
-      "url": "https://asimonson.com",
-      "status": "online",
-      "response_time": 156,
-      "status_code": 200,
-      "last_online": "2026-02-11T14:30:00",
-      "checks": [
-        {
-          "timestamp": "2026-02-11T14:30:00",
-          "status": "online",
-          "response_time": 156,
-          "status_code": 200
-        }
-      ]
-    }
-  }
-}
+```sql
+CREATE TABLE service_checks (
+    id SERIAL PRIMARY KEY,
+    service_id VARCHAR(50) NOT NULL,
+    timestamp TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    status VARCHAR(20) NOT NULL,
+    response_time INTEGER,
+    status_code INTEGER,
+    error TEXT
+);
 ```
+
+The table and index are created automatically on startup. If `DATABASE_URL` is not set, the monitor runs without persistence (useful for local development).
 
 ## Status Types
 
@@ -142,8 +132,7 @@ SERVICES = [
 ## Notes
 
 - First deployment will show limited uptime data until enough checks accumulate
-- Historical data is preserved across server restarts
-- Maximum 720 checks stored per service (60 days at 2-hour intervals)
+- Historical data is preserved across server restarts (stored in PostgreSQL)
 - Page auto-refreshes every 5 minutes to show latest server data
 - Manual refresh button available for immediate updates
 - All checks performed server-side (no client-side CORS issues)

@@ -2,13 +2,14 @@
 Service monitoring module
 Checks service availability and tracks uptime statistics
 """
+import os
 import requests
 import time
-import json
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from threading import Thread, Lock
-from pathlib import Path
+
+import psycopg2
 
 # Service configuration
 SERVICES = [
@@ -35,52 +36,138 @@ SERVICES = [
 # Check interval: 30 mins
 CHECK_INTERVAL = 1800
 
-# File to store status history
-STATUS_FILE = Path(__file__).parent / 'static' / 'json' / 'status_history.json'
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+# Expected columns (besides id) — name: SQL type
+_EXPECTED_COLUMNS = {
+    'service_id': 'VARCHAR(50) NOT NULL',
+    'timestamp': 'TIMESTAMPTZ NOT NULL DEFAULT NOW()',
+    'status': 'VARCHAR(20) NOT NULL',
+    'response_time': 'INTEGER',
+    'status_code': 'INTEGER',
+    'error': 'TEXT',
+}
+
 
 class ServiceMonitor:
     def __init__(self):
-        self.status_data = {}
         self.lock = Lock()
-        self.load_history()
-
-    def load_history(self):
-        """Load status history from file"""
-        if STATUS_FILE.exists():
-            try:
-                with open(STATUS_FILE, 'r') as f:
-                    self.status_data = json.load(f)
-            except Exception as e:
-                print(f"Error loading status history: {e}")
-                self.initialize_status_data()
-        else:
-            self.initialize_status_data()
-
-    def initialize_status_data(self):
-        """Initialize empty status data structure"""
-        self.status_data = {
-            'last_check': None,
-            'services': {}
-        }
+        # Lightweight in-memory cache of latest status per service
+        self._current = {}
         for service in SERVICES:
-            self.status_data['services'][service['id']] = {
+            self._current[service['id']] = {
                 'name': service['name'],
                 'url': service['url'],
                 'status': 'unknown',
                 'response_time': None,
                 'status_code': None,
                 'last_online': None,
-                'checks': []  # List of check results
             }
+        self._last_check = None
+        self._ensure_schema()
 
-    def save_history(self):
-        """Save status history to file"""
+    # ── database helpers ──────────────────────────────────────────
+
+    @staticmethod
+    def _get_conn():
+        """Return a new psycopg2 connection, or None if DATABASE_URL is unset."""
+        if not DATABASE_URL:
+            return None
+        return psycopg2.connect(DATABASE_URL)
+
+    def _ensure_schema(self):
+        """Create the service_checks table (and index) if needed, then
+        reconcile columns with _EXPECTED_COLUMNS."""
+        if not DATABASE_URL:
+            print("DATABASE_URL not set — running without persistence")
+            return
+
+        # Retry connection in case DB is still starting (e.g. Docker)
+        conn = None
+        for attempt in range(5):
+            try:
+                conn = psycopg2.connect(DATABASE_URL)
+                break
+            except psycopg2.OperationalError:
+                if attempt < 4:
+                    print(f"Database not ready, retrying in 2s (attempt {attempt + 1}/5)...")
+                    time.sleep(2)
+                else:
+                    print("Could not connect to database — running without persistence")
+                    return
         try:
-            STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
-            with open(STATUS_FILE, 'w') as f:
-                json.dump(self.status_data, f, indent=2)
-        except Exception as e:
-            print(f"Error saving status history: {e}")
+            with conn, conn.cursor() as cur:
+                cur.execute("""
+                    CREATE TABLE IF NOT EXISTS service_checks (
+                        id SERIAL PRIMARY KEY,
+                        service_id VARCHAR(50) NOT NULL,
+                        timestamp TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                        status VARCHAR(20) NOT NULL,
+                        response_time INTEGER,
+                        status_code INTEGER,
+                        error TEXT
+                    );
+                """)
+                cur.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_service_checks_service_timestamp
+                        ON service_checks (service_id, timestamp DESC);
+                """)
+
+                # Introspect existing columns
+                cur.execute("""
+                    SELECT column_name
+                    FROM information_schema.columns
+                    WHERE table_name = 'service_checks'
+                """)
+                existing = {row[0] for row in cur.fetchall()}
+
+                # Add missing columns
+                for col, col_type in _EXPECTED_COLUMNS.items():
+                    if col not in existing:
+                        # Strip NOT NULL / DEFAULT for ALTER ADD (can't enforce
+                        # NOT NULL on existing rows without a default)
+                        bare_type = col_type.split('NOT NULL')[0].split('DEFAULT')[0].strip()
+                        cur.execute(
+                            f'ALTER TABLE service_checks ADD COLUMN {col} {bare_type}'
+                        )
+                        print(f"Added column {col} to service_checks")
+
+                # Drop unexpected columns (besides 'id')
+                expected_names = set(_EXPECTED_COLUMNS) | {'id'}
+                for col in existing - expected_names:
+                    cur.execute(
+                        f'ALTER TABLE service_checks DROP COLUMN {col}'
+                    )
+                    print(f"Dropped column {col} from service_checks")
+
+            print("Database schema OK")
+        finally:
+            conn.close()
+
+    def _insert_check(self, service_id, result):
+        """Insert a single check result into the database."""
+        conn = self._get_conn()
+        if conn is None:
+            return
+        try:
+            with conn, conn.cursor() as cur:
+                cur.execute(
+                    """INSERT INTO service_checks
+                           (service_id, timestamp, status, response_time, status_code, error)
+                       VALUES (%s, %s, %s, %s, %s, %s)""",
+                    (
+                        service_id,
+                        result['timestamp'],
+                        result['status'],
+                        result.get('response_time'),
+                        result.get('status_code'),
+                        result.get('error'),
+                    ),
+                )
+        finally:
+            conn.close()
+
+    # ── service checks ────────────────────────────────────────────
 
     def check_service(self, service):
         """Check a single service and return status"""
@@ -136,106 +223,123 @@ class ServiceMonitor:
                 results[service['id']] = result
                 print(f"  {service['name']}: {result['status']} ({result['response_time']}ms)")
 
-        # Only acquire lock when updating the shared data structure
+        # Persist to database (outside lock — DB has its own concurrency)
+        for service_id, result in results.items():
+            self._insert_check(service_id, result)
+
+        # Update lightweight in-memory cache under lock
         with self.lock:
             for service in SERVICES:
                 result = results[service['id']]
-                service_data = self.status_data['services'][service['id']]
-
-                # Update current status
-                service_data['status'] = result['status']
-                service_data['response_time'] = result['response_time']
-                service_data['status_code'] = result['status_code']
-
+                cached = self._current[service['id']]
+                cached['status'] = result['status']
+                cached['response_time'] = result['response_time']
+                cached['status_code'] = result['status_code']
                 if result['status'] == 'online':
-                    service_data['last_online'] = result['timestamp']
+                    cached['last_online'] = result['timestamp']
+            self._last_check = datetime.now().isoformat()
 
-                # Add to check history (keep last 2880 checks = 60 days at 2hr intervals)
-                service_data['checks'].append(result)
-                if len(service_data['checks']) > 2880:
-                    service_data['checks'] = service_data['checks'][-2880:]
-
-            self.status_data['last_check'] = datetime.now().isoformat()
-            self.save_history()
+    # ── uptime calculations ───────────────────────────────────────
 
     def _calculate_uptime_unlocked(self, service_id, hours=None):
-        """Calculate uptime percentage for a service (assumes lock is held)"""
-        service_data = self.status_data['services'].get(service_id)
-        if not service_data or not service_data['checks']:
+        """Calculate uptime percentage for a service by querying the DB."""
+        conn = self._get_conn()
+        if conn is None:
             return None
+        try:
+            with conn.cursor() as cur:
+                if hours:
+                    cutoff = datetime.now() - timedelta(hours=hours)
+                    cur.execute(
+                        """SELECT
+                               COUNT(*) FILTER (WHERE status = 'online'),
+                               COUNT(*)
+                           FROM service_checks
+                           WHERE service_id = %s AND timestamp > %s""",
+                        (service_id, cutoff),
+                    )
+                else:
+                    cur.execute(
+                        """SELECT
+                               COUNT(*) FILTER (WHERE status = 'online'),
+                               COUNT(*)
+                           FROM service_checks
+                           WHERE service_id = %s""",
+                        (service_id,),
+                    )
 
-        checks = service_data['checks']
+                online_count, total_count = cur.fetchone()
 
-        # Filter by time period if specified
-        if hours:
-            cutoff = datetime.now() - timedelta(hours=hours)
-            checks = [
-                c for c in checks
-                if datetime.fromisoformat(c['timestamp']) > cutoff
-            ]
+                if total_count == 0:
+                    return None
 
-            if not checks:
-                return None
+                # Minimum-data thresholds
+                if hours:
+                    expected_checks = (hours * 3600) / CHECK_INTERVAL
+                    minimum_checks = max(3, expected_checks * 0.5)
+                    if total_count < minimum_checks:
+                        return None
+                else:
+                    if total_count < 3:
+                        return None
 
-            # Require minimum data coverage for the time period
-            # Calculate expected number of checks for this period
-            expected_checks = (hours * 3600) / CHECK_INTERVAL
-
-            # Require at least 50% of expected checks to show this metric
-            minimum_checks = max(3, expected_checks * 0.5)
-
-            if len(checks) < minimum_checks:
-                return None
-        else:
-            # For all-time, require at least 3 checks
-            if len(checks) < 3:
-                return None
-
-        online_count = sum(1 for c in checks if c['status'] == 'online')
-        uptime = (online_count / len(checks)) * 100
-
-        return round(uptime, 2)
+                return round((online_count / total_count) * 100, 2)
+        finally:
+            conn.close()
 
     def calculate_uptime(self, service_id, hours=None):
         """Calculate uptime percentage for a service"""
-        with self.lock:
-            return self._calculate_uptime_unlocked(service_id, hours)
+        return self._calculate_uptime_unlocked(service_id, hours)
 
     def get_status_summary(self):
         """Get current status summary with uptime statistics"""
         with self.lock:
             summary = {
-                'last_check': self.status_data['last_check'],
+                'last_check': self._last_check,
                 'next_check': None,
                 'services': []
             }
 
-            # Calculate next check time
-            if self.status_data['last_check']:
-                last_check = datetime.fromisoformat(self.status_data['last_check'])
+            if self._last_check:
+                last_check = datetime.fromisoformat(self._last_check)
                 next_check = last_check + timedelta(seconds=CHECK_INTERVAL)
                 summary['next_check'] = next_check.isoformat()
 
-            for service_id, service_data in self.status_data['services'].items():
+            for service_id, cached in self._current.items():
                 service_summary = {
                     'id': service_id,
-                    'name': service_data['name'],
-                    'url': service_data['url'],
-                    'status': service_data['status'],
-                    'response_time': service_data['response_time'],
-                    'status_code': service_data['status_code'],
-                    'last_online': service_data['last_online'],
+                    'name': cached['name'],
+                    'url': cached['url'],
+                    'status': cached['status'],
+                    'response_time': cached['response_time'],
+                    'status_code': cached['status_code'],
+                    'last_online': cached['last_online'],
                     'uptime': {
                         '24h': self._calculate_uptime_unlocked(service_id, 24),
                         '7d': self._calculate_uptime_unlocked(service_id, 24 * 7),
                         '30d': self._calculate_uptime_unlocked(service_id, 24 * 30),
                         'all_time': self._calculate_uptime_unlocked(service_id)
                     },
-                    'total_checks': len(service_data['checks'])
+                    'total_checks': self._get_total_checks(service_id),
                 }
                 summary['services'].append(service_summary)
 
             return summary
+
+    def _get_total_checks(self, service_id):
+        """Return the total number of checks for a service."""
+        conn = self._get_conn()
+        if conn is None:
+            return 0
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    'SELECT COUNT(*) FROM service_checks WHERE service_id = %s',
+                    (service_id,),
+                )
+                return cur.fetchone()[0]
+        finally:
+            conn.close()
 
     def start_monitoring(self):
         """Start background monitoring thread"""
