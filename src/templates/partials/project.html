@@ -1,35 +1,32 @@
 {% macro project(title, classes, status, bgi, content, links) %}
 <div class="project {{ classes }}" data-aos="fade-up">
-  <div class="projTitle">
-    <h3>{{ title }}</h3>
-    <p><span class="state-dot {{ status }}"></span> {{ status }}</p>
+  <div class="projImageWrap">
+    {% if bgi|length > 0 %}
+      {% set path = url_for('static', filename='photos/projects/' + bgi) %}
+      <img src="{{ path }}" alt="Ref image for {{ title }} project" />
+    {% else %}
+      <div class="projImagePlaceholder"></div>
+    {% endif %}
+    <div class="proj-status-badge {{ status }}">
+      <span class="status-indicator"></span>{{ status }}
+    </div>
   </div>
-  <div class="projBody mobileV">
-    <div class="projImage">
-      {% if bgi|length > 0 %} {% set path = url_for('static',
-      filename='photos/projects/' + bgi) %}
-      <img class="" src="{{ path }}" alt="Ref image for {{ title }} project" />
-      {% endif %}
+  <div class="projContent">
+    <h3>{{ title }}</h3>
+    <p class="projDesc">{{ content }}</p>
+    {% if links %}
+    <div class="projLinks">
+      {% for i in links %}
+        {% set src = 'icons/' + i[0] + '.svg' %}
+        {% if i[1].startswith('https://') or i[1].startswith('http://') %}
+        <a href="{{ i[1] }}" rel="noopener noreferrer" class="proj-link">
+          <img class="projectLink" src="{{ url_for('static', filename=src) }}" alt="{{ i[0] }}" />
+          <span>{{ i[2] }}</span>
+        </a>
+        {% endif %}
+      {% endfor %}
     </div>
-
-    <div class="grow backedBody">
-      <div class="projDesc vFlex spaceBetween">
-        <p>{{ content }}</p>
-        <div class="projLinks">
-          {% for i in links %} {% set src = 'icons/' + i[0] + '.svg' %}
-          {% if i[1].startswith('https://') or i[1].startswith('http://') %}
-          <a href="{{i[1]}}" rel="noopener noreferrer">
-            <img
-              class="projectLink"
-              src="{{ url_for('static', filename=src) }}"
-              alt="{{i[0]}}"
-            />
-          </a>
-          {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+    {% endif %}
   </div>
 </div>
 {% endmacro %}
