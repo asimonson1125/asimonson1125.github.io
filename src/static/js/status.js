@@ -1,8 +1,5 @@
-// Fetch and display service status from API
+let statusIntervalId = null;
 
-/**
- * Fetch status data from server
- */
 async function fetchStatus() {
   try {
     const response = await fetch('/api/status');
@@ -17,36 +14,26 @@ async function fetchStatus() {
   }
 }
 
-/**
- * Update the status display with fetched data
- */
 function updateStatusDisplay(data) {
-  // Update last check time
   if (data.last_check) {
     const lastCheck = new Date(data.last_check);
-    const timeString = lastCheck.toLocaleString();
-    document.getElementById('lastUpdate').textContent = `Last checked: ${timeString}`;
+    document.getElementById('lastUpdate').textContent = `Last checked: ${lastCheck.toLocaleString()}`;
   }
 
-  // Update next check time
   if (data.next_check) {
-    const nextCheck = new Date(data.next_check);
-    const timeString = nextCheck.toLocaleString();
     const nextCheckEl = document.getElementById('nextUpdate');
     if (nextCheckEl) {
-      nextCheckEl.textContent = `Next check: ${timeString}`;
+      const nextCheck = new Date(data.next_check);
+      nextCheckEl.textContent = `Next check: ${nextCheck.toLocaleString()}`;
     }
   }
 
-  // Update each service
-  data.services.forEach(service => {
+  data.services.forEach(function(service) {
     updateServiceCard(service);
   });
 
-  // Update overall status
   updateOverallStatus(data.services);
 
-  // Re-enable refresh button
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
     refreshBtn.disabled = false;
@@ -54,9 +41,19 @@ function updateStatusDisplay(data) {
   }
 }
 
-/**
- * Update a single service card
- */
+function getUptimeClass(value) {
+  if (value === null) return 'text-muted';
+  if (value >= 99) return 'text-excellent';
+  if (value >= 95) return 'text-good';
+  if (value >= 90) return 'text-fair';
+  return 'text-poor';
+}
+
+function formatUptime(value, label) {
+  const display = value !== null ? `${value}%` : '--';
+  return `${label}: <strong class="${getUptimeClass(value)}">${display}</strong>`;
+}
+
 function updateServiceCard(service) {
   const card = document.getElementById(`status-${service.id}`);
   if (!card) return;
@@ -68,21 +65,14 @@ function updateServiceCard(service) {
   const uptimeDisplay = document.getElementById(`uptime-${service.id}`);
   const checksDisplay = document.getElementById(`checks-${service.id}`);
 
-  // Update response time
-  if (service.response_time !== null) {
-    timeDisplay.textContent = `${service.response_time}ms`;
-  } else {
-    timeDisplay.textContent = '--';
-  }
+  timeDisplay.textContent = service.response_time !== null ? `${service.response_time}ms` : '--';
 
-  // Update status code
   if (service.status_code !== null) {
     codeDisplay.textContent = service.status_code;
   } else {
     codeDisplay.textContent = service.status === 'unknown' ? 'Unknown' : 'Error';
   }
 
-  // Update status indicator
   card.classList.remove('online', 'degraded', 'offline', 'unknown');
 
   switch (service.status) {
@@ -108,44 +98,20 @@ function updateServiceCard(service) {
       card.classList.add('unknown');
   }
 
-  // Update uptime statistics
   if (uptimeDisplay && service.uptime) {
-    const uptimeHTML = [];
-
-    // Helper function to get color class based on uptime percentage
-    const getUptimeClass = (value) => {
-      if (value === null) return 'text-muted';
-      if (value >= 99) return 'text-excellent';
-      if (value >= 95) return 'text-good';
-      if (value >= 90) return 'text-fair';
-      return 'text-poor';
-    };
-
-    // Helper function to format uptime value
-    const formatUptime = (value, label) => {
-      const display = value !== null ? `${value}%` : '--';
-      const colorClass = getUptimeClass(value);
-      return `${label}: <strong class="${colorClass}">${display}</strong>`;
-    };
-
-    // Add all uptime metrics
-    uptimeHTML.push(formatUptime(service.uptime['24h'], '24h'));
-    uptimeHTML.push(formatUptime(service.uptime['7d'], '7d'));
-    uptimeHTML.push(formatUptime(service.uptime['30d'], '30d'));
-    uptimeHTML.push(formatUptime(service.uptime.all_time, 'All'));
-
-    uptimeDisplay.innerHTML = uptimeHTML.join(' | ');
+    uptimeDisplay.innerHTML = [
+      formatUptime(service.uptime['24h'], '24h'),
+      formatUptime(service.uptime['7d'], '7d'),
+      formatUptime(service.uptime['30d'], '30d'),
+      formatUptime(service.uptime.all_time, 'All'),
+    ].join(' | ');
   }
 
-  // Update total checks
   if (checksDisplay && service.total_checks !== undefined) {
     checksDisplay.textContent = service.total_checks;
   }
 }
 
-/**
- * Update overall status bar
- */
 function updateOverallStatus(services) {
   const overallBar = document.getElementById('overallStatus');
   const icon = overallBar.querySelector('.summary-icon');
@@ -154,17 +120,14 @@ function updateOverallStatus(services) {
   const onlineCount = document.getElementById('onlineCount');
   const totalCount = document.getElementById('totalCount');
 
-  // Count service statuses
   const total = services.length;
-  const online = services.filter(s => s.status === 'online').length;
-  const degraded = services.filter(s => s.status === 'degraded' || s.status === 'timeout').length;
-  const offline = services.filter(s => s.status === 'offline').length;
+  const online = services.filter(function(s) { return s.status === 'online'; }).length;
+  const degraded = services.filter(function(s) { return s.status === 'degraded' || s.status === 'timeout'; }).length;
+  const offline = services.filter(function(s) { return s.status === 'offline'; }).length;
 
-  // Update counts
   onlineCount.textContent = online;
   totalCount.textContent = total;
 
-  // Remove all status classes
   overallBar.classList.remove('online', 'degraded', 'offline');
   icon.classList.remove('operational', 'partial', 'major', 'loading');
 
@@ -205,9 +168,6 @@ function updateOverallStatus(services) {
   }
 }
 
-/**
- * Show error message
- */
 function showError(message) {
   const errorDiv = document.createElement('div');
   errorDiv.className = 'status-error';
@@ -217,13 +177,10 @@ function showError(message) {
   const container = document.querySelector('.foregroundContent');
   if (container) {
     container.insertBefore(errorDiv, container.firstChild);
-    setTimeout(() => errorDiv.remove(), 5000);
+    setTimeout(function() { errorDiv.remove(); }, 5000);
   }
 }
 
-/**
- * Manual refresh
- */
 function refreshStatus() {
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
@@ -233,30 +190,22 @@ function refreshStatus() {
   fetchStatus();
 }
 
-/**
- * Initialize on page load
- */
-var statusIntervalId = null;
-
 function initStatusPage() {
-  // Clear any existing interval from a previous SPA navigation
   if (statusIntervalId !== null) {
     clearInterval(statusIntervalId);
   }
   fetchStatus();
-  // Auto-refresh every 1 minute to get latest data
   statusIntervalId = setInterval(fetchStatus, 60000);
 }
 
-// Clean up interval when navigating away via SPA
-document.addEventListener('beforenavigate', () => {
+// Clean up polling interval when navigating away via SPA
+document.addEventListener('beforenavigate', function() {
   if (statusIntervalId !== null) {
     clearInterval(statusIntervalId);
     statusIntervalId = null;
   }
 });
 
-// Start when page loads
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initStatusPage);
 } else {

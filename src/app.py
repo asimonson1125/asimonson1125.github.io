@@ -1,15 +1,18 @@
-import flask
-from flask_minify import Minify
+import hashlib
 import json
 import os
-import hashlib
+
+import flask
+from flask_minify import Minify
 import werkzeug.exceptions as HTTPerror
-from config import *
+
+import config  # noqa: F401 — side-effect: loads dev env vars
 from monitor import monitor, SERVICES
 
 app = flask.Flask(__name__)
 
-# Compute content hashes for static file fingerprinting
+# ── Static file fingerprinting ────────────────────────────────────────
+
 static_file_hashes = {}
 for dirpath, _, filenames in os.walk(app.static_folder):
     for filename in filenames:
@@ -17,6 +20,7 @@ for dirpath, _, filenames in os.walk(app.static_folder):
         relative = os.path.relpath(filepath, app.static_folder)
         with open(filepath, 'rb') as f:
             static_file_hashes[relative] = hashlib.md5(f.read()).hexdigest()[:8]
+
 
 @app.context_processor
 def override_url_for():
@@ -28,17 +32,16 @@ def override_url_for():
         return flask.url_for(endpoint, **values)
     return dict(url_for=versioned_url_for)
 
-# Add security and caching headers
+
+# ── Security and caching headers ──────────────────────────────────────
+
 @app.after_request
-def add_security_headers(response):
-    """Add security and performance headers to all responses"""
-    # Security headers
+def add_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
     response.headers['X-XSS-Protection'] = '1; mode=block'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
 
-    # Cache control for static assets
     if flask.request.path.startswith('/static/'):
         response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
     elif flask.request.path in ['/sitemap.xml', '/robots.txt']:
@@ -49,102 +52,99 @@ def add_security_headers(response):
     return response
 
 
+# ── Load page data ────────────────────────────────────────────────────
 
 def load_json(path):
     with open(path, "r") as f:
         return json.load(f)
 
-proj = load_json("./static/json/projects.json")
+
+projects = load_json("./static/json/projects.json")
 books = load_json("./static/json/books.json")
-skillList = load_json("./static/json/skills.json")
+skills = load_json("./static/json/skills.json")
 timeline = load_json("./static/json/timeline.json")
 pages = load_json("./static/json/pages.json")
 
-pages['projects']['skillList'] = skillList
-# pages['about']['timeline'] = timeline
-pages['projects']['projects'] = proj
+pages['projects']['skillList'] = skills
+pages['projects']['projects'] = projects
 pages['home']['books'] = books
 pages['books']['books'] = books
 pages['status']['services'] = SERVICES
 
+
+# ── Error rendering ──────────────────────────────────────────────────
+
+def render_error(code, message):
+    pagevars = {
+        "template": "error.html",
+        "title": f"{code} - Simonson",
+        "description": "Error on Andrew Simonson's Digital Portfolio",
+        "canonical": f"/{code}",
+    }
+    return (
+        flask.render_template(
+            "header.html",
+            var=pagevars,
+            error=code,
+            message=message,
+            title=f"{code} - Simonson Portfolio",
+        ),
+        code,
+    )
+
+
+@app.errorhandler(HTTPerror.HTTPException)
+def handle_http_error(e):
+    return render_error(e.code, e.description)
+
+
+@app.errorhandler(Exception)
+def handle_generic_error(e):
+    return render_error(500, "Internal Server Error")
+
+
+# ── API routes ────────────────────────────────────────────────────────
+
 @app.route('/api/status')
 def api_status():
-    """API endpoint for service status"""
     return flask.jsonify(monitor.get_status_summary())
+
 
 @app.route('/api/goto/')
 @app.route('/api/goto/<location>')
-def goto(location='home'):
+def api_goto(location='home'):
     if location not in pages:
         flask.abort(404)
     pagevars = pages[location]
-    page = None
     try:
         page = flask.render_template(pagevars["template"], var=pagevars)
     except Exception:
-        e = HTTPerror.InternalServerError()
-        page = handle_http_error(e)
+        page = render_error(500, "Internal Server Error")
     return [pagevars, page]
 
-def funcGen(pagename, pages):
-    def dynamicRule():
+
+# ── Dynamic page routes ──────────────────────────────────────────────
+
+def make_page_handler(pagename):
+    def handler():
         try:
             return flask.render_template('header.html', var=pages[pagename])
         except Exception:
-            e = HTTPerror.InternalServerError()
-            print(e)
-            return handle_http_error(e)
-    return dynamicRule  
+            return render_error(500, "Internal Server Error")
+    return handler
 
-for i in pages:
-    func = funcGen(i, pages)
-    app.add_url_rule(pages[i]['canonical'], i, func)
+
+for name in pages:
+    app.add_url_rule(pages[name]['canonical'], name, make_page_handler(name))
+
+
+# ── Static file routes ───────────────────────────────────────────────
 
 @app.route("/resume")
 @app.route("/Resume.pdf")
 @app.route("/Resume_Simonson_Andrew.pdf")
 def resume():
     return flask.send_file("./static/Resume_Simonson_Andrew.pdf")
-
-@app.errorhandler(HTTPerror.HTTPException)
-def handle_http_error(e):
-    eCode = e.code
-    message = e.description
-    pagevars = {
-        "template": "error.html",
-        "title": f"{eCode} - Simonson",
-        "description": "Error on Andrew Simonson's Digital Portfolio",
-        "canonical": f"/{eCode}",
-    }
-    return (
-        flask.render_template(
-            "header.html",
-            var=pagevars,
-            error=eCode,
-            message=message,
-            title=f"{eCode} - Simonson Portfolio",
-        ),
-        eCode,
-    )
-
-@app.errorhandler(Exception)
-def handle_generic_error(e):
-    pagevars = {
-        "template": "error.html",
-        "title": "500 - Simonson",
-        "description": "Error on Andrew Simonson's Digital Portfolio",
-        "canonical": "/500",
-    }
-    return (
-        flask.render_template(
-            "header.html",
-            var=pagevars,
-            error=500,
-            message="Internal Server Error",
-            title="500 - Simonson Portfolio",
-        ),
-        500,
-    )
 
 
 @app.route("/sitemap.xml")
@@ -153,10 +153,9 @@ def static_from_root():
     return flask.send_from_directory(app.static_folder, flask.request.path[1:])
 
 
-if __name__ == "__main__":
-    # import sass
+# ── Startup ───────────────────────────────────────────────────────────
 
-    # sass.compile(dirname=("static/scss", "static/css"), output_style="compressed")
+if __name__ == "__main__":
     app.run(debug=False)
 else:
     Minify(app=app, html=True, js=True, cssless=True)

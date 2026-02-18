@@ -46,31 +46,6 @@
 
     <br />
     <h2 class="concentratedHead">Projects</h2>
-    <!-- >
-    <div class="checkbox-wrapper">
-      <div class="flex start">
-      <label class="switch" htmlFor="pinned">
-        <input type="checkbox" id="pinned" onClick="toggleCheckbox('')" checked/>
-        <div class="slider round"></div>
-        <strong>Pinned</strong>
-      </label>
-      </div>
-      <div class="flex start">
-      <label class="switch" htmlFor="programming">
-        <input type="checkbox" id="programming" onClick="toggleCheckbox('')" />
-        <div class="slider round"></div>
-        <strong>Programming</strong>
-      </label>
-      </div>
-      <div class="flex start">
-      <label class="switch" htmlFor="geospacial" onClick="toggleCheckbox('')">
-        <input type="checkbox" id="geospacial" />
-        <div class="slider round"></div>
-        <strong>Geospacial</strong>
-      </label>
-      </div>
-    </div>
-    </!-->
     <div class="projectList">
         {% from 'partials/project.html' import project %} {% for i in
         var["projects"] %} {{ project(i, var["projects"][i]["classes"],
@@ -80,5 +55,4 @@
     </div>
 </div>
 
-<!--><script>toggleCheckbox('')</script></!-->
 {% endblock %}

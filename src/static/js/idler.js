@@ -3,6 +3,9 @@ const density = 0.00005;
 let screenWidth = window.innerWidth + 10;
 let screenHeight = window.innerHeight + 10;
 
+const MAX_DIST = 150;
+const MAX_DIST_SQUARED = MAX_DIST * MAX_DIST;
+
 class Ball {
   constructor(x, y, size, speed, angle) {
     this.x = x;
@@ -14,8 +17,9 @@ class Ball {
   }
 
   calcChange() {
-    this.xSpeed = this.speed * Math.sin((this.angle * Math.PI) / 180);
-    this.ySpeed = this.speed * Math.cos((this.angle * Math.PI) / 180);
+    const radians = (this.angle * Math.PI) / 180
+    this.xSpeed = this.speed * Math.sin(radians);
+    this.ySpeed = this.speed * Math.cos(radians);
   }
 
   update() {
@@ -44,19 +48,17 @@ class Ball {
 
 function setup() {
   frameRate(15);
-  const pix = screenHeight * screenWidth;
+  const pixels = screenHeight * screenWidth;
   createCanvas(screenWidth, screenHeight);
-  for (let i = 0; i < pix * density; i++) {
-    let thisBall = new Ball(
+  for (let i = 0; i < pixels * density; i++) {
+    balls.push(new Ball(
       random(screenWidth),
       random(screenHeight),
       random(6) + 3,
       Math.exp(random(4) + 3) / 1000 + 1,
       random(360)
-    );
-    balls.push(thisBall);
+    ));
   }
-
   stroke(255);
 }
 
@@ -69,42 +71,31 @@ function windowResized() {
 function draw() {
   background(24);
 
-  // Update all balls
   for (let i = 0; i < balls.length; i++) {
     balls[i].update();
   }
 
-  // Draw lines with additive blending so overlaps increase brightness
+  // Draw connection lines with additive blending so overlaps brighten
   blendMode(ADD);
   strokeWeight(2);
 
-  const maxDist = 150;
-  const maxDistSquared = maxDist * maxDist;
-
   for (let i = 0; i < balls.length - 1; i++) {
-    const ball1 = balls[i];
+    const a = balls[i];
     for (let j = i + 1; j < balls.length; j++) {
-      const ball2 = balls[j];
-
-      const dx = ball2.x - ball1.x;
-      const dy = ball2.y - ball1.y;
+      const b = balls[j];
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
       const distSquared = dx * dx + dy * dy;
 
-      if (distSquared < maxDistSquared) {
+      if (distSquared < MAX_DIST_SQUARED) {
         const distance = Math.sqrt(distSquared);
-
         if (distance < 75) {
           stroke(255, 85);
-          line(ball1.x, ball1.y, ball2.x, ball2.y);
         } else {
-          const chance = 0.3 ** (((random(0.2) + 0.8) * distance) / 150);
-          if (chance < 0.5) {
-            stroke(255, 40);
-          } else {
-            stroke(255, 75);
-          }
-          line(ball1.x, ball1.y, ball2.x, ball2.y);
+          const chance = 0.3 ** (((random(0.2) + 0.8) * distance) / MAX_DIST);
+          stroke(255, chance < 0.5 ? 40 : 75);
         }
+        line(a.x, a.y, b.x, b.y);
       }
     }
   }

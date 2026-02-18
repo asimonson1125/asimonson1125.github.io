@@ -271,6 +271,10 @@ tr {
   gap: 0;
 }
 
+.navElement + .navElement {
+  border-left: 1px solid rgba(var(--accent-rgb), 0.4);
+}
+
 .navElement {
   display: inline-block;
   text-align: center;
@@ -786,6 +790,7 @@ tr {
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  color: inherit;
   background: currentColor;
   box-shadow: 0 0 6px currentColor;
   flex-shrink: 0;
@@ -1402,7 +1407,8 @@ tr {
   }
 
   .navElement + .navElement {
-    border-top: 1px solid rgba(var(--accent-rgb), 0.1);
+    border-top: 1px solid rgba(var(--accent-rgb), 0.25);
+    border-left: none;
   }
 
   .navElement * {

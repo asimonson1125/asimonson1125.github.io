@@ -7,17 +7,21 @@ async function addChessEmbed(username) {
     setChess({ cName: "Chess.com request failed" });
     return;
   }
+
   if (user.status === 200) {
     user = await user.json();
     stats = await stats.json();
-    const ratings = {
-      rapid: stats.chess_rapid.last.rating,
-      blitz: stats.chess_blitz.last.rating,
-      bullet: stats.chess_bullet.last.rating,
-      tactics: stats.tactics.highest.rating,
-    };
-    setChess({ cName: user["username"], pic: user.avatar, ratings: ratings });
-  } else if (user === null || user.status === 403 || user.status === null) {
+    setChess({
+      cName: user["username"],
+      pic: user.avatar,
+      ratings: {
+        rapid: stats.chess_rapid.last.rating,
+        blitz: stats.chess_blitz.last.rating,
+        bullet: stats.chess_bullet.last.rating,
+        tactics: stats.tactics.highest.rating,
+      },
+    });
+  } else if (user.status === 403) {
     setChess({ cName: "Chess.com request failed" });
   } else {
     setChess({ cName: "User Not Found" });
@@ -33,16 +37,12 @@ function setChess({ cName = null, pic = null, ratings = null }) {
       document.querySelector(".chessImage").src = pic;
     }
     if (ratings) {
-      document.querySelector(".chessRapid .chessStat").textContent =
-        ratings.rapid;
-      document.querySelector(".chessBlitz .chessStat").textContent =
-        ratings.blitz;
-      document.querySelector(".chessBullet .chessStat").textContent =
-        ratings.bullet;
-      document.querySelector(".chessPuzzles .chessStat").textContent =
-        ratings.tactics;
+      document.querySelector(".chessRapid .chessStat").textContent = ratings.rapid;
+      document.querySelector(".chessBlitz .chessStat").textContent = ratings.blitz;
+      document.querySelector(".chessBullet .chessStat").textContent = ratings.bullet;
+      document.querySelector(".chessPuzzles .chessStat").textContent = ratings.tactics;
     }
   } catch {
-    console.log("fucker clicking so fast the internet can't even keep up");
+    console.warn("Chess DOM elements not available (navigated away during fetch)");
   }
 }

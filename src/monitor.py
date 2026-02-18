@@ -1,76 +1,57 @@
 """
-Service monitoring module
-Checks service availability and tracks uptime statistics
+Service monitoring module.
+Checks service availability and tracks uptime statistics in PostgreSQL.
 """
 import os
-import requests
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from threading import Thread, Lock
 
 import psycopg2
+import requests
 
-# Service configuration
 SERVICES = [
-    {
-        'id': 'main',
-        'name': 'asimonson.com',
-        'url': 'https://asimonson.com',
-        'timeout': 10
-    },
-    {
-        'id': 'files',
-        'name': 'files.asimonson.com',
-        'url': 'https://files.asimonson.com',
-        'timeout': 10
-    },
-    {
-        'id': 'git',
-        'name': 'git.asimonson.com',
-        'url': 'https://git.asimonson.com',
-        'timeout': 10
-    }
+    {'id': 'main',  'name': 'asimonson.com',       'url': 'https://asimonson.com',       'timeout': 10},
+    {'id': 'files', 'name': 'files.asimonson.com',  'url': 'https://files.asimonson.com',  'timeout': 10},
+    {'id': 'git',   'name': 'git.asimonson.com',    'url': 'https://git.asimonson.com',    'timeout': 10},
 ]
 
-# Check interval: 1 min
-CHECK_INTERVAL = 60
-
-# Retention: 90 days (quarter year)
-RETENTION_DAYS = 90
-CLEANUP_INTERVAL = 86400  # 24 hours
+CHECK_INTERVAL = 60           # seconds between checks
+RETENTION_DAYS = 90           # how long to keep records
+CLEANUP_INTERVAL = 86400      # seconds between purge runs
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-# Expected columns (besides id) — name: SQL type
+# Expected columns (besides id) -- name: SQL type
 _EXPECTED_COLUMNS = {
-    'service_id': 'VARCHAR(50) NOT NULL',
-    'timestamp': 'TIMESTAMPTZ NOT NULL DEFAULT NOW()',
-    'status': 'VARCHAR(20) NOT NULL',
+    'service_id':    'VARCHAR(50) NOT NULL',
+    'timestamp':     'TIMESTAMPTZ NOT NULL DEFAULT NOW()',
+    'status':        'VARCHAR(20) NOT NULL',
     'response_time': 'INTEGER',
-    'status_code': 'INTEGER',
-    'error': 'TEXT',
+    'status_code':   'INTEGER',
+    'error':         'TEXT',
 }
 
 
 class ServiceMonitor:
     def __init__(self):
         self.lock = Lock()
-        # Lightweight in-memory cache of latest status per service
-        self._current = {}
-        for service in SERVICES:
-            self._current[service['id']] = {
-                'name': service['name'],
-                'url': service['url'],
+        self._current = {
+            svc['id']: {
+                'name': svc['name'],
+                'url': svc['url'],
                 'status': 'unknown',
                 'response_time': None,
                 'status_code': None,
                 'last_online': None,
             }
+            for svc in SERVICES
+        }
         self._last_check = None
         self._ensure_schema()
 
-    # ── database helpers ──────────────────────────────────────────
+    # ── Database helpers ──────────────────────────────────────────
 
     @staticmethod
     def _get_conn():
@@ -80,13 +61,11 @@ class ServiceMonitor:
         return psycopg2.connect(DATABASE_URL)
 
     def _ensure_schema(self):
-        """Create the service_checks table (and index) if needed, then
-        reconcile columns with _EXPECTED_COLUMNS."""
+        """Create or migrate the service_checks table to match _EXPECTED_COLUMNS."""
         if not DATABASE_URL:
-            print("DATABASE_URL not set — running without persistence")
+            print("DATABASE_URL not set -- running without persistence")
             return
 
-        # Retry connection in case DB is still starting (e.g. Docker)
         conn = None
         for attempt in range(5):
             try:
@@ -97,8 +76,9 @@ class ServiceMonitor:
                     print(f"Database not ready, retrying in 2s (attempt {attempt + 1}/5)...")
                     time.sleep(2)
                 else:
-                    print("Could not connect to database — running without persistence")
+                    print("Could not connect to database -- running without persistence")
                     return
+
         try:
             with conn, conn.cursor() as cur:
                 cur.execute("""
@@ -125,23 +105,15 @@ class ServiceMonitor:
                 """)
                 existing = {row[0] for row in cur.fetchall()}
 
-                # Add missing columns
                 for col, col_type in _EXPECTED_COLUMNS.items():
                     if col not in existing:
-                        # Strip NOT NULL / DEFAULT for ALTER ADD (can't enforce
-                        # NOT NULL on existing rows without a default)
                         bare_type = col_type.split('NOT NULL')[0].split('DEFAULT')[0].strip()
-                        cur.execute(
-                            f'ALTER TABLE service_checks ADD COLUMN {col} {bare_type}'
-                        )
+                        cur.execute(f'ALTER TABLE service_checks ADD COLUMN {col} {bare_type}')
                         print(f"Added column {col} to service_checks")
 
-                # Drop unexpected columns (besides 'id')
                 expected_names = set(_EXPECTED_COLUMNS) | {'id'}
                 for col in existing - expected_names:
-                    cur.execute(
-                        f'ALTER TABLE service_checks DROP COLUMN {col}'
-                    )
+                    cur.execute(f'ALTER TABLE service_checks DROP COLUMN {col}')
                     print(f"Dropped column {col} from service_checks")
 
             print("Database schema OK")
@@ -149,7 +121,7 @@ class ServiceMonitor:
             conn.close()
 
     def _insert_check(self, service_id, result):
-        """Insert a single check result into the database."""
+        """Persist a single check result to the database."""
         conn = self._get_conn()
         if conn is None:
             return
@@ -171,35 +143,28 @@ class ServiceMonitor:
         finally:
             conn.close()
 
-    # ── service checks ────────────────────────────────────────────
+    # ── Service checks ────────────────────────────────────────────
 
     def check_service(self, service):
-        """Check a single service and return status"""
+        """Perform an HTTP HEAD against a service and return a status dict."""
         start_time = time.time()
         result = {
             'timestamp': datetime.now().isoformat(),
             'status': 'offline',
             'response_time': None,
-            'status_code': None
+            'status_code': None,
         }
 
         try:
             response = requests.head(
                 service['url'],
                 timeout=service['timeout'],
-                allow_redirects=True
+                allow_redirects=True,
             )
-
-            elapsed = int((time.time() - start_time) * 1000)  # ms
-
-            result['response_time'] = elapsed
+            result['response_time'] = int((time.time() - start_time) * 1000)
             result['status_code'] = response.status_code
 
-            # Consider 2xx and 3xx as online
-            if 200 <= response.status_code < 400:
-                result['status'] = 'online'
-            elif 400 <= response.status_code < 500:
-                # Client errors might still mean service is up
+            if response.status_code < 500:
                 result['status'] = 'online'
             else:
                 result['status'] = 'degraded'
@@ -214,10 +179,9 @@ class ServiceMonitor:
         return result
 
     def check_all_services(self):
-        """Check all services and update status data"""
+        """Check every service concurrently, persist results, and update cache."""
         print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Checking all services...")
 
-        # Perform all network checks concurrently and OUTSIDE the lock
         results = {}
         with ThreadPoolExecutor(max_workers=len(SERVICES)) as executor:
             futures = {executor.submit(self.check_service, s): s for s in SERVICES}
@@ -227,11 +191,9 @@ class ServiceMonitor:
                 results[service['id']] = result
                 print(f"  {service['name']}: {result['status']} ({result['response_time']}ms)")
 
-        # Persist to database (outside lock — DB has its own concurrency)
         for service_id, result in results.items():
             self._insert_check(service_id, result)
 
-        # Update lightweight in-memory cache under lock
         with self.lock:
             for service in SERVICES:
                 result = results[service['id']]
@@ -243,13 +205,14 @@ class ServiceMonitor:
                     cached['last_online'] = result['timestamp']
             self._last_check = datetime.now().isoformat()
 
-    # ── uptime calculations ───────────────────────────────────────
+    # ── Uptime calculations ───────────────────────────────────────
 
-    def _calculate_uptime_unlocked(self, service_id, hours=None):
-        """Calculate uptime percentage for a service by querying the DB."""
+    def _calculate_uptime(self, service_id, hours=None):
+        """Return uptime percentage for a service, or None if insufficient data."""
         conn = self._get_conn()
         if conn is None:
             return None
+
         try:
             with conn.cursor() as cur:
                 if hours:
@@ -273,11 +236,10 @@ class ServiceMonitor:
                     )
 
                 online_count, total_count = cur.fetchone()
-
                 if total_count == 0:
                     return None
 
-                # Only show uptime for a window if we have data older than it
+                # Only report a time-windowed uptime if data exists beyond the window
                 if hours:
                     cur.execute(
                         'SELECT EXISTS(SELECT 1 FROM service_checks WHERE service_id = %s AND timestamp <= %s)',
@@ -290,47 +252,8 @@ class ServiceMonitor:
         finally:
             conn.close()
 
-    def calculate_uptime(self, service_id, hours=None):
-        """Calculate uptime percentage for a service"""
-        return self._calculate_uptime_unlocked(service_id, hours)
-
-    def get_status_summary(self):
-        """Get current status summary with uptime statistics"""
-        with self.lock:
-            summary = {
-                'last_check': self._last_check,
-                'next_check': None,
-                'services': []
-            }
-
-            if self._last_check:
-                last_check = datetime.fromisoformat(self._last_check)
-                next_check = last_check + timedelta(seconds=CHECK_INTERVAL)
-                summary['next_check'] = next_check.isoformat()
-
-            for service_id, cached in self._current.items():
-                service_summary = {
-                    'id': service_id,
-                    'name': cached['name'],
-                    'url': cached['url'],
-                    'status': cached['status'],
-                    'response_time': cached['response_time'],
-                    'status_code': cached['status_code'],
-                    'last_online': cached['last_online'],
-                    'uptime': {
-                        '24h': self._calculate_uptime_unlocked(service_id, 24),
-                        '7d': self._calculate_uptime_unlocked(service_id, 24 * 7),
-                        '30d': self._calculate_uptime_unlocked(service_id, 24 * 30),
-                        'all_time': self._calculate_uptime_unlocked(service_id)
-                    },
-                    'total_checks': self._get_total_checks(service_id),
-                }
-                summary['services'].append(service_summary)
-
-            return summary
-
     def _get_total_checks(self, service_id):
-        """Return the total number of checks for a service."""
+        """Return the total number of recorded checks for a service."""
         conn = self._get_conn()
         if conn is None:
             return 0
@@ -344,6 +267,43 @@ class ServiceMonitor:
         finally:
             conn.close()
 
+    # ── Status summary ────────────────────────────────────────────
+
+    def get_status_summary(self):
+        """Build a JSON-serializable status summary with uptime statistics."""
+        with self.lock:
+            summary = {
+                'last_check': self._last_check,
+                'next_check': None,
+                'services': [],
+            }
+
+            if self._last_check:
+                last_check = datetime.fromisoformat(self._last_check)
+                summary['next_check'] = (last_check + timedelta(seconds=CHECK_INTERVAL)).isoformat()
+
+            for service_id, cached in self._current.items():
+                summary['services'].append({
+                    'id': service_id,
+                    'name': cached['name'],
+                    'url': cached['url'],
+                    'status': cached['status'],
+                    'response_time': cached['response_time'],
+                    'status_code': cached['status_code'],
+                    'last_online': cached['last_online'],
+                    'uptime': {
+                        '24h': self._calculate_uptime(service_id, 24),
+                        '7d': self._calculate_uptime(service_id, 24 * 7),
+                        '30d': self._calculate_uptime(service_id, 24 * 30),
+                        'all_time': self._calculate_uptime(service_id),
+                    },
+                    'total_checks': self._get_total_checks(service_id),
+                })
+
+            return summary
+
+    # ── Background loop ───────────────────────────────────────────
+
     def _purge_old_records(self):
         """Delete check records older than RETENTION_DAYS."""
         conn = self._get_conn()
@@ -352,10 +312,7 @@ class ServiceMonitor:
         try:
             cutoff = datetime.now() - timedelta(days=RETENTION_DAYS)
             with conn, conn.cursor() as cur:
-                cur.execute(
-                    'DELETE FROM service_checks WHERE timestamp < %s',
-                    (cutoff,),
-                )
+                cur.execute('DELETE FROM service_checks WHERE timestamp < %s', (cutoff,))
                 deleted = cur.rowcount
             if deleted:
                 print(f"Purged {deleted} records older than {RETENTION_DAYS} days")
@@ -363,7 +320,7 @@ class ServiceMonitor:
             conn.close()
 
     def start_monitoring(self):
-        """Start background monitoring thread"""
+        """Start the background daemon thread for periodic checks and cleanup."""
         def monitor_loop():
             self.check_all_services()
             self._purge_old_records()
@@ -381,7 +338,7 @@ class ServiceMonitor:
 
         thread = Thread(target=monitor_loop, daemon=True)
         thread.start()
-        print(f"Service monitoring started (checks every {CHECK_INTERVAL} seconds)")
+        print(f"Service monitoring started (checks every {CHECK_INTERVAL}s)")
 
-# Global monitor instance
+
 monitor = ServiceMonitor()
