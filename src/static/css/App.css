@@ -1840,3 +1840,38 @@ tr {
 .text-muted {
   color: #888 !important;
 }
+/* SPA Loading Bar */
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #fff 50%, var(--accent) 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
+  z-index: 2000;
+  width: 0%;
+  opacity: 0;
+  transition: width 0.4s cubic-bezier(0.1, 0.05, 0.1, 1), opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#loading-bar.visible {
+  opacity: 1;
+}
+
+#loading-bar.active {
+  width: 70%;
+  animation: loading-shimmer 2s infinite linear;
+}
+
+#loading-bar.finish {
+  opacity: 0;
+  width: 100%;
+  transition: width 0.2s ease, opacity 0.4s ease 0.1s;
+}
+
+@keyframes loading-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}

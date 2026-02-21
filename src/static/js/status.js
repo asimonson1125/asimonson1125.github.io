@@ -1,4 +1,8 @@
-let statusIntervalId = null;
+// Use a global to track the interval and ensure we don't stack listeners
+if (window.statusIntervalId) {
+  clearInterval(window.statusIntervalId);
+  window.statusIntervalId = null;
+}
 
 async function fetchStatus() {
   try {
@@ -17,7 +21,8 @@ async function fetchStatus() {
 function updateStatusDisplay(data) {
   if (data.last_check) {
     const lastCheck = new Date(data.last_check);
-    document.getElementById('lastUpdate').textContent = `Last checked: ${lastCheck.toLocaleString()}`;
+    const lastUpdateEl = document.getElementById('lastUpdate');
+    if (lastUpdateEl) lastUpdateEl.textContent = `Last checked: ${lastCheck.toLocaleString()}`;
   }
 
   if (data.next_check) {
@@ -28,11 +33,12 @@ function updateStatusDisplay(data) {
     }
   }
 
-  data.services.forEach(function(service) {
-    updateServiceCard(service);
-  });
-
-  updateOverallStatus(data.services);
+  if (data.services) {
+    data.services.forEach(function(service) {
+      updateServiceCard(service);
+    });
+    updateOverallStatus(data.services);
+  }
 
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
@@ -65,36 +71,38 @@ function updateServiceCard(service) {
   const uptimeDisplay = document.getElementById(`uptime-${service.id}`);
   const checksDisplay = document.getElementById(`checks-${service.id}`);
 
-  timeDisplay.textContent = service.response_time !== null ? `${service.response_time}ms` : '--';
+  if (timeDisplay) timeDisplay.textContent = service.response_time !== null ? `${service.response_time}ms` : '--';
 
-  if (service.status_code !== null) {
-    codeDisplay.textContent = service.status_code;
-  } else {
-    codeDisplay.textContent = service.status === 'unknown' ? 'Unknown' : 'Error';
+  if (codeDisplay) {
+    if (service.status_code !== null) {
+      codeDisplay.textContent = service.status_code;
+    } else {
+      codeDisplay.textContent = service.status === 'unknown' ? 'Unknown' : 'Error';
+    }
   }
 
   card.classList.remove('online', 'degraded', 'offline', 'unknown');
 
   switch (service.status) {
     case 'online':
-      stateDot.className = 'state-dot online';
-      stateText.textContent = 'Operational';
+      if (stateDot) stateDot.className = 'state-dot online';
+      if (stateText) stateText.textContent = 'Operational';
       card.classList.add('online');
       break;
     case 'degraded':
     case 'timeout':
-      stateDot.className = 'state-dot degraded';
-      stateText.textContent = service.status === 'timeout' ? 'Timeout' : 'Degraded';
+      if (stateDot) stateDot.className = 'state-dot degraded';
+      if (stateText) stateText.textContent = service.status === 'timeout' ? 'Timeout' : 'Degraded';
       card.classList.add('degraded');
       break;
     case 'offline':
-      stateDot.className = 'state-dot offline';
-      stateText.textContent = 'Offline';
+      if (stateDot) stateDot.className = 'state-dot offline';
+      if (stateText) stateText.textContent = 'Offline';
       card.classList.add('offline');
       break;
     default:
-      stateDot.className = 'state-dot loading';
-      stateText.textContent = 'Unknown';
+      if (stateDot) stateDot.className = 'state-dot loading';
+      if (stateText) stateText.textContent = 'Unknown';
       card.classList.add('unknown');
   }
 
@@ -114,6 +122,8 @@ function updateServiceCard(service) {
 
 function updateOverallStatus(services) {
   const overallBar = document.getElementById('overallStatus');
+  if (!overallBar) return;
+
   const icon = overallBar.querySelector('.summary-icon');
   const title = overallBar.querySelector('.summary-title');
   const subtitle = document.getElementById('summary-subtitle');
@@ -125,46 +135,52 @@ function updateOverallStatus(services) {
   const degraded = services.filter(function(s) { return s.status === 'degraded' || s.status === 'timeout'; }).length;
   const offline = services.filter(function(s) { return s.status === 'offline'; }).length;
 
-  onlineCount.textContent = online;
-  totalCount.textContent = total;
+  if (onlineCount) onlineCount.textContent = online;
+  if (totalCount) totalCount.textContent = total;
 
   overallBar.classList.remove('online', 'degraded', 'offline');
-  icon.classList.remove('operational', 'partial', 'major', 'loading');
+  if (icon) icon.classList.remove('operational', 'partial', 'major', 'loading');
 
   // Determine overall status
   if (online === total) {
-    // All systems operational
     overallBar.classList.add('online');
-    icon.classList.add('operational');
-    icon.textContent = '\u2713';
-    title.textContent = 'All Systems Operational';
-    subtitle.textContent = `All ${total} services are running normally`;
+    if (icon) {
+      icon.classList.add('operational');
+      icon.textContent = '\u2713';
+    }
+    if (title) title.textContent = 'All Systems Operational';
+    if (subtitle) subtitle.textContent = `All ${total} services are running normally`;
   } else if (offline >= Math.ceil(total / 2)) {
-    // Major outage (50% or more offline)
     overallBar.classList.add('offline');
-    icon.classList.add('major');
-    icon.textContent = '\u2715';
-    title.textContent = 'Major Outage';
-    subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline, ${degraded} degraded`;
+    if (icon) {
+      icon.classList.add('major');
+      icon.textContent = '\u2715';
+    }
+    if (title) title.textContent = 'Major Outage';
+    if (subtitle) subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline, ${degraded} degraded`;
   } else if (offline > 0 || degraded > 0) {
-    // Partial outage
     overallBar.classList.add('degraded');
-    icon.classList.add('partial');
-    icon.textContent = '\u26A0';
-    title.textContent = 'Partial Outage';
-    if (offline > 0 && degraded > 0) {
-      subtitle.textContent = `${offline} offline, ${degraded} degraded`;
-    } else if (offline > 0) {
-      subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline`;
-    } else {
-      subtitle.textContent = `${degraded} service${degraded !== 1 ? 's' : ''} degraded`;
+    if (icon) {
+      icon.classList.add('partial');
+      icon.textContent = '\u26A0';
+    }
+    if (title) title.textContent = 'Partial Outage';
+    if (subtitle) {
+      if (offline > 0 && degraded > 0) {
+        subtitle.textContent = `${offline} offline, ${degraded} degraded`;
+      } else if (offline > 0) {
+        subtitle.textContent = `${offline} service${offline !== 1 ? 's' : ''} offline`;
+      } else {
+        subtitle.textContent = `${degraded} service${degraded !== 1 ? 's' : ''} degraded`;
+      }
     }
   } else {
-    // Unknown state
-    icon.classList.add('loading');
-    icon.textContent = '\u25D0';
-    title.textContent = 'Status Unknown';
-    subtitle.textContent = 'Waiting for service data';
+    if (icon) {
+      icon.classList.add('loading');
+      icon.textContent = '\u25D0';
+    }
+    if (title) title.textContent = 'Status Unknown';
+    if (subtitle) subtitle.textContent = 'Waiting for service data';
   }
 }
 
@@ -191,23 +207,23 @@ function refreshStatus() {
 }
 
 function initStatusPage() {
-  if (statusIntervalId !== null) {
-    clearInterval(statusIntervalId);
+  if (window.statusIntervalId) {
+    clearInterval(window.statusIntervalId);
   }
   fetchStatus();
-  statusIntervalId = setInterval(fetchStatus, 60000);
+  window.statusIntervalId = setInterval(fetchStatus, 60000);
 }
 
-// Clean up polling interval when navigating away via SPA
-document.addEventListener('beforenavigate', function() {
-  if (statusIntervalId !== null) {
-    clearInterval(statusIntervalId);
-    statusIntervalId = null;
+function cleanupStatusPage() {
+  if (window.statusIntervalId) {
+    clearInterval(window.statusIntervalId);
+    window.statusIntervalId = null;
   }
-});
+  document.removeEventListener('beforenavigate', cleanupStatusPage);
+}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initStatusPage);
-} else {
+document.addEventListener('beforenavigate', cleanupStatusPage);
+
+if (document.getElementById('overallStatus')) {
   initStatusPage();
 }
