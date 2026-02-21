@@ -15,7 +15,6 @@ function toggleMenu(collapse) {
 
 async function goto(location, { push = true } = {}) {
   const loadingBar = document.getElementById('loading-bar');
-  console.log(`Navigating to ${location}`);
   
   if (loadingBar) {
     loadingBar.style.width = ''; // Clear inline style from previous run
@@ -23,7 +22,6 @@ async function goto(location, { push = true } = {}) {
 
   let loadingTimeout = setTimeout(() => {
     if (loadingBar) {
-      console.log("Navigation taking > 150ms, showing bar");
       loadingBar.classList.remove('finish');
       loadingBar.classList.add('active');
       loadingBar.classList.add('visible');
@@ -78,7 +76,6 @@ async function goto(location, { push = true } = {}) {
   } finally {
     clearTimeout(loadingTimeout);
     if (loadingBar && loadingBar.classList.contains('active')) {
-      console.log("Navigation finished, hiding bar");
       loadingBar.classList.add('finish');
       loadingBar.classList.remove('active');
       setTimeout(() => {
