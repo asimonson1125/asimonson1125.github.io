@@ -1512,6 +1512,10 @@ tr {
     grid-template-columns: 1fr;
   }
 
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
   .legend-items {
     flex-direction: column;
     gap: 0.5em;
@@ -1840,6 +1844,99 @@ tr {
 .text-muted {
   color: #888 !important;
 }
+/* Certifications */
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  margin-top: 1.5em;
+}
+
+.cert-group {
+  margin-bottom: 1.5em;
+}
+
+.cert-group-provider {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.25em 0;
+  letter-spacing: 0.08em;
+}
+
+.cert-program-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35em 0.9em;
+  margin-bottom: 1em;
+  border: 1px solid rgba(var(--accent-rgb), 0.75);
+  background: rgba(var(--accent-rgb), 0.18);
+  color: var(--text-heading) !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  opacity: 1 !important;
+}
+
+.cert-program-badge:hover {
+  background: rgba(var(--accent-rgb), 0.32);
+  border-color: rgb(var(--accent-rgb));
+  box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.35);
+  opacity: 1 !important;
+}
+
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.cert-list li {
+  margin: 0;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.75em;
+  border-left: 3px solid rgba(var(--accent-rgb), 0.65);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.35);
+  text-underline-offset: 3px;
+  transition: border-color 0.2s ease, background 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
+  opacity: 1 !important;
+}
+
+.cert-item::before {
+  content: '›';
+  color: rgb(var(--accent-rgb));
+  font-size: 1.25em;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.cert-item:hover {
+  border-left-color: rgb(var(--accent-rgb));
+  background: rgba(var(--accent-rgb), 0.12);
+  padding-left: 1em;
+  color: var(--text-heading) !important;
+  text-decoration-color: rgba(var(--accent-rgb), 0.6);
+  opacity: 1 !important;
+}
+
+.cert-item:hover::before {
+  transform: translateX(3px);
+}
+
 /* SPA Loading Bar */
 #loading-bar {
   position: fixed;
