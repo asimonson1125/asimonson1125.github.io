@@ -341,8 +341,8 @@ tr {
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 200vw;
+  min-height: 200vh;
   overflow: hidden;
   background-color: rgba(var(--bg-card-rgb), 0.85);
   z-index: -1;
@@ -778,7 +778,6 @@ tr {
   text-transform: uppercase;
   border: 1px solid currentColor;
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
 }
 
 .proj-status-badge.complete  { color: var(--status-online); }
@@ -1854,6 +1853,7 @@ tr {
 
 .cert-group {
   margin-bottom: 1.5em;
+  min-width: 0;
 }
 
 .cert-group-provider {
@@ -1866,6 +1866,7 @@ tr {
 .cert-program-badge {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   padding: 0.35em 0.9em;
   margin-bottom: 1em;
   border: 1px solid rgba(var(--accent-rgb), 0.75);

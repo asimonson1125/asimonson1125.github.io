@@ -248,7 +248,7 @@ class ServiceMonitor:
                     if not cur.fetchone()[0]:
                         return None
 
-                return round((online_count / total_count) * 100, 2)
+                return round((online_count / total_count) * 100, 3)
         finally:
             conn.close()
 

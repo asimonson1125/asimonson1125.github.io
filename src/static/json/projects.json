@@ -1,4 +1,9 @@
 {
+  "PsyCom - Physical Combinatorics": {
+    "status": "WIP",
+    "classes": "programming",
+    "content": "Experimental innovation engine operating on physical attributes and limitations of proven existing technologies with further AI review."
+  },
   "Antietam-Conococheague Watershed Monitoring": {
     "status": "complete",
     "classes": "geospacial",
@@ -50,7 +55,7 @@
     ]
   },
   "Portfolio Website": {
-    "status": "WIP",
+    "status": "complete",
     "classes": "programming",
     "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and zero-trust secure while remaining dynamic and free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
     "links": [
