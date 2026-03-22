@@ -219,10 +219,10 @@ tr {
   margin: auto;
   display: block;
   /* width: 5em; */
-  width: 10em;
+  width: 8em;
   /* height: 30em; */
   /* max-height: 70vh; */
-  max-width: 90vw;
+  max-width: 70vw;
 }
 
 #homeName {
