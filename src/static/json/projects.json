@@ -1,4 +1,30 @@
 {
+  "Human vs AI Code Smell Study": {
+    "status": "complete",
+    "classes": "programming",
+    "bgi": "aiCodeGroups.png",
+    "content": "Research paper comparing human vs AI code maintainability based on mature code smell detection algorithms.",
+    "links": [
+      [
+        "globe",
+        "http://files.asimonson.com/u/AIcodeSmells.pdf",
+        "Paper"
+      ]
+    ]
+  },
+  "Generalized Trust Review": {
+    "status": "complete",
+    "classes":"programming",
+    "bgi": "blanketTrust.png",
+    "content": "Short analysis correlating societal blanket trust of press and scientific institutions.",
+    "links": [
+      [
+        "globe",
+        "http://files.asimonson.com/u/blanketTrust.pdf",
+        "Paper"
+      ]
+    ]
+  },
   "PsyCom - Physical Combinatorics": {
     "status": "WIP",
     "classes": "programming",
