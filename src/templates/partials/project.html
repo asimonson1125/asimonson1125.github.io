@@ -7,12 +7,19 @@
     {% else %}
       <div class="projImagePlaceholder"></div>
     {% endif %}
-    <div class="proj-status-badge {{ status }}">
-      <span class="status-indicator"></span>{{ status }}
-    </div>
   </div>
   <div class="projContent">
-    <h3>{{ title }}</h3>
+    <div class="projTitleRow">
+      <h3>{{ title }}</h3>
+      <span class="proj-status {{ status }}">{{ status }}</span>
+    </div>
+    {% if classes %}
+    <div class="projTags">
+      {% for cls in classes.split() %}
+        {% if cls != 'pinned' %}<span class="proj-tag">{{ cls }}</span>{% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
     <p class="projDesc">{{ content }}</p>
     {% if links %}
     <div class="projLinks">

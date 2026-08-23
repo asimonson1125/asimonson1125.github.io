@@ -1,18 +1,53 @@
 {
-    "Co-op @ Dow Chemical": {
+    "Data Scientist @ Ecolab": {
+        "classes": "pinned experience technical",
+        "date": "01/2024 - Present",
+        "content": "Primary model developer of RushReady from inception through multimillion-dollar product commercialization. Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle. Built explainable anomaly detection with XGBoost/SHAP attribution, increasing speed of service by 20%. Represented Ecolab in Microsoft's 100-member AI accelerator program."
+    },
+    "Data Scientist / Data Engineer": {
         "classes": "pinned experience technical",
         "date": "01/2023 - 05/2023",
-        "content": "Spring 2023 Semester Co-op under Dow Chemical's Global Reactive Chemicals team in Analytical Sciences. Responsibilities included management of chemical compatability data and tool creation for parsing, generating, and submitting reports."
+        "content": "Co-op under Dow Chemical's Global Reactive Chemicals team in Analytical Sciences. Independently built reactive chemistry analysis Flask app encoding adiabatic correction and exotherm-detection logic. Replaced 4 legacy VBA tools with an object-model abstraction architecture. Product became the interdepartmental data standard, saving >1,020 hours (~0.65 FTE) annually."
+    },
+    "Rochester Institute of Technology — M.S.": {
+        "classes": "pinned education technical",
+        "date": "01/2023 - 12/2026",
+        "content": "Data Science M.S. with dual cluster in Data Science and AI. Capstone Fall 2026. Certified by Databricks in ML Model Deployment, Retrieval Agents, and MLOps. Certified by Microsoft in Data Analysis Career Essentials and Docker Foundations."
+    },
+    "Rochester Institute of Technology — B.S.": {
+        "classes": "pinned education technical",
+        "date": "08/2021 - 12/2024",
+        "content": "Computer Science B.S. (GPA 3.63, Dean's List) with a minor in International Relations. Active member of Computer Science House — built and maintained web services for 80+ members, presented seminars on web scraping, analytics, and GIS."
+    },
+    "UCSanDiegoX Data Science MicroMasters": {
+        "classes": "education technical",
+        "date": "2024",
+        "content": "Completed MicroMasters program in Data Science through UC San Diego on edX."
     },
     "Started Portfolio": {
         "classes": "",
         "date": "08/26/2021",
         "content": "I started building this website on this day. I wish I could say I was farther along than I am."
     },
-    "Rochester Institute of Technology": {
-        "classes": "pinned education technical",
-        "date": "08/2021 - 12/2024",
-        "content": "Studying in Rochester Institute of Technology's Computer Science BS program with a minor in International Relations."
+    "Human vs AI Code Smell Study": {
+        "classes": "technical",
+        "date": "2024 - 2025",
+        "content": "Analyzed 85K+ code definitions comparing AI vs human code maintainability via static analysis and non-parametric statistics. Found AI code carries 3-4x more structural debt invisible to reviewers."
+    },
+    "Generalized Trust Review": {
+        "classes": "technical",
+        "date": "2023 - 2024",
+        "content": "Cross-national correlation analysis of media and science trust across 128 countries with subgroup OLS regression. Found trust transfer attenuates 5.7x in low press-freedom regimes."
+    },
+    "Antietam Watershed Monitoring": {
+        "classes": "technical",
+        "date": "2023",
+        "content": "ArcGIS choropleth dashboard monitoring stream temps and biotic indices across Upper Potomac sub-watersheds. Flags exceedances of healthy stream conditions for state environmental review."
+    },
+    "Hackathon Awards": {
+        "classes": "technical",
+        "date": "2023 - 2024",
+        "content": "CSHacks - Best Use of AI (Paychex). Tiger Games - Social Impact Winner. HACK.COMS '24 - Accessibility Winner."
     },
     "Pretzel & Pizza Creations": {
         "classes": "experience",
@@ -27,11 +62,11 @@
     "Boonsboro High School": {
         "classes": "education",
         "date": "09/2016 - 06/2021",
-        "content": "Graduated high school with highest honors.\nMember of National Honor Society, Academic Team County Champions. Participated in Physics Olympics, Robotics Club, and scored at state championships in Cross Country and Track and Field (4x800, 800)."
+        "content": "Graduated high school with highest honors. Member of National Honor Society, Academic Team County Champions. Participated in Physics Olympics, Robotics Club, and scored at state championships in Cross Country and Track and Field (4x800, 800)."
     },
-    "Vex Robotics Team Lead/Club Preisdent": {
+    "Vex Robotics Team Lead/Club President": {
         "classes": "technical",
         "date": "10/2015 - 04/2021",
-        "content": "Led 5 teams through middle and high school to VEX Robotics Competitions, elevating Boonsboro from county group-stage elimination to its first state championship participation. Reorganized club and set up its first interface with the community + sponsors"
+        "content": "Led 5 teams through middle and high school to VEX Robotics Competitions, elevating Boonsboro from county group-stage elimination to its first state championship participation. Reorganized club and set up its first interface with the community + sponsors."
     }
 }

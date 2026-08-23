@@ -70,6 +70,7 @@ pages['projects']['projects'] = projects
 pages['home']['books'] = books
 pages['books']['books'] = books
 pages['status']['services'] = SERVICES
+pages['about']['timeline'] = timeline
 
 
 # ── Error rendering ──────────────────────────────────────────────────

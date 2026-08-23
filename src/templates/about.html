@@ -1,0 +1,73 @@
+{% block content %}
+<div class="foreground"></div>
+<div class="relative">
+  <div id="nametag" class="flex" data-aos="fade-up">
+    <div>
+        <h1 class="textGrad">About</h1>
+        <h2>My story, in order</h2>
+    </div>
+  </div>
+  <div id="desktopSpacer"></div>
+  <div class="homeSubContent">
+    <div class="foregroundContent">
+        <div class="concentratedHead">
+            <h3>Career &amp; Education Timeline</h3>
+        </div>
+
+        <div class="timeline-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="experience">Experience</button>
+            <button class="filter-btn" data-filter="education">Education</button>
+            <button class="filter-btn" data-filter="technical">Technical</button>
+        </div>
+
+        <div class="timeline" id="timeline">
+            {% for name, item in var['timeline'].items() %}
+            <div class="timeitem" data-categories="{{ item.classes }}">
+                <div class="timeitem-inner boxed">
+                    <div class="timeitem-header">
+                        <span class="datetext">{{ item.date }}</span>
+                        <strong>{{ name }}</strong>
+                    </div>
+                    <div class="timeitem-content">
+                        {{ item.content | safe }}
+                    </div>
+                    {% if item.classes %}
+                    <div class="timeitem-tags">
+                        {% for cls in item.classes.split() %}
+                        <span class="tag tag-{{ cls }}">{{ cls | replace('_', ' ') | title }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.timeitem');
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var filter = this.getAttribute('data-filter');
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+
+            items.forEach(function(item) {
+                var cats = item.getAttribute('data-categories') || '';
+                if (filter === 'all' || cats.indexOf(filter) !== -1) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

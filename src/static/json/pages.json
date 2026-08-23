@@ -5,6 +5,12 @@
         "description": "Andrew Simonson's Digital Portfolio home",
         "canonical": "/"
     },
+    "about": {
+        "template": "about.html",
+        "title": "Andrew Simonson - About",
+        "description": "About Andrew Simonson — career and education timeline",
+        "canonical": "/about"
+    },
     "status": {
         "template": "status.html",
         "title":"Andrew Simonson - Status Page",
