@@ -1,6 +1,6 @@
 {% macro expandSkill(dict, name, classes="") %}
 <div class='skill {{ classes }}' data-length='{{ dict[name]|length }}'>
-    <div onclick='activeSkill(this)' class='skillname'>{{ name }}</div>
+    <div onclick='activeSkill(this)' onKeyDown="if(event.key==='Enter'||event.key===' ')activeSkill(this)" role='button' tabindex='0' aria-expanded='false' class='skillname'>{{ name }}</div>
 {% if dict[name]|length > 0 %}
     <div class='skill-children'>
         <div class='skill-children-inner'>
@@ -14,7 +14,7 @@
 {% endmacro %}
 
 {% macro skills(skills) %}
-<div id="skillTree">
+<div id="skillTree" role='tree' aria-label='Skills'>
     {% for skill in skills %}
     {% set classes = "" %}
     {% if skill == skills|first %}

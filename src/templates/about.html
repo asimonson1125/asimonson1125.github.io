@@ -7,18 +7,17 @@
         <h2>My story, in order</h2>
     </div>
   </div>
-  <div id="desktopSpacer"></div>
   <div class="homeSubContent">
     <div class="foregroundContent">
         <div class="concentratedHead">
             <h3>Career &amp; Education Timeline</h3>
         </div>
 
-        <div class="timeline-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="experience">Experience</button>
-            <button class="filter-btn" data-filter="education">Education</button>
-            <button class="filter-btn" data-filter="technical">Technical</button>
+        <div class="timeline-filters" role="toolbar" aria-label="Filter timeline entries">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="experience" aria-pressed="false">Experience</button>
+            <button class="filter-btn" data-filter="education" aria-pressed="false">Education</button>
+            <button class="filter-btn" data-filter="technical" aria-pressed="false">Technical</button>
         </div>
 
         <div class="timeline" id="timeline">
@@ -55,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
             var filter = this.getAttribute('data-filter');
-            buttons.forEach(function(b) { b.classList.remove('active'); });
+            buttons.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
             this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
 
             items.forEach(function(item) {
                 var cats = item.getAttribute('data-categories') || '';

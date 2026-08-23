@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <meta name="description" content="{{ var['description'] }}" />
     <meta property="og:title" content="Andrew Simonson" />
-    <meta name="og:description" content="{{ var['description'] }}" />
+    <meta property="og:description" content="{{ var['description'] }}" />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
@@ -31,6 +31,29 @@
     />
     <meta name="twitter:image:alt" content="some example picture idk" />
     <meta name="twitter:site" content="@asimonson1125" />
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Andrew Simonson",
+      "url": "https://asimonson.com",
+      "sameAs": [
+        "https://github.com/asimonson1125",
+        "https://www.linkedin.com/in/simonsonandrew"
+      ],
+      "jobTitle": "Data Scientist",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Ecolab"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Rochester Institute of Technology"
+      }
+    }
+    </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics (deferred for performance) -->
     <script
@@ -59,12 +82,13 @@
   </head>
   {% block header %}
   <body onpopstate="backButton()">
+    <a class="skip-link" href="#root">Skip to content</a>
     <div id="loading-bar"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <main id='map'></main>
+    <main id='map' aria-label="Main content"></main>
     <div id="contentStuffer">
-      <div class="header">
-        <div id="name-container" onclick="goto('home')">
+      <header class="header">
+        <div id="name-container" onclick="goto('home')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('home')" role="button" tabindex="0" aria-label="Go to home">
           <div class="line name">
             <span class="textGrad">{# Andrew Simonoson #}</span>
           </div>
@@ -74,30 +98,32 @@
           src="{{ url_for('static', filename='icons/menu.svg')}}"
           alt="menu"
           id="menu"
+          role="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="navBar"
           onClick="toggleMenu()"
+          onKeyDown="if(event.key==='Enter'||event.key===' ')toggleMenu()"
         />
         <div class="navControl">
-          <div class="navBar">
-            <div onClick="goto('home')" class="navElement">
+          <nav id="navBar" class="navBar" role="menubar" aria-label="Main navigation">
+            <div onClick="goto('home')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('home')" role="menuitem" tabindex="0" class="navElement">
               <p>Home</p>
             </div>
-            <div onclick="goto('about')" class="navElement">
-              <p>About</p>
-            </div>
-            <div onClick="goto('projects')" class="navElement">
+            <div onClick="goto('projects')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('projects')" role="menuitem" tabindex="0" class="navElement">
               <p>Work</p>
             </div>
-            <div onclick="goto('status')" class="navElement">
+            <div onclick="goto('status')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('status')" role="menuitem" tabindex="0" class="navElement">
               <p>Status</p>
             </div>
-          </div>
+          </nav>
         </div>
-      </div>
+      </header>
       {% endblock %} {% block content%}
       <div id="root">{% include var['template'] %}</div>
       {% endblock %} {% block footer %}
       <div id="footerSpacer"></div>
-      <div class="footer">{% include 'partials/socials.html' %}</div>
+      <footer class="footer" role="contentinfo">{% include 'partials/socials.html' %}</footer>
       {% endblock %}
     </div>
   </body>

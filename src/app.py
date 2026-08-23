@@ -62,7 +62,6 @@ def load_json(path):
 projects = load_json("./static/json/projects.json")
 books = load_json("./static/json/books.json")
 skills = load_json("./static/json/skills.json")
-timeline = load_json("./static/json/timeline.json")
 pages = load_json("./static/json/pages.json")
 
 pages['projects']['skillList'] = skills
@@ -70,7 +69,6 @@ pages['projects']['projects'] = projects
 pages['home']['books'] = books
 pages['books']['books'] = books
 pages['status']['services'] = SERVICES
-pages['about']['timeline'] = timeline
 
 
 # ── Error rendering ──────────────────────────────────────────────────

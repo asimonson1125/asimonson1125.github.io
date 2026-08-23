@@ -1,15 +1,9 @@
 {
     "home": {
         "template": "home.html",
-        "title": "Andrew Simonson - Portfolio Home",
-        "description": "Andrew Simonson's Digital Portfolio home",
+        "title": "Andrew Simonson - Data Scientist & Researcher",
+        "description": "Andrew Simonson - Data Scientist at Ecolab, graduate student at RIT. Projects, research papers, and more.",
         "canonical": "/"
-    },
-    "about": {
-        "template": "about.html",
-        "title": "Andrew Simonson - About",
-        "description": "About Andrew Simonson — career and education timeline",
-        "canonical": "/about"
     },
     "status": {
         "template": "status.html",
@@ -19,8 +13,8 @@
     },
     "projects": {
         "template": "projects.html",
-        "title": "Andrew Simonson - Projects",
-        "description": "Recent projects by Andrew Simonson on his lovely portfolio website :)",
+        "title": "Projects & Research - Andrew Simonson",
+        "description": "Data science projects, geospatial analysis, research papers, and software experiments by Andrew Simonson.",
         "canonical": "/projects"
     },
     "books": {
@@ -37,8 +31,8 @@
     },
     "certificates": {
         "template": "certs.html",
-        "title": "Certificates and Awards",
-        "description": "Certificates and Awards Listing",
+        "title": "Certifications & Awards - Andrew Simonson",
+        "description": "Data science, DevOps, and entrepreneurship certifications earned by Andrew Simonson.",
         "canonical": "/certs"
     }
 }

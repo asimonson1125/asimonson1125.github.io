@@ -3,14 +3,15 @@
 <div class="foregroundContent">
   <h2>"You can't judge a book by its cover but you can judge a person by their bookshelf" - Me, today.</h2>
   <h3>My Favorites</h3>
-  <div class='flex wrap boxed'>
+  <div class='flex wrap boxed' role="list" aria-label="Favorite books">
     {% for i in var.books.selection %}
-    <div>
-      <a href="#'{{i}}'">
+    <div role="listitem">
+      <a href="#'{{i}}'" aria-label="View review of {{ i }}">
         <img
           class="bookcover"
-          alt="{{i}} cover"
+          alt="{{ i }} cover"
           src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
+          loading="lazy"
         />
       </a>
     </div>
@@ -18,16 +19,17 @@
   </div>
   <h3>All Reviews</h3>
   <p>Hover to reveal review<br />Read to reveal KNOWLEDGE</p>
-  <div class="booklist flex wrap">
+  <div class="booklist flex wrap" role="list" aria-label="Book reviews">
     {% for i in var.books.books %}
-    <div id="'{{i}}'" class="bookReview">
+    <div id="'{{i}}'" class="bookReview" role="listitem" aria-label="Review of {{ i }}">
       <div class='fullHeight flex'>
         <div>
           <div class='heightBox'>
             <img
               class="bookcover"
-              alt="{{i}} cover"
+              alt="{{ i }} cover"
               src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
+              loading="lazy"
             />
           </div>
         </div>
@@ -36,7 +38,7 @@
             <h4 class='nomargin'>{{ i }}</h4>
             <p class='nomargin'>{{ var.books.books[i].review }}</p>
           </div>
-          <a href="{{ var.books.books[i].link }}"><p>Book Source</p></a>
+          <a href="{{ var.books.books[i].link }}" rel="noopener noreferrer" aria-label="Buy or learn more about {{ i }}">Book Source</a>
         </div>
       </div>
     </div>

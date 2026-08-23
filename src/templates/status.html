@@ -3,14 +3,14 @@
 <div class="foregroundContent">
   <h2 class='concentratedHead'>Service Status Monitor</h2>
 
-  <div class="info-box">
+  <div class="info-box" role="region" aria-label="Status overview">
     <div class='flex spaceBetween'>
       <div>
-        <span id="lastUpdate">Last checked: Loading...</span>
+        <span id="lastUpdate" aria-live="polite">Last checked: Loading...</span>
         <br />
-        <span id="nextUpdate">Next check: --</span>
+        <span id="nextUpdate" aria-live="polite">Next check: --</span>
       </div>
-      <button id="refreshBtn" onclick="refreshStatus()">Refresh Now</button>
+      <button id="refreshBtn" onclick="refreshStatus()" aria-label="Refresh service status now">Refresh Now</button>
     </div>
     <br/>
 
@@ -32,10 +32,10 @@
   </div>
 
   <!-- Overall Status Bar -->
-  <div class="info-card summary-card" id="overallStatus">
+  <div class="info-card summary-card" id="overallStatus" role="status" aria-live="polite">
     <div class="summary-content">
       <div class="summary-indicator">
-        <span class="summary-icon loading">&#x25D0;</span>
+        <span class="summary-icon loading" aria-hidden="true">&#x25D0;</span>
         <div>
           <h3 class="summary-title">Checking Systems...</h3>
           <h5 id="summary-subtitle">Loading service status</h5>
@@ -43,45 +43,45 @@
       </div>
       <div class="flex spaceBetween">
         <div class="metric-box">
-          <span class="metric-number" id="onlineCount">--</span>
+          <span class="metric-number" id="onlineCount" aria-label="Online services">--</span>
           <span class="metric-label">Online</span>
         </div>
         <div class="metric-box">
-          <span class="metric-number" id="totalCount">--</span>
+          <span class="metric-number" id="totalCount" aria-label="Total services">--</span>
           <span class="metric-label">Total</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card-grid">
+  <div class="card-grid" role="list" aria-label="Service status cards">
     {% for service in var.services %}
-    <a href="{{ service.url }}">
-      <div class="info-card" id="status-{{ service.id }}">
+    <a href="{{ service.url }}" class="info-card-link" id="status-{{ service.id }}" role="listitem">
+      <div class="info-card">
         <div class="card-header">
           <h3>{{ service.name }}</h3>
           <div class="state-indicator">
-            <span class="state-dot loading"></span>
+            <span class="state-dot loading" aria-label="Status: Loading..."></span>
             <span class="state-text">Loading...</span>
           </div>
         </div>
         <div class="card-body">
           <div class="metric-row">
             <span class="metric-label">Response Time:</span>
-            <span class="metric-value" id="time-{{ service.id }}">--</span>
+            <span class="metric-value" id="time-{{ service.id }}" aria-live="polite">--</span>
           </div>
           <div class="metric-row">
             <span class="metric-label">Status Code:</span>
-            <span class="metric-value" id="code-{{ service.id }}">--</span>
+            <span class="metric-value" id="code-{{ service.id }}" aria-live="polite">--</span>
           </div>
           <div class="metric-row">
             <span class="metric-label">Total Checks:</span>
-            <span class="metric-value" id="checks-{{ service.id }}">--</span>
+            <span class="metric-value" id="checks-{{ service.id }}" aria-live="polite">--</span>
           </div>
         </div>
         <div class="card-footer">
           <div class="detail-label">Uptime:</div>
-          <div class="detail-values" id="uptime-{{ service.id }}">Loading...</div>
+          <div class="detail-values" id="uptime-{{ service.id }}" aria-live="polite">Loading...</div>
         </div>
       </div>
     </a>

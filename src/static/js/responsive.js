@@ -2,13 +2,17 @@ function toggleMenu(collapse) {
   if (window.innerWidth < 1400) {
     const menu = document.querySelector(".navControl");
     const bar = document.querySelector(".header");
+    const btn = document.getElementById("menu");
     const isCollapsed = !menu.style.maxHeight || menu.style.maxHeight === "0px";
+
     if (isCollapsed && !collapse) {
       menu.style.maxHeight = `${menu.scrollHeight + 10}px`;
       bar.style.borderBottomWidth = "0px";
+      if (btn) btn.setAttribute("aria-expanded", "true");
     } else {
       menu.style.maxHeight = "0px";
       bar.style.borderBottomWidth = "3px";
+      if (btn) btn.setAttribute("aria-expanded", "false");
     }
   }
 }
@@ -98,10 +102,14 @@ function activeSkill(obj) {
   let skill = obj.closest(".skill");
   if (skill.classList.contains("activeSkill")) {
     skill.classList.remove("activeSkill");
+    const btn = obj.closest('.skillname') || obj.querySelector?.('.skillname') || obj;
+    if (btn && btn.setAttribute) btn.setAttribute("aria-expanded", "false");
     return;
   }
   while (skill) {
     skill.classList.add("activeSkill");
+    const nameEl = skill.querySelector?.(':scope > .skillname') || skill.querySelector('.skillname');
+    if (nameEl) nameEl.setAttribute("aria-expanded", "true");
     skill = skill.parentElement.closest(".skill");
   }
 }
