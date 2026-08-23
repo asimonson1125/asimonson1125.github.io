@@ -16,7 +16,7 @@ SERVICES = [
     # {'id': 'EternalRelays', 'name': 'eternalrelays.com',  'url': 'https://eternalrelays.com',  'timeout': 10},
     {'id': 'files', 'name': 'files.asimonson.com',  'url': 'https://files.asimonson.com',  'timeout': 10},
     {'id': 'git',   'name': 'git.asimonson.com',    'url': 'https://git.asimonson.com',    'timeout': 10},
-    {'id': 'cascadalyst',   'name': 'cascadalyst.com',    'url': 'https://cascadalyst.com',    'timeout': 10},
+    # {'id': 'cascadalyst',   'name': 'cascadalyst.com',    'url': 'https://cascadalyst.com',    'timeout': 10},
 ]
 
 CHECK_INTERVAL = 60           # seconds between checks
