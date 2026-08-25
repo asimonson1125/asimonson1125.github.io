@@ -51,6 +51,26 @@ class ServiceMonitor:
             for svc in SERVICES
         }
         self._last_check = None
+        # Cheap placeholder (no DB access) until the first check_all_services()
+        # run replaces it with the real, uptime-backed summary.
+        self._cached_summary = {
+            'last_check': None,
+            'next_check': None,
+            'services': [
+                {
+                    'id': service_id,
+                    'name': cached['name'],
+                    'url': cached['url'],
+                    'status': cached['status'],
+                    'response_time': cached['response_time'],
+                    'status_code': cached['status_code'],
+                    'last_online': cached['last_online'],
+                    'uptime': {'24h': None, '7d': None, '30d': None, 'all_time': None},
+                    'total_checks': 0,
+                }
+                for service_id, cached in self._current.items()
+            ],
+        }
         self._ensure_schema()
 
     # ── Database helpers ──────────────────────────────────────────
@@ -206,6 +226,7 @@ class ServiceMonitor:
                 if result['status'] == 'online':
                     cached['last_online'] = result['timestamp']
             self._last_check = datetime.now().isoformat()
+            self._cached_summary = self._build_summary_locked()
 
     # ── Uptime calculations ───────────────────────────────────────
 
@@ -271,38 +292,48 @@ class ServiceMonitor:
 
     # ── Status summary ────────────────────────────────────────────
 
+    def _build_summary_locked(self):
+        """Build a JSON-serializable status summary with uptime statistics.
+
+        Hits the database (multiple queries per service) -- only call this
+        from within check_all_services() while self.lock is held, so it runs
+        once per check cycle rather than once per /api/status request.
+        """
+        summary = {
+            'last_check': self._last_check,
+            'next_check': None,
+            'services': [],
+        }
+
+        if self._last_check:
+            last_check = datetime.fromisoformat(self._last_check)
+            summary['next_check'] = (last_check + timedelta(seconds=CHECK_INTERVAL)).isoformat()
+
+        for service_id, cached in self._current.items():
+            summary['services'].append({
+                'id': service_id,
+                'name': cached['name'],
+                'url': cached['url'],
+                'status': cached['status'],
+                'response_time': cached['response_time'],
+                'status_code': cached['status_code'],
+                'last_online': cached['last_online'],
+                'uptime': {
+                    '24h': self._calculate_uptime(service_id, 24),
+                    '7d': self._calculate_uptime(service_id, 24 * 7),
+                    '30d': self._calculate_uptime(service_id, 24 * 30),
+                    'all_time': self._calculate_uptime(service_id),
+                },
+                'total_checks': self._get_total_checks(service_id),
+            })
+
+        return summary
+
     def get_status_summary(self):
-        """Build a JSON-serializable status summary with uptime statistics."""
+        """Return the cached status summary, refreshed once per check cycle
+        (see check_all_services), so this never itself touches the database."""
         with self.lock:
-            summary = {
-                'last_check': self._last_check,
-                'next_check': None,
-                'services': [],
-            }
-
-            if self._last_check:
-                last_check = datetime.fromisoformat(self._last_check)
-                summary['next_check'] = (last_check + timedelta(seconds=CHECK_INTERVAL)).isoformat()
-
-            for service_id, cached in self._current.items():
-                summary['services'].append({
-                    'id': service_id,
-                    'name': cached['name'],
-                    'url': cached['url'],
-                    'status': cached['status'],
-                    'response_time': cached['response_time'],
-                    'status_code': cached['status_code'],
-                    'last_online': cached['last_online'],
-                    'uptime': {
-                        '24h': self._calculate_uptime(service_id, 24),
-                        '7d': self._calculate_uptime(service_id, 24 * 7),
-                        '30d': self._calculate_uptime(service_id, 24 * 30),
-                        'all_time': self._calculate_uptime(service_id),
-                    },
-                    'total_checks': self._get_total_checks(service_id),
-                })
-
-            return summary
+            return self._cached_summary
 
     # ── Background loop ───────────────────────────────────────────
 

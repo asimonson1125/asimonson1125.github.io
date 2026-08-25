@@ -4,11 +4,35 @@
   <div id="nametag" class="flex" data-aos="fade-up">
     <div>
         <h1 class="textGrad">About</h1>
-        <h2>My story, in order</h2>
+        <h2>Bio, timeline &amp; credentials</h2>
     </div>
   </div>
   <div class="homeSubContent">
     <div class="foregroundContent">
+
+        <!-- Bio -->
+        <div style="max-width: 52em; margin-bottom: 3em;">
+            <p>
+                I'm Andrew Simonson<!--, CEO of the anti-thermodynamics syndicate.-->,
+                a <strong>Data Scientist at Ecolab</strong> and a graduate Data
+                Science student at
+                <strong>Rochester Institute of Technology</strong>, having
+                recently completed the <b>Computer Science BS</b> program
+                (international relations minor) with a focus on probability
+                theory.
+                <br/>
+                <br/>
+                I get bored and throw random stuff on this website.<br/>
+                This is what unprofessional development looks like.
+            </p>
+            <br/>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                I also have a
+                <a href="Resume_Simonson_Andrew.pdf" target="_blank">resume</a>
+                for unexplained reasons.
+            </p>
+        </div>
+
         <div class="concentratedHead">
             <h3>Career &amp; Education Timeline</h3>
         </div>
@@ -26,7 +50,7 @@
                 <div class="timeitem-inner boxed">
                     <div class="timeitem-header">
                         <span class="datetext">{{ item.date }}</span>
-                        <strong>{{ name }}</strong>
+                        <strong>{{ item.title }}</strong>
                     </div>
                     <div class="timeitem-content">
                         {{ item.content | safe }}
@@ -42,32 +66,146 @@
             </div>
             {% endfor %}
         </div>
+
+        <div class="timeline-expand-wrap">
+            <button id="timelineExpandBtn" class="timeline-expand-btn" aria-expanded="false">Show more</button>
+        </div>
+
+        <div class="concentratedHead">
+            <h3>Skills &amp; Certifications</h3>
+        </div>
+
+        <div class="skills-certs-grid">
+
+            <div class="certs-col">
+                <p class="page-subtitle">
+                    Comprehensive list verifiable on
+                    <a href="https://www.linkedin.com/in/simonsonandrew/details/certifications/">LinkedIn</a>
+                </p>
+
+                <div class="boxed cert-group">
+                    <p class="cert-group-provider">UCSanDiegoX &middot; edX</p>
+                    <h4 class="concentratedHead">Data Science MicroMasters Program</h4>
+                    <a href="http://credentials.edx.org/credentials/4b7e78dca8154c0d88ca9abc5aedb4ac" class="cert-program-badge">
+                        View Program Certificate ›
+                    </a>
+                    <ul class="cert-list">
+                        <li><a href="https://courses.edx.org/certificates/b6deccc56e5344ae84cb55f9ad81fd79" class="cert-item">DSE200x &mdash; Python for Data Science</a></li>
+                        <li><a href="https://courses.edx.org/certificates/f29d0e65fc024c6e95121619e329a286" class="cert-item">DSE210x &mdash; Probability and Statistics in Data Science using Python</a></li>
+                        <li><a href="https://courses.edx.org/certificates/cccc2bd2ed61470e8492d6da1be530c5" class="cert-item">DSE220x &mdash; Machine Learning Fundamentals</a></li>
+                        <li><a href="https://courses.edx.org/certificates/4dfd6563a1f84caaa8922a02a5125f29" class="cert-item">DSE230x &mdash; Big Data Analytics Using Spark</a></li>
+                    </ul>
+                </div>
+
+                <div class="boxed cert-group">
+                    <h4 class="concentratedHead">One-Off Courses</h4>
+                    <ul class="cert-list">
+                        <li><a href="https://files.asimonson.com/u/2398_3_1303226_1776777828_Databricks%20-%20Generic.pdf" class="cert-item">Machine Learning Model Deployment by Databricks</a></li>
+                        <li><a href="https://files.asimonson.com/u/2662_3_1303226_1772561098_Databricks%20-%20Generic.pdf" class="cert-item">Building Retrieval Agents On Databricks</a></li>
+                        <li><a href="https://files.asimonson.com/u/2403_3_1303226_1765822061_Databricks%20-%20Generic.pdf" class="cert-item">Machine Learning Operations by Databricks</a></li>
+                        <li><a href="https://www.linkedin.com/learning/certificates/2cb69378c606fec5a6f3a107b99a896862db392b7a3692f71a6b53af5d5545c5" class="cert-item">Career Essentials in Data Analysis by Microsoft</a></li>
+                        <li><a href="https://www.linkedin.com/learning/certificates/7facc28a13405134b3b7fa785303e9b1cf697f32d67f759e89960fbdc8a044d9" class="cert-item">Career Essentials in GitHub Professional Certificate</a></li>
+                        <li><a href="https://www.linkedin.com/learning/certificates/7b952323152e258ca468c33ddc9ebcf3c55036f58a5cfb3fb9c1410da655aaa5" class="cert-item">Docker Foundations Professional Certificate</a></li>
+                        <li><a href="https://www.linkedin.com/learning/certificates/7017147ac73af5bc26fdab9b3c43671fb8105a0de59d4689d5f0f71c549c150f" class="cert-item">Data Science Foundations: Fundamentals</a></li>
+                    </ul>
+                </div>
+
+                <div class="boxed cert-group">
+                    <p class="cert-group-provider">Rochester Institute of Technology</p>
+                    <h4 class="concentratedHead">Entrepreneurial Certifications</h4>
+                    <ul class="cert-list">
+                        <li><a href="https://files.asimonson.com/u/designThinkingCert.pdf" class="cert-item">Design Thinking Certification</a></li>
+                        <li><a href="https://files.asimonson.com/u/ideationCert.pdf" class="cert-item">Ideation Certification</a></li>
+                        <li><a href="https://files.asimonson.com/u/toolsForInnovatorsCert.pdf" class="cert-item">Tools for Innovators Certification</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skills-col">
+                <h4>Technologies</h4>
+                {% from 'partials/skills.html' import skills %} {{
+                skills(var['skillList']) }}
+            </div>
+            
+        </div>
     </div>
   </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.filter-btn');
+(function() {
+    const buttons = document.querySelectorAll('.filter-btn[data-filter]');
     const items = document.querySelectorAll('.timeitem');
+    const expandBtn = document.getElementById('timelineExpandBtn');
+    const expandWrap = expandBtn ? expandBtn.closest('.timeline-expand-wrap') : null;
+    const timeline = document.getElementById('timeline');
+    const COLLAPSE_LIMIT = 3;
+
+    var currentFilter = 'all';
+    var expanded = false;
+
+    function applyVisibility() {
+        var shown = 0;
+        var matched = 0;
+        items.forEach(function(item) {
+            var cats = item.getAttribute('data-categories') || '';
+            var matches = currentFilter === 'all' || cats.indexOf(currentFilter) !== -1;
+            if (!matches) {
+                item.classList.add('hidden');
+                return;
+            }
+            matched++;
+            if (expanded || shown < COLLAPSE_LIMIT) {
+                item.classList.remove('hidden');
+                shown++;
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+
+        var hasMore = matched > COLLAPSE_LIMIT;
+
+        if (expandBtn) {
+            var remaining = matched - shown;
+            if (!hasMore) {
+                expandBtn.classList.add('hidden');
+            } else {
+                expandBtn.classList.remove('hidden');
+                expandBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                expandBtn.textContent = expanded ? 'Show fewer' : 'Show ' + remaining + ' more ↓';
+            }
+        }
+
+        var overlapping = hasMore && !expanded;
+
+        if (timeline) {
+            timeline.classList.toggle('collapsed', overlapping);
+        }
+
+        if (expandWrap) {
+            expandWrap.classList.toggle('overlap', overlapping);
+        }
+    }
 
     buttons.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var filter = this.getAttribute('data-filter');
             buttons.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
             this.classList.add('active');
             this.setAttribute('aria-pressed', 'true');
-
-            items.forEach(function(item) {
-                var cats = item.getAttribute('data-categories') || '';
-                if (filter === 'all' || cats.indexOf(filter) !== -1) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
+            currentFilter = this.getAttribute('data-filter');
+            expanded = false;
+            applyVisibility();
         });
     });
-});
+
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function() {
+            expanded = !expanded;
+            applyVisibility();
+        });
+    }
+
+    applyVisibility();
+})();
 </script>
 {% endblock %}

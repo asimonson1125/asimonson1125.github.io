@@ -29,10 +29,42 @@
         "description": "Face it, you've been ducked",
         "canonical": "/duck"
     },
-    "certificates": {
-        "template": "certs.html",
-        "title": "Certifications & Awards - Andrew Simonson",
-        "description": "Data science, DevOps, and entrepreneurship certifications earned by Andrew Simonson.",
-        "canonical": "/certs"
+    "about": {
+        "template": "about.html",
+        "title": "About, Timeline & Certifications - Andrew Simonson",
+        "description": "Bio, career/education timeline, and certifications for Andrew Simonson - Data Scientist at Ecolab.",
+        "canonical": "/about",
+        "timeline": {
+            "ecolab": {
+                "title": "Data Scientist / Data Engineer — Ecolab",
+                "date": "January 2024 – Present",
+                "content": "<strong>Data Scientist / Data Engineer</strong><br/>Ecolab · Saint Paul, MN<br/><br/>• Primary model developer of RushReady from inception through multimillion-dollar product commercialization<br/>• Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle across QSR brands<br/>• Built explainable anomaly detection with XGBoost/SHAP attribution and brand-configurable recommendations, increasing speed of service by 20%<br/>• Represented Ecolab as liaison in Microsoft's 100-member AI accelerator program",
+                "classes": "experience"
+            },
+            "rit_ms": {
+                "title": "M.S. Data Science — RIT",
+                "date": "Dec 2026 (expected)",
+                "content": "<strong>Master of Science in Data Science</strong><br/>Rochester Institute of Technology · Rochester, NY<br/><br/>• Focus on probability theory, statistical learning, and Bayesian methods<br/>• Capstone: Fall 2026",
+                "classes": "education"
+            },
+            "dow_chemical": {
+                "title": "Data Engineer — Dow Chemical",
+                "date": "January 2023 – May 2023",
+                "content": "<strong>Data Engineer</strong><br/>Dow Chemical · Freeport, TX<br/><br/>• Independently built reactive chemistry analysis Flask app encoding adiabatic correction and exotherm-detection logic across 9 test types<br/>• Architected object-model abstraction, decoupling test-type parsers from report generation and replacing 4 legacy VBA tools<br/>• Product became the interdepartmental data standard, saving >1,020 hours (~0.65 FTE) annually",
+                "classes": "experience"
+            },
+            "rit_bs": {
+                "title": "B.S. Computer Science & Data Science — RIT",
+                "date": "Dec 2024",
+                "content": "<strong>B.S. in Computer Science · B.S. in Data Science (Dual Cluster)</strong><br/>Rochester Institute of Technology · Rochester, NY<br/><br/>• GPA 3.63 · Dean's List<br/>• Minor in International Relations<br/>• MicroMasters in Data Science – UC San Diego (edX)",
+                "classes": "education"
+            },
+            "csh": {
+                "title": "E-Board Member & Presenter — CSH",
+                "date": "Aug 2021 – Present",
+                "content": "<strong>E-Board Member & Presenter</strong><br/>Computer Science House · Rochester, NY<br/><br/>• Presented seminars on web scraping, analytics, and GIS<br/>• Built and maintained web services for 80+ members",
+                "classes": "experience technical"
+            }
+        }
     }
 }

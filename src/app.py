@@ -4,12 +4,17 @@ import os
 
 import flask
 from flask_minify import Minify
+from werkzeug.middleware.proxy_fix import ProxyFix
 import werkzeug.exceptions as HTTPerror
 
 import config  # noqa: F401 — side-effect: loads dev env vars
 from monitor import monitor, SERVICES
 
 app = flask.Flask(__name__)
+# Trust the scheme/host Cloudflare sets, so redirects Werkzeug builds itself
+# (e.g. the trailing-slash redirect on /api/goto) use https instead of the
+# plaintext scheme it sees on its own socket.
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
 
 # ── Static file fingerprinting ────────────────────────────────────────
 
@@ -42,6 +47,9 @@ def add_headers(response):
     response.headers['X-XSS-Protection'] = '1; mode=block'
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
 
+    if flask.request.is_secure:
+        response.headers['Strict-Transport-Security'] = 'max-age=31536000'
+
     if flask.request.path.startswith('/static/'):
         response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
     elif flask.request.path in ['/sitemap.xml', '/robots.txt']:
@@ -55,7 +63,7 @@ def add_headers(response):
 # ── Load page data ────────────────────────────────────────────────────
 
 def load_json(path):
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -64,7 +72,7 @@ books = load_json("./static/json/books.json")
 skills = load_json("./static/json/skills.json")
 pages = load_json("./static/json/pages.json")
 
-pages['projects']['skillList'] = skills
+pages['about']['skillList'] = skills
 pages['projects']['projects'] = projects
 pages['home']['books'] = books
 pages['books']['books'] = books
