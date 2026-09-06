@@ -1,11 +1,12 @@
 {% block content %}
-<div class="foreground"></div>
-<div class="foregroundContent">
-  <h1>What the duck?</h1>
+<div class="page">
+  <header class="page-head">
+    <h1 class="display">What the duck?</h1>
+  </header>
   <img
+    class="duck"
     alt="mega spinney duck"
     src="{{ url_for('static', filename='photos/gifs/duck-spinning.gif') }}"
-    style="max-width: calc(100% - 2em);"
   />
 </div>
 <!-- BONUS DUCKS! -->

@@ -1,39 +1,27 @@
 {% macro project(title, classes, status, bgi, content, links) %}
-<div class="project {{ classes }}" data-aos="fade-up">
-  <div class="projImageWrap">
+{% set tags = classes.split() | reject('equalto', 'pinned') | list %}
+<li class="project" id="project-{{ title | slug }}">
+  <div class="project-thumb">
     {% if bgi|length > 0 %}
-      {% set path = url_for('static', filename='photos/projects/' + bgi) %}
-      <img src="{{ path }}" alt="Ref image for {{ title }} project" />
+      <img src="{{ url_for('static', filename='photos/projects/' + bgi) }}" alt="" loading="lazy" />
     {% else %}
-      <div class="projImagePlaceholder"></div>
+      <div class="project-thumb-empty" aria-hidden="true"></div>
     {% endif %}
   </div>
-  <div class="projContent">
-    <div class="projTitleRow">
-      <h3>{{ title }}</h3>
-      <span class="proj-status {{ status }}">{{ status }}</span>
-    </div>
-    {% if classes %}
-    <div class="projTags">
-      {% for cls in classes.split() %}
-        {% if cls != 'pinned' %}<span class="proj-tag">{{ cls }}</span>{% endif %}
-      {% endfor %}
-    </div>
-    {% endif %}
-    <p class="projDesc">{{ content }}</p>
+  <div class="project-body">
+    <h3>{{ title }}</h3>
+    <p class="project-meta">
+      <span class="status status-{{ status }}">{{ status }}</span>
+      {% if tags %}<span class="sep" aria-hidden="true">·</span> {{ tags | join(', ') }}{% endif %}
+    </p>
+    <p class="project-desc">{{ content }}</p>
     {% if links %}
-    <div class="projLinks">
-      {% for i in links %}
-        {% set src = 'icons/' + i[0] + '.svg' %}
-        {% if i[1].startswith('https://') or i[1].startswith('http://') %}
-        <a href="{{ i[1] }}" rel="noopener noreferrer" class="proj-link">
-          <img class="projectLink" src="{{ url_for('static', filename=src) }}" alt="{{ i[0] }}" />
-          <span>{{ i[2] }}</span>
-        </a>
-        {% endif %}
+    <p class="project-links">
+      {% for i in links if i[1].startswith('https://') or i[1].startswith('http://') %}
+        <a href="{{ i[1] }}" rel="noopener noreferrer">{{ i[2] }}</a>
       {% endfor %}
-    </div>
+    </p>
     {% endif %}
   </div>
-</div>
+</li>
 {% endmacro %}

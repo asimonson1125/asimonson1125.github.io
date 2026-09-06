@@ -49,7 +49,8 @@ class Ball {
 function setup() {
   frameRate(15);
   const pixels = screenHeight * screenWidth;
-  createCanvas(screenWidth, screenHeight);
+  const canvas = createCanvas(screenWidth, screenHeight);
+  canvas.parent('bg');
   for (let i = 0; i < pixels * density; i++) {
     balls.push(new Ball(
       random(screenWidth),

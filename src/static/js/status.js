@@ -22,14 +22,14 @@ function updateStatusDisplay(data) {
   if (data.last_check) {
     const lastCheck = new Date(data.last_check);
     const lastUpdateEl = document.getElementById('lastUpdate');
-    if (lastUpdateEl) lastUpdateEl.textContent = `Last checked: ${lastCheck.toLocaleString()}`;
+    if (lastUpdateEl) lastUpdateEl.textContent = lastCheck.toLocaleString();
   }
 
   if (data.next_check) {
     const nextCheckEl = document.getElementById('nextUpdate');
     if (nextCheckEl) {
       const nextCheck = new Date(data.next_check);
-      nextCheckEl.textContent = `Next check: ${nextCheck.toLocaleString()}`;
+      nextCheckEl.textContent = nextCheck.toLocaleString();
     }
   }
 
@@ -43,7 +43,7 @@ function updateStatusDisplay(data) {
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
     refreshBtn.disabled = false;
-    refreshBtn.textContent = 'Refresh Now';
+    refreshBtn.textContent = 'Refresh now';
   }
 }
 
@@ -112,7 +112,7 @@ function updateServiceCard(service) {
       formatUptime(service.uptime['7d'], '7d'),
       formatUptime(service.uptime['30d'], '30d'),
       formatUptime(service.uptime.all_time, 'All'),
-    ].join(' | ');
+    ].join(' · ');
   }
 
   if (checksDisplay && service.total_checks !== undefined) {
@@ -188,9 +188,9 @@ function showError(message) {
   const errorDiv = document.createElement('div');
   errorDiv.className = 'status-error';
   errorDiv.textContent = message;
-  errorDiv.style.cssText = 'background: rgba(244, 67, 54, 0.2); color: #f44336; padding: 1em; margin: 1em 0; border-radius: 0.5em; text-align: center;';
+  
 
-  const container = document.querySelector('.foregroundContent');
+  const container = document.querySelector('.page');
   if (container) {
     container.insertBefore(errorDiv, container.firstChild);
     setTimeout(function() { errorDiv.remove(); }, 5000);
@@ -201,7 +201,7 @@ function refreshStatus() {
   const refreshBtn = document.getElementById('refreshBtn');
   if (refreshBtn) {
     refreshBtn.disabled = true;
-    refreshBtn.textContent = 'Checking...';
+    refreshBtn.textContent = 'Checking';
   }
   fetchStatus();
 }

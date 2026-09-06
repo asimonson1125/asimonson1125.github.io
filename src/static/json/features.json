@@ -1,0 +1,16 @@
+{
+  "homelab": {
+    "title": "AI Homelab and Self Hosted Web Tooling",
+    "tagline": "A self-hosted cluster serving Mixture-of-Experts models beyond their rated VRAM and independent web services",
+    "body": "<p>I refined a method to pool GPUs from different vendors and generations into a single inference backend of roughly 20 GB over Vulkan. FreeToken, a bleeding-edge MoE inference server, fronts the cluster and handles the elastic inference, running Mixture-of-Experts models with far more total parameters than the cluster's VRAM would normally allow. My own scripts handle KV caching and system-prompt compaction, which is what makes the setup harness-capable.</p><p>The same rig trains as well as it serves, having refined Qwen SLMs and diffusion image models.  All this is hosted alongside my personal web assets, like this website.  I voluntarily subject myself to the maintenance of production-grade systems on every level of the tech stack to ensure that I survive the Big Tech apocalypse.</p>",
+    "stack": ["FreeToken", "ComfyUI", "PEFT / TRL", "Docker", "Cloudflare", "Reverse Proxy"],
+    "image": "photos/deepdives/homelab-dashboard.png",
+    "caption": "Cluster dashboard during a long inference run."
+  },
+  "capstone": {
+    "title": "Subatomic Particle Tracing and Anomaly Control",
+    "tagline": "My Master's Capstone: Building a Diffusion Cloud Chamber and using stereo reconstruction to classify Muons and Alpha/Beta particles.",
+    "body": "<p>My ongoing Data Science Capstone Project combines existing utilities for cheap quantum demonstrations and real world measuring techniques to create effective sensing of subatomic phenomena without breaking the bank or into the IAEA</p>",
+    "stack": ["Ego"]
+  }
+}

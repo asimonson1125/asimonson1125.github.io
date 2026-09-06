@@ -1,18 +1,21 @@
 {
   "selection": [
-    "The Rational Optimist",  
-    "The End of the World is Just the Beginning",
-    "When to Rob a Bank",
+    "The Rational Optimist",
+    "Project Hail Mary",
     "Freakonomics",
     "The Accidental Superpower",
-    "Verbal Judo",
-    "Zero To One"
+    "The Martian"
   ],
   "books": {
-    "Fooled By Randomness": {
-      "filename": "fooledbyrandomness.jpg",
-      "link": "https://www.amazon.com/Fooled-Randomness-Hidden-Chance-Markets-dp-B006Q7VYC4/dp/B006Q7VYC4/ref=dp_ob_title_bk",
-      "review": "A lengthy compendium on probabilistic reasoning that helped kick off a curiosity of indefinite computation.  There's more ancient philosophy than a book like this really needs but the occasional brazen punchline from the contemporary anecdotes make it bearable."
+    "Project Hail Mary": {
+      "filename": "hailmary.jpg",
+      "link": "https://www.amazon.com/Project-Hail-Mary-Andy-Weir/dp/0593135202",
+      "review": "This must be the first hard-sci-fi book I have read and I absolutely loved it.  When I watched the movie I concluded that both executed on an inspiring story with an endearing tone but only the book held the creative practicality that really made it a favorite."
+    },
+    "The Martian": {
+      "filename": "themartian.jpg",
+      "link": "https://www.amazon.com/Martian-Andy-Weir/dp/0553418025",
+      "review": "I picked this up after Project Hail Mary looking for more creative uses of hard scifi.  On that account The Martian surpassed expectations - partially because the plot didn't have to contend with fantasy elements.  I aspire to one day use a radioactive space heater as a hot tub power source, just as my hero, Mark Watney, once did."
     },
     "The Rational Optimist": {
       "filename": "ratOpt.jpg",
@@ -38,6 +41,11 @@
       "filename": "thinkLikeAFreak.jpg",
       "link": "https://freakonomics.com/books/",
       "review": "More like the other Freakonomics books than I expected (cracked storytelling), which is still excellent, but I wished there was greater insights into seeing past conventional wisdom, which is what thinking like a freak means.  Still a great book."
+    },
+    "Fooled By Randomness": {
+      "filename": "fooledbyrandomness.jpg",
+      "link": "https://www.amazon.com/Fooled-Randomness-Hidden-Chance-Markets-dp-B006Q7VYC4/dp/B006Q7VYC4/ref=dp_ob_title_bk",
+      "review": "A lengthy compendium on probabilistic reasoning that helped kick off a curiosity of indefinite computation.  There's more ancient philosophy than a book like this really needs but the occasional brazen punchline from the contemporary anecdotes make it bearable."
     },
     "The Tyranny of Metrics": {
       "filename": "TyrannyOfMetrics.jpg",
@@ -144,11 +152,6 @@
       "link": "https://www.goodreads.com/book/show/8034188-where-good-ideas-come-from",
       "review": "I got this book at a recycling center.  I didn't want to read it or like it.  Unfortnuately, it's pretty good.  200 pages of considerate review of how innovation comes to be + suggestions to expand the utility of your ideas (I've adopted several!)"
     },
-    "Make Your Bed": {
-      "filename": "makeYourBed.jpg",
-      "link": "https://www.amazon.com/Make-Your-Bed-Little-Things/dp/1455570249",
-      "review": "Something small to read on a rainy day or flight.  Valuable advice condensed into personal stories that stretch beyond anecdotes."
-    },
     "12 Rules for Life": {
       "filename": "12RulesForLife.jpg",
       "link": "https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021/",
@@ -163,6 +166,11 @@
       "filename": "HitchhikersGuideToTheGalaxy.jpeg",
       "link": "https://www.amazon.com/Hitchhikers-Guide-Galaxy-Douglas-Adams/dp/0345418913",
       "review": "It's alright.  It felt like an aimless journey without defined boundaries that reveled in that fact for irony and wit points."
+    },
+    "The Adventures of Sherlock Holmes": {
+      "filename": "sherlockholmes.jpg",
+      "link": "https://www.amazon.com/Adventures-Sherlock-Holmes-Arthur-Conan/dp/0141034332",
+      "review": "Had there not been half a dozen TV shows and movies about Sherlock Holmes all pulling from the same source material, I might have been intrigued.  Instead, I felt like I was proofreading an old English fan rewrite of a book that I had already read.  By today's standards, the outcomes were very telegraphed.  Still enjoyed thinking through the deductions, though."
     }
   }
 }

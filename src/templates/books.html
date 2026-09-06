@@ -1,48 +1,58 @@
 {% block content %}
-<div class="foreground"></div>
-<div class="foregroundContent">
-  <h2>"You can't judge a book by its cover but you can judge a person by their bookshelf" - Me, today.</h2>
-  <h3>My Favorites</h3>
-  <div class='flex wrap boxed' role="list" aria-label="Favorite books">
-    {% for i in var.books.selection %}
-    <div role="listitem">
-      <a href="#'{{i}}'" aria-label="View review of {{ i }}">
+<div class="page">
+  <header class="page-head">
+    <h1 class="display">Bookshelf</h1>
+    <p class="lede">
+      You can't judge a book by its cover, but you can judge a person by their
+      bookshelf. Short reviews of what I've read, favorites first.
+    </p>
+  </header>
+
+  <section class="section" aria-labelledby="fav-heading">
+    <div class="section-head">
+      <h2 id="fav-heading">Favorites</h2>
+    </div>
+    <ul class="cover-row" aria-label="Favorite books">
+      {% for i in var.books.selection %}
+      <li>
+        <a href="#'{{ i }}'" title="{{ i }}">
+          <img
+            alt="{{ i }}"
+            src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename)) }}"
+            loading="lazy"
+            width="80"
+            height="120"
+          />
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="reviews-heading">
+    <div class="section-head">
+      <h2 id="reviews-heading">All reviews</h2>
+      <p class="section-note">{{ var.books.books | length }} books</p>
+    </div>
+    <ul class="review-list">
+      {% for i in var.books.books %}
+      <li id="'{{ i }}'" class="review">
         <img
-          class="bookcover"
-          alt="{{ i }} cover"
-          src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
+          class="review-cover"
+          alt=""
+          src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename)) }}"
           loading="lazy"
+          width="80"
+          height="120"
         />
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-  <h3>All Reviews</h3>
-  <p>Hover to reveal review<br />Read to reveal KNOWLEDGE</p>
-  <div class="booklist flex wrap" role="list" aria-label="Book reviews">
-    {% for i in var.books.books %}
-    <div id="'{{i}}'" class="bookReview" role="listitem" aria-label="Review of {{ i }}">
-      <div class='fullHeight flex'>
-        <div>
-          <div class='heightBox'>
-            <img
-              class="bookcover"
-              alt="{{ i }} cover"
-              src="{{ url_for('static', filename=('photos/books/' + var.books.books[i].filename))}}"
-              loading="lazy"
-            />
-          </div>
+        <div class="review-body">
+          <h3>{{ i }}</h3>
+          <p>{{ var.books.books[i].review }}</p>
+          <p class="review-link"><a href="{{ var.books.books[i].link }}" rel="noopener noreferrer">Where to find it</a></p>
         </div>
-        <div class='vFlex emPad spaceBetween'>
-          <div>
-            <h4 class='nomargin'>{{ i }}</h4>
-            <p class='nomargin'>{{ var.books.books[i].review }}</p>
-          </div>
-          <a href="{{ var.books.books[i].link }}" rel="noopener noreferrer" aria-label="Buy or learn more about {{ i }}">Book Source</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
 </div>
 {% endblock %}

@@ -7,7 +7,7 @@
       href="{{ url_for('static', filename='icons/withBackground.svg') }}"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#141414" />
 
     <!-- Resource hints for performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -29,7 +29,7 @@
       property="twitter:image"
       content="{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
     />
-    <meta name="twitter:image:alt" content="some example picture idk" />
+    <meta name="twitter:image:alt" content="Andrew Simonson's logo" />
     <meta name="twitter:site" content="@asimonson1125" />
 
     <!-- Structured data for SEO -->
@@ -75,7 +75,6 @@
     />
     <link rel="canonical" href="{{ request.url_root | trim('/') }}{{ var['canonical'] }}" />
     <script defer src="{{ url_for('static', filename='js/responsive.js') }}"></script>
-    {# <script src="{{ url_for('static', filename='js/chessbed.js') }}"></script> #}
     <script defer src="{{ url_for('static', filename='js/idler.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
     <title>{{ var['title'] }}</title>
@@ -83,50 +82,47 @@
   {% block header %}
   <body onpopstate="backButton()">
     <a class="skip-link" href="#root">Skip to content</a>
-    <div id="loading-bar"></div>
+    <div id="loading-bar" aria-hidden="true"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <main id='map' aria-label="Main content"></main>
-    <div id="contentStuffer">
-      <header class="header">
-        <div id="name-container" onclick="goto('home')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('home')" role="button" tabindex="0" aria-label="Go to home">
-          <div class="line name">
-            <span class="textGrad">{# Andrew Simonoson #}</span>
-          </div>
-        </div>
-
-        <img
-          src="{{ url_for('static', filename='icons/menu.svg')}}"
-          alt="menu"
+    <div id="bg" aria-hidden="true"></div>
+    <div class="site">
+      <header class="site-header" id="siteHeader">
+        <a class="brand" href="/" data-page="home" onclick="goto('home'); return false;" aria-label="Andrew Simonson, home">
+          <img class="brand-mark" src="{{ url_for('static', filename='icons/neonfinal3.svg') }}" alt="" width="30" height="30" />
+          <span class="brand-name">Andrew Simonson</span>
+        </a>
+        <button
           id="menu"
-          role="button"
-          aria-label="Toggle navigation menu"
+          class="menu-toggle"
+          type="button"
           aria-expanded="false"
           aria-controls="navBar"
-          onClick="toggleMenu()"
-          onKeyDown="if(event.key==='Enter'||event.key===' ')toggleMenu()"
-        />
-        <div class="navControl">
-          <nav id="navBar" class="navBar" role="menubar" aria-label="Main navigation">
-            <div onClick="goto('home')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('home')" role="menuitem" tabindex="0" class="navElement">
-              <p>Home</p>
-            </div>
-            <div onClick="goto('about')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('about')" role="menuitem" tabindex="0" class="navElement">
-              <p>About</p>
-            </div>
-            <div onClick="goto('projects')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('projects')" role="menuitem" tabindex="0" class="navElement">
-              <p>Work</p>
-            </div>
-            <div onclick="goto('status')" onKeyDown="if(event.key==='Enter'||event.key===' ')goto('status')" role="menuitem" tabindex="0" class="navElement">
-              <p>Status</p>
-            </div>
-          </nav>
-        </div>
+          onclick="toggleMenu()"
+        >Menu</button>
+        <nav id="navBar" class="site-nav" aria-label="Main navigation">
+          <a href="/" data-page="home" onclick="goto('home'); return false;" {% if var['id'] == 'home' %}aria-current="page"{% endif %}>Home</a>
+          <a href="/projects" data-page="projects" onclick="goto('projects'); return false;" {% if var['id'] == 'projects' %}aria-current="page"{% endif %}>Work</a>
+          <a href="/about" data-page="about" onclick="goto('about'); return false;" {% if var['id'] == 'about' %}aria-current="page"{% endif %}>About</a>
+          <a href="/status" data-page="status" onclick="goto('status'); return false;" {% if var['id'] == 'status' %}aria-current="page"{% endif %}>Status</a>
+        </nav>
       </header>
       {% endblock %} {% block content%}
-      <div id="root">{% include var['template'] %}</div>
+      <main id="root">{% include var['template'] %}</main>
       {% endblock %} {% block footer %}
-      <div id="footerSpacer"></div>
-      <footer class="footer" role="contentinfo">{% include 'partials/socials.html' %}</footer>
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <p class="footer-name">Andrew Simonson</p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/asimonson1125" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/simonsonandrew/" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:asimonson1125@gmail.com">Email</a></li>
+            <li><a href="/resume">Résumé</a></li>
+            <li><a href="/books" onclick="goto('books'); return false;">Bookshelf</a></li>
+            <li><a href="https://github.com/asimonson1125/asimonson1125.github.io" rel="noopener noreferrer">Source</a></li>
+          </ul>
+          <p class="footer-note">Self-hosted. Uptime on the <a href="/status" onclick="goto('status'); return false;">status page</a>.</p>
+        </div>
+      </footer>
       {% endblock %}
     </div>
   </body>

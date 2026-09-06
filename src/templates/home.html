@@ -1,62 +1,123 @@
-{% block content %} {% macro nameplate() %}
-<div>
-    <h1 id="homeName" class="textGrad">oh no.</h1>
-    <h2>I did not plan for visitors.</h2>
+{% block content %}
+<section class="hero" aria-labelledby="homeName">
+  <div class="hero-inner">
+    <h1 id="homeName" class="display">Andrew Simonson</h1>
+    <p class="lede">
+      Data scientist at Ecolab and a graduate student at RIT.
+      I build end-to-end decision machines: from data pipelines that process scale, to epistemic models which understand, to user interfaces that convey.
+    </p>
+    <p class="hero-links">
+      <a href="/projects" onclick="goto('projects'); return false;">Work</a>
+      <a href="/about" onclick="goto('about'); return false;">About</a>
+      <a href="/resume">Résumé</a>
+      <a href="https://github.com/asimonson1125" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/simonsonandrew/" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </div>
+</section>
 
-    <br /> <hr> <br />
+<div class="page">
 
-    <div class="flex vertOnMobile">
-        <div>
-            <img
-                src="{{ url_for('static', filename='photos/extradimensionalSq.avif') }}"
-                id="homeIcon"
-                fetchpriority=high
-                alt="Biblically Accurate Seraphim"
-            />
-        </div>
+  <section class="section" aria-labelledby="now-heading">
+    <div class="section-head">
+      <h2 id="now-heading">Now</h2>
+      <p class="section-note">September 2026</p>
     </div>
-</div>
-{% endmacro %}
+    <dl class="now-list">
+      <div class="now-item">
+        <dt>At work</dt>
+        <dd>
+          Primary model developer on RushReady at Ecolab: explainable anomaly
+          detection with XGBoost and SHAP, plus brand-configurable recommendations
+          for quick-service restaurants, all running on a near-real-time Delta
+          Live Tables platform.
+        </dd>
+      </div>
+      <div class="now-item">
+        <dt>At school</dt>
+        <dd>
+          M.S. in Data Science at Rochester Institute of Technology, focused on
+          probability theory, statistical learning, and Bayesian methods.
+          Capstone in fall 2026.
+        </dd>
+      </div>
+      <div class="now-item">
+        <dt>At home</dt>
+        <dd>
+          Running a <a href="/projects#feature-homelab" onclick="goto('projects', {hash: 'feature-homelab'}); return false;">two-GPU homelab</a>
+          that serves Mixture-of-Experts models to coding agents over local
+          endpoints, and using the same rig to fine-tune small models.
+        </dd>
+      </div>
+      <div class="now-item">
+        <dt>On the shelf</dt>
+        <dd>
+          <ul class="shelf-row" aria-label="A few favorite books">
+            {% for title in var.books.selection[:5] %}
+            {% set book = var.books.books[title] %}
+            <li>
+              <a href="/books#'{{ title }}'" onclick="goto('books', {hash: &quot;'{{ title }}'&quot;}); return false;" title="{{ title }}">
+                <img
+                  src="{{ url_for('static', filename='photos/books/' + book.filename) }}"
+                  alt="{{ title }}"
+                  loading="lazy"
+                  width="60"
+                  height="90"
+                />
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          <a class="shelf-more" href="/books" onclick="goto('books'); return false;">All reviews</a>
+        </dd>
+      </div>
+    </dl>
+  </section>
 
-<div class="foreground homeground"></div>
-<div class="relative growBottom">
-    <div id="nametag" class="flex" data-aos="fade-up">{{ nameplate() }}</div>
-    <!--<INSERT SMALL BANNER HERE FOR PROJECT IMAGECARD CAROUSEL>-->
-    <div id="desktopSpacer"></div>
-    <div class="homeSubContent">
-      <img class='blinkies' alt='Pepsi Addict' src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" loading="lazy" />
-      <img class='blinkies' alt='Secret Message' src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" loading="lazy" />
-      <img class='blinkies' alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" loading="lazy" />
-      <img class='blinkies' alt='Bob the Builder gif' src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" loading="lazy" />
-        <div>
-            <br />
-            <strong> You've reached the website for Andrew Simonson's digital shenanigans.</strong>
-            <h3>Now What?</h3>
-            <p>
-                Go back and find the link that I originally shared.  Or poke around.  Be your own person.</br>
-                I'll grant myself some titles while I'm at it:
-            </p>
-            <ul>
-              <li>Wicked Wizard of the West</li>
-              <li>Enemy of Node.js, Hater of Bloat</li>
-              <li>Load-Bearing Coconut</li>
-              <li>Creator and Harnesser of Energy</li>
-            </ul>
-        </div>
-        <br />
-        {# 
-        <div id="aboutCards" class="flex">
-            <div class="chess">
-                {% from 'partials/chess.html' import chess %} {{
-                chess('asimonson1125') }}
-            </div>
-            <br />
-            <div>
-                <img height='150px' alt='stabby' src="{{ url_for('static', filename='photos/electricityStabby.png') }}" loading="lazy" />
-            </div>
-            <br />
-        </div>
-        #}
+  <section class="section" aria-labelledby="selected-heading">
+    <div class="section-head">
+      <h2 id="selected-heading">Selected work</h2>
+      <p class="section-note"><a href="/projects" onclick="goto('projects'); return false;">Everything</a></p>
     </div>
-    {% endblock %}
+    <ol class="selected-list">
+      {% for id, f in var.features.items() %}
+      <li>
+        <a href="/projects#feature-{{ id }}" onclick="goto('projects', {hash: 'feature-{{ id }}'}); return false;">{{ f.title }}</a>
+        <span>{{ f.summary or f.tagline }}</span>
+      </li>
+      {% endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="site-heading">
+    <div class="section-head">
+      <h2 id="site-heading">What now?</h2>
+    </div>
+    <div class="colophon">
+      <div class="colophon-text">
+        <p>
+          I wasn't really expecting anyone to read this far.
+          If you're looking for shared resources you've taken a wrong turn.     
+        <p>
+          From here, we'll rekindle the future.
+        </p>
+        <p class="blinkies" aria-label="Retro web badges">
+          <img alt="Pepsi Addict" src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" loading="lazy" width="150" height="20" />
+          <img alt="If you can read this you are too close to the monitor" src="{{ url_for('static', filename='photos/blinkies/tooclose.gif') }}" loading="lazy" width="150" height="20" />
+          <img alt="They took my blood but it wasn't DNA, it was USA" src="{{ url_for('static', filename='photos/blinkies/usa.gif') }}" loading="lazy" width="150" height="20" />
+          <img alt="Bob the Builder: can we build it?" src="{{ url_for('static', filename='photos/blinkies/bobthebuilder.gif') }}" loading="lazy" width="150" height="20" />
+        </p>
+      </div>
+      <figure class="colophon-figure flex">
+        <img
+          src="{{ url_for('static', filename='photos/extradimensional.avif') }}"
+          alt="Seraphim over a globe"
+          width="180"
+          fetchpriority="high"
+        />
+        <figcaption></figcaption>
+      </figure>
+    </div>
+  </section>
+
 </div>
+{% endblock %}

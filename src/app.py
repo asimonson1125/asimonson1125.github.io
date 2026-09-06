@@ -1,6 +1,7 @@
 import hashlib
 import json
 import os
+import re
 
 import flask
 from flask_minify import Minify
@@ -71,12 +72,25 @@ projects = load_json("./static/json/projects.json")
 books = load_json("./static/json/books.json")
 skills = load_json("./static/json/skills.json")
 pages = load_json("./static/json/pages.json")
+features = load_json("./static/json/features.json")
 
 pages['about']['skillList'] = skills
 pages['projects']['projects'] = projects
+pages['projects']['features'] = features
+pages['home']['features'] = features
 pages['home']['books'] = books
+pages['home']['projects'] = projects
 pages['books']['books'] = books
 pages['status']['services'] = SERVICES
+
+for _name, _page in pages.items():
+    _page['id'] = _name
+
+
+@app.template_filter('slug')
+def slug(value):
+    value = re.sub(r'[^a-z0-9]+', '-', str(value).lower())
+    return value.strip('-')
 
 
 # ── Error rendering ──────────────────────────────────────────────────

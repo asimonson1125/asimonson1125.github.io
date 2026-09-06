@@ -1,100 +1,80 @@
 {% block content %}
-<div class="foreground"></div>
-<div class="foregroundContent">
-  <h2 class='concentratedHead'>Service Status Monitor</h2>
+<div class="page">
+  <header class="page-head">
+    <h1 class="display">Status</h1>
+    <p class="lede">
+      Uptime for the services I host myself, checked every minute from the
+      server. This page refreshes itself on the same schedule.
+    </p>
+  </header>
 
-  <div class="info-box" role="region" aria-label="Status overview">
-    <div class='flex spaceBetween'>
+  <section class="section status-summary" id="overallStatus" role="status" aria-live="polite">
+    <div class="status-summary-main">
+      <span class="summary-icon loading" aria-hidden="true">&#x25D0;</span>
       <div>
-        <span id="lastUpdate" aria-live="polite">Last checked: Loading...</span>
-        <br />
-        <span id="nextUpdate" aria-live="polite">Next check: --</span>
-      </div>
-      <button id="refreshBtn" onclick="refreshStatus()" aria-label="Refresh service status now">Refresh Now</button>
-    </div>
-    <br/>
-
-    <h4>Status Legend</h4>
-    <div class="legend-items">
-      <div class="legend-item">
-        <span class="state-dot online"></span>
-        <span>Operational (response successful)</span>
-      </div>
-      <div class="legend-item">
-        <span class="state-dot degraded"></span>
-        <span>Degraded (timeout or errors)</span>
-      </div>
-      <div class="legend-item">
-        <span class="state-dot offline"></span>
-        <span>Offline (unreachable)</span>
+        <h2 class="summary-title">Checking systems</h2>
+        <p class="summary-subtitle" id="summary-subtitle">Loading service status</p>
       </div>
     </div>
-  </div>
+    <dl class="status-facts">
+      <div>
+        <dt>Online</dt>
+        <dd><span id="onlineCount" aria-label="Online services">--</span> of <span id="totalCount" aria-label="Total services">--</span></dd>
+      </div>
+      <div>
+        <dt>Last checked</dt>
+        <dd id="lastUpdate">Loading</dd>
+      </div>
+      <div>
+        <dt>Next check</dt>
+        <dd id="nextUpdate">--</dd>
+      </div>
+    </dl>
+    <button id="refreshBtn" class="button" type="button" onclick="refreshStatus()" aria-label="Refresh service status now">Refresh now</button>
+  </section>
 
-  <!-- Overall Status Bar -->
-  <div class="info-card summary-card" id="overallStatus" role="status" aria-live="polite">
-    <div class="summary-content">
-      <div class="summary-indicator">
-        <span class="summary-icon loading" aria-hidden="true">&#x25D0;</span>
-        <div>
-          <h3 class="summary-title">Checking Systems...</h3>
-          <h5 id="summary-subtitle">Loading service status</h5>
-        </div>
-      </div>
-      <div class="flex spaceBetween">
-        <div class="metric-box">
-          <span class="metric-number" id="onlineCount" aria-label="Online services">--</span>
-          <span class="metric-label">Online</span>
-        </div>
-        <div class="metric-box">
-          <span class="metric-number" id="totalCount" aria-label="Total services">--</span>
-          <span class="metric-label">Total</span>
-        </div>
-      </div>
+  <section class="section" aria-labelledby="services-heading">
+    <div class="section-head">
+      <h2 id="services-heading">Services</h2>
+      <p class="section-note">Uptime over 24 hours, 7 days, 30 days, and all time</p>
     </div>
-  </div>
-
-  <div class="card-grid" role="list" aria-label="Service status cards">
-    {% for service in var.services %}
-    <a href="{{ service.url }}" class="info-card-link" id="status-{{ service.id }}" role="listitem">
-      <div class="info-card">
-        <div class="card-header">
-          <h3>{{ service.name }}</h3>
-          <div class="state-indicator">
-            <span class="state-dot loading" aria-label="Status: Loading..."></span>
-            <span class="state-text">Loading...</span>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="metric-row">
-            <span class="metric-label">Response Time:</span>
-            <span class="metric-value" id="time-{{ service.id }}" aria-live="polite">--</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Status Code:</span>
-            <span class="metric-value" id="code-{{ service.id }}" aria-live="polite">--</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Total Checks:</span>
-            <span class="metric-value" id="checks-{{ service.id }}" aria-live="polite">--</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="detail-label">Uptime:</div>
-          <div class="detail-values" id="uptime-{{ service.id }}" aria-live="polite">Loading...</div>
-        </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-
-  <div class="info-box">
-    <h4>About This Monitor</h4>
-    <ul>
-      <li><strong>Check Frequency:</strong> Services are checked automatically every minute from the server</li>
-      <li><strong>Page Refresh:</strong> This page auto-refreshes every minute to show latest data</li>
-    </ul>
-  </div>
+    <div class="table-wrap">
+      <table class="status-table">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">State</th>
+            <th scope="col" class="num">Response</th>
+            <th scope="col" class="num">Code</th>
+            <th scope="col" class="num">Checks</th>
+            <th scope="col">Uptime</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for service in var.services %}
+          <tr id="status-{{ service.id }}">
+            <th scope="row"><a href="{{ service.url }}" rel="noopener noreferrer">{{ service.name }}</a></th>
+            <td>
+              <span class="state-indicator">
+                <span class="state-dot loading" aria-hidden="true"></span>
+                <span class="state-text">Loading</span>
+              </span>
+            </td>
+            <td class="num" id="time-{{ service.id }}">--</td>
+            <td class="num" id="code-{{ service.id }}">--</td>
+            <td class="num" id="checks-{{ service.id }}">--</td>
+            <td class="uptime" id="uptime-{{ service.id }}">Loading</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      <span class="state-dot online" aria-hidden="true"></span> operational &nbsp;
+      <span class="state-dot degraded" aria-hidden="true"></span> degraded or timed out &nbsp;
+      <span class="state-dot offline" aria-hidden="true"></span> unreachable
+    </p>
+  </section>
 </div>
 
 <script src="{{ url_for('static', filename='js/status.js') }}"></script>

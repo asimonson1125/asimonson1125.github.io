@@ -25,28 +25,28 @@
       ]
     ]
   },
-  "PsyCom - Physical Combinatorics": {
+  "PhysCom - Physical Combinatorics": {
     "status": "WIP",
     "classes": "programming",
     "content": "Experimental innovation engine operating on physical attributes and limitations of proven existing technologies with further AI review."
   },
   "Antietam-Conococheague Watershed Monitoring": {
     "status": "complete",
-    "classes": "geospacial",
+    "classes": "geospatial",
     "bgi": "watershedTemps.png",
-    "content": "Live geospacial analysis of Maryland's Antietam and Conococheague sub-watersheds, monitoring water quality and temperatures through the summer months for governmental environment health review boards."
+    "content": "Live geospatial analysis of Maryland's Antietam and Conococheague sub-watersheds, monitoring water quality and temperatures through the summer months for governmental environment health review boards."
   },
   "Automotive Brand Valuation Analysis": {
     "status": "complete",
     "classes": "programming",
     "bgi": "automotiveBrandAnalysis.png",
-    "content": "Brand valuation analysis of the used car market, measuring value decay by mileage to extrapolate qualities such as percieved reliability and persistent value of luxury features."
+    "content": "Brand valuation analysis of the used car market, measuring value decay by mileage to extrapolate qualities such as perceived reliability and persistent value of luxury features."
   },
   "RIT Hotspots": {
     "status": "incomplete",
-    "classes": "pinned geospacial programming",
+    "classes": "pinned geospatial programming",
     "bgi": "hotspotsrit.png",
-    "content": "Live crowd migration map using RIT occupancy data.  It seems RIT didn't like me exposing their surveilance state but since they didn't want to talk to me about it they instead changed the service response schema a few times.  When that didn't stop me they just shut down the whole service.  Nerds.",
+    "content": "Live crowd migration map using RIT occupancy data.  It seems RIT didn't like me exposing their surveillance state but since they didn't want to talk to me about it they instead changed the service response schema a few times.  When that didn't stop me they just shut down the whole service.  Nerds.",
     "links": [
       ["github", "https://github.com/asimonson1125/hotspotsrit", "git repo"]
     ]
@@ -55,14 +55,14 @@
     "status": "complete",
     "classes": "pinned programming",
     "bgi": "calorimeterAnalysis.png",
-    "content": "An analytical toolkit designed for reactive chemistry analysis, especially calorimetry.  Works include automatic analysis, alerting unusual and dangerous results derived from a wide range of testing envrionments and equipment",
+    "content": "An analytical toolkit designed for reactive chemistry analysis, especially calorimetry.  Works include automatic analysis, alerting unusual and dangerous results derived from a wide range of testing environments and equipment",
     "links": []
   },
   "Geography of Alternative Energy": {
     "status": "complete",
-    "classes": "pinned geospacial",
+    "classes": "pinned geospatial",
     "bgi": "energyGeography.png",
-    "content": "An ArcGIS geospacial analysis comparing the difference in effectiveness of wind, solar, and geothermal energy across the continental 48 United States.",
+    "content": "An ArcGIS geospatial analysis comparing the difference in effectiveness of wind, solar, and geothermal energy across the continental 48 United States.",
     "links": [
       [
         "globe",
