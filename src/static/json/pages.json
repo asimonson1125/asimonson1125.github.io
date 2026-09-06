@@ -38,7 +38,7 @@
             "ecolab": {
                 "title": "Data Scientist / Data Engineer — Ecolab",
                 "date": "January 2024 – Present",
-                "content": "<p class=\"timeitem-org\">Ecolab · Saint Paul, MN</p><ul><li>Primary model developer of RushReady from inception through multimillion-dollar product commercialization</li><li>Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle across QSR brands</li><li>Built explainable anomaly detection with XGBoost/SHAP attribution and brand-configurable recommendations, increasing speed of service by 20%</li><li>Represented Ecolab as liaison in Microsoft's 100-member AI accelerator program</li></ul>",
+                "content": "<p class=\"timeitem-org\">Ecolab · Saint Paul, MN</p><ul><li>Primary model developer of RushReady from inception through multimillion-dollar product commercialization</li><li>Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle across QSR brands</li><li>Built explainable anomaly detection and brand-configurable recommendations, increasing speed of service by 20%</li><li>Represented Ecolab as liaison in Microsoft's 100-member AI accelerator program</li></ul>",
                 "classes": "experience"
             },
             "rit_ms": {

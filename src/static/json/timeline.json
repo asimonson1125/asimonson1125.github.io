@@ -2,7 +2,7 @@
     "Data Scientist @ Ecolab": {
         "classes": "pinned experience technical",
         "date": "01/2024 - Present",
-        "content": "Primary model developer of RushReady from inception through multimillion-dollar product commercialization. Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle. Built explainable anomaly detection with XGBoost/SHAP attribution, increasing speed of service by 20%. Represented Ecolab in Microsoft's 100-member AI accelerator program."
+        "content": "Primary model developer of RushReady from inception through multimillion-dollar product commercialization. Engineered near-real-time data platform with Delta Live Tables and automated MLOps lifecycle. Built explainable anomaly detection, increasing speed of service by 20%. Represented Ecolab in Microsoft's 100-member AI accelerator program."
     },
     "Data Scientist / Data Engineer": {
         "classes": "pinned experience technical",
