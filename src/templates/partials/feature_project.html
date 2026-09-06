@@ -1,0 +1,30 @@
+{% macro feature_project(id, title, tagline, body, stack, image=none) %}
+<div class="feature-project boxed{{ ' has-media' if image else '' }}" id="feature-{{ id }}">
+  <div class="feature-project-content">
+    <div class="feature-project-header" onclick="toggleFeatureProject(this)" onKeyDown="if(event.key==='Enter'||event.key===' ')toggleFeatureProject(this)" role="button" tabindex="0" aria-expanded="false" aria-controls="feature-{{ id }}-body">
+      {% if image %}
+      <div class="feature-project-media" style="background-image: url('{{ url_for('static', filename=image) }}')"></div>
+      {% endif %}
+      <div class="feature-project-heading">
+        <h3>{{ title }}</h3>
+        <p class="feature-project-tagline">{{ tagline }}</p>
+      </div>
+      <span class="feature-project-toggle" aria-hidden="true">+</span>
+    </div>
+    <div class="feature-project-body" id="feature-{{ id }}-body">
+      <div class="feature-project-body-inner">
+        <div class="feature-project-prose">
+          {{ body | safe }}
+        </div>
+        {% if stack %}
+        <div class="feature-project-stack">
+          {% for item in stack %}
+          <span class="feature-project-stack-item">{{ item }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

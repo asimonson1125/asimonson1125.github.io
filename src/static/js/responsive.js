@@ -98,6 +98,12 @@ function backButton() {
   goto(path.substring(1), { push: false });
 }
 
+function toggleFeatureProject(header) {
+  const panel = header.closest(".feature-project");
+  const expanded = panel.classList.toggle("expanded");
+  header.setAttribute("aria-expanded", expanded ? "true" : "false");
+}
+
 function activeSkill(obj) {
   let skill = obj.closest(".skill");
   if (skill.classList.contains("activeSkill")) {

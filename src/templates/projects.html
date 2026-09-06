@@ -10,18 +10,30 @@
   <div class="homeSubContent">
     <div class="foregroundContent">
 
-      <!-- Intro -->
-      <div style="max-width: 52em; margin-bottom: 3em;">
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">
-              Curious who's behind these?
-              <a href="about">About &amp; certifications</a>
-              ·
-              <a href="Resume_Simonson_Andrew.pdf" target="_blank">Resume</a>
-          </p>
+      <!-- Deep Dives -->
+      <h2>Highlights</h2>
+      <div class="feature-projects">
+          {% from 'partials/feature_project.html' import feature_project %}
+          {{ feature_project(
+              'homelab',
+              'AI Homelab',
+              'Self-hosted GPU cluster serving MoE models beyond their rated VRAM, with a full LoRA fine-tuning pipeline on top',
+              '<p>I\'ve refined a method to pool GPUs from different vendors and generations — an RTX 5070 and a Radeon RX 6600 XT — into a single ~20GB inference backend over Vulkan, so neither card\'s limits bottleneck the other. FreeToken, a bleeding-edge MoE inference server, fronts the cluster and handles the actual elastic inference, running Mixture-of-Experts models with far more total parameters than the cluster\'s VRAM would normally allow.  My custom scripts resolve KV caching and system prompt compaction that make the setup harness-capable, so agentic tools like Claude Code can hit it over Anthropic- and OpenAI-compatible endpoints exactly like they would a paid API. GPU layer placement alone took generation from ~150s a call to ~88ms/token.</p><p>The same rig trains as well as it serves. I built a complete LoRA fine-tuning pipeline on it — base model, training config, and adapter.  Used for fine-tuning Qwen3-1.7B on patent data, and training a Stable Diffusion LoRA set on curated, deduplicated image data.</p>',
+              ['RTX 5070', 'RX 6600 XT', 'Ollama', 'FreeToken', 'ComfyUI', 'PEFT / TRL'],
+              'photos/deepdives/homelab-dashboard.png'
+          ) }}
+
+          {{ feature_project(
+              'siteinfra',
+              'Self-Hosted Web Tooling & Maintenance',
+              'I designed, deployed, and still actively operate this site\'s stack — the app, the edge, and its own health monitoring',
+              '<p>This portfolio runs on infrastructure I designed, deployed, and still operate myself — the Flask app and its container, the Cloudflare edge and reverse proxy in front of it, DNS and tunneling, and the uptime monitor watching all of it (live at <a href="status">/status</a>). None of that is a managed host\'s job here; it\'s mine.</p><p>What actually proves it\'s production-capable is the maintenance loop, not the launch. I put it through a real adversarial review periodically — most recently a live pass with Claude Code against both the deployed site and the source — and fix what it finds. The latest pass closed two real issues same-day: a database-query pattern on an internal endpoint that could be hammered into needless load, and a self-built redirect that could momentarily hand a browser plaintext HTTP instead of HTTPS. Nothing catastrophic came up — no injection, no auth bypass, no data exposure — which is exactly the point of doing this on a schedule instead of waiting for something to break.</p>',
+              ['Flask', 'Docker', 'PostgreSQL', 'Reverse Proxy', 'Cloudflare']
+          ) }}
       </div>
 
       <!-- Projects -->
-      <h2>Projects</h2>
+      <h2>All Projects</h2>
       <div class="projectList">
           {% from 'partials/project.html' import project %} {% for i in
           var["projects"] %} {{ project(i, var["projects"][i]["classes"],

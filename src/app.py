@@ -22,7 +22,7 @@ static_file_hashes = {}
 for dirpath, _, filenames in os.walk(app.static_folder):
     for filename in filenames:
         filepath = os.path.join(dirpath, filename)
-        relative = os.path.relpath(filepath, app.static_folder)
+        relative = os.path.relpath(filepath, app.static_folder).replace(os.sep, '/')
         with open(filepath, 'rb') as f:
             static_file_hashes[relative] = hashlib.md5(f.read()).hexdigest()[:8]
 
