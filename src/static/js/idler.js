@@ -138,8 +138,65 @@
   var grid = null; // Float32Array of (cols+1)*(rows+1)
 
   var LEVELS = [-0.5, -0.333, -0.167, 0, 0.167, 0.333, 0.5];
-  var BASE_COLOR = "233,230,223"; // --ink
-  var ACCENT_COLOR = "217,100,92"; // --accent-bright, reserved for the zero contour
+  var LOW_COLOR = [233, 230, 223]; // --ink, lowest elevation band
+  // A punchier red than --accent-bright (217,100,92) -- the .site overlay's
+  // ~90% dilution desaturates whatever reaches it, so the top of the ramp
+  // needs to start more saturated than it should ever look at full opacity.
+  var HIGH_COLOR = [235, 70, 55];
+
+  // Two independent master levers: turn either down to quiet that part of
+  // the effect without touching the per-level tuning below. LINE_INTENSITY
+  // scales the contour strokes; FILL_INTENSITY scales the hypsometric wash
+  // between them (the fill covers far more area, so it wants a much lower
+  // resting value or the whole page tints).
+  var LINE_INTENSITY = 1;
+  var FILL_INTENSITY = 0.35;
+  // Fill is parked off for now (color/palette still being worked out) --
+  // the lines are the finished part. Flip this back on to resume tuning
+  // the fill without re-deriving any of the code below.
+  var FILL_ENABLED = false;
+
+  // Shared ink -> accent ramp, used by both the contour lines and the fill
+  // bands so they read as one coherent palette. `rank` is the band's
+  // position (0 = lowest), `count` the total number of bands on that scale.
+  // sqrt-biases toward color early, since a flat ramp only ever colors the
+  // single highest band.
+  function levelColor(rank, count) {
+    var t = Math.sqrt(rank / (count - 1));
+    return [
+      Math.round(LOW_COLOR[0] + (HIGH_COLOR[0] - LOW_COLOR[0]) * t),
+      Math.round(LOW_COLOR[1] + (HIGH_COLOR[1] - LOW_COLOR[1]) * t),
+      Math.round(LOW_COLOR[2] + (HIGH_COLOR[2] - LOW_COLOR[2]) * t),
+    ];
+  }
+
+  // How many of LEVELS a value clears -- 0 (below every threshold) through
+  // LEVELS.length (above all of them). LEVELS is sorted ascending.
+  function bandIndex(v) {
+    var idx = 0;
+    for (var i = 0; i < LEVELS.length; i++) {
+      if (v >= LEVELS[i]) idx = i + 1;
+    }
+    return idx;
+  }
+
+  var FILL_BANDS = LEVELS.length + 1;
+  var bandColors = null; // precomputed once, reused every frame
+  function buildBandColors() {
+    bandColors = [];
+    for (var i = 0; i < FILL_BANDS; i++) bandColors.push(levelColor(i, FILL_BANDS));
+  }
+  buildBandColors();
+
+  // Samples per grid cell edge for the fill raster. Higher tracks the
+  // contour lines more precisely (at some per-frame cost); 4 keeps the
+  // boundary error under a few px, invisible once bilinear-upscaled.
+  var FILL_SUBDIV = 3;
+  var fillCanvas = document.createElement("canvas");
+  var fillCtx = fillCanvas.getContext("2d");
+  var fillImage = null;
+  var fillCols = 0;
+  var fillRows = 0;
 
   function resize() {
     width = window.innerWidth;
@@ -150,11 +207,22 @@
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    var targetCols = 68;
-    cellSize = Math.max(22, width / targetCols);
+    // Denser than the original line-only version needed: chaining +
+    // quadratic smoothing can only curve as finely as the underlying
+    // vertices allow, and at ~22px spacing sharp field bends still showed
+    // as visible facets (the actual cause of the "depth"/faceted look --
+    // confirmed by eye, not just measured).
+    var targetCols = 130;
+    cellSize = Math.max(11, width / targetCols);
     cols = Math.ceil(width / cellSize) + 1;
     rows = Math.ceil(height / cellSize) + 1;
     grid = new Float32Array((cols + 1) * (rows + 1));
+
+    fillCols = cols * FILL_SUBDIV;
+    fillRows = rows * FILL_SUBDIV;
+    fillCanvas.width = fillCols;
+    fillCanvas.height = fillRows;
+    fillImage = fillCtx.createImageData(fillCols, fillRows);
   }
 
   function sampleGrid(driftX, driftY, warpX, warpY) {
@@ -168,67 +236,227 @@
     }
   }
 
-  function drawContours() {
+  // Hypsometric wash: for each fill-raster sample, bilinearly interpolate
+  // the RAW field value from its cell's four corners -- the same linear
+  // interpolation marching squares uses internally to place a line -- then
+  // band/color that interpolated value. Coloring first and blending colors
+  // second (as an earlier version did) is a different operation and drifts
+  // from the true boundary wherever a cell spans more than one threshold;
+  // interpolating the value first keeps fill and line mathematically tied
+  // to the same crossing.
+  function drawFill() {
     var stride = cols + 1;
+    var pixels = fillImage.data;
+    var p = 0;
+    for (var ry = 0; ry < fillRows; ry++) {
+      var cy = Math.min(rows - 1, (ry / FILL_SUBDIV) | 0);
+      var fy = (ry - cy * FILL_SUBDIV) / FILL_SUBDIV;
+      var rowOff = cy * stride;
+      var rowOffNext = rowOff + stride;
+      for (var rx = 0; rx < fillCols; rx++) {
+        var cx = Math.min(cols - 1, (rx / FILL_SUBDIV) | 0);
+        var fx = (rx - cx * FILL_SUBDIV) / FILL_SUBDIV;
+
+        var v0 = grid[rowOff + cx];
+        var v1 = grid[rowOff + cx + 1];
+        var v2 = grid[rowOffNext + cx + 1];
+        var v3 = grid[rowOffNext + cx];
+
+        var top = v0 + (v1 - v0) * fx;
+        var bottom = v3 + (v2 - v3) * fx;
+        var value = top + (bottom - top) * fy;
+
+        var c = bandColors[bandIndex(value)];
+        pixels[p++] = c[0];
+        pixels[p++] = c[1];
+        pixels[p++] = c[2];
+        pixels[p++] = 255;
+      }
+    }
+    fillCtx.putImageData(fillImage, 0, 0);
+
+    var alpha = Math.max(0, Math.min(1, FILL_INTENSITY));
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(fillCanvas, 0, 0, fillCols, fillRows, 0, 0, width, height);
+    ctx.restore();
+  }
+
+  // Marching squares gives independent 2-point segments per cell, with no
+  // record of which segments abut. Stroking them as-is (one moveTo/lineTo
+  // subpath per segment) means lineJoin never gets a chance to apply, so
+  // every cell boundary shows as a hard facet. Chain segments that share
+  // an endpoint into continuous polylines/loops first, then stroke each
+  // chain as a quadratic-smoothed curve through its points -- an actually
+  // curved line instead of a connect-the-dots polygon.
+  var CHAIN_EPS = 0.02; // px; two crossings on the same shared edge should
+                          // land on (near-)identical floats, see note below
+  function pointKey(p) {
+    return Math.round(p[0] / CHAIN_EPS) + "_" + Math.round(p[1] / CHAIN_EPS);
+  }
+
+  function collectSegments(threshold) {
+    var stride = cols + 1;
+    var segments = [];
+    for (var cy = 0; cy < rows; cy++) {
+      var rowOff = cy * stride;
+      var rowOffNext = rowOff + stride;
+      var y = cy * cellSize;
+      for (var cx = 0; cx < cols; cx++) {
+        var x = cx * cellSize;
+        var v0 = grid[rowOff + cx];
+        var v1 = grid[rowOff + cx + 1];
+        var v2 = grid[rowOffNext + cx + 1];
+        var v3 = grid[rowOffNext + cx];
+
+        var caseIndex =
+          (v0 >= threshold ? 1 : 0) |
+          (v1 >= threshold ? 2 : 0) |
+          (v2 >= threshold ? 4 : 0) |
+          (v3 >= threshold ? 8 : 0);
+
+        var edges = CASE_EDGES[caseIndex];
+        if (!edges) continue;
+
+        for (var s = 0; s < edges.length; s += 2) {
+          var p0 = edgePoint(edges[s], x, y, cellSize, v0, v1, v2, v3, threshold);
+          var p1 = edgePoint(edges[s + 1], x, y, cellSize, v0, v1, v2, v3, threshold);
+          segments.push([p0, p1]);
+        }
+      }
+    }
+    return segments;
+  }
+
+  // Two adjacent cells that share a grid edge compute that edge's crossing
+  // point from the same two corner values via the same formula (verified:
+  // cell (cx,cy)'s right edge and cell (cx+1,cy)'s left edge reduce to an
+  // identical t), so their coordinates match to float precision -- rounding
+  // to a shared key reliably links them into one path.
+  function strokeChains(segments) {
+    var edgesForKey = {};
+    var pointsByKey = {};
+
+    function addPoint(p) {
+      var k = pointKey(p);
+      if (!pointsByKey[k]) pointsByKey[k] = p;
+      return k;
+    }
+
+    for (var i = 0; i < segments.length; i++) {
+      var ka = addPoint(segments[i][0]);
+      var kb = addPoint(segments[i][1]);
+      (edgesForKey[ka] = edgesForKey[ka] || []).push(kb);
+      (edgesForKey[kb] = edgesForKey[kb] || []).push(ka);
+    }
+
+    var visited = {};
+    function edgeId(k1, k2) {
+      return k1 < k2 ? k1 + "|" + k2 : k2 + "|" + k1;
+    }
+
+    function walk(startKey) {
+      var chain = [pointsByKey[startKey]];
+      var currentKey = startKey;
+      while (true) {
+        var neighbors = edgesForKey[currentKey] || [];
+        var nextKey = null;
+        for (var ni = 0; ni < neighbors.length; ni++) {
+          var eid = edgeId(currentKey, neighbors[ni]);
+          if (!visited[eid]) {
+            nextKey = neighbors[ni];
+            break;
+          }
+        }
+        if (nextKey === null) break;
+        visited[edgeId(currentKey, nextKey)] = true;
+        chain.push(pointsByKey[nextKey]);
+        currentKey = nextKey;
+        if (currentKey === startKey) break; // closed loop
+      }
+      return chain;
+    }
+
+    ctx.beginPath();
+    var k;
+    // Open chains first: any point with exactly one connection is an end.
+    for (k in edgesForKey) {
+      if (edgesForKey[k].length === 1) strokeChain(walk(k));
+    }
+    // Whatever's left over is closed loops with no natural start point.
+    for (k in edgesForKey) {
+      var neighbors = edgesForKey[k];
+      for (var ni = 0; ni < neighbors.length; ni++) {
+        if (!visited[edgeId(k, neighbors[ni])]) strokeChain(walk(k));
+      }
+    }
+    ctx.stroke();
+  }
+
+  // Quadratic-smoothed polyline: curve through the midpoint of each
+  // consecutive pair, using the shared point as control -- the standard
+  // cheap trick for turning a connect-the-dots path into a soft curve
+  // without full spline math.
+  // Catmull-Rom, not midpoint-quadratic: the earlier version curved *toward*
+  // each crossing point without ever reaching it (except chain endpoints),
+  // which is exactly why the line drifted from the fill after smoothing --
+  // the fill still bands on the true, unsmoothed crossing positions. A
+  // Catmull-Rom segment passes through every real point exactly and only
+  // uses neighbors to shape the tangent between them, so line and fill stay
+  // tied to the same positions with no possible corner-cutting drift.
+  function strokeChain(points) {
+    var n = points.length;
+    if (n < 2) return;
+    ctx.moveTo(points[0][0], points[0][1]);
+    if (n === 2) {
+      ctx.lineTo(points[1][0], points[1][1]);
+      return;
+    }
+    for (var i = 0; i < n - 1; i++) {
+      var p0 = points[i - 1] || points[i];
+      var p1 = points[i];
+      var p2 = points[i + 1];
+      var p3 = points[i + 2] || p2;
+      var c1x = p1[0] + (p2[0] - p0[0]) / 6;
+      var c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      var c2x = p2[0] - (p3[0] - p1[0]) / 6;
+      var c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      ctx.bezierCurveTo(c1x, c1y, c2x, c2y, p2[0], p2[1]);
+    }
+  }
+
+  function drawContours() {
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
 
     for (var li = 0; li < LEVELS.length; li++) {
       var threshold = LEVELS[li];
       var isZero = threshold === 0;
-      var depth = Math.abs(threshold) / 0.5; // 0 (center) .. 1 (outer)
-      var alpha = isZero ? 0.5 : 0.3 + 0.16 * (1 - depth);
-      ctx.strokeStyle = isZero
-        ? "rgba(" + ACCENT_COLOR + "," + alpha + ")"
-        : "rgba(" + BASE_COLOR + "," + alpha + ")";
-      ctx.lineWidth = isZero ? 1.3 : 1;
+      // Rank-based, not value-based: the noise field's realized range
+      // rarely spans the full [-0.5, 0.5] of LEVELS (it's a weighted sum
+      // of two octaves, which clusters near the middle), so mapping color
+      // to the raw threshold left the reddest bands almost never drawn.
+      // Index position guarantees the full ink -> accent gradient shows
+      // up across whatever levels actually render. Same ramp as the fill.
+      var c = levelColor(li, LEVELS.length);
+      // Flat alpha across all non-zero bands: a depth-based falloff would
+      // dim the outer (most colorful) bands the most, directly undoing
+      // the color ramp. Color carries the elevation cue here, not brightness.
+      var alpha = (isZero ? 0.85 : 0.68) * LINE_INTENSITY;
+      ctx.strokeStyle = "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + alpha + ")";
+      // the zero level stays a hair bolder, like a coastline on a real
+      // topo map -- a reference line, not just another band.
+      ctx.lineWidth = isZero ? 1.8 : 1.4;
 
-      ctx.beginPath();
-      for (var cy = 0; cy < rows; cy++) {
-        var rowOff = cy * stride;
-        var rowOffNext = rowOff + stride;
-        var y = cy * cellSize;
-        for (var cx = 0; cx < cols; cx++) {
-          var x = cx * cellSize;
-          var v0 = grid[rowOff + cx];
-          var v1 = grid[rowOff + cx + 1];
-          var v2 = grid[rowOffNext + cx + 1];
-          var v3 = grid[rowOffNext + cx];
-
-          var caseIndex =
-            (v0 >= threshold ? 1 : 0) |
-            (v1 >= threshold ? 2 : 0) |
-            (v2 >= threshold ? 4 : 0) |
-            (v3 >= threshold ? 8 : 0);
-
-          var edges = CASE_EDGES[caseIndex];
-          if (!edges) continue;
-
-          for (var s = 0; s < edges.length; s += 2) {
-            var p0 = edgePoint(edges[s], x, y, cellSize, v0, v1, v2, v3, threshold);
-            var p1 = edgePoint(
-              edges[s + 1],
-              x,
-              y,
-              cellSize,
-              v0,
-              v1,
-              v2,
-              v3,
-              threshold
-            );
-            ctx.moveTo(p0[0], p0[1]);
-            ctx.lineTo(p1[0], p1[1]);
-          }
-        }
-      }
-      ctx.stroke();
+      strokeChains(collectSegments(threshold));
     }
   }
 
   function render(driftX, driftY, warpX, warpY) {
     ctx.clearRect(0, 0, width, height);
     sampleGrid(driftX, driftY, warpX, warpY);
+    if (FILL_ENABLED) drawFill();
     drawContours();
   }
 
