@@ -7,7 +7,7 @@
     "links": [
       [
         "globe",
-        "http://files.asimonson.com/u/AIcodeSmells.pdf",
+        "https://files.asimonson.com/u/AIcodeSmells.pdf",
         "Paper"
       ]
     ]
@@ -20,7 +20,7 @@
     "links": [
       [
         "globe",
-        "http://files.asimonson.com/u/blanketTrust.pdf",
+        "https://files.asimonson.com/u/blanketTrust.pdf",
         "Paper"
       ]
     ]
@@ -83,7 +83,7 @@
   "Portfolio Website": {
     "status": "complete",
     "classes": "programming",
-    "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and zero-trust secure while remaining dynamic and free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
+    "content": "This website is my personal sandbox where I've integrated some of my data projects via docker cluster.  It is self hosted and dynamic, generally free of the tech debt that comes with pre-designed sites and excessive framework application.  Yeah, I can do E2E.",
     "links": [
       ["globe", "https://asimonson.com", "Homepage"],
       [

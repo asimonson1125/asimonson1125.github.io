@@ -22,6 +22,7 @@ SERVICES = [
 CHECK_INTERVAL = 60           # seconds between checks
 RETENTION_DAYS = 90           # how long to keep records
 CLEANUP_INTERVAL = 86400      # seconds between purge runs
+STALE_AFTER = CHECK_INTERVAL * 5   # flag cached data as stale if no check has landed in this long
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
@@ -331,9 +332,21 @@ class ServiceMonitor:
 
     def get_status_summary(self):
         """Return the cached status summary, refreshed once per check cycle
-        (see check_all_services), so this never itself touches the database."""
+        (see check_all_services), so this never itself touches the database.
+
+        Adds a `stale` flag computed against wall-clock time, since a summary
+        that stops updating (e.g. the monitor loop hit a persistent error) would
+        otherwise keep reporting its last-known last_check as if it were fresh.
+        """
         with self.lock:
-            return self._cached_summary
+            summary = dict(self._cached_summary)
+
+        stale = False
+        if summary.get('last_check'):
+            age = (datetime.now() - datetime.fromisoformat(summary['last_check'])).total_seconds()
+            stale = age > STALE_AFTER
+        summary['stale'] = stale
+        return summary
 
     # ── Background loop ───────────────────────────────────────────
 
@@ -352,21 +365,37 @@ class ServiceMonitor:
         finally:
             conn.close()
 
+    def _run_check_cycle(self):
+        """Run one check_all_services() call, catching any exception so a
+        transient failure (DB hiccup, network blip) can't kill the daemon
+        thread -- without this, the thread dies silently and /api/status
+        keeps serving an ever-staler cached summary with nothing to say so."""
+        try:
+            self.check_all_services()
+        except Exception as e:
+            print(f"[monitor] check cycle failed, will retry next interval: {e}")
+
+    def _run_cleanup(self):
+        try:
+            self._purge_old_records()
+        except Exception as e:
+            print(f"[monitor] cleanup failed, will retry next interval: {e}")
+
     def start_monitoring(self):
         """Start the background daemon thread for periodic checks and cleanup."""
         def monitor_loop():
-            self.check_all_services()
-            self._purge_old_records()
+            self._run_check_cycle()
+            self._run_cleanup()
 
             checks_since_cleanup = 0
             checks_per_cleanup = CLEANUP_INTERVAL // CHECK_INTERVAL
 
             while True:
                 time.sleep(CHECK_INTERVAL)
-                self.check_all_services()
+                self._run_check_cycle()
                 checks_since_cleanup += 1
                 if checks_since_cleanup >= checks_per_cleanup:
-                    self._purge_old_records()
+                    self._run_cleanup()
                     checks_since_cleanup = 0
 
         thread = Thread(target=monitor_loop, daemon=True)

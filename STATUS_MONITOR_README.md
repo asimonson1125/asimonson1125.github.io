@@ -1,7 +1,7 @@
 # Service Status Monitor
 
 ## Overview
-Server-side monitoring system that checks the availability of asimonson.com services every 2 hours and provides uptime statistics.
+Server-side monitoring system that checks the availability of asimonson.com services every 60 seconds and provides uptime statistics.
 
 ## Architecture
 
@@ -9,20 +9,22 @@ Server-side monitoring system that checks the availability of asimonson.com serv
 
 #### 1. `monitor.py` - Service Monitoring Module
 - **Purpose**: Performs automated health checks on all services
-- **Check Interval**: Every 2 hours (7200 seconds)
+- **Check Interval**: Every 60 seconds
 - **Services Monitored**:
   - asimonson.com
   - files.asimonson.com
   - git.asimonson.com
-  - pass.asimonson.com
-  - ssh.asimonson.com
 
 **Features**:
 - Tracks response times and HTTP status codes
 - Calculates uptime percentages for multiple time periods (24h, 7d, 30d, all-time)
 - Persists data to PostgreSQL (`service_checks` table) via `DATABASE_URL` env var
 - Gracefully degrades when no database is configured (local dev)
-- Runs in a background thread
+- Runs in a background thread, with each check cycle guarded so a transient
+  failure (DB hiccup, network blip) logs and retries next interval instead of
+  killing the thread
+- Flags the cached summary as `stale` if no check has landed in the last 5
+  intervals, so `/api/status` can't silently keep serving old data as fresh
 
 #### 2. `app.py` - Flask Integration
 - **New API Endpoint**: `/api/status`
@@ -39,13 +41,14 @@ Server-side monitoring system that checks the availability of asimonson.com serv
 - Displays response times and status codes
 - Shows total number of checks performed
 - Manual refresh button
-- Auto-refreshes every 5 minutes
+- Auto-refreshes every 60 seconds
 
 #### 2. `static/js/status.js` - Frontend Logic
 - Fetches status data from `/api/status` API
 - Updates UI with service status and uptime
-- Handles error states gracefully
-- Auto-refresh every 5 minutes
+- Shows a dismissible-on-refresh notice banner when the response is a fetch
+  error, and a persistent notice when the backend flags the data as `stale`
+- Auto-refresh every 60 seconds
 
 #### 3. `static/css/App.css` - Styling
 - Color-coded status indicators:
@@ -99,7 +102,7 @@ cd src
 python3 app.py
 ```
 
-The monitoring will start automatically and perform an initial check immediately, then every 2 hours thereafter.
+The monitoring will start automatically and perform an initial check immediately, then every 60 seconds thereafter.
 
 ### Accessing the Status Page
 Navigate to: `https://asimonson.com/status`
@@ -115,7 +118,7 @@ To modify monitoring behavior, edit `src/monitor.py`:
 
 ```python
 # Change check interval (in seconds)
-CHECK_INTERVAL = 7200  # 2 hours
+CHECK_INTERVAL = 60  # 1 minute
 
 # Modify service list
 SERVICES = [
@@ -133,6 +136,6 @@ SERVICES = [
 
 - First deployment will show limited uptime data until enough checks accumulate
 - Historical data is preserved across server restarts (stored in PostgreSQL)
-- Page auto-refreshes every 5 minutes to show latest server data
+- Page auto-refreshes every 60 seconds to show latest server data
 - Manual refresh button available for immediate updates
 - All checks performed server-side (no client-side CORS issues)

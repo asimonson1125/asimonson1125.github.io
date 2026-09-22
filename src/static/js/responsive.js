@@ -17,9 +17,21 @@ function markCurrentPage(location) {
   });
 }
 
+function showNavNotice(message) {
+  const notice = document.getElementById('nav-notice');
+  if (!notice) return;
+  notice.textContent = message;
+  notice.hidden = false;
+}
+
+function hideNavNotice() {
+  const notice = document.getElementById('nav-notice');
+  if (notice) notice.hidden = true;
+}
+
 async function goto(location, { push = true, hash = "" } = {}) {
   const loadingBar = document.getElementById('loading-bar');
-  
+
   if (loadingBar) {
     loadingBar.style.width = ''; // Clear inline style from previous run
   }
@@ -47,6 +59,7 @@ async function goto(location, { push = true, hash = "" } = {}) {
     const [metadata, content] = await response.json();
     
     document.dispatchEvent(new Event('beforenavigate'));
+    hideNavNotice();
 
     const root = document.getElementById("root");
     root.innerHTML = content;
@@ -79,6 +92,7 @@ async function goto(location, { push = true, hash = "" } = {}) {
 
   } catch (err) {
     console.error("Navigation failed:", err);
+    showNavNotice("Couldn't load that page. Check your connection and try again.");
   } finally {
     clearTimeout(loadingTimeout);
     if (loadingBar && loadingBar.classList.contains('active')) {

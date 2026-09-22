@@ -19,6 +19,8 @@ async function fetchStatus() {
 }
 
 function updateStatusDisplay(data) {
+  showStaleNotice(!!data.stale);
+
   if (data.last_check) {
     const lastCheck = new Date(data.last_check);
     const lastUpdateEl = document.getElementById('lastUpdate');
@@ -188,12 +190,34 @@ function showError(message) {
   const errorDiv = document.createElement('div');
   errorDiv.className = 'status-error';
   errorDiv.textContent = message;
-  
+
 
   const container = document.querySelector('.page');
   if (container) {
     container.insertBefore(errorDiv, container.firstChild);
     setTimeout(function() { errorDiv.remove(); }, 5000);
+  }
+}
+
+// Persistent (not auto-dismissed) notice that the last successful check is
+// older than expected -- the monitor may have hit a snag, so don't let the
+// page keep implying the numbers below are fresh.
+function showStaleNotice(isStale) {
+  const container = document.querySelector('.page');
+  if (!container) return;
+  let noticeEl = document.getElementById('staleNotice');
+
+  if (!isStale) {
+    if (noticeEl) noticeEl.remove();
+    return;
+  }
+
+  if (!noticeEl) {
+    noticeEl = document.createElement('div');
+    noticeEl.id = 'staleNotice';
+    noticeEl.className = 'status-notice';
+    noticeEl.textContent = 'Data below may be out of date -- the last successful check was longer ago than expected.';
+    container.insertBefore(noticeEl, container.firstChild);
   }
 }
 

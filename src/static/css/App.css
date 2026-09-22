@@ -1137,6 +1137,13 @@ figcaption {
   margin-bottom: 1.5rem;
 }
 
+.status-notice {
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
 /* ------------------------------------------------------------------
    Books
    ------------------------------------------------------------------ */
@@ -1394,6 +1401,19 @@ figcaption {
   opacity: 0;
   width: 100%;
   transition: width 0.2s ease, opacity 0.4s ease 0.1s;
+}
+
+.nav-notice {
+  border-bottom: 1px solid var(--bad);
+  color: var(--bad);
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+
+.nav-notice[hidden] {
+  display: none;
 }
 
 .skip-link {
