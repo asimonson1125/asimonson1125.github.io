@@ -3,10 +3,11 @@
   <header class="page-head">
     <h1 class="display">About</h1>
     <p class="lede">
-      I'm Andrew Simonson, a data scientist at Ecolab and a graduate data
-      science student at Rochester Institute of Technology, pursuing an M.S.
-      in Data Science after finishing a B.S. in Computer Science with a
-      minor in international relations and a focus on probability theory.
+      I'm Andrew Simonson, a data scientist at Ecolab and a graduate student
+      at Rochester Institute of Technology. I work across the whole stack of
+      a data product: the platform the data lands on, the statistical models
+      that interpret it, and the interface that puts the answer in front of
+      someone.
     </p>
   </header>
 
@@ -14,13 +15,45 @@
     <p>
       At work I build the models and the pipelines behind them. At home I run
       the servers. In between, I get bored and put things on this website,
-      self-built and self-hosted as a sandbox for 
+      self-built and self-hosted as a sandbox for
       webdev experiments.  This is what unprofessional development looks like.
     </p>
     <p>
       There is also a <a href="/resume">résumé</a> for paper-minded people.
     </p>
   </div>
+
+  <section class="section" aria-labelledby="education-heading">
+    <div class="section-head">
+      <h2 id="education-heading">Education</h2>
+      <p class="section-note">Rochester Institute of Technology</p>
+    </div>
+    <dl class="now-list">
+      <div class="now-item">
+        <dt>M.S. Data Science</dt>
+        <dd>
+          Expected December 2026, focused on probability theory, statistical
+          learning, and Bayesian methods. Capstone in fall 2026:
+          <a href="/projects#feature-capstone" onclick="goto('projects', {hash: 'feature-capstone'}); return false;">3D particle-track reconstruction in a diffusion cloud chamber</a>.
+        </dd>
+      </div>
+      <div class="now-item">
+        <dt>B.S. Computer Science</dt>
+        <dd>
+          December 2024. Magna Cum Laude.  GPA 3.63, Dean's List. Course clusters in data science
+          and AI, with a minor in international relations.
+        </dd>
+      </div>
+      <div class="now-item">
+        <dt>Computer Science House</dt>
+        <dd>
+          E-board member and presenter since 2021. I build and maintain web
+          services for 80+ members, and have given seminars on web scraping,
+          analytics, and GIS.
+        </dd>
+      </div>
+    </dl>
+  </section>
 
   <div class="two-col">
     <section class="section" aria-labelledby="skills-heading">
@@ -77,56 +110,5 @@
       </div>
     </section>
   </div>
-
-  <section class="section" aria-labelledby="timeline-heading">
-    <div class="section-head">
-      <h2 id="timeline-heading">Timeline</h2>
-      <p class="section-note filters" role="group" aria-label="Filter timeline entries">
-        <button class="filter-btn" data-filter="all" aria-pressed="true" type="button">All</button>
-        <button class="filter-btn" data-filter="experience" aria-pressed="false" type="button">Experience</button>
-        <button class="filter-btn" data-filter="education" aria-pressed="false" type="button">Education</button>
-      </p>
-    </div>
-
-    <ol class="timeline" id="timeline">
-      {% for name, item in var['timeline'].items() %}
-      <li class="timeitem" data-categories="{{ item.classes }}">
-        <p class="timeitem-date">{{ item.date }}</p>
-        <div class="timeitem-body">
-          <h3>{{ item.title }}</h3>
-          <div class="timeitem-content">{{ item.content | safe }}</div>
-        </div>
-      </li>
-      {% endfor %}
-    </ol>
-    <p class="timeline-empty" id="timelineEmpty" hidden>Nothing in this category yet.</p>
-  </section>
 </div>
-
-<script>
-(function() {
-    const buttons = document.querySelectorAll('.filter-btn[data-filter]');
-    const items = document.querySelectorAll('.timeitem');
-    const empty = document.getElementById('timelineEmpty');
-
-    function applyFilter(filter) {
-        let shown = 0;
-        items.forEach(function(item) {
-            const cats = item.getAttribute('data-categories') || '';
-            const matches = filter === 'all' || cats.split(' ').indexOf(filter) !== -1;
-            item.hidden = !matches;
-            if (matches) shown++;
-        });
-        if (empty) empty.hidden = shown > 0;
-    }
-
-    buttons.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            buttons.forEach(function(b) { b.setAttribute('aria-pressed', 'false'); });
-            this.setAttribute('aria-pressed', 'true');
-            applyFilter(this.getAttribute('data-filter'));
-        });
-    });
-})();
-</script>
 {% endblock %}

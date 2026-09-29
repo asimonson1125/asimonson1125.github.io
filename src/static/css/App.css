@@ -501,6 +501,37 @@ button:disabled {
   font-size: 0.95rem;
 }
 
+.chess-line {
+  margin: 0 0 0.5rem;
+}
+
+.chess-ratings {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  font-family: var(--font-data);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.chess-ratings li {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.chess-icon {
+  font-family: "Chess New";
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #565131
+}
+
 .selected-list {
   list-style: none;
   padding: 0;
@@ -824,89 +855,15 @@ figcaption {
   gap: 1.25rem;
 }
 
+.feature .project-links {
+  margin-top: 0.75rem;
+}
+
 /* ------------------------------------------------------------------
    About
    ------------------------------------------------------------------ */
 .about-bio {
   padding-top: 1.5rem;
-}
-
-.filters {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.filter-btn {
-  border: 0;
-  padding: 0;
-  border-radius: 0;
-  color: var(--ink-3);
-  border-bottom: 1px solid transparent;
-}
-
-.filter-btn:hover {
-  color: var(--ink);
-}
-
-.filter-btn[aria-pressed="true"] {
-  color: var(--ink);
-  border-bottom-color: var(--accent-bright);
-}
-
-.timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.timeitem {
-  display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
-  gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-bottom: 1px solid var(--rule);
-  margin: 0;
-}
-
-.timeitem:last-child {
-  border-bottom: 0;
-}
-
-.timeitem[hidden] {
-  display: none;
-}
-
-.timeitem-date {
-  font-family: var(--font-data);
-  color: var(--ink-3);
-  margin: 0;
-  padding-top: 0.2em;
-}
-
-.timeitem h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.timeitem-content {
-  max-width: var(--measure);
-  color: var(--ink-2);
-}
-
-.timeitem-org {
-  color: var(--ink-3);
-  font-family: var(--font-data);
-  margin-bottom: 0.5rem;
-}
-
-.timeitem-content ul {
-  margin: 0;
-  padding-left: 1.1em;
-}
-
-.timeline-empty {
-  color: var(--ink-3);
-  padding: 1rem 0;
 }
 
 #skillTree {
@@ -1283,43 +1240,6 @@ figcaption {
   border: 0;
 }
 
-/* Chess.com embed (partials/chess.html, currently unused on any page) */
-#chessProfile {
-  width: 300px;
-  color: var(--ink-2);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  cursor: pointer;
-  border: 1px solid var(--rule);
-  font-family: var(--font-data);
-}
-
-.chessInfo {
-  padding: 1em;
-}
-
-.chessIcon {
-  display: inline-block;
-  font-family: "Chess New";
-  font-size: x-large;
-  width: 25px;
-  text-align: center;
-}
-
-.chessStat {
-  display: inline;
-}
-
-.pfp {
-  border-radius: 50%;
-  width: 100px;
-}
-
-.rapid { color: #6c9d41; }
-.blitz { color: #f7c045; }
-.bullet { color: #a58a45; }
-.puzzles { color: #db7e3b; }
-
 /* ------------------------------------------------------------------
    Footer
    ------------------------------------------------------------------ */
@@ -1538,7 +1458,6 @@ figcaption {
   }
 
   .now-item,
-  .timeitem,
   .project {
     grid-template-columns: 1fr;
     gap: 0.5rem;

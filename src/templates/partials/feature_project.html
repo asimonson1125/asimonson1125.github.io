@@ -1,21 +1,27 @@
-{% macro feature_project(id, title, tagline, body, stack, image=none, caption='') %}
-<article class="feature{{ ' has-figure' if image else '' }}" id="feature-{{ id }}">
+{% macro feature_project(id, f) %}
+<article class="feature{{ ' has-figure' if f.image else '' }}" id="feature-{{ id }}">
   <div class="feature-head">
-    <h3>{{ title }}</h3>
-    <p class="feature-tagline">{{ tagline }}</p>
+    <h3>{{ f.title }}</h3>
+    <p class="feature-tagline">{{ f.tagline }}</p>
   </div>
-  {% if image %}
+  {% if f.image %}
+  {% set size = f.imageSize or [1108, 1017] %}
   <figure class="feature-figure feature-clip">
-    <img src="{{ url_for('static', filename=image) }}" alt="{{ caption or title }}" loading="lazy" width="1108" height="1017" />
-    {% if caption %}<figcaption>{{ caption }}</figcaption>{% endif %}
+    <img src="{{ url_for('static', filename=f.image) }}" alt="{{ f.caption or f.title }}" loading="lazy" width="{{ size[0] }}" height="{{ size[1] }}" />
+    {% if f.caption %}<figcaption>{{ f.caption }}</figcaption>{% endif %}
   </figure>
   {% endif %}
   <div class="feature-body feature-clip" id="feature-{{ id }}-body">
     <div class="prose">
-      {{ body | safe }}
+      {{ f.body | safe }}
     </div>
-    {% if stack %}
-    <p class="feature-stack"><span class="label">Built with</span> {{ stack | join(', ') }}</p>
+    {% if f.stack %}
+    <p class="feature-stack"><span class="label">Built with</span> {{ f.stack | join(', ') }}</p>
+    {% endif %}
+    {% if f.links %}
+    <p class="project-links">
+      {% for href, label in f.links %}<a href="{{ href }}" rel="noopener noreferrer">{{ label }}</a>{% endfor %}
+    </p>
     {% endif %}
   </div>
   <button
@@ -25,8 +31,8 @@
     aria-controls="feature-{{ id }}-body"
     onclick="toggleFeature(this)"
   >
-    <span class="visually-hidden when-closed">Read more about {{ title }}</span>
-    <span class="visually-hidden when-open">Collapse {{ title }}</span>
+    <span class="visually-hidden when-closed">Read more about {{ f.title }}</span>
+    <span class="visually-hidden when-open">Collapse {{ f.title }}</span>
   </button>
 </article>
 {% endmacro %}

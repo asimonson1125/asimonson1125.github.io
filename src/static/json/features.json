@@ -1,16 +1,105 @@
 {
+  "rushready": {
+    "title": "RushReady at Ecolab",
+    "summary": "Primary model developer, inception to multimillion-dollar product. +20% speed of service.",
+    "tagline": "Primary model developer of a quick-service restaurant analytics product, from first prototype through multimillion-dollar commercialization.",
+    "body": "<p>RushReady is an operations analytics product for quick-service restaurant brands. I have been its primary model developer since inception, and I own both halves of the problem: the platform that gets the data there and the models that make sense of it.</p><ul><li><strong>Platform.</strong> A near-real-time data platform built on Delta Live Tables, with an automated MLOps lifecycle spanning multiple QSR brands.</li><li><strong>Models.</strong> Explainable anomaly detection with XGBoost and SHAP attribution, so every flag arrives with the features that caused it, plus brand-configurable recommendations built on top of them.</li><li><strong>Result.</strong> A 20% increase in speed of service, and a product that went from prototype to a multimillion-dollar commercial offering.</li></ul><p>I also represented Ecolab as liaison in Microsoft's 100-member AI accelerator program. Product details are proprietary; I'm happy to talk through the approach.</p>",
+    "stack": [
+      "Azure Databricks",
+      "Delta Live Tables",
+      "Apache Spark",
+      "XGBoost",
+      "SHAP",
+      "Data Factory",
+      "SQL"
+    ]
+  },
   "homelab": {
-    "title": "AI Homelab and Self Hosted Web Tooling",
-    "tagline": "A self-hosted cluster serving Mixture-of-Experts models beyond their rated VRAM and independent web services",
-    "body": "<p>I refined a method to pool GPUs from different vendors and generations into a single inference backend of roughly 20 GB over Vulkan. FreeToken, a bleeding-edge MoE inference server, fronts the cluster and handles the elastic inference, running Mixture-of-Experts models with far more total parameters than the cluster's VRAM would normally allow. My own scripts handle KV caching and system-prompt compaction, which is what makes the setup harness-capable.</p><p>The same rig trains as well as it serves, having refined Qwen SLMs and diffusion image models.  All this is hosted alongside my personal web assets, like this website.  I voluntarily subject myself to the maintenance of production-grade systems on every level of the tech stack to ensure that I survive the Big Tech apocalypse.</p>",
-    "stack": ["FreeToken", "ComfyUI", "PEFT / TRL", "Docker", "Cloudflare", "Reverse Proxy"],
+    "title": "AI Homelab and Self-Hosted Web Tooling",
+    "summary": "Mixture-of-Experts inference beyond rated VRAM, plus fine-tuning, on hardware I run myself.",
+    "tagline": "A self-hosted cluster serving Mixture-of-Experts models beyond their rated VRAM, alongside the web services it hosts.",
+    "body": "<p>I pool GPUs from different vendors and generations into a single inference backend of roughly 20 GB over Vulkan. FreeToken, a bleeding-edge MoE inference server, fronts the cluster and handles the elastic part: only the experts a token actually routes to need to be resident, so models with far more total parameters than the cluster's VRAM can still be served. My own scripts handle KV caching and system-prompt compaction, which is what makes the setup usable as a backend for coding agents.</p><p>The screenshot is a single node: a 35B-parameter hybrid MoE/Mamba model at NVFP4, running in 12 GB of VRAM with an 89K-token KV cache, the MoE expert cache and the SSM state slots all sized live against the memory budget.</p><p>The same rig trains as well as it serves: I've fine-tuned Qwen small language models with PEFT/TRL and trained diffusion image models. It also hosts my personal web assets, including this site and the services on the <a href=\"/status\">status page</a>. I voluntarily maintain production-grade systems at every level of the stack so I'll survive the Big Tech apocalypse.</p>",
+    "stack": [
+      "FreeToken",
+      "Vulkan",
+      "PEFT / TRL",
+      "ComfyUI",
+      "Docker",
+      "Cloudflare",
+      "Reverse Proxy"
+    ],
     "image": "photos/deepdives/homelab-dashboard.png",
-    "caption": "Cluster dashboard during a long inference run."
+    "imageSize": [
+      1028,
+      891
+    ],
+    "caption": "FreeToken cache configuration for Qwen3.6-35B-A3B on one RTX 5070 node."
+  },
+  "codesmells": {
+    "title": "Human vs AI Code Smell Study",
+    "summary": "85K+ code definitions: AI code carries 3–4x more structural debt.",
+    "tagline": "AI-generated code carries 3–4x more structural debt than human code, and reviewers don't see it.",
+    "body": "<p>I compared the maintainability of human-written code against code from five AI coding agents (Claude Code, Copilot, Cursor, Devin, and OpenAI Codex) across more than 85,000 code definitions, scoring each with mature code-smell detection algorithms and comparing the populations with non-parametric statistics.</p><p>The finding: AI code carries 3–4x more structural debt, and it is the kind of debt reviewers don't see. The paper recommends automated quality gates on AI-generated pull requests rather than relying on human review alone.</p>",
+    "stack": [
+      "Python",
+      "Static Analysis",
+      "Non-parametric Statistics"
+    ],
+    "image": "photos/projects/aiCodeGroups.png",
+    "imageSize": [
+      1044,
+      691
+    ],
+    "caption": "Code-smell feature space (PCA) with KDE contours per author: human vs. five coding agents.",
+    "links": [
+      [
+        "https://files.asimonson.com/u/AIcodeSmells.pdf",
+        "Read the paper"
+      ]
+    ]
+  },
+  "calorimetry": {
+    "title": "Reactive Chemistry Analysis at Dow",
+    "summary": "Replaced 4 legacy tools; became the interdepartmental standard, saving ~0.65 FTE a year.",
+    "tagline": "A reactive-chemistry analysis app that replaced four legacy VBA tools and became Dow's interdepartmental data standard.",
+    "body": "<p>During a co-op with Dow Chemical's Global Reactive Chemicals team, I independently built a Flask application that automates calorimetry analysis. It encodes adiabatic correction and exotherm-detection logic across 9 test types, and alerts on unusual or dangerous results from a wide range of testing environments and equipment.</p><p>The core design decision was an object-model abstraction that decouples each test type's parser from report generation. Adding a new instrument means writing a parser, not a new tool, which is how one app replaced 4 legacy VBA tools. It became the interdepartmental data standard, saving more than 1,020 hours (about 0.65 FTE) a year.</p>",
+    "stack": [
+      "Python",
+      "Flask",
+      "Azure",
+      "Posit Connect",
+      "Docker"
+    ],
+    "image": "photos/projects/calorimeterAnalysis.png",
+    "imageSize": [
+      658,
+      360
+    ],
+    "caption": "Pressure vs. temperature trace, automatically segmented into heat-wait-search, exotherm, and cooling phases."
   },
   "capstone": {
-    "title": "Subatomic Particle Tracing and Anomaly Control",
-    "tagline": "My Master's Capstone: Building a Diffusion Cloud Chamber and using stereo reconstruction to classify Muons and Alpha/Beta particles.",
-    "body": "<p>My ongoing Data Science Capstone Project combines existing utilities for cheap quantum demonstrations and real world measuring techniques to create effective sensing of subatomic phenomena without breaking the bank or into the IAEA</p>",
-    "stack": ["Ego"]
+    "title": "Stereo Particle-Track Classification in a Cloud Chamber",
+    "summary": "M.S. capstone, proposal approved: 3D particle-track reconstruction with Bayesian classification.",
+    "tagline": "My M.S. capstone: a three-camera diffusion cloud chamber that reconstructs particle tracks in 3D and classifies them with calibrated uncertainty.",
+    "body": "<p>For a century, cloud chamber tracks have been classified by eye: alphas are short and thick, betas long and wandering, muons long and straight. A single camera makes that worse. A track angled away from the lens is foreshortened, which biases any length-based rule, and the rule returns a hard label with no confidence exactly where it is least reliable.</p><ul><li><strong>Apparatus.</strong> A diffusion cloud chamber imaged by three hardware-synchronized Raspberry Pi cameras, calibrated with Zhang's method in OpenCV and validated by triangulating an object of known length before any particle data is trusted.</li><li><strong>Data.</strong> A spike-in protocol: background-only sessions (cosmic muons, radon-daughter alphas), then sessions with unlicensed alpha and beta sources at fixed positions, which gives weak ground-truth labels without breaking the bank or breaking into the IAEA.</li><li><strong>Models.</strong> Three tiers on the same features: classical length/width thresholds, a supervised ML baseline, and a Bayesian classifier that propagates calibration and triangulation error into a calibrated posterior over particle type. Each tier runs on both single-camera 2D and triangulated 3D features to measure how much 3D reconstruction actually corrects the bias.</li><li><strong>Monitoring.</strong> Shewhart and CUSUM control charts on session-level statistics flag anomalous chamber conditions; the deliberate spike-in shifts double as a validation of the monitor itself.</li></ul><p>The proposal is approved and construction starts this fall. Results will be posted here.</p>",
+    "stack": [
+      "Python",
+      "OpenCV",
+      "Raspberry Pi",
+      "Bayesian Inference",
+      "Statistical Process Control"
+    ],
+    "image": "photos/deepdives/capstone-apparatus.png",
+    "imageSize": [
+      1100,
+      820
+    ],
+    "caption": "Planned apparatus, top-down: three calibrated cameras around the chamber, with a fixed spike-in source port and an optional magnet for later charge discrimination.",
+    "links": [
+      [
+        "/capstone.pdf",
+        "Read the proposal"
+      ]
+    ]
   }
 }

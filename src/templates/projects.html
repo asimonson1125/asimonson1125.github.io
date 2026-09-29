@@ -3,7 +3,7 @@
   <header class="page-head">
     <h1 class="display">Work</h1>
     <p class="lede">
-      Research, tooling, and experiments.  Sometimes I forget to add things to this list, message me for missing details.
+      Production data science, research, and the tooling I build for myself. Open a highlight for the full write-up.
     </p>
   </header>
 
@@ -13,13 +13,13 @@
     </div>
     {% from 'partials/feature_project.html' import feature_project %}
     {% for id, f in var.features.items() %}
-      {{ feature_project(id, f.title, f.tagline, f.body, f.stack, f.image, f.caption) }}
+      {{ feature_project(id, f) }}
     {% endfor %}
   </section>
 
   <section class="section" aria-labelledby="all-heading">
     <div class="section-head">
-      <h2 id="all-heading">All projects</h2>
+      <h2 id="all-heading">More projects</h2>
       <p class="section-note">{{ var.projects | length }} entries</p>
     </div>
     <ol class="project-list">

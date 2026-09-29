@@ -71,6 +71,23 @@
           <a class="shelf-more" href="/books" onclick="goto('books'); return false;">All reviews</a>
         </dd>
       </div>
+      <div class="now-item">
+        <dt>Over the board</dt>
+        <dd>
+          <p class="chess-line">
+            Playing as <a href="https://www.chess.com/member/asimonson1125" rel="noopener noreferrer">asimonson1125</a> on Chess.com.
+          </p>
+          <p>
+            Aiming for 2000 in Rapid by the end of the year
+          </p>
+          <ul class="chess-ratings" id="chessRatings" aria-label="Current Chess.com ratings">
+            <li title="Rapid"><span class="chess-icon rapid" aria-hidden="true">&#x1F1B;</span><span class="visually-hidden">Rapid</span> <span class="chess-value" data-stat="rapid">&ndash;</span></li>
+            <li title="Blitz"><span class="chess-icon blitz" aria-hidden="true">&#x1F1C;</span><span class="visually-hidden">Blitz</span> <span class="chess-value" data-stat="blitz">&ndash;</span></li>
+            <li title="Bullet"><span class="chess-icon bullet" aria-hidden="true">&#x1F1D;</span><span class="visually-hidden">Bullet</span> <span class="chess-value" data-stat="bullet">&ndash;</span></li>
+            <li title="Puzzles (best)"><span class="chess-icon puzzles" aria-hidden="true">&#x1F15;</span><span class="visually-hidden">Puzzles, best</span> <span class="chess-value" data-stat="puzzles">&ndash;</span></li>
+          </ul>
+        </dd>
+      </div>
     </dl>
   </section>
 
@@ -122,4 +139,46 @@
   </section>
 
 </div>
+
+<script>
+(function () {
+  // Chess.com's public API allows cross-origin reads, so ratings load straight
+  // from the browser. Cached per page load so client-side navigation back to
+  // home doesn't refetch.
+  const list = document.getElementById('chessRatings');
+  if (!list) return;
+
+  function render(ratings) {
+    list.querySelectorAll('.chess-value').forEach(function (el) {
+      const value = ratings[el.dataset.stat];
+      if (value) el.textContent = value;
+    });
+  }
+
+  if (window.chessStatsCache) {
+    render(window.chessStatsCache);
+    return;
+  }
+
+  fetch('https://api.chess.com/pub/player/asimonson1125/stats')
+    .then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function (stats) {
+      const last = function (key) { return stats[key] && stats[key].last && stats[key].last.rating; };
+      window.chessStatsCache = {
+        rapid: last('chess_rapid'),
+        blitz: last('chess_blitz'),
+        bullet: last('chess_bullet'),
+        puzzles: stats.tactics && stats.tactics.highest && stats.tactics.highest.rating,
+      };
+      render(window.chessStatsCache);
+    })
+    .catch(function (err) {
+      console.warn('Chess.com ratings unavailable:', err);
+      list.hidden = true;
+    });
+})();
+</script>
 {% endblock %}

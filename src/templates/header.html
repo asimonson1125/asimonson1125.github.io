@@ -12,7 +12,7 @@
     <!-- Resource hints for performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <meta name="description" content="{{ var['description'] }}" />
-    <meta property="og:title" content="Andrew Simonson" />
+    <meta property="og:title" content="{{ var['title'] }}" />
     <meta property="og:description" content="{{ var['description'] }}" />
     <meta property="og:type" content="website" />
     <meta
@@ -20,7 +20,7 @@
       content="{{ url_for('static', filename='icons/rasterLogoCircle.png') }}"
     />
     <meta property="og:url" content="{{ request.url_root | trim('/') }}{{ var['canonical'] }}" />
-    <meta property="twitter:title" content="Andrew Simonson" />
+    <meta name="twitter:title" content="{{ var['title'] }}" />
     <meta name="twitter:description" content="{{ var['description'] }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content="Andrew Simonson - Portfolio" />

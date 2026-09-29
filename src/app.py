@@ -28,15 +28,17 @@ for dirpath, _, filenames in os.walk(app.static_folder):
             static_file_hashes[relative] = hashlib.md5(f.read()).hexdigest()[:8]
 
 
-@app.context_processor
-def override_url_for():
-    def versioned_url_for(endpoint, **values):
-        if endpoint == 'static':
-            filename = values.get('filename')
-            if filename and filename in static_file_hashes:
-                values['v'] = static_file_hashes[filename]
-        return flask.url_for(endpoint, **values)
-    return dict(url_for=versioned_url_for)
+def versioned_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename')
+        if filename and filename in static_file_hashes:
+            values['v'] = static_file_hashes[filename]
+    return flask.url_for(endpoint, **values)
+
+
+# A global rather than a context processor, so macros imported without
+# context (partials/*.html) get fingerprinted URLs too.
+app.jinja_env.globals['url_for'] = versioned_url_for
 
 
 # ── Security and caching headers ──────────────────────────────────────
@@ -79,7 +81,6 @@ pages['projects']['projects'] = projects
 pages['projects']['features'] = features
 pages['home']['features'] = features
 pages['home']['books'] = books
-pages['home']['projects'] = projects
 pages['books']['books'] = books
 pages['status']['services'] = SERVICES
 
@@ -168,6 +169,18 @@ def resume():
     return flask.send_file("./static/Resume_Simonson_Andrew.pdf")
 
 
+@app.route("/capstone.pdf")
+def capstone_proposal():
+    return flask.send_file("./static/papers/capstone-proposal.pdf")
+
+
+# Self-contained interactive write-ups, generated in other repos and copied in.
+# Served as-is: minifying their inline worker code is not worth the risk.
+@app.route("/gold")
+def gold_demo():
+    return flask.send_file("./static/demos/why-gold-is-gold.html")
+
+
 @app.route("/sitemap.xml")
 @app.route("/robots.txt")
 def static_from_root():
@@ -179,5 +192,5 @@ def static_from_root():
 if __name__ == "__main__":
     app.run(debug=False)
 else:
-    Minify(app=app, html=True, js=True, cssless=True)
+    Minify(app=app, html=True, js=True, cssless=True, bypass=['gold_demo'])
     monitor.start_monitoring()

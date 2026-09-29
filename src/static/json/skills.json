@@ -1,29 +1,54 @@
 {
-    "Data and AI": {
-        "ML": {
-            "PySpark ML": {},
-            "Numpy/Pandas/Polars": {},
-            "TensorFlow": {},
-            "Scikit": {}
-        },
-        "PySpark": {},
-        "Selenium/BS4 Web Hacking": {},
-        "SQL": {},
-        "Declarative Pipelines": {},
-        "ArcGIS": {}
+    "Statistics and ML": {
+        "Explainable Anomaly Detection": {},
+        "XGBoost / SHAP": {},
+        "Bayesian Methods": {},
+        "Regression and Non-parametric Testing": {},
+        "PyTorch": {},
+        "TensorFlow": {},
+        "Scikit-Learn": {},
+        "PySpark ML": {}
     },
-    "DevOps": {
-        "Docker": {},
-        "Microsoft Azure": {},
+    "LLMs and Generative AI": {
+        "MoE Inference and KV-cache Tuning": {},
+        "Fine-tuning (PEFT / TRL)": {},
+        "Retrieval Agents": {},
+        "Diffusion Models (ComfyUI)": {}
+    },
+    "Data Engineering": {
+        "Apache Spark / PySpark": {},
+        "Delta Live Tables": {},
         "Databricks": {},
-        "Kubernetes/Openshift": {},
+        "Azure Data Factory": {},
+        "SQL": {},
+        "Pandas / Polars / NumPy": {},
+        "Web Scraping (Selenium / BS4)": {}
+    },
+    "Platform and MLOps": {
+        "MLOps Lifecycle Automation": {},
+        "Docker": {},
+        "Kubernetes / OpenShift": {},
+        "Microsoft Azure": {},
         "Cloudflare": {},
         "Bash": {}
     },
-    "Frontend": {
-        "Flask (Python)": {},
+    "Geospatial": {
+        "ArcGIS": {},
+        "Choropleth and Dashboard Design": {}
+    },
+    "Languages": {
+        "Python": {},
+        "SQL": {},
+        "R": {},
+        "MATLAB": {},
+        "JavaScript": {},
+        "Rust": {},
+        "C#": {}
+    },
+    "Web": {
+        "Flask": {},
         "REST APIs": {},
-        "Web Scraping": {}
+        "Posit Connect": {}
     },
     "Offline Skills": {
         "Circuitry": {},

@@ -1,5 +1,5 @@
 {% macro project(title, classes, status, bgi, content, links) %}
-{% set tags = classes.split() | reject('equalto', 'pinned') | list %}
+{% set tags = classes.split() %}
 <li class="project" id="project-{{ title | slug }}">
   <div class="project-thumb">
     {% if bgi|length > 0 %}
@@ -17,7 +17,7 @@
     <p class="project-desc">{{ content }}</p>
     {% if links %}
     <p class="project-links">
-      {% for i in links if i[1].startswith('https://') or i[1].startswith('http://') %}
+      {% for i in links if i[1].startswith(('https://', 'http://', '/')) %}
         <a href="{{ i[1] }}" rel="noopener noreferrer">{{ i[2] }}</a>
       {% endfor %}
     </p>
