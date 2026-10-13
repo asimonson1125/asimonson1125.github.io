@@ -532,6 +532,19 @@ button:disabled {
   color: #565131
 }
 
+/* Chess ratings fallback — shown when API is unavailable */
+.chess-unavailable .chess-value {
+  color: var(--ink-3);
+  font-style: italic;
+}
+
+.chess-fallback {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-3);
+  font-style: italic;
+}
+
 .selected-list {
   list-style: none;
   padding: 0;

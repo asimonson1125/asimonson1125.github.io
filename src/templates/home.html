@@ -117,7 +117,10 @@
           If you're looking for shared resources you've taken a wrong turn.
         </p>  
         <p>
-          From here, we'll rekindle the future.
+          This site is a living experiment: self-hosted, framework-free, and
+          built to last. If you'd like to talk about data science,
+          distributed systems, or the strange intersection of theory and
+          practice, <a href="mailto:asimonson1125@gmail.com">drop a line</a>.
         </p>
         <p class="blinkies" aria-label="Retro web badges">
           <img alt="Pepsi Addict" src="{{ url_for('static', filename='photos/blinkies/pepsiaddict.gif') }}" loading="lazy" width="150" height="20" />
@@ -177,7 +180,18 @@
     })
     .catch(function (err) {
       console.warn('Chess.com ratings unavailable:', err);
-      list.hidden = true;
+      // Show a subtle message instead of hiding the section
+      list.classList.add('chess-unavailable');
+      list.querySelector('.chess-value[data-stat="rapid"]').textContent = '—';
+      list.querySelector('.chess-value[data-stat="blitz"]').textContent = '—';
+      list.querySelector('.chess-value[data-stat="bullet"]').textContent = '—';
+      list.querySelector('.chess-value[data-stat="puzzles"]').textContent = '—';
+      // Add an info message after the list
+      var msg = document.createElement('p');
+      msg.className = 'chess-fallback';
+      msg.textContent = 'Chess.com ratings unavailable';
+      msg.setAttribute('aria-label', 'Chess.com ratings unavailable');
+      list.parentNode.insertBefore(msg, list.nextSibling);
     });
 })();
 </script>

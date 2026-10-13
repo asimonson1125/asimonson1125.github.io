@@ -74,12 +74,6 @@
       ]
     ]
   },
-  "Automotive Brand Valuation Analysis": {
-    "status": "complete",
-    "classes": "statistics",
-    "bgi": "automotiveBrandAnalysis.png",
-    "content": "Brand valuation analysis of the used car market, measuring value decay by mileage to infer qualities such as perceived reliability and how well luxury features hold their value."
-  },
   "RIT Hotspots": {
     "status": "incomplete",
     "classes": "geospatial programming",
@@ -89,19 +83,6 @@
       [
         "github",
         "https://github.com/asimonson1125/hotspotsrit",
-        "git repo"
-      ]
-    ]
-  },
-  "OccupyRIT": {
-    "status": "complete",
-    "classes": "programming",
-    "bgi": "occupyRIT.png",
-    "content": "Collects RIT gym occupancy data over time to find the busiest and quietest workout hours.",
-    "links": [
-      [
-        "github",
-        "https://github.com/asimonson1125/Occupy-RIT",
         "git repo"
       ]
     ]
